@@ -95,7 +95,8 @@ machine_http="http://bench.cs.vt.edu/MetaStorm/"
 
 
 download_f = function(x){
-  
+    
+  var rid = $( "#selectFuncDataset option:selected" ).val();
   arc_pro="/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/"
   
   if (x[0]==1) { // code 1: fastq files
@@ -113,7 +114,19 @@ download_f = function(x){
     file=arc_pro+x[1]+"/assembly/idba_ud/"+sid+"/pred.genes.nucl.fa"
     $("#Dgenes").append("<div class='overlay' id='Dgenes_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
   }
- 
+  
+  if (x[0]==4) { // alignment: Assembly
+    file=arc_pro+x[1]+"/assembly/idba_ud/"+sid+"/pred.genes."+rid+'.matches'
+    console.log(file);
+    $("#download_function_alignment").append("<div class='overlay' id='Dgenes_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
+  }
+
+  if (x[0]==5) { // alignment: read-matching
+    file=arc_pro+x[1]+"/matches/"+sid+"/alignment."+rid+'.matches'
+    console.log(file);
+    $("#Dgenes").append("<div class='overlay' id='Dgenes_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
+  }
+
   $.ajax({
       url: machine+"download_files",
       type: "POST",
@@ -379,30 +392,6 @@ if (pip=='assembly') {
                             "<a id='btn06' download='counts'><button class='btn bg-purple btn-flat margin'>Gene Abundance</button></a>"+
                         "</p>"])               
                         
-  // Download buttons
-  /*$('#btn01').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"scaffold.fa");
-  });
-
-  $('#btn02').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"contig.fa");
-  });
-
-  $('#btn03').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"pred.genes.prot.fa");
-  });
-
-  $('#btn04').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode('Files/PROJECTS/'+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"pred.genes."+rid+".matches");
-  });*/
 
   $('#btn05').click(function(e) {
       e.preventDefault();  //stop the browser from following
@@ -416,34 +405,12 @@ if (pip=='assembly') {
       window.location.href = machine_http+'download/'+Base64.encode('Files/PROJECTS/'+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"pred.genes."+rid+".matches.taxonomy.genes.abundance.rpkm");
   });
 
-
-
-
-
-  // Download buttons
-  /*$('#fbtn01').click(function(e) {
+  $('#download_function_alignment').click(function(e) {
       e.preventDefault();  //stop the browser from following
       var rid = $( "#selectFuncDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"scaffold.fa");
+      download_f([4, pid,sid+'.'+rid+'.alignment.txt', sid, uid, 2])
   });
 
-  $('#fbtn02').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectFuncDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"contig.fa");
-  });
-
-  $('#fbtn03').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectFuncDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"pred.genes.prot.fa");
-  });
-
-  $('#fbtn04').click(function(e) {
-      e.preventDefault();  //stop the browser from following
-      var rid = $( "#selectFuncDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode('Files/PROJECTS/'+pid+"/assembly/idba_ud/"+'/'+sid+"/"+"pred.genes."+rid+".matches");
-  });*/
 
   $('#fbtn05').click(function(e) {
       e.preventDefault();  //stop the browser from following
@@ -566,6 +533,11 @@ $.ajax({
        window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+sid+'/'+"alignment."+rid+".matches.function.genes.abundance.rpkm");
     });
 
+      $('#download_function_alignment').click(function(e) {
+      e.preventDefault();  //stop the browser from following
+      var rid = $( "#selectFuncDataset option:selected" ).val();
+      download_f([5, pid,sid+'.'+rid+'.alignment.txt', sid, uid, 2])
+  });
   
   $("#buttonsT").html(["<p>"+
                             //"<a id='btn01' download='counts'><button class='btn bg-maroon btn-flat margin'>Alignment</button></a>"+
