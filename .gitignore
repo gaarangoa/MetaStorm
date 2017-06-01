@@ -25,6 +25,7 @@ static/template/
 static/tipped/
 static/upload/
 app/lib/inchlib/setup.py
+app/lib/email/
 watch.log
 .ssh/
 .idea/
