@@ -435,7 +435,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- FUNCTION TAB -->
 
-                    <div class="tab-pane" id="tab4">
+          <div class="tab-pane" id="tab4">
 
                         <legend><h1> Functional Annotation Hit Distribution</h1></legend>
                         <div class="callout callout-info lead ">
@@ -444,12 +444,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <label for='selectFuncPipeline' >Select dataset: </label>
                         <select id='selectFuncDataset'></select>
-                        <button id="loadFunction" type="button"  class="btn btn-primary">SEE RESULTS</button>
+                        <button id="loadFunction" type="button"  class="btn btn-primary btn-xs">SEE RESULTS</button>
 						
 						<br><br>
 						<dic class="col-sm-12">
-						<div class="col-md-6">
-						  <div id="chart-ring-year"  ><center><h2>Functional Categories</h2><p>Distribution of the top <code>20</code>
+						<div class="col-md-10 col-md-offset-1">
+						  <div id="chart-ring-year"  ><center><h2>Functional Categories</h2><p>Distribution of the
 						  functional categories. This pie chart represents the percentage of reads with predicted functions.
 						  Click to any slide of the pie chart to filter out the genes
 						  associated to this function.</p></center><br><br>
@@ -458,7 +458,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						  </div>
 						</div>
 						
-						<div class="col-md-4">
+						<div class="col-md-10 col-md-offset-1">
 						  <div id="chart-row-spenders"  style="min-height: 250px; overflow: auto" ><center><h2>Genes</h2><p>
 							Distribution of top <code>15</code> genes through the categories. Each bar represents a
 							gene and its number of hits. Labels on the bars corresponds to the gene ID provided by the database </p></center><br></div>
@@ -466,15 +466,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 						</div>
 						<!--<button id="clearMetadata" type="button"  class="btn btn-primary">clear</button>-->
 						
-						<div class="col-md-12">
-						  <h2>Description</h2><p>This pannel contains information about the categories from the selected database</p>
+						<div class="col-md-10 col-md-offset-1">
+						  <center><h2>Description</h2><p>This pannel contains information about the categories from the selected database</p></center>
 						  <div style="min-height: 200px; overflow: auto" id="categories_metadata"></div>
 						</div>
 						</div>
 						
-						<legend><h1> Download Table</h1></legend>
-						<a id="download_one_sample_table_taxo" class="btn btn-success"><i class="fa fa-download"></i> Get Full Taxonomy</a>
-            <a id="download_one_sample_table_func" class="btn btn-success"><i class="fa fa-download"></i> Get Full Function</a>
+						<!--<legend><h1> Download Table</h1></legend>-->
+						<a id="download_one_sample_table_taxo" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Get Table of Taxonomy Annotation</a>
+            <a id="download_one_sample_table_func" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Get Table of Funcional Annotation</a>
 						
 						
                     </div>
