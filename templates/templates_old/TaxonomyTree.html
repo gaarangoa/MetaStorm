@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="demo-2">
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Orienta' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Statistics/css/style.css') }}"></link>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/display.js') }}"></script>
+
+		<!--<link href="http://handsontable.com//styles/main.css" rel="stylesheet">-->
+		<link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+		<script src="http://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
+		<script src="http://handsontable.com//bower_components/handsontable-ruleJS/src/handsontable.formula.js"></script>
+
+		<script>
+			window.onload=function(){
+			$('#test').html(data.result)
+		};
+		</script>
+	</head>
+
+	<body>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+
+
+		<div class="container">
+			<header>
+				<h1><strong>Taxonomy</strong>Tree</h1>
+			</header>
+		<div>
+
+			<section class="main">
+				<div id='test'></div>
+			</section>
+
+
+	</body>
+
+
+</html>

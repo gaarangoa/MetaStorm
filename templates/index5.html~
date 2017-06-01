@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="demo-2">
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Orienta' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Statistics/css/style.css') }}"></link>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/display.js') }}"></script>
+
+		<!--<link href="http://handsontable.com//styles/main.css" rel="stylesheet">-->
+		<link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+		<script src="http://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
+		<script src="http://handsontable.com//bower_components/handsontable-ruleJS/src/handsontable.formula.js"></script>
+
+
+		<style>
+			.wrapper {
+				width: 100%;
+				height: auto;
+				border: 1px solid white;
+				}
+			.first {
+				width: 30%;
+				float:left; /* add this */
+				border: 1px solid white;
+				}
+			.second {
+				width: 70%;
+				border: 1px solid white;
+				float: left; /* add this */
+				overflow: scroll;
+				resize: both;
+				}
+		</style>
+		<script>
+			window.onload=function(){
+			Array.prototype.average = function () { var sum = 0, j = 0; for (var i = 0; i < this.length, isFinite(this[i]); i++) { sum += parseFloat(this[i]); ++j; } return j ? sum / j : 0; };
+
+			function numberWithCommas(x) {
+			    var parts = x.toString().split(".");
+			    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			    return parts.join(".");
+			}
+
+			var ploti=function(type, data,div, title, categories,xlab='',ylab='', tooltipSuffix='', pname='plot'){
+				$(div).highcharts({
+					chart: {
+					type: type,
+					spacing: [30,0,0,0],
+
+					},
+					title: {
+					text: title
+					},
+					subtitle: {
+					text: null
+					},
+					xAxis: {
+					categories: categories,
+					title: {
+						text: xlab
+					}
+					},
+					yAxis: {
+					min: 0,
+					title: {
+						text: ylab,
+						},
+					labels: {
+						overflow: 'justify'
+					}
+					},
+					tooltip: {
+					valueSuffix: tooltipSuffix
+					},
+					plotOptions: {
+					bar: {
+						dataLabels: {
+						enabled: true
+						}
+					}
+					},
+					legend: {
+					backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+					},
+					credits: {
+					enabled: false
+					},
+					series: data
+				});
+			}
+
+			function compareNumbers(a, b) {
+			  return a - b;
+			}
+
+			// first put the project name and general description:
+			$("#projectname").html(data.info[0])
+			$("#gd1").html(data.info[0])
+			$("#gd2").html(data.result.length-1)
+			$("#gd3").html(data.info[1][0].length)
+			$("#gd4").html(data.info[1][1])
+			$("#gd5").html(data.info[2])
+			$("#gd6").html(data.result.length-1)
+			$("#gd7").html(data.info[3])
+			$("#gd8").html(data.info[4])
+			$("#gd9").html(data.info[5])
+
+			var reads_distribution=[]
+			var assembled_reads_count=[]
+			var unassembled_reads_count=[]
+			var samples_names=[]
+			var num_scaffolds=[]
+			var n50_count=[]
+			var max_scaffold_length=[]
+			var mean_scaffold_length=[]
+			var ratio_assembled_reads=[]
+			for(i=1;i<data.result.length;i++){
+				var samplename=data.result[i][0]
+				$("#samplesinfo").append("<h3>Sample: "+samplename+"</h3><div id='sample_"+samplename+"'></div>")
+				reads_distribution.push(data.result[i][1]/1)
+				assembled_reads_count.push(data.result[i][3]/1)
+				unassembled_reads_count.push(data.result[i][1]/1 -  data.result[i][3]/1)
+				ratio_assembled_reads.push(data.result[i][3]/data.result[i][1])
+				samples_names.push(data.result[i][0])
+				num_scaffolds.push(data.result[i][4]/1)
+				n50_count.push(data.result[i][5]/1)
+				max_scaffold_length.push(data.result[i][6]/1)
+				mean_scaffold_length.push(data.result[i][7]/1)
+				for(j=0;j<data.result[0].length;j++){
+					//$("#sample_"+samplename).append("<p>"+data.result[i]+"</p>")
+				}
+			}
+			//$("#test").text(reads_distribution)
+
+			$("#B1").click(function(){
+				$("#H1").toggle("slow")
+			});
+
+			// read count distribution
+			//datap=[{name: 'Reads',data: reads_distribution}]
+			//ploti(type='column', datap,'#reads_distribution_plot','', samples_names, xlab='Samples', ylab='Reads');
+			$("#rp1").html(numberWithCommas(reads_distribution.average()))
+			var maxval = reads_distribution.indexOf(Math.max.apply(Math, reads_distribution));
+			$("#rp2").html(samples_names[maxval])
+			$("#rp3").html(reads_distribution[maxval])
+			var minval = reads_distribution.indexOf(Math.min.apply(Math, reads_distribution));
+			$("#rp4").html(samples_names[minval])
+			$("#rp5").html(reads_distribution[minval])
+
+			// assembled reads
+			datap=[{name: 'Assembled reads',data: assembled_reads_count},{name:'Unasembled reads', data: unassembled_reads_count}]
+			ploti(type='column',datap,'#assembled_reads_plot','', samples_names, xlab='Samples', ylab='Reads');
+			$("#asr6").html(numberWithCommas(reads_distribution.average()))
+			$("#asr1").html(numberWithCommas(assembled_reads_count.average()))
+			$("#asr7").html(numberWithCommas(100*ratio_assembled_reads.average().toFixed(2)))
+			var maxval = assembled_reads_count.indexOf(Math.max.apply(Math, assembled_reads_count));
+			$("#asr2").html(samples_names[maxval])
+			$("#asr3").html(numberWithCommas(100*(assembled_reads_count[maxval]/reads_distribution[maxval]).toFixed(2)))
+			var minval = assembled_reads_count.indexOf(Math.min.apply(Math, assembled_reads_count));
+			$("#asr4").html(samples_names[minval])
+			$("#asr5").html(numberWithCommas(100*(assembled_reads_count[minval]/reads_distribution[minval]).toFixed(2)))
+
+
+
+			// number of scaffolds
+			//datap=[{name: 'Scaffolds',data: num_scaffolds}]
+			//ploti(type='column',datap,'#num_scaffolds_plot','', samples_names, xlab='Samples', ylab='Scaffolds');
+			var maxval = num_scaffolds.indexOf(Math.max.apply(Math, num_scaffolds));
+			$("#asr8").html(samples_names[maxval])
+			$("#asr9").html(numberWithCommas(num_scaffolds[maxval]))
+			$("#asr10").html(numberWithCommas(max_scaffold_length[maxval]))
+			$("#asr11").html(numberWithCommas(n50_count[maxval]))
+
+			// N50
+			datap=[{name: 'N50',data: n50_count}]
+			ploti(type='line',datap,'#n50_plot','', samples_names.sort(), xlab='Samples', ylab='N50');
+
+			// max scaffold length
+			//datap=[{name: 'scaffold',data: max_scaffold_length}]
+			//ploti(type='column',datap,'#max_scaffold_length_plot','', samples_names, xlab='Samples', ylab='bp length');
+
+			// average coverage
+			datap=[{name: 'coverage',data: data.coverage.slice(1)}]
+			ploti(type='scatter',data.coverage,'#coverage','', '', xlab='Scaffold length bp', ylab='Reads number');
+			//$('#coverage').text(data.coverage)
+			// mean scaffold length
+			//datap=[{name: 'scaffold',data: mean_scaffold_length}]
+			//ploti(type='column',datap,'#mean_scaffold_length_plot','', samples_names, xlab='Samples', ylab='bp length');
+
+			// table with all the results from the assembly -  this is an overall of the assembly performance
+			var container = document.getElementById('table_assembly');
+
+			  var headerRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+			    Handsontable.renderers.TextRenderer.apply(this, arguments);
+			    td.style.fontWeight = 'bold';
+			    td.style.textAlign = 'center';
+					td.style.verticalAlign = 'middle';
+					td.style.backgroundColor = '#BDD7EE';
+			  };
+
+			  var diffRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+			    Handsontable.cellTypes['formula'].renderer.apply(this, arguments);
+			    //td.style.backgroundColor = '#FFCC66';
+			    td.style.fontWeight = 'bold';
+					td.style.textAlign = 'center';
+			  };
+
+			  var hot = new Handsontable(container, {
+			    data: data.result.slice(1),
+			    fixedRowsTop: 0,
+			    colHeaders: data.result[0],
+					columnSorting: true,
+			    rowHeaders: false,
+			    formulas: true,
+			    comments: true,
+				  colWidths: [80, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+
+			    cells: function (row, col, prop) {
+			      var cellProperties = {};
+
+			      if (row === 90) {
+			        cellProperties.renderer = headerRenderer;
+			      } else if (row >= 0 && col===0) {
+			        cellProperties.renderer = diffRenderer;
+						}
+
+			      if (col >= 1) {
+			        cellProperties.type = 'numeric';
+							cellProperties.format ='0,[0000]'
+			      }
+
+			      return cellProperties;
+			    },
+			  });
+
+		};
+		</script>
+	</head>
+
+	<body>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+
+
+		<div class="container">
+			<header>
+				<h1><strong>Project</strong> Overview</h1>
+			</header>
+
+			<section class="main">
+					<h1 id="projectname"></h1>
+					<h2>Project Summary</h2>
+					<p>The <strong id="gd1"></strong> project <x  id="gd5"></x> through a total of <strong id="gd2" ></strong> samples cultured in <strong id='gd3'></strong> different conditions: <strong id='gd4'></strong>. The <strong id="gd6" ></strong> samples were assembled using the <a href='http://bioinformatics.oxfordjournals.org/content/28/11/1420.long' target='_blank' style="color:blue">IDBA_UD</a> software package (<strong id="gd7"></strong>) and the sequence alignments were made using <a href='http://ab.inf.uni-tuebingen.de/software/diamond/' target="_blank" style="color:blue">DIAMOND</a> a fast and sensitive blast-based alignment tool (<strong id="gd8"></strong>). </p>
+
+			<br><br>
+			<div >
+				<div ><legend><h3>Overall assembly performance</h3></legend></div>
+				<div id="table_assembly" ></div>
+				
+				<div ><legend><h3>Overall coverage</h3></legend></div>
+				<div id="coverage" class='second' style='width:60%;'></div>
+
+				<div ><legend><h4>Number of reads per sample</h4></legend>
+					<p>
+						The average number of reads across all the sample is <x id='rp1'></x>. Sample <x id='rp2'></x> is the biggest dataset containing <x id='rp3'></x> total reads whereas sample <x id='rp4'></x> is the smallest one containing <x id='rp5'></x> number of reads. Paired end files are counted independently, then, the total number of unique mates is the total number of reads divided by 2.
+					</p>
+				</div>
+			</div>
+			<br>
+			<div >
+				<div ><legend><h4>Assembled reads</h4></legend></div>
+					<p>
+						From the <x id='asr6'></x> average number of reads, a mean of <x id='asr1'></x>  were aligned during the assembly process. This means that in average the <x id='asr7'></x>% of reads have been assembled across all the samples. On the other hand, the <x id='asr2'></x> sample contains the highest percentage <x id='asr3'></x>% of assembled reads whereas the sample <x id='asr4'></x> contains the lowest percentage <x id='asr5'></x>% of assembled reads. The assembly process generates a set of scaffolds for each sample, for instance, the sample <x id='asr8'></x> is comprised into a set of <x id='asr9'></x> scaffolds where the longes scaffold for this sample is <x id='ars10'></x> bp long with a n50 of <x id='asr11'></x>.</p>
+					</p>
+					<br>
+				<fieldset id='assembled_reads_plot'></fieldset>
+				<br>
+				<div class='first' style='background:#99CC99; padding: 20px 20px 20px 20px; border-radius: 30px 30px 30px 30px; '>
+					<p style='color:white; font-family: 'Titillium Web', sans-serif;'> Scaffold N50 is defined as a weighted median statistic such that 50% of the entire assembly is contained in scaffolds equal to or larger than this value.<p>
+				</div>
+				<div class='second'>
+					<fieldset id='n50_plot'></fieldset>
+				</div>
+			</div>
+			
+			</section>
+		</div>
+
+
+
+	</body>
+
+
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MetaStorm | ViewSample</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.4 -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}"></link>
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-purple.min.css') }}"></link>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script>
+      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+
+    <style>
+
+      .node {
+        cursor: pointer;
+      }
+      .node circle {
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 2px;
+      }
+      .node text {
+        font: 11px sans-serif;
+        display: block;
+        border: solid 1px #dcdcdc;
+      }
+      .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1px;
+      }
+
+    </style>
+
+  </head>
+  <!--
+  BODY TAG OPTIONS:
+  =================
+  Apply one or more of the following classes to get the
+  desired effect
+  |---------------------------------------------------------|
+  | SKINS         | skin-blue                               |
+  |               | skin-black                              |
+  |               | skin-purple                             |
+  |               | skin-yellow                             |
+  |               | skin-red                                |
+  |               | skin-green                              |
+  |---------------------------------------------------------|
+  |LAYOUT OPTIONS | fixed                                   |
+  |               | layout-boxed                            |
+  |               | layout-top-nav                          |
+  |               | sidebar-collapse                        |
+  |               | sidebar-mini                            |
+  |---------------------------------------------------------|
+  -->
+  <body class="skin-purple sidebar-mini" >
+
+
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-header">
+
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>M</b>S</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>Meta</b>Storm</span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+              <!-- Tasks Menu -->
+              <li class="dropdown tasks-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-flag-o"></i>
+                  <span class="label label-danger">9</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">Your assembly is done</li>
+                  <li>
+                    <!-- Inner menu: contains the tasks -->
+                    <ul class="menu">
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <!-- Task title and progress text -->
+                          <h3>
+                            Project analysis
+                            <small class="pull-right">100%</small>
+                          </h3>
+                          <!-- The progress bar -->
+                          <div class="progress xs">
+                            <!-- Change the css width attribute to simulate progress -->
+                            <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">100% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                    </ul>
+                  </li>
+                  <li class="footer">
+                    <a href="#">View all tasks</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- User Account Menu -->
+
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+              <p id="UserName1"></p>
+              <p id="userID"></p>
+              <p id="UserContact"></p>
+            </div>
+          </div>
+
+          <!-- search form (Optional) -->
+          <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="Search..." />
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          <!-- /.search form -->
+
+          <!-- Sidebar Menu -->
+           <ul id='sidemenu' class="sidebar-menu">
+            <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+          </ul>
+		   
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+        <!-- Main content -->
+        <!--############################-->
+
+
+
+
+<div class="col-md-12" >
+              <div class="box" id="" style='background:url("/MetaStorm/static/template/dist/img/pattern1.jpg");'>
+                 <div class="box-header">
+                   <h3 class="box-title"></h3>
+                   <div class="box-tools pull-right">
+                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                   </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <br>
+                   <div class="box-body">
+                     <center>
+					  <h1 style='font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; color:rgba(255,255,255,0.9)'>Individual Sample Overview</h1>
+					 </center>
+                   </div>
+                   <br><br><br>
+
+               </div><!-- /.box -->
+            </div>
+
+
+
+
+        <div class="content-header">
+         
+		 
+		 
+		 
+         <br><br>
+         <ol class="breadcrumb">
+           <li><a href="#"><i class="fa fa-dashboard"></i> Project</a></li>
+           <li class="active">View Sample</li>
+         </ol>
+       </div>
+
+            <div class="nav-tabs-custom">
+               <ul class="nav nav-tabs"  >
+                 <li class="active"><a href="#tab1" data-toggle="tab"><h4><b>Overview</b></h4></a></li>
+                 <!-- <li><a href="#tab2" data-toggle="tab"><h4><b>Sample Features</b></h4></a></li> -->
+                 <li><a href="#tab3" data-toggle="tab"><h4><b>Taxonomy Annotation</b></h4></a></li>
+                 <li><a href="#tab4" data-toggle="tab"><h4><b>Functional Annotation</b></h4></a></li>
+                 <!--<li><a href="#inso" data-toggle="tab"><h4><b>Download</b></h4></a></li>-->
+                 <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+               </ul>
+                <div class="tab-content" style="height:auto;width:100%; overflow:auto">
+
+                    <!--Overview-->
+                    <div class="tab-pane active" id="tab1">
+
+                    <legend><h1> Project</h1></legend>
+                    <div style="width:50%" class="callout callout-danger">
+                        <p class="header"><span id="updatePname"></span></p>
+                        <p class="header"><span id='updateProjectID'></span></p>
+                        <p class="header"><span id="updatePdescription"></span></p>
+                    </div>
+
+                    <!---->
+                    
+
+                    <legend><h1> Taxonomy Annotation Reference Datasets</h1></legend>
+                    <div id="sdatasets" style="width:50%" class="callout callout-success"></div>
+
+                    <legend><h1> Functional Annotation Reference Datasets</h1></legend>
+                    <div id="fdatasets" style="width:50%" class="callout callout-success"></div>
+                    </div>
+
+
+
+
+                    <div class="tab-pane" id="tab2">
+                        <legend><h1> Sample</h1></legend>
+                        <div class="callout callout-info lead">
+                            <p>The dataset <b id="sfName"></b> contains <b id="sfReads"></b> sequences with an average length of <b id="sfAvgReads"></b> bps. Reads are assembled using <a><b>IDBA-UD</b></a>. <b id="areads"></b> reads were assembled (<b id='areadsp'></b>%). A total of <b id="sfScaffolds"></b> scaffolds were found with an average length of <b id="sfAvgScaffold"></b> bps, and n50 of <b id="sfn50"></b> bps. A total of <b id="sfGenes"></b> genes were recovered from the assembled sequeces using the <a><b>PRODIGAL</b></a> software. The average length of the genes is <b id="sfAvgGenes"></b> bp. </p>
+                        </div>
+
+                        <legend><h1> Source Hits Distribution</h1></legend>
+                        <div class="callout callout-info lead">The graph below displays the number of genes in this dataset that were annotated by different databases below. These correspond to the databases selected by the user, including the customized datasets.</div>
+                        <div id="ifmetaphlan"></div>
+                        <div id="taxo_breakdown" style="width:40%"></div>
+                        <div id="function_breakdown" style="width:40%"></div>
+
+                    </div>
+
+
+
+                    <div class="tab-pane" id="tab3">
+
+                        <legend><h1> Download</h1></legend>
+                        <p>
+                            <a id='btn01' download='counts'><button class="btn bg-maroon btn-flat margin">Scaffolds</button></a>
+                            <a id='btn02' download='counts'><button class="btn bg-purple btn-flat margin">Contigs</button></a>
+                            <a id='btn03' download='counts'><button class="btn bg-olive btn-flat margin">Predicted Genes</button></a>
+                            <a id='btn04' download='counts'><button class="btn bg-orange btn-flat margin">Gene Matches</button></a>
+                            <a id='btn05' download='counts'><button class="btn bg-navy btn-flat margin">Taxonomy Abundance</button></a>
+                            <a id='btn06' download='counts'><button class="btn bg-purple btn-flat margin">Gene Abundance</button></a>
+                        </p>
+
+                        <legend><h1> Taxonomy Tree</h1></legend>
+                        <div class="callout callout-info lead">
+                        <p>These are the results of the taxonomy analysis using the <b>Assembly pipeline </b>. This interactive tree will show you the distribution of the taxonomy annotation in your sample. Just click on the nodes (taxa) and see the connections. The pie-chart will show the abundance distribution. Fisrt, select the results from the reference dataset you are interestend and click on <b>See Results</b>.</p>
+                        </div>
+                        <label for='selectPipeline' >Select dataset: </label>
+                        <select id='selectDataset'></select>
+                        <button id="VisualizeDBR" type="button"  class="btn btn-primary">SEE RESULTS</button>
+                        <div class="box-body">
+                             <!--Small ONE-->
+                             <div id='PieChart2Taxo'  class="box-body" style="height:205px;width:205px;position:absolute"></div>
+                             <br>
+                             <div id="tree" style="height:550px; width:100%; overflow:auto; background:rgba(0,0,100,0);"></div>
+
+                        <legend><h1> Taxonomy Hit Distribution</h1></legend>
+                            <div class="callout callout-info lead">
+                            <p>The pie chart illustrate the distribution of <b>taxonomy</b> domains, phyla and order for the annotation. Each slice indicates the <b>percentage of predicted genes </b> with predicted taxonomy annotations.</p>
+                            </div>
+                            <label for='LevelTaxoSelect' >Select Taxonomy Level: </label>
+                            <select id='LevelTaxoSelect'>
+                            <option value='Domain'>Domain</option>
+                            <option value='Phylum'>Phylum</option>
+                            <option value='Class'>Class</option>
+                            <option value='Order'>Order</option>
+                            <option value='Family'>Family</option>
+                            <option value='Genus'>Genus</option>
+                            <option value='Species'>Species</option>
+                            </select>
+                            <button id="loadTaxoLevel" type="button"  class="btn btn-primary">UPDATE</button>
+
+                            <div id='PieChart1Taxo' class="box-body"></div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="tab-pane" id="tab4">
+                        <legend><h1> Download</h1></legend>
+                        <p>
+                            <a id='fbtn01' download='counts'><button class="btn bg-maroon btn-flat margin">Scaffolds</button></a>
+                            <a id='fbtn02' download='counts'><button class="btn bg-purple btn-flat margin">Contigs</button></a>
+                            <a id='fbtn03' download='counts'><button class="btn bg-olive btn-flat margin">Predicted Genes</button></a>
+                            <a id='fbtn04' download='counts'><button class="btn bg-orange btn-flat margin">Gene Matches</button></a>
+                            <a id='fbtn05' download='counts'><button class="btn bg-navy btn-flat margin">Functional Abundance</button></a>
+                            <a id='fbtn06' download='counts'><button class="btn bg-purple btn-flat margin">Functional Gene Abundance</button></a>
+                        </p>
+
+                        <legend><h1> Functional Annotation Hit Distribution</h1></legend>
+                        <div class="callout callout-info lead">
+                        <p>These are the results of the functional analysis using the <b>Assembly pipeline </b>. The pie charts will show you the distributions of functional categories. Each slide represents percentage of genes that were predicted to a specific functional category.</p>
+                        </div>
+
+                        <label for='selectFuncPipeline' >Select dataset: </label>
+                        <select id='selectFuncDataset'></select>
+                        <button id="loadFunction" type="button"  class="btn btn-primary">SEE RESULTS</button>
+                        <div id='PieChartFunction' class="box-body"></div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+      </div><!-- /.content-wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          Computer Science department VT
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
+      </footer>
+
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+    </div><!-- ./wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.1.4 -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
+    <!--For nice plots-->
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+    <!-- d3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <!-- pretty tables -->
+    <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+
+    <!--main js file-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/ViewSampleReads.js') }}"></script>
+
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+          Both of these plugins are recommended to enhance the
+          user experience. Slimscroll is required when using the
+          fixed layout. -->
+  </body>
+</html>

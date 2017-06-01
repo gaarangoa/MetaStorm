@@ -1,0 +1,29 @@
+import sqlite3 as sql
+
+
+conn=sql.connect('/research/gustavo1/metagenomics/MetaGenFiles/SQL/projects.db')
+c=conn.cursor()
+### First time setup server:
+
+c.execute('''CREATE TABLE project (project_id NUM PRIMARY_KEY UNIQUE NOT NULL, project_name text, project_short_description text, project_description text, project_path text)''')
+
+c.execute('''CREATE TABLE metagenome (metagenome_id NUM PRIMARY_KEY UNIQUE NOT NULL, project_id NUM , metagenome_name text, metagenome_description text, fastq1 text, fastq2 text, location text, material text, country text, biome text, feature text, sequencing_method text)''')
+
+c.execute('''CREATE TABLE version (version NUM PRIMARY_KEY UNIQUE NOT NULL, metagenome_id NUM, aligner_id NUM, aligner_parameters text, assembler_id NUM, assembler_parameters text, reference_id NUM)''')
+
+c.execute('''CREATE TABLE reference (reference_id integer PRIMARY_KEY unique not null, reference name text unique not null, sequence_type text, reference_description text, reference_source text)''')
+
+c.execute('''CREATE TABLE aligner (aligner_id NUM PRIMARY_KEY UNIQUE NOT NULL, aligner_name text unique not null, aligner_default text, aligner_fast text, aligner_sensitive)''')
+
+c.execute('''CREATE TABLE assembler (assembler_id NUM PRIMARY_KEY UNIQUE NOT NULL, assembler_name text UNIQUE NOT NULL, assembler_default text, assembler_fast text, assembler_sensitive text)''')
+
+
+# values=(1, 'diamond', '-e 0.001 --id 60 --top 100', '-e 1e-10 --id 90 --top 100', '--sensitive -id 60 -e 0.05')
+# values=(1, u'idba_ud', u' ', u'--min_contig 500 --max_mismatch 1 ', u'--min_contig 50 --max_mismatch 3 ')
+# values = ['ncbi_genomes','prot','database from NCBI 2014, 5187 fully sequenced bacterial genomes', 'admin']
+# values = ['nanocellulose','''study of the process of the nano cellulose degradation','nanocellulose degradation', main_path+"/PROJECTS/"]
+
+
+conn.commit()
+conn.close()
+

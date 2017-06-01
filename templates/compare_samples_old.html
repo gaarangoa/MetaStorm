@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CMetAnn | Compare</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.4 -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}"></link>
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+
+    <!-- i check library -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icheck/skins/square/blue.css') }}"></link>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-purple.css') }}"></link>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script>
+      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+      //$( "#draggable" ).draggable();
+	</script>
+
+
+  </head>
+  <!--
+  BODY TAG OPTIONS:
+  =================
+  Apply one or more of the following classes to get the
+  desired effect
+  |---------------------------------------------------------|
+  | SKINS         | skin-blue                               |
+  |               | skin-black                              |
+  |               | skin-purple                             |
+  |               | skin-yellow                             |
+  |               | skin-red                                |
+  |               | skin-green                              |
+  |---------------------------------------------------------|
+  |LAYOUT OPTIONS | fixed                                   |
+  |               | layout-boxed                            |
+  |               | layout-top-nav                          |
+  |               | sidebar-collapse                        |
+  |               | sidebar-mini                            |
+  |---------------------------------------------------------|
+  -->
+  <body class="skin-purple sidebar-mini" >
+
+
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-header">
+
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>CM</b>Ann</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>CMet</b>Ann</span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+              <!-- Tasks Menu -->
+              <li class="dropdown tasks-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-flag-o"></i>
+                  <span class="label label-danger">9</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">Your assembly is done</li>
+                  <li>
+                    <!-- Inner menu: contains the tasks -->
+                    <ul class="menu">
+                      <li><!-- Task item -->
+                        <a href="#">
+                          <!-- Task title and progress text -->
+                          <h3>
+                            Project analysis
+                            <small class="pull-right">100%</small>
+                          </h3>
+                          <!-- The progress bar -->
+                          <div class="progress xs">
+                            <!-- Change the css width attribute to simulate progress -->
+                            <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">100% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li><!-- end task item -->
+                    </ul>
+                  </li>
+                  <li class="footer">
+                    <a href="#">View all tasks</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- User Account Menu -->
+
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="/zhanglab/software/CMetAnn/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+              <p id="UserName1"></p>
+              <p id="userID"></p>
+              <p id="UserContact"></p>
+            </div>
+          </div>
+
+          <!-- search form (Optional) -->
+          <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="Search..." />
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          <!-- /.search form -->
+
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <li class="header">TABLE OF CONTENTS</li>
+            <li class="active"><a href="#overview"><i class='fa fa-circle-o'></i> Metagenome Overview</a></li>
+            <li><a href="#pipeline"><i class='fa fa-circle-o'></i> Pipeline</a></li>
+            <li><a href="#taxoann"><i class='fa fa-circle-o'></i> Taxonomy Annotation</a></li>
+            <li><a href="#funcann"><i class='fa fa-circle-o'></i> Functional Annotation</a></li>
+            <!-- Optionally, you can add icons to the links
+            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Project Setup</span></a></li>
+            <li><a href="#"><i class="fa fa-link"></i> <span>Metadata Setup</span></a></li> -->
+          </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+        <!-- Main content -->
+        <!--############################-->
+
+<div class="content body">
+
+        <section id='overview'>
+            <h2 class='page-header'><a href="#overview">Overview</a></h2>
+            <div class="box-body" style="height:220px;overflow:auto">
+              <p class="header"><span id="updatePname"></span></p>
+              <p class="header"><span id='updateProjectID'></span></p>
+              <p class="header"><span id="updatePdescription"></span></p>
+            </div>
+        </section><!-- /#introduction -->
+
+
+
+
+<!-- boxes in the header -->
+      <div class="col-md-12">
+
+        <div class="col-md-4" style="top:10px">
+          <div style="overflow:auto;width:auto" class="box box-solid box-primary">
+             <div class="box-header with-border">
+               <h3 class="box-title">Metagenome Overview</h3>
+               <div class="box-tools pull-right">
+                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+               </div><!-- /.box-tools -->
+             </div><!-- /.box-header -->
+
+
+           </div><!-- /.box -->
+        </div>
+
+        <div class="col-md-4" style="top:10px">
+          <div style="overflow:auto;width:auto" class="box box-solid box-primary">
+             <div class="box-header with-border">
+               <h3 class="box-title">Samples</h3>
+               <div class="box-tools pull-right">
+                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+               </div><!-- /.box-tools -->
+             </div><!-- /.box-header -->
+
+             <div class="box-body" style="height:220px">
+
+               <form id="selectSampleToCompare" style="height:88px;overflow:auto">
+                 <!--<input type="radio" name="iCheck">
+                 <input type="radio" name="iCheck" checked>-->
+               </form>
+
+               <div class="box-footer">
+                 <!--<label for='selectPipeline' >Select pipeline: </label>
+                 <select id='selectPipeline'>
+                   <option value='matches'>Matches</option>
+                   <option value='assembly'>Assembly</option>
+                 </select> -->
+
+                 <label for='selectPipeline' >Select dataset: </label>
+                 <select id='selectDataset'>
+
+                 </select>
+
+               </div>
+
+              <div class="box-footer">
+                min abundance: <input style="width:40px" type="text" value="1" id="minA">
+                <button id="compareSamplesButton" type="button"  class="btn btn-primary">Compare</button>
+              </div>
+             </div>
+           </div><!-- /.box -->
+        </div>
+
+        <div class="col-md-4" style="top:10px">
+          <div style="overflow:auto;width:auto" class="box box-solid box-primary">
+             <div class="box-header with-border">
+               <h3 class="box-title">Pipeline</h3>
+               <div class="box-tools pull-right">
+                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+               </div><!-- /.box-tools -->
+             </div><!-- /.box-header -->
+
+             <div class="box-body" style="height:220px;overflow:auto">
+
+             </div>
+           </div><!-- /.box -->
+        </div>
+
+
+      </div>
+
+<!-- Main display with the results of the comparisons -->
+    <div class="col-md-12">
+        <div class="box-body">
+            <div class="nav-tabs-custom">
+               <ul class="nav nav-tabs"  >
+                 <!--<li><a href="#dinfo" data-toggle="tab"><h4>Setup Run</h4></a></li>-->
+                 <li class="active"><a href="#tafo" data-toggle="tab"><h4>Taxonomy Tree</h4></a></li>
+                 <li><a href="#pinfo" data-toggle="tab"><h4>Clustergram</h4></a></li>
+                 <li><a href="#remo" data-toggle="tab"><h4>Stacked bars</h4></a></li>
+                 <li><a href="#inso" data-toggle="tab"><h4>Node Clustergram</h4></a></li>
+                 <li><a href="#runo" data-toggle="tab"><h4>Node Stacked bars</h4></a></li>
+                 <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+               </ul>
+                <div class="tab-content">
+
+                    <div class="tab-pane" id="dinfo">
+                    </div>
+
+                    <div class="tab-pane active" id="tafo">
+
+
+
+
+                        <div id="tree" style="height:550px; width:2500; overflow:auto"></div>
+                    </div>
+
+                    <div class="tab-pane" id="pinfo" >
+                        <div id='PieChart1Taxo' style="resize:both;overflow:auto;height:300" class="box-body"></div>
+                        <div class="box-footer">
+                          <label for='LevelTaxoSelect' >Select Taxonomy Level: </label>
+                          <select id='LevelTaxoSelect'>
+                            <option value='Domain'>Domain</option>
+                            <option value='Phylum' selected>Phylum</option>
+                            <option value='Class'>Class</option>
+                            <option value='Order'>Order</option>
+                            <option value='Family'>Family</option>
+                           <option value='Genus'>Genus</option>
+                            <option value='Species'>Species</option>
+                          </select>
+                          <button id="loadHeatMapLevel" type="button"  class="btn btn-primary">UPDATE</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="inso" >
+                        <div id='PieChart2Taxo' style="resize:both;overflow:auto;height:auto" class="box-body"></div>
+                    </div>
+
+                    <div class="tab-pane" id="remo" >
+                        <div id='stackedplot' class="box-body" style="height:550px; width:100%; overflow:auto"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div><!-- /.content-wrapper
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          Computer Science department VT
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
+      </footer>
+
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+    </div><!-- ./wrapper -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.1.4 -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
+    <!--For nice plots
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/heatmap.js') }}"></script> -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="http://code.highcharts.com/modules/data.js"></script>
+
+
+
+    <!-- d3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <!-- pretty tables -->
+    <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+		<script src="http://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
+		<script src="http://handsontable.com//bower_components/handsontable-ruleJS/src/handsontable.formula.js"></script>
+
+    <!--main js file-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/compare_samples.js') }}"></script>
+
+    <!-- icheck -->
+    <script type="text/javascript" src="{{ url_for('static', filename='icheck/icheck.js') }}"></script>
+
+
+    <!-- inchlib -->
+    <script type="text/javascript" src="{{ url_for('static', filename='inchlib/kinetic-v5.1.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='inchlib/inchlib-1.2.0.js') }}"></script>
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+          Both of these plugins are recommended to enhance the
+          user experience. Slimscroll is required when using the
+          fixed layout. -->
+  </body>
+</html>

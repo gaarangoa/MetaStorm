@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="robots" content="index,follow">
+		<meta name="keywords" content="MetaStorm, cmetann, cmetan, Metagenomics, Assembly, Pipeline, MGRAST, NCBI, EBI-Metagenomics" />
+
+		
+
+		<!--ModalWindow-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/default.css') }}"></link>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/component.css') }}"></link>
+		<!--<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modernizr.custom.js') }}"></script>-->
+
+		<!--dragable-->
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-1.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-ui.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/style.css') }}"></script>
+
+
+		<!--jQuery-->
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+		<script type="text/javascript"src="https://code.jquery.com/jquery-2.1.3.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+		<script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
+		<script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/visualizationHTML.js') }}"></script>
+
+		<script>
+			var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+
+	</head>
+	<body>
+	<!--highcharts-->
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+
+
+		<div class="container">
+			<!-- Top Navigation -->
+			<header>
+				<h1> MetaStorm <span><b>Customized Metagenomics Annotation</span></h1>
+			</header>
+			<div class="main clearfix">
+				<div class="column" style="width:70%">
+					<p> <b>MetaStorm</b> is a web resource designed to analyze metegenomics data using several computational pipelines <code>(including assembly and read matching)</code>.</p>
+					
+				</div>
+				<div class="column" style="width: 30%;">
+					<center>
+					<a href="/MetaStorm/login"><button style='font-size:18px; margin: 20% 0px; width:auto;'>Login</button></a>
+					<a href="/MetaStorm/muser?uid=TesREPDooc73Ohw"><button style='font-size:18px; margin: 20% 0px; width:auto;'>Guest-Login</button></a>
+					</center>
+					<!--<a href="http://bioinformatics.cs.vt.edu/zhanglab/software/CMetAnn/sample/cMetAn-user-manual.pdf"><button id="visualization" style='font-size:18px; margin: 0px 0px; width:auto;'>User-Manual</button></a>
+					<a href="http://bioinformatics.cs.vt.edu/zhanglab/software/CMetAnn/sample/dataset.zip"><button id="Upload" style='font-size:18px; margin: 0px 0px; width:auto;'>Test database</button></a>
+					<a href="http://bioinformatics.cs.vt.edu/zhanglab/software/CMetAnn/sample/Archive.zip"><button id="Upload" style='font-size:18px; margin: 0px 0px; width:auto;'>Test metagenome</button></a>
+					-->
+				</div>
+
+			</div>
+		
+			
+		
+		</div><!-- /container -->
+	<div class="col-sm-6">
+	<center>
+		<p>If you use MetaStorm please cite:</p><br> <cite><code>Arango-Argoty G., Singh, G., S. Heath L., Pruden A., Xiao W., Zhang L. <a target="_blank" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0162442"><b>MetaStorm</b>: A Public Resource for Customizable Metagenomics Annotation.
+(PLOS ONE)</code></cite></a>
+	</center>
+	</div>
+
+	<br><br><br>
+    <center>
+	<a target="_blank" href="https://www.vt.edu/index.html"><img src="/MetaStorm/static/template/dist/img/VT.png" height="82" width="202"/></a>
+	<a target="_blank" href="https://www.cs.vt.edu/"><img src="/MetaStorm/static/template/dist/img/CS.png" height="82" width="282" /></a>
+	<a target="_blank" href="http://www.cee.vt.edu/"><img src="/MetaStorm/static/template/dist/img/CE.png" height="82" width="282" /></a>
+	<a target="_blank" href="https://secure.hosting.vt.edu/www.arc.vt.edu/"><img src="/MetaStorm/static/template/dist/img/arc.png" height="82" width="282"/></a>
+	</center>
+		<!--<div class="md-overlay"></div>-->
+		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/classie.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modalEffects.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/cssParser.js') }}"></script>
+		<script> var polyfilter_scriptpath = "../static/ModalWindow/js/"; </script>
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/css-filters-polyfill.js') }}"></script>
+	</body>
+</html>

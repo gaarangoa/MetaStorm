@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MetaStorm | ViewSample</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.4 -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}"></link>
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-red.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-purple.min.css') }}"></link>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script>
+      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+
+    <style>
+
+      .node {
+        cursor: pointer;
+      }
+      .node circle {
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 2px;
+      }
+      .node text {
+        font: 11px sans-serif;
+        display: block;
+        border: solid 1px #dcdcdc;
+      }
+      .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1px;
+      }
+	  
+	  .currentRow {
+		background-color: #F9F9FB;
+	  }
+	  .currentCol {
+		background-color: #E7E8EF;
+	  }
+
+	  
+    </style>
+
+  </head>
+  <!--
+  BODY TAG OPTIONS:
+  =================
+  Apply one or more of the following classes to get the
+  desired effect
+  |---------------------------------------------------------|
+  | SKINS         | skin-blue                               |
+  |               | skin-black                              |
+  |               | skin-purple                             |
+  |               | skin-yellow                             |
+  |               | skin-red                                |
+  |               | skin-green                              |
+  |---------------------------------------------------------|
+  |LAYOUT OPTIONS | fixed                                   |
+  |               | layout-boxed                            |
+  |               | layout-top-nav                          |
+  |               | sidebar-collapse                        |
+  |               | sidebar-mini                            |
+  |---------------------------------------------------------|
+  -->
+  <body class="skin-purple sidebar-mini sidebar-collapse" >
+
+
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-header">
+
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>M</b>S</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>Meta</b>Storm</span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+
+              <!-- User Account Menu -->
+
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+              <p id="UserName1"></p>
+              <p id="userID"></p>
+              <p id="UserContact"></p>
+            </div>
+          </div>
+
+          <!-- search form (Optional) -->
+          <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="Search..." />
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          <!-- /.search form -->
+
+          <!-- Sidebar Menu -->
+           <ul id='sidemenu' class="sidebar-menu">
+            <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+			
+          </ul>
+		   
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" style="height: auto; overflow: auto">
+        <!-- Content Header (Page header) -->
+
+        <!-- Main content -->
+        <!--############################-->
+
+
+
+
+
+
+<!--<div class="col-md-12" >-->
+      
+			<div class="col-md-2" style="height: auto">
+			  
+			  <div class="  lead  col-md-12">
+				<br><br><br>
+				<h3 id="updateSampleName"></h3>
+				<p id="sidePipeline"></p>
+				<p id='updateSampleBiome'></p>
+				<p id='updateSampleLibrary'></p>
+				<div class="box" id='updateSampleF1'></div>
+				<div class="box" id='updateSampleF2'></div>
+				
+				<div class="box" id='Dscaffolds'></div>
+				<div class="box" id='Dgenes'></div>
+				
+			  </div>
+			  
+			  <div id="blue_text_box" class="  lead  col-md-12"></div>
+			  <div class="lead col-md-12">
+				  
+				  <p class="header"><h3 id="updatePname"></h3></p>
+				  <p class="header"><span id="updatePdescription"></span></p>				  
+			  </div>		  
+					
+
+			</div>
+
+
+			<div class="col-md-9">
+			  <div class="nav-tabs-custom">
+               <ul class="nav nav-tabs"  >
+                 <li class="active"><a href="#tab1" data-toggle="tab"><h4><b>Overview</b></h4></a></li>
+                 <li><a href="#tab3" data-toggle="tab"><h4><b>Taxonomy Annotation</b></h4></a></li>
+                 <li><a href="#tab4" data-toggle="tab"><h4><b>Functional Annotation</b></h4></a></li>
+                 <!--<li><a href="#inso" data-toggle="tab"><h4><b>Download</b></h4></a></li>-->
+                 <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+               </ul>
+                <div class="tab-content" style="height:auto;width:100%; overflow:auto">
+
+                    <!--Overview-->
+
+
+                    <div class="tab-pane active" id="tab1">
+					  
+						<p>The graps below display the number of reads that were annotated by the different taxonomy/functional databases.
+						   The bars represent the number of annotated reads. Point the cursor through the <i class="fa fa-fw fa-question-circle" style="color:#cc0000"></i> icon
+						   to get the database description.</p>
+						<div class='col-md-6'>
+						  <center><h2>Taxonomy Hits Distribution</h2></center>
+						  <div id="databases_run" class="col-md-12"></div>
+						  
+						  <!--
+						  <div id="sdatasets" class="callout callout-white lead col-md-6"></div>
+						  -->
+												  
+						  
+						</div>
+						
+						
+						<div class='col-md-6'>
+						<center><h2>Function Hits Distribution</h2></center>
+						
+						<div id="databases_run_func" class="col-md-12"></div>
+						<!--
+						<div id="fdatasets" class="callout callout-white lead col-md-12"></div>
+						-->
+						</div>
+						
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- TAXONOMY TAB -->
+                    <div class="tab-pane" id="tab3">
+
+                        
+                        
+                        <div class=" col-md-12">
+						  <p style="color: #000">These are the results of the taxonomy analysis using the <b id='which_pipeline'></b>. This interactive tree will show you the distribution of the taxonomy annotation in your sample. Just click on the nodes (taxa) and see the connections. The pie-chart will show the abundance distribution. Fisrt, select the results from the reference dataset you are interestend and click on <b>See Results</b>.</p>
+						   <label for='selectPipeline' >Select dataset: </label>
+							 <select id='selectDataset'></select>
+							 <br>
+							 <center><button id="VisualizeDBR" type="button"  class="btn btn-primary">SEE RESULTS</button></center><br><br>
+						</div>
+                        
+						<div class=" col-md-12">
+						  
+						  
+						  <div  class=" col-md-6">
+							<div class="box box-success">
+							  <div class="box-header with-border">
+								<center><h2 class="box-title">Domain</h2></center>
+							  </div>
+							  
+							  <div class="box-body" id='tdomain'></div>
+							  
+							</div>
+						  </div>
+						  
+						  <div  class=" col-md-6">
+							<div class="box box-success">
+							  <div class="box-header with-border">
+								<center><h2 class="box-title">Phylum</h2></center>
+							  </div>
+							  
+							  <div class="box-body" id='tx2'></div>
+							  
+							</div>
+						  </div>
+						  
+						  
+						  <div  class=" col-md-6">
+							<div class="box box-success">
+							  <div class="box-header with-border">
+								<center><h2 class="box-title">Class</h2></center>
+							  </div>
+							  
+							  <div class="box-body" id='tx3'></div>
+							  
+							</div>
+						  </div>
+						  
+						  
+						  <div  class=" col-md-6">
+							<div class="box box-success">
+							  <div class="box-header with-border">
+								<center><h2 class="box-title">Order</h2></center>
+							  </div>
+							  
+							  <div class="box-body" id='tx4'></div>
+							  
+							</div>
+						  </div>
+						  
+						  
+						  <div  class=" col-md-6">
+							<div class="box box-success">
+							  <div class="box-header with-border">
+								<center><h2 class="box-title">Family</h2></center>
+							  </div>
+							  
+							  <div class="box-body" id='tx5'></div>
+							  
+							</div>
+						  </div>
+						  
+						  
+						  <div  class=" col-md-6">
+							<div class="box box-success">
+							  <div class="box-header with-border">
+								<center><h2 class="box-title">Genus</h2></center>
+							  </div>
+							  
+							  <div class="box-body" id='tx6'></div>
+							  
+							</div>
+						  </div>
+						  
+						  
+						  
+						  
+						  
+						  
+						</div>    
+						
+						
+						<div class="col-md-12">
+						  <div  class=" col-md-9">
+							  <div class="box box-success">
+								<div class="box-header with-border">
+								  <center><h2 class="box-title">Taxonomy Tree</h2></center>
+								  <div class="box-tools pull-right">
+									<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								  </div>
+								</div>
+                <button id="download_tree">Download image</button>
+								<div id="tree" style="height:550px; width:auto; overflow:auto; background:rgba(0,0,100,0);"></div>
+								
+							  </div>														  
+						  </div>
+						  
+						  <div style="height: 550px; overflow: auto" id="node_click_plot" class="col-md-3"></div>
+						  
+						</div>
+						
+					
+						
+						
+					
+                        
+						
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- FUNCTION TAB -->
+
+                    <div class="tab-pane" id="tab4">
+
+                        <legend><h1> Functional Annotation Hit Distribution</h1></legend>
+                        <div class="callout callout-info lead ">
+                        <p>These are the results of the functional analysis using the <b id="which_pipeline2"></b>. The pie charts will show you the distributions of functional categories. Each slide represents percentage of genes that were predicted to a specific functional category.</p>
+                        </div>
+
+                        <label for='selectFuncPipeline' >Select dataset: </label>
+                        <select id='selectFuncDataset'></select>
+                        <button id="loadFunction" type="button"  class="btn btn-primary">SEE RESULTS</button>
+						
+						<br><br>
+						<dic class="col-sm-12">
+						<div class="col-md-6">
+						  <div id="chart-ring-year"  ><center><h2>Functional Categories</h2><p>Distribution of the top <code>20</code>
+						  functional categories. This pie chart represents the percentage of reads with predicted functions.
+						  Click to any slide of the pie chart to filter out the genes
+						  associated to this function.</p></center><br><br>
+							
+							<br><br>
+						  </div>
+						</div>
+						
+						<div class="col-md-4">
+						  <div id="chart-row-spenders"  style="min-height: 250px; overflow: auto" ><center><h2>Genes</h2><p>
+							Distribution of top <code>15</code> genes through the categories. Each bar represents a
+							gene and its number of hits. Labels on the bars corresponds to the gene ID provided by the database </p></center><br></div>
+						  <!--<div style="height: 0px; width: 0px" id='PieChartFunction' class="box-body"></div>-->
+						</div>
+						<!--<button id="clearMetadata" type="button"  class="btn btn-primary">clear</button>-->
+						
+						<div class="col-md-12">
+						  <h2>Description</h2><p>This pannel contains information about the categories from the selected database</p>
+						  <div style="min-height: 200px; overflow: auto" id="categories_metadata"></div>
+						</div>
+						</div>
+						
+						<legend><h1> Download Table</h1></legend>
+						<a id="download_one_sample_table_taxo" class="btn btn-success"><i class="fa fa-download"></i> Get Full Taxonomy</a>
+            <a id="download_one_sample_table_func" class="btn btn-success"><i class="fa fa-download"></i> Get Full Function</a>
+						
+						
+                    </div>
+
+                </div>
+            </div>
+		  </div>
+
+
+
+      <!--</div>-->
+
+
+
+
+
+      </div><!-- /.content-wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Main Footer -->
+
+
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+    </div><!-- ./wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.1.4 -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
+    <!--For nice plots-->
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+	<script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
+	
+	<!-- d3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+	
+	<script type="text/javascript" src="http://bench.cs.vt.edu/Projects/lib/crossfilter/crossfilter.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://bench.cs.vt.edu/Projects/lib/dc/dc.css"/>
+	<script type="text/javascript" src="http://bench.cs.vt.edu/Projects/lib/dc/dc.js"></script>
+	<script type="text/javascript" src="http://bench.cs.vt.edu/Projects/lib/reductio/reductio.js"></script>
+  
+  
+	<!-- DC 
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.min.js"></script> -->
+	
+  
+    <!-- pretty tables -->
+    <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+	<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+	
+	
+
+    <!--main js file-->
+	
+   <script type="text/javascript" src="/MetaStorm/static/js/getsvg.js"></script>
+  
+  <script type="text/javascript" src="/MetaStorm/static/d3tooltip/d3.tp.js"></script>
+	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/visualize_individual_samples.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/ViewSample.js') }}"></script>
+
+
+	
+	
+	<script type="text/javascript" src="/MetaStorm/static/tipped/js/tipped/tipped.js"></script>
+ 
+	
+  <link rel="stylesheet" type="text/css" href="/MetaStorm/static/tipped/css/tipped/tipped.css"/>
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+          Both of these plugins are recommended to enhance the
+          user experience. Slimscroll is required when using the
+          fixed layout. -->
+  </body>
+</html>

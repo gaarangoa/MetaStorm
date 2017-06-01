@@ -1,0 +1,129 @@
+
+
+window.onload=function(){
+
+  $.urlParam = function(name){
+   var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+   if (results==null){
+      return null;
+   }
+   else{ return results[1] || 0;}
+  }
+
+   userID=$.urlParam('uid')
+   /*Get the user, projects and samples info*/
+
+   $.ajax({
+       url: "/GetAllInfo",
+       type: "POST",
+       data: JSON.stringify({uid:userID}),
+       contentType: "application/json; charset=utf-8",
+       success: function(dat) {
+         $("#UserName1").html(dat.uname)
+         $("#userID").html(dat.uid)
+         $("#UserContact").html(dat.email)
+         for(i=0; i<dat.projects.length; i++){
+           $("#ProjectNameSelect").append('<option value='+dat.projects[i][0]+'>'+dat.projects[i][1]+'</option>')
+         }
+
+       }
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Submit a new project*/
+
+$(document).on("click","#SubmitNewProject", function(){
+
+  window.open("/metadata?uid="+userID)
+});
+
+
+/*Remove a project*/
+
+$(document).on("click","#RemoveProject", function(){
+projectID= $( "#ProjectNameSelect option:selected" ).val();
+  $.ajax({
+      url: "/remove_element",
+      type: "POST",
+      data: JSON.stringify({pid:projectID, uid:userID}),
+      contentType: "application/json; charset=utf-8",
+      success: function(dat) {
+        window.open("/muser?uid="+userID,"_self")
+      }
+  });
+});
+
+
+
+/* live check status*/
+
+(function worker() {
+  projectID= $( "#ProjectNameSelect option:selected" ).val();
+  $.ajax({
+    url: '/getProjectStatus',
+    data: JSON.stringify({pid:projectID, uid:userID}),
+    success: function(data) {
+      $("#LiveUpdate").append(data.status)
+    },
+    complete: function() {
+      // Schedule the next request when the current one's complete
+      setTimeout(worker, 5000);
+    }
+  });
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};

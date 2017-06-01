@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Metadata</title>
+
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tabs/assets/jquery.pwstabs-1.2.1.css') }}"></link>
+   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+   <script type="text/javascript" src="{{ url_for('static', filename='tabs/assets/jquery.pwstabs-1.2.1.js') }}"></script>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tabs/assets/styles.css') }}"></link>
+   <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tabs/assets/font-awesome-4.2.0/css/font-awesome.min.css') }}"></link>
+   <script type="text/javascript" src="{{ url_for('static', filename='js/metadata.js') }}"></script>
+
+   <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+   <script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+   <script src="http://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
+   <script src="http://handsontable.com//bower_components/handsontable-ruleJS/src/handsontable.formula.js"></script>
+
+</head>
+<body>
+   <div class="content demo_responsive">
+        <h2>Assembly parameters</h2>
+      <div class='wrapper'>
+        <div class='first'>
+          <p>In order to setup your project, please fill up the left sections and upload your data. You need to make sure that the names are correctly ...</p>
+        </div>
+
+        <div class='second'>
+          <div class="tabset0">
+             <div data-pws-tab="tab1" data-pws-tab-name="Project" data-pws-tab-icon="fa-refresh">
+
+             </div>
+             <div data-pws-tab="tab2" data-pws-tab-name="Samples" data-pws-tab-icon="fa-map-marker">Test 2</div>
+             <div data-pws-tab="tab3" data-pws-tab-name="Upload" data-pws-tab-icon="fa-upload">Test 3</div>
+          </div><!-- tabset0 -->
+        </div>
+      </div>
+   </div><!-- content -->
+</body>
+</html>

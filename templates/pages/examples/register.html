@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MetaStorm | Registration Page</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.4 -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.min.css') }}"></link>
+    <!-- iCheck -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/plugins/iCheck/square/blue.css') }}"></link>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+  </head>
+  <body class="register-page">
+    <div class="register-box">
+      <div class="register-logo">
+        <a href="#"><b>Meta</b>Storm</a>
+      </div>
+
+      <div class="register-box-body">
+        <p class="login-box-msg">Request a new account</p>
+        <p class="login-box-msg">Your password will be send to your email. You can change the password under the profile section in the home page of MetaStorm. Please
+                                 make sure to check the spam folder if you don't receive an emiail inmediately you submit the form.</p>
+        <form id="new_user_form" method="post" enctype="multipart/form-data">
+          <div class="form-group has-feedback">
+            <input name='FullName' type="text" class="form-control" placeholder="Full name" />
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input name='eMail' type="email" class="form-control" placeholder="Email" />
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input name='Organization' type="text" class="form-control" placeholder="Organization" />
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          
+          <div id="IC" class="form-group has-feedback" hidden>
+            
+          </div>
+          
+          <div class="form-group has-feedback">
+            
+            <div id="countries" class="dropdown dropdown-select">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                Country
+                  <span class="caret"></span>
+              </button>
+            </div>
+          </div>
+          
+        </form>
+
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="checkbox icheck">
+              <label>
+                <input name='IAgree' type="checkbox"> I agree to the <a href="#" onclick="$('#terms').show()">terms of service</a>
+              </label>
+            </div>
+          </div><!-- /.col -->
+          <div class="col-xs-4">
+            <button id='BRegister' type="submit" class="btn btn-primary btn-block btn-flat">Request</button>
+          </div><!-- /.col -->
+        </div>
+        <!--
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
+          <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign up using Google+</a>
+        </div> -->
+
+        <a href="login" class="text-center">I already have an account</a>
+      </div><!-- /.form-box -->
+    </div><!-- /.register-box -->
+
+    </div>
+       <div id="terms" class="register-box" hidden>
+          <div class="register-box-body">
+            <div class="entry">
+              <h2> Terms of service </h2>
+				<ol>
+                  <li>MetaStorm is a web service for metagenome analysis provided on a best-effort basis.</li>
+                  <li>We strive to provide correct analysis, privacy, but can not guarantee correctness of results, integrity of data or privacy.</li>
+                  <li>MetaStorm is not responsible for any HIPAA regulations regarding human samples uploaded by users.</li>
+                  <li>We will inform users about changes to the system and the underlying data.</li>
+                  
+                  <li>We reserve the right to delete non public data sets after 350 days.</li>
+                  
+                  <li>We will NOT release user provided data without user consent.</li>
+                  
+                  <li>User acknowledges the restrictions of MetaStorm and will cite MetaStorm when reporting their work.</li>
+                 
+                  <li>User acknowledges that data and metadata provided is correct and user is the owner of the data or has the permission from
+                  the owner to upload and publish the data on MetaStorm.</li>
+                  
+          
+                  <li>We expect users of MetaStorm to consume the available computational and data resources in a
+                  responsible way and we reserve the right to block users abusing of any component of MetaStorm.</li>
+                  </ol>
+
+				
+			</div>
+          </div>
+       </div>
+    </div>
+
+    <!-- jQuery 2.1.4 -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- iCheck -->
+    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/iCheck/icheck.min.js') }}"></script>
+    <!-- main JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/register.js') }}"></script>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/country_info.js') }}"></script>
+
+    
+    <script>countriesDropdown("#countries"); $('.dropdown-select').on( 'click', '.dropdown-menu li a', function() { 
+	   
+       var target = $(this).html();
+       Country=$(this).text()
+       
+       
+       
+       $("#IC").html('<input name="Country" type="text" class="form-control" value="'+Country+'" hidden></input>')
+       
+	   //Adds active class to selected item
+	   $(this).parents('.dropdown-menu').find('li').removeClass('active');
+	   $(this).parent('li').addClass('active');
+
+	   //Displays selected text on dropdown-toggle button
+	   $(this).parents('.dropdown-select').find('.dropdown-toggle').html(target + ' <span class="caret"></span>');
+	}); </script>
+    
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--ModalWindow-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/default.css') }}"></link>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/component.css') }}"></link>
+		<!--<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modernizr.custom.js') }}"></script>-->
+
+		<!--dragable-->
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-1.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-ui.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/style.css') }}"></script>
+
+
+		<!--jQuery-->
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+		<script type="text/javascript"src="https://code.jquery.com/jquery-2.1.3.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+		<script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
+		<script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/visualizationHTML.js') }}"></script>
+
+		<script>
+			var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+
+	</head>
+	<body>
+	<!--highcharts-->
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+
+
+		<div class="container">
+			<!-- Top Navigation -->
+			<header>
+				<h1>MetaGen <span>Metagenomics aseembly</span></h1>
+			</header>
+			<div class="main clearfix">
+				<div class="column" style="width:50%">
+					<p>Please select the <b>Assembly</b> button to process your samples. Or click on the <b>Visualization</b>  button to analyze any sample.</p>
+				</div>
+				<div class="column" style="width: 50%;">
+					<button id="login" style='font-size:18px; margin: 20% 0px; width:auto;'>Process</button>
+					<button id="visualization" style='font-size:18px; margin: 0px 0px; width:auto;'>Navigate</button>
+					<button id="Upload" style='font-size:18px; margin: 0px 0px; width:auto;'>Dataset Upload</button>
+					<button id="Admin" style='font-size:18px; margin: 0px 0px; width:auto;'>Admin</button>
+				</div>
+
+			</div>
+		</div><!-- /container -->
+
+		<!--<div class="md-overlay"></div>-->
+		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/classie.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modalEffects.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/cssParser.js') }}"></script>
+		<script> var polyfilter_scriptpath = "../static/ModalWindow/js/"; </script>
+		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/css-filters-polyfill.js') }}"></script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+$( document ).ready(function() {
+	// when on click on visualization, the projects are loaded in order to give to select the project of interest.
+	$("#visualization").on("click",function(){
+		$.getJSON($SCRIPT_ROOT + '/_visualization', {start:'start'},
+		function(data){
+			var w = window.open("visualization");
+			w.data_from_index=data;
+		});
+	});
+
+	$("#login").on("click",function(){
+			var w = window.open("/zhanglab/software/CMetAnn/start.wsgi/login");
+			w.data_from_index=data;
+	});
+
+
+	$("#Admin").on("click",function(){
+		uid='hguzorAxuanidez'
+		pid='zkdclmqjfcatwmp'
+		sid='zkdcl'
+
+
+		$.ajax({
+				url: "/runtest",
+				type: "POST",
+				async: true,
+				data: JSON.stringify({uid:uid, pid:pid, sid:sid, read1:"A1_R1.fastq", read2:"A1_R2.fastq", pipeline:"assembly"}),
+				contentType: "application/json; charset=utf-8",
+				success: function(dat) {
+					alert('You are analyzing the sample: '+sid+'!')
+				}
+		});
+
+	});
+
+
+});
