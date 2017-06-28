@@ -38,7 +38,7 @@ while 1:
 				msg='Dear MetaStorm user, <br><br> The analysis using the un-assembled reads pipeline is done. <br> Please visit <a href="bench.cs.vt.edu/MetaStorm/login"><b>MetaStorm</b></a> to check your results <br><br><br> Thank you <br><b>MetaStorm</b> Team'
 			# 1. Check if the job is done:
 			status=bench2archu('cat '+fromf+"/arc_run.qsub.status")
-			print {"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status}
+			print {"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}
 			
 			 
 			if status['out']=='done':

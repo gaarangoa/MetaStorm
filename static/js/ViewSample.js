@@ -135,7 +135,7 @@ download_f = function(x){
       contentType: "application/json; charset=utf-8",
       success: function(data) {
       
-      //console.log(data)
+      console.log(data)
       
       //e.preventDefault();  //stop the browser from following
       window.location.href = machine_http+'download/'+Base64.encode(data.fo);
