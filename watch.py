@@ -37,15 +37,15 @@ while 1:
 				fromf='/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/matches/"+sid+"/"
 				msg='Dear MetaStorm user, <br><br> The analysis using the un-assembled reads pipeline is done. <br> Please visit <a href="bench.cs.vt.edu/MetaStorm/login"><b>MetaStorm</b></a> to check your results <br><br><br> Thank you <br><b>MetaStorm</b> Team'
 			# 1. Check if the job is done:
-			status=bench2archu('cat '+fromf+"/arc_run.qsub.status")
+			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")
 			print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 			
 			 
 			if status['out']=='done':
 				scp=arcon()
 				# 2. get list of files in remote server	
-				SArc=bench2archu('ls '+fromf +
-								 " | awk '{if($_!~/matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$/){print}}'")['out'].split("\n")
+				SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu "ls '+fromf +
+								 " | awk '{if($_!~/matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$/){print}}'"+' "').split("\n")
 				
 				for ref in refs:
 					update_status(database,sid,ref,pip,"Done")
