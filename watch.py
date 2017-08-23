@@ -38,7 +38,7 @@ while 1:
 				msg='Dear MetaStorm user, <br><br> The analysis using the un-assembled reads pipeline is done. <br> Please visit <a href="bench.cs.vt.edu/MetaStorm/login"><b>MetaStorm</b></a> to check your results <br><br><br> Thank you <br><b>MetaStorm</b> Team'
 			# 1. Check if the job is done:
 			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")[0]
-			print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
+			# print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 			
 			 
 			if status=='done':
@@ -68,7 +68,7 @@ while 1:
 				qci='/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/READS/"+sid+"trim.log"
 				qct=rootvar.__ROOTPRO__+"/"+data['pid']+"/READS/"+sid+"trim.log"
 				
-				print qci,qct
+				# print qci,qct
 				os.system('scp gustavo1@newriver1.arc.vt.edu:/'+qci+" "+qct)
 				# scp.get(qci,qct)
 				
@@ -91,6 +91,7 @@ while 1:
 		time.sleep(5)
 	except Exception as inst:
 		print "ERROR: "+str(datetime.datetime.now())+" | "+str(inst)
+		print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + '\nStatus: ' + status )
 		time.sleep(10)
 		
