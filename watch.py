@@ -44,9 +44,11 @@ while 1:
 			if status=='done':
 				# scp=arcon()
 				# 2. get list of files in remote server	
-				SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu "ls '+fromf +
+				try:
+					SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu "ls '+fromf +
 								 " | awk '{if($_!~/matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$/){print}}'"+' "').read().split("\n")
-				
+				except:
+					SArc = []
 				# print SArc
 
 				for ref in refs:
@@ -89,7 +91,7 @@ while 1:
 		time.sleep(5)
 	except Exception as inst:
 		print "ERROR: "+str(datetime.datetime.now())+" | "+str(inst)
-		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + status)
+		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + '\nStatus: ' + status +"\")
 		time.sleep(10)
 		
 	
