@@ -42,11 +42,13 @@ while 1:
 			
 			 
 			if status['out']=='done':
-				scp=arcon()
+				# scp=arcon()
 				# 2. get list of files in remote server	
 				SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu "ls '+fromf +
-								 " | awk '{if($_!~/matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$/){print}}'"+' "').split("\n")
+								 " | awk '{if($_!~/matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$/){print}}'"+' "').read().split("\n")
 				
+				# print SArc
+
 				for ref in refs:
 					update_status(database,sid,ref,pip,"Done")
 				database.commit()
