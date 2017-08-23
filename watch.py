@@ -91,8 +91,8 @@ while 1:
 		time.sleep(5)
 	except Exception as inst:
 		print "ERROR: "+str(datetime.datetime.now())+" | "+str(inst)
-		print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
-		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + '\nStatus: ' + status )
+		errda = json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
+		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + '\nStatus: ' + status + "\n" + errda)
 		time.sleep(10)
 		
 	
