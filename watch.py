@@ -37,11 +37,11 @@ while 1:
 				fromf='/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/matches/"+sid+"/"
 				msg='Dear MetaStorm user, <br><br> The analysis using the un-assembled reads pipeline is done. <br> Please visit <a href="bench.cs.vt.edu/MetaStorm/login"><b>MetaStorm</b></a> to check your results <br><br><br> Thank you <br><b>MetaStorm</b> Team'
 			# 1. Check if the job is done:
-			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")
+			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")[0]
 			print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 			
 			 
-			if status['out']=='done':
+			if status=='done':
 				# scp=arcon()
 				# 2. get list of files in remote server	
 				SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu "ls '+fromf +
@@ -73,11 +73,11 @@ while 1:
 				x=email.send_email(USER[0]['user_name'],USER[0]['user_affiliation'],
 							   'Processing sample: '+SAMPLE[0]['sample_name'], msg)
 			
-			if  status['out']!=job[5] and not "Error:" in status['out']: #"the status is not the same"
+			if  status!=job[5] and not "Error:" in status: #"the status is not the same"
 				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],status['out'],'normal',job[7],job[8]]) #update the database
 				database.commit()
 			
-			if "Error:" in status['out'] and job[5]!="error":
+			if "Error:" in status and job[5]!="error":
 				messe="MetaStorm team: During the execution of a job under the ARC resources, an error has been triggered: <br> Please take a look at the project under <b>"+SAMPLE[0]['project_id']+"</b> and sample <b>"+SAMPLE[0]['sample_id']+"</b> under the <b>"+pip+"</b> pipeline and contact the user "+USER[0]['user_affiliation']+". <br><br>Thanks for the cooperation <br>MetaStorm Team - User Assistance"
 				x=email.send_email('Gustavo Arango','gustavo1@vt.edu','MetaStorm', messe.strip())
 				messe2= "Dear "+USER[0]['user_name']+",<br> During the execution of one of your samples an exception has been triggered and the job has been terminated. <br> A notification of the error has been sent to the Administrators of MetaStorm. Please check your submission parameters (databases, fastq files, etc.) and try it again. If the error persists, the MetaStorm team will contact you for further assistance. If you need inmediate assistance contact us at cmetangen@gmail.com. <br><br>This notification tool has been enabled in order to improve the efficience of MetaStorm. <br><br> Thanks, <br> MetaStorm Team"
