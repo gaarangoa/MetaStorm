@@ -76,7 +76,7 @@ while 1:
 							   'Processing sample: '+SAMPLE[0]['sample_name'], msg)
 			
 			if  status!=job[5] and not "Error:" in status: #"the status is not the same"
-				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],status['out'],'normal',job[7],job[8]]) #update the database
+				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],status,'normal',job[7],job[8]]) #update the database
 				database.commit()
 			
 			if "Error:" in status and job[5]!="error":
