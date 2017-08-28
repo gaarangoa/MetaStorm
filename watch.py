@@ -50,11 +50,7 @@ while 1:
 					SArc = [i for i in SArc if not re.search(reg, i)]
 				except:
 					SArc = []
-				# print SArc
-
-				for ref in refs:
-					update_status(database,sid,ref,pip,"Done")
-				database.commit()
+				print SArc
 				
 				f2s=[]
 				for ref in refs+['nucl.fa', 'prot.fa', 'log']:
@@ -72,7 +68,11 @@ while 1:
 				# print qci,qct
 				os.system('scp gustavo1@newriver1.arc.vt.edu:/'+qci+" "+qct)
 				# scp.get(qci,qct)
-				
+
+				for ref in refs:
+    					update_status(database,sid,ref,pip,"Done")
+				database.commit()
+
 				x=email.send_email(USER[0]['user_name'],USER[0]['user_affiliation'],
 							   'Processing sample: '+SAMPLE[0]['sample_name'], msg)
 			
