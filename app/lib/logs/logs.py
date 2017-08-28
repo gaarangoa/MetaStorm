@@ -9,7 +9,7 @@ def assembly(file):
     aligned_reads=int(logs[-4].split()[1])
 
     # genes=open(file+"pred.genes.gff").readlines()
-    genes = os.popen('ssh gustavo1@newriver.arc.vt.edu "cat '+file.replace("/home/raid/www/MetaStorm/main/", "/groups/metastorm_cscee/MetaStorm/") + 'pred.genes.gff"').read().split("\n")
+    genes = os.popen('ssh gustavo1@newriver.arc.vt.edu "cat '+file.replace("/home/raid/www/MetaStorm/main/", "/groups/metastorm_cscee/MetaStorm/") + '/pred.genes.gff"').read().split("\n")
 
     ldist=[int(i.split()[4])-int(i.split()[3]) for i in genes if not '#' in i]
 
