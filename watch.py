@@ -10,6 +10,7 @@ from app.lib.common.arc_connect import bench2archu, arcon
 from app.lib.email import Email as email
 import datetime
 database=sql.SQL(rootvar.__FILEDB__)
+import re
 
 while 1:
 	try:
