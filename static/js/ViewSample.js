@@ -457,7 +457,7 @@ window.onload = function() {
                     'software. The average length of the genes is <b id="sfAvgGenes"></b> bp. </p>'
                 ])
 
-                ////console.log(x)
+                console.log(x)
                 $("#sfReads").html(x.matrix.reads.toLocaleString())
                 $("#sfAvgReads").html(x.matrix.avgreads.toLocaleString())
                 $("#sfScaffolds").html(x.matrix.scaffolds.toLocaleString())

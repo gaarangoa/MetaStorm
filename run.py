@@ -1078,12 +1078,12 @@ from app.lib.logs.logs import assembly as logassembly
 def get_assembly_logs():
 	try:
 		data = request.get_json()
-		pid=data["pid"]
-		uid=data["uid"]
-		sid=data["sid"]
-		pip=data["pip"]
-		analysis="function"
-		lid="assembly"
+		pid = data["pid"]
+		uid = data["uid"]
+		sid = data["sid"]
+		pip = data["pip"]
+		analysis = "function"
+		lid = "assembly"
 		#file=rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/pred.genes."+rid+".matches.function.abundance.results.sqlite3.db"
 		if lid=="assembly":
 			l1=logassembly(rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/")
