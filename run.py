@@ -1076,19 +1076,20 @@ def get_statistics():
 from app.lib.logs.logs import assembly as logassembly
 @app.route('/get_assembly_logs', methods=['GET','POST'])
 def get_assembly_logs():
-    data = request.get_json()
-    pid=data["pid"]
-    uid=data["uid"]
-    sid=data["sid"]
-    pip=data["pip"]
-    analysis="function"
-    lid="assembly"
-    #file=rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/pred.genes."+rid+".matches.function.abundance.results.sqlite3.db"
-    if lid=="assembly":
-        l1=logassembly(rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/")
-    return jsonify(matrix=l1)
-
-
+    try:
+		data = request.get_json()
+		pid=data["pid"]
+		uid=data["uid"]
+		sid=data["sid"]
+		pip=data["pip"]
+		analysis="function"
+		lid="assembly"
+		#file=rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/pred.genes."+rid+".matches.function.abundance.results.sqlite3.db"
+		if lid=="assembly":
+			l1=logassembly(rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/")
+		return jsonify(matrix=l1)
+	except excption as error:
+		return jsonify({status: str(error)})
 
 
 from app.lib.logs.logs import matches as logmatches
