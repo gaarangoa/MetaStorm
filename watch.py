@@ -51,10 +51,10 @@ while 1:
 					SArc = [i for i in SArc if not re.search(reg, i)]
 				except:
 					SArc = []
-				print SArc
+				# print SArc
 				
 				f2s=[]
-				for ref in refs+['nucl.fa', 'prot.fa', 'log']:
+				for ref in refs+['nucl.fa', 'prot.fa', 'log', 'pred.genes.gff']:
 					f2s.append([f for f in SArc if ref in f])
 	
 				for refi in f2s:
