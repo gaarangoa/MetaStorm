@@ -1088,7 +1088,7 @@ def get_assembly_logs():
 		if lid=="assembly":
 			l1=logassembly(rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/")
 		return jsonify(matrix=l1)
-	except exeption as error:
+	except Exception as error:
 		return jsonify({status: str(error)})
 
 
