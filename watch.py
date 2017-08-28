@@ -45,8 +45,9 @@ while 1:
 				# scp=arcon()
 				# 2. get list of files in remote server	
 				try:
-					SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu "ls '+fromf +
-								 " | awk '{if($_!~/matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$/){print}}'"+' "').read().split("\n")
+					SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu " ls '+fromf+'"').read().split("\n")
+					reg = "matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$"
+					SArc = [i for i in SArc if not re.search(reg, i)]
 				except:
 					SArc = []
 				# print SArc
