@@ -1076,7 +1076,7 @@ def get_statistics():
 from app.lib.logs.logs import assembly as logassembly
 @app.route('/get_assembly_logs', methods=['GET','POST'])
 def get_assembly_logs():
-    try:
+	try:
 		data = request.get_json()
 		pid=data["pid"]
 		uid=data["uid"]
