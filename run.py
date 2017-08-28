@@ -1092,10 +1092,10 @@ def get_assembly_logs():
 from app.lib.logs.logs import matches as logmatches
 @app.route('/get_matches_logs', methods=['GET','POST'])
 def get_matches_logs():
-	data = request.get_json()
-	pid=data["pid"]
-	sid=data["sid"]
 	try:
+		data = request.get_json()
+		pid=data["pid"]
+		sid=data["sid"]
 		li=logmatches(rootvar.__ROOTPRO__+"/"+pid+"/READS/"+sid+"trim.log")
 		return jsonify(matrix=li)
 	except Exception as inst:
