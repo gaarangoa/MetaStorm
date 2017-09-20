@@ -7,4 +7,4 @@ RUN pip install numpy
 
 EXPOSE 5000
 
-ENTRYPOINT ["python", "/run.py"]
+ENTRYPOINT ["python", "/main/run.py"]
