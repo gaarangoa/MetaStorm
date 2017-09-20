@@ -637,54 +637,54 @@ def uploadref():
 		return "ERROR: "+str(inst)
 
 
-# #******************************************************************************
-# # BEGIN: process dataset
-# #******************************************************************************
-# import app.lib.make_db.GetUniqueIdentifier as updb
-# import app.lib.make_db.get_seq_length as glen
-# import app.lib.make_db.make_reference_formats as formatdb
-# from app.lib.common.arc_connect import bench2archu, arcon
-# from app.lib.email import Email as email
-# from os import listdir
-# from os.path import isfile, join
+#******************************************************************************
+# BEGIN: process dataset
+#******************************************************************************
+import app.lib.make_db.GetUniqueIdentifier as updb
+import app.lib.make_db.get_seq_length as glen
+import app.lib.make_db.make_reference_formats as formatdb
+from app.lib.common.arc_connect import bench2archu, arcon
+from app.lib.email import Email as email
+from os import listdir
+from os.path import isfile, join
 
-# @app.route('/process_up_ref_dataset', methods=['GET','POST'])
-# def process_up_ref_dataset():
-# 	try:
-# 		data = request.get_json() #{'taxofile':'none', 'functfile':'DATASET.func', 'rid':'eyzbhakkpq', 'seqfile':'dataset.fa', 'rname':'card_sample', 'uid':'ihqvnteormayzoy'}#
-# 		#x=sql.SQL(main_db)
+@app.route('/process_up_ref_dataset', methods=['GET','POST'])
+def process_up_ref_dataset():
+	try:
+		data = request.get_json() #{'taxofile':'none', 'functfile':'DATASET.func', 'rid':'eyzbhakkpq', 'seqfile':'dataset.fa', 'rname':'card_sample', 'uid':'ihqvnteormayzoy'}#
+		#x=sql.SQL(main_db)
 		
-# 		g.db.execute('UPDATE reference SET seqfile="'+data['seqfile']+'",  taxofile="'+data['taxofile']+'", functfile="'+data['functfile']+'" WHERE reference_id="'+data['rid']+'"')
-# 		g.db.commit()
-# 		refdb=query_db('SELECT * from reference where reference_id="'+data['rid']+'"')[0]
-# 		#return jsonify(data=refdb)
-# 		#return jsonify(data=data)
-# 		if str(data["taxofile"])!="none":
-# 			updb.GetUniqueIdentifier(refdb['reference_path'],refdb['reference_format_path'],refdb['taxofile'],"taxo",g,data['rid']) # for taxonomy
-# 			glen.seqlen(refdb['reference_path']+'/'+refdb['seqfile'],refdb['reference_format_path']+'/dataset.len')
-# 			formatdb.main(refdb['reference_path'],refdb['reference_format_path'],refdb['sequence_type'],refdb['seqfile'], g, data['rid'])
-# 			g.db.execute('UPDATE reference SET status="done" WHERE reference_id="'+data['rid']+'"')
-# 		if str(data["functfile"])!="none":
-# 			updb.GetUniqueIdentifier(refdb['reference_path'],refdb['reference_format_path'],refdb['functfile'],"func",g,data['rid']) # for function
-# 			glen.seqlen(refdb['reference_path']+'/'+refdb['seqfile'],refdb['reference_format_path']+'/dataset.len')
-# 			formatdb.main(refdb['reference_path'], refdb['reference_format_path'],refdb['sequence_type'], refdb['seqfile'], g, data['rid'])
-# 			rootvar.tsv2json(refdb['reference_format_path']+'/dataset.description',"\t")
-# 			g.db.execute('UPDATE reference SET status="done" WHERE reference_id="'+data['rid']+'"')
-# 		g.db.commit()
+		g.db.execute('UPDATE reference SET seqfile="'+data['seqfile']+'",  taxofile="'+data['taxofile']+'", functfile="'+data['functfile']+'" WHERE reference_id="'+data['rid']+'"')
+		g.db.commit()
+		refdb=query_db('SELECT * from reference where reference_id="'+data['rid']+'"')[0]
+		#return jsonify(data=refdb)
+		#return jsonify(data=data)
+		if str(data["taxofile"])!="none":
+			updb.GetUniqueIdentifier(refdb['reference_path'],refdb['reference_format_path'],refdb['taxofile'],"taxo",g,data['rid']) # for taxonomy
+			glen.seqlen(refdb['reference_path']+'/'+refdb['seqfile'],refdb['reference_format_path']+'/dataset.len')
+			formatdb.main(refdb['reference_path'],refdb['reference_format_path'],refdb['sequence_type'],refdb['seqfile'], g, data['rid'])
+			g.db.execute('UPDATE reference SET status="done" WHERE reference_id="'+data['rid']+'"')
+		if str(data["functfile"])!="none":
+			updb.GetUniqueIdentifier(refdb['reference_path'],refdb['reference_format_path'],refdb['functfile'],"func",g,data['rid']) # for function
+			glen.seqlen(refdb['reference_path']+'/'+refdb['seqfile'],refdb['reference_format_path']+'/dataset.len')
+			formatdb.main(refdb['reference_path'], refdb['reference_format_path'],refdb['sequence_type'], refdb['seqfile'], g, data['rid'])
+			rootvar.tsv2json(refdb['reference_format_path']+'/dataset.description',"\t")
+			g.db.execute('UPDATE reference SET status="done" WHERE reference_id="'+data['rid']+'"')
+		g.db.commit()
 		
-# 		## make the directory at arc
-# 		arcdir='/groups/metastorm_cscee/MetaStorm/Files/REFERENCE/'
-# 		SArc=bench2archu('mkdir -p '+arcdir+data['rid'])
-# 		scp=arcon()
+		## make the directory at arc
+		arcdir='/groups/metastorm_cscee/MetaStorm/Files/REFERENCE/'
+		SArc=bench2archu('mkdir -p '+arcdir+data['rid'])
+		scp=arcon()
 		
-# 		## move the files to arc
-# 		for fi in listdir(refdb['reference_path']):
-# 			scp.put(refdb['reference_path']+"/"+fi, arcdir+"/"+data['rid']+"/"+fi)
+		## move the files to arc
+		for fi in listdir(refdb['reference_path']):
+			scp.put(refdb['reference_path']+"/"+fi, arcdir+"/"+data['rid']+"/"+fi)
 		
 		
-# 		return 'ok'
-# 	except Exception as inst:
-# 		return "ERROR: "+str(inst)
+		return 'ok'
+	except Exception as inst:
+		return "ERROR: "+str(inst)
 
 
 
