@@ -465,7 +465,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
 
 
-                    </div>
 
 
 
@@ -481,14 +480,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                    <!-- FUNCTIONAL ANNOTATION -->
+
+                        <!-- FUNCTIONAL ANNOTATION -->
 
 
 
 
 
-                    <div class="tab-pane" id="pinfo">
-                        <!--
+                        <div class="tab-pane" id="pinfo">
+                            <!--
                         <legend><h1> Downloads</h1></legend> 
                         <p>
 
@@ -501,39 +501,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </p> -->
 
 
-                        <div class="col-md-12">
-                            <div class="box box-success">
-                                <div class='box-body'>
-                                    <center>
-                                        <h2>Setup Reference Datbase</h2>
-                                    </center> <br><br>
-                                    <label for='selectPipelinef'>Select dataset: </label>
-                                    <select id='selectDatasetf'></select>
-                                    <br>
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <div class='box-body'>
+                                        <center>
+                                            <h2>Setup Reference Datbase</h2>
+                                        </center> <br><br>
+                                        <label for='selectPipelinef'>Select dataset: </label>
+                                        <select id='selectDatasetf'></select>
+                                        <br>
 
-                                    <label for='selectNormalizationF'>Select Normalization: </label>
-                                    <select id='selectNormalizationF'>
+                                        <label for='selectNormalizationF'>Select Normalization: </label>
+                                        <select id='selectNormalizationF'>
 									<option value="rpkm">RPKM</option>
 									<option value="scale">Scale</option>
 									<option value="16s">16S rRNA</option>
 								  </select>
 
 
-                                    <br><br>
+                                        <br><br>
 
-                                    <div id="sel_categories"></div>
-                                    <br>
-                                    <center>Visualize <code> Functional Categories</code> from <b>Top</b>: <input style="width:40px" type="text" value="1" id="b"> to:
-                                        <input style="width:40px" type="text" value="20" id="e"></center>
+                                        <div id="sel_categories"></div>
+                                        <br>
+                                        <center>Visualize <code> Functional Categories</code> from <b>Top</b>: <input style="width:40px" type="text" value="1" id="b"> to:
+                                            <input style="width:40px" type="text" value="20" id="e"></center>
 
-                                    <br><br>
-                                    <input style="width:40px" type="text" value="0" id="minA" hidden>
+                                        <br><br>
+                                        <input style="width:40px" type="text" value="0" id="minA" hidden>
 
-                                    <center><button id="compareSamplesButtonf" type="button" class="btn btn-primary">Compare</button></center>
+                                        <center><button id="compareSamplesButtonf" type="button" class="btn btn-primary">Compare</button></center>
 
-                                    <br>
+                                        <br>
 
-                                    <!--
+                                        <!--
 									<center><div class="box-body">
 									  <a class="btn btn-app">
 										<span id="VFHeatMap" class="badge bg-yellow">1</span>
@@ -551,66 +551,66 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									  </a>
 									</div></center>
 									-->
+                                    </div>
+                                </div>
+
+
+                                <br>
+                            </div>
+
+
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <div class='box-body'>
+                                        <center>
+                                            <h2>Stacked Bars</h2>
+                                        </center><br><br>
+                                        <center>
+                                            <div class="col-md-12" id='stackedplotf' style="height:auto; width:100%; overflow:auto"></div>
+                                        </center>
+                                        <center>
+                                            <h2>Heat Map</h2>
+                                        </center><br>
+                                        <center>
+                                            <div id='HeatMapFun' style="resize:both;overflow:auto;height:auto" class="box-body" hide></div>
+                                        </center>
+                                        <center>
+                                            <h2>Table</h2>
+                                        </center><br>
+                                        <div style="height: 500px; overflow: auto" id="function_table" hide></div>
+                                    </div>
                                 </div>
                             </div>
 
 
-                            <br>
+
+
+
+
+
+                            <div id='PieChart2Taxof' style="resize:both;overflow:auto;height:auto" class="box-body"></div>
+
+
+
+
+
+
                         </div>
 
 
-
-                        <div class="col-md-12">
-                            <div class="box box-success">
-                                <div class='box-body'>
-                                    <center>
-                                        <h2>Stacked Bars</h2>
-                                    </center><br><br>
-                                    <center>
-                                        <div class="col-md-12" id='stackedplotf' style="height:auto; width:100%; overflow:auto"></div>
-                                    </center>
-                                    <center>
-                                        <h2>Heat Map</h2>
-                                    </center><br>
-                                    <center>
-                                        <div id='HeatMapFun' style="resize:both;overflow:auto;height:auto" class="box-body" hide></div>
-                                    </center>
-                                    <center>
-                                        <h2>Table</h2>
-                                    </center><br>
-                                    <div style="height: 500px; overflow: auto" id="function_table" hide></div>
-                                </div>
-                            </div>
+                        <div class="tab-pane active" id='dinfo' style="height:auto">
+                            <h2>Samples</h2>
+                            <form id="selectSampleToCompare" style="height:auto;overflow:auto"></form>
                         </div>
 
-
-
-
-
-
-
-                        <div id='PieChart2Taxof' style="resize:both;overflow:auto;height:auto" class="box-body"></div>
-
-
-
-
-
-
                     </div>
-
-
-                    <div class="tab-pane active" id='dinfo' style="height:auto">
-                        <h2>Samples</h2>
-                        <form id="selectSampleToCompare" style="height:auto;overflow:auto"></form>
-                    </div>
-
                 </div>
             </div>
+
+
         </div>
-
-
-    </div>
-    <!-- /.content-wrapper
+        <!-- /.content-wrapper
 
 
 
