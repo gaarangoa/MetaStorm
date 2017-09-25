@@ -1270,7 +1270,7 @@ def get_all_samples_tree():
 		data = request.get_json()
 		
 		X=GetSamplesTree.run(data)
-		return "step 2"
+		# return "step 2"
 		
 		minA=data['minA']
 		if data['norm']=="scale":
