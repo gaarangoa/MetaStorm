@@ -429,9 +429,9 @@ window.onload = function() {
             data: JSON.stringify(sendv),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
-                //console.log(x)
-                //$("#tree").height("600")
-                //ptree(x.tree,[0,pip.length/2,pip.length],"#tree",1,"id",'samples',width=3000, height=525, rsize=10, condition="mult", pip, rid)
+                console.log(x)
+                    //$("#tree").height("600")
+                    //ptree(x.tree,[0,pip.length/2,pip.length],"#tree",1,"id",'samples',width=3000, height=525, rsize=10, condition="mult", pip, rid)
                 cl = x.heatmap.data.feature_names.length
                 clsize = 10 * 10 + 200;
                 //console.log(x.heatmap)
