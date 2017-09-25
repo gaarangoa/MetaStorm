@@ -54,7 +54,7 @@ def taxonomy(data):
     #
     for sid in sids:
         try:
-            samples=x.exe('select * from samples where project_id="'+pid+'" and sample_id="'+sid[0]+'"')
+            samples=x.exe('select * from samples where project_id="'+pid+'" and sample_id="'+sid+'"')
             xpath=x.project(pid)[0][4]
             sample=rootvar.samples(samples[0],xpath)
             rf=rootvar.result_files(pid,analysis,pipeline,sample.id,rid)
