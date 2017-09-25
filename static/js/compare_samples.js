@@ -288,12 +288,6 @@ window.onload = function() {
         // display_stack_taxonomy("Species", "stack_species");
 
 
-
-
-
-
-
-
     });
 
 
