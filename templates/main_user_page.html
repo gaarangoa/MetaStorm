@@ -4,13 +4,14 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>MetaStorm | main page</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<meta content="Customized Metagenomics analysis" name="description">
-	<meta content="MetaStorm, Metagenomics, Analysis, Samples, soils, environmental, enginnering, genomics, NGS, WGS, Amplicon, sequencing, Taxonomy, functional, CARD, antibiotic resistance, genes, genomes, scaffolds, contigs, bacteria" name="subject">
+    <meta content="Customized Metagenomics analysis" name="description">
+    <meta content="MetaStorm, Metagenomics, Analysis, Samples, soils, environmental, enginnering, genomics, NGS, WGS, Amplicon, sequencing, Taxonomy, functional, CARD, antibiotic resistance, genes, genomes, scaffolds, contigs, bacteria" name="subject">
 
     <!-- Bootstrap 3.3.4 -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
@@ -36,39 +37,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-	<!-- table -->
+    <!-- table -->
 
 
 
 
     <!-- pretty tables -->
     <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
 
-	<style>
-      #map {
-        height: 400px;
-		width: 100%;
-      }
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
     </style>
 
 
-	<style>
-      #recent_projects {
-        height: 612px;
-		width: 100%;
-      }
+    <style>
+        #recent_projects {
+            height: 612px;
+            width: 100%;
+        }
     </style>
 
     <script>
-      var $SCRIPT_ROOT={{ request.script_root|tojson|safe }};
-	</script>
+        var $SCRIPT_ROOT = {
+            {
+                request.script_root | tojson | safe
+            }
+        };
+    </script>
 
 
 
-  </head>
-  <!--
+</head>
+<!--
   BODY TAG OPTIONS:
   =================
   Apply one or more of the following classes to get the
@@ -88,33 +93,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
   |               | sidebar-mini                            |
   |---------------------------------------------------------|
   -->
-  <body class="skin-blue sidebar-mini">
+
+<body class="skin-blue sidebar-mini">
     <div class="wrapper">
 
-      <!-- Main Header -->
-      <header class="main-header">
+        <!-- Main Header -->
+        <header class="main-header">
 
-        <!-- Logo -->
-        <a href="" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>M</b>S</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Meta</b>Storm</span>
-        </a>
+            <!-- Logo -->
+            <a href="" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>M</b>S</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Meta</b>Storm</span>
+            </a>
 
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-              <!-- Tasks Menu -->
-              <li class="dropdown tasks-menu">
-                <!--
+                        <!-- Tasks Menu -->
+                        <li class="dropdown tasks-menu">
+                            <!--
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-flag-o"></i>
                   <span class="label label-danger">9</span>
@@ -143,120 +149,120 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </li>
                 </ul>
 				-->
-              </li>
-              <!-- User Account Menu -->
+                        </li>
+                        <!-- User Account Menu -->
 
-              <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
 
-          <!-- Sidebar user panel (optional) -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-              <p id="UserName1"></p>
-              <p id="userID"></p>
-              <p id="UserContact"></p>
-            </div>
-          </div>
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p id="UserName1"></p>
+                        <p id="userID"></p>
+                        <p id="UserContact"></p>
+                    </div>
+                </div>
 
-          <!-- search form (Optional) -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..." />
-              <span class="input-group-btn">
+                <!-- search form (Optional) -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+
+
+                <ul id='sidemenu' class="sidebar-menu">
+                    <li class="treeview"><a href="#" onclick=open_home_page_form(userID)><i class="fa fa-home"></i> <span>Home Page</span></a></li>
+                    <li class="treeview"><a href="#" onclick=open_profile(userID)><i class="fa fa-edit"></i> <span>Profile</span></a></li>
+                    <li class="treeview"><a href="#" onclick=open_comparison(userID)><i class="fa fa-pie-chart"></i> <span>Comparison tool</span></a></li>
+                    <li class="treeview"><a href="#" onclick=open_documentation(userID)><i class="fa fa-life-bouy"></i> <span>Documentation</span></a></li>
+                    <!--<li class="treeview"><a href="http://bench.cs.vt.edu/Projects/MetaStorm/" target='_blank'><i class="fa fa-code"></i> <span>Source code</span></a></li>-->
+                    <li class="treeview"><a href="https://github.com/gaarangoa/MetaStorm-webserver" target='_blank'><i class="fa fa-github"></i> <span>Source code - GitHub</span></a></li>
+                    <li class="treeview"><a href="#" onclick=logout(userID)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <!--<li class="active"><a><i class="fa fa-arrow-circle-up"></i> <span>Help</span></a></li>-->
+                </ul>
+
+
+
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+
+            <!-- Main content -->
+            <!--############################-->
+
+            <div class="content-header">
+                <h1>
+                    MetaStorm
+                    <small>Analysis and Visualization of metagenomics samples</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                </ol>
             </div>
-          </form>
-          <!-- /.search form -->
-
-          
-          <ul id='sidemenu' class="sidebar-menu">
-			<li class="treeview"><a href="#" onclick=open_home_page_form(userID)><i class="fa fa-home"></i> <span>Home Page</span></a></li>
-			<li class="treeview"><a href="#" onclick=open_profile(userID)><i class="fa fa-edit"></i> <span>Profile</span></a></li>
-			<li class="treeview"><a href="#" onclick=open_comparison(userID)><i class="fa fa-pie-chart"></i> <span>Comparison tool</span></a></li>
-			<li class="treeview"><a href="#" onclick=open_documentation(userID)><i class="fa fa-life-bouy"></i> <span>Documentation</span></a></li>
-			<!--<li class="treeview"><a href="http://bench.cs.vt.edu/Projects/MetaStorm/" target='_blank'><i class="fa fa-code"></i> <span>Source code</span></a></li>-->
-			<li class="treeview"><a href="https://github.com/gaarangoa/MetaStorm-webserver" target='_blank'><i class="fa fa-github"></i> <span>Source code - GitHub</span></a></li>
-			<li class="treeview"><a href="#" onclick=logout(userID)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
-			<!--<li class="active"><a><i class="fa fa-arrow-circle-up"></i> <span>Help</span></a></li>-->
-          </ul>
-    
+            <br>
 
 
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-
-        <!-- Main content -->
-        <!--############################-->
-
-	  	<div class="content-header">
-          <h1>
-            MetaStorm
-            <small>Analysis and Visualization of metagenomics samples</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          </ol>
-        </div>
-		<br>
-
- 
-       <!-- <section class="content">
+            <!-- <section class="content">
 		  
 		  <div class="row">
             <div class="col-md-12" >
@@ -279,697 +285,641 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		  -->
 
 
-	  <div class="row">
-	  	
-		
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-cube"></i></span>
-
-            <div class="info-box-content">
-			  <br>
-              <center><span class="info-box-text">Processed Projects</span></center>
-              <center><span id='total_number_of_projects' class="info-box-number"></span></center>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa ion-erlenmeyer-flask"></i></span>
-
-            <div class="info-box-content">
-			  <br>
-              <center><span class="info-box-text">Samples</span></center>
-              <center><span id='total_number_of_samples' class="info-box-number"></span></center>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-box"></i></span>
-
-            <div class="info-box-content">
-			  <br>
-              <center><span class="info-box-text">Reference datasets</span></center>
-              <center><span id='total_number_of_reference_datasets' class="info-box-number"></span></center>
-			  
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-blue"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-			  <br>
-              <center><span class="info-box-text">Users</span></center>
-              <center><span id='total_number_of_users' class="info-box-number"></span></center>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
+            <div class="row">
 
 
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-cube"></i></span>
 
-	
-	  <div class="row" id='home_page_form'>
-		<div class="content body">
-			<div id="ifguest"></div>
-
-
-      <!-- <div class="col-md-12 col-md-offset-0" >
-
-        <div class="box box-solid" id="Details">
-          <div class="box-body">
-                <div id='LiveUpdate' class="col-md-4 col-md-offset-0">                     
-                  <div class="info-box bg-red">
-                    <span class="info-box-icon"><i class="ion ion-close-round"></i></span>
-                    <div class="info-box-content">
-                      <span class="info-box-text"><strong>Monday, July 24 2017</strong></span>
-                      <span class="info-box-number">Major Update</span>
-                      <div class="progress">
-                          <div class="progress-bar" style="width: 100%"></div>
-                      </div>
-                      <span class="progress-description">
-                        <strong>Clusters are under maintainance. </strong>
-                      </span>
+                        <div class="info-box-content">
+                            <br>
+                            <center><span class="info-box-text">Processed Projects</span></center>
+                            <center><span id='total_number_of_projects' class="info-box-number"></span></center>
+                        </div>
+                        <!-- /.info-box-content -->
                     </div>
-                  </div>
+                    <!-- /.info-box -->
                 </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red"><i class="fa ion-erlenmeyer-flask"></i></span>
 
-                <div class="col-md-8 text-center">
-                  <br>
-                  <span> Clusters are under maintainance begining <strong>July 24th to July 28th</strong>. MetaStorm will not process any new requests. It also limits the downloading
-                      of permanent storage data such as contigs, raw reads and predicted genes. However, all users will have access to the current results. <strong> Any job started during
-                      this week will not be processed.</strong>
-                  </span>
+                        <div class="info-box-content">
+                            <br>
+                            <center><span class="info-box-text">Samples</span></center>
+                            <center><span id='total_number_of_samples' class="info-box-number"></span></center>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
                 </div>
-          </div>
+                <!-- /.col -->
 
-        </div>
-      </div> -->
+                <!-- fix for small devices only -->
+                <div class="clearfix visible-sm-block"></div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green"><i class="ion ion-ios-box"></i></span>
+
+                        <div class="info-box-content">
+                            <br>
+                            <center><span class="info-box-text">Reference datasets</span></center>
+                            <center><span id='total_number_of_reference_datasets' class="info-box-number"></span></center>
+
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-blue"><i class="ion ion-ios-people-outline"></i></span>
+
+                        <div class="info-box-content">
+                            <br>
+                            <center><span class="info-box-text">Users</span></center>
+                            <center><span id='total_number_of_users' class="info-box-number"></span></center>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
 
 
 
-            <div class="col-md-4" >
 
-              <div class="box box-primary" id="MainProjectSetup">
-                 <div class="box-header with-border">
-                      <center><h2 class="box-title"><b>Create a New Project</b></h2></center>
-               </div><!-- /.box-header -->
-                 <!-- form start -->
+            <div class="row" id='home_page_form'>
+                <div class="content body">
+                    <div id="ifguest"></div>
 
-                   <div class="box-body">
-                       <p>Please fill the form below and click on submit once you have finished. Fill up a complete description of your project. </p>
-                     <div class="form-group">
-                       <label for="ProjectName">Project Name</label>
-                       <input type="text" class="form-control" id="ProjectName" placeholder="Enter name of your project">
-                     </div>
-                     <!--
+
+                    <div class="col-md-12 col-md-offset-0">
+
+                        <div class="box box-solid" id="Details">
+                            <div class="box-body">
+                                <div id='LiveUpdate' class="col-md-4 col-md-offset-0">
+                                    <div class="info-box bg-red">
+                                        <span class="info-box-icon"><i class="ion ion-close-round"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text"><strong>Monday, Sep 25 2017</strong></span>
+                                            <span class="info-box-number">Minor Update</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 100%"></div>
+                                            </div>
+                                            <span class="progress-description">
+                                              <strong>Metastorm is under maintainance. </strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 text-center">
+                                    <br>
+                                    <span> MetaStorm is under maintainance on <strong>Sep 25th 2017</strong>. MetaStorm visualization tools are under update/maintainance. Therefore, some features will be temporary dissabled. 
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+
+                        <div class="box box-primary" id="MainProjectSetup">
+                            <div class="box-header with-border">
+                                <center>
+                                    <h2 class="box-title"><b>Create a New Project</b></h2>
+                                </center>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+
+                            <div class="box-body">
+                                <p>Please fill the form below and click on submit once you have finished. Fill up a complete description of your project. </p>
+                                <div class="form-group">
+                                    <label for="ProjectName">Project Name</label>
+                                    <input type="text" class="form-control" id="ProjectName" placeholder="Enter name of your project">
+                                </div>
+                                <!--
                      <div class="form-group">
                        <label for="ProjectShortDescription">Project Short description</label>
                        <input type="textarea" style="width:100%; height:40px; overflow:auto" id="ProjectShortDescription" placeholder="Enter a short description of the project">
                      </div> -->
 
-                    <label>Project description</label>
-                     <div class="form-group">
-                       <textarea style="width:100%; height:75px" id="ProjectDescription" placeholder="Enter the full description of the project"></textarea>
-                     </div>
+                                <label>Project description</label>
+                                <div class="form-group">
+                                    <textarea style="width:100%; height:75px" id="ProjectDescription" placeholder="Enter the full description of the project"></textarea>
+                                </div>
 
-                   </div><!-- /.box-body -->
+                            </div>
+                            <!-- /.box-body -->
 
-                   <div class="box-footer">
-                     <button id="SubmitProject" class="btn btn-primary"><h4>Create a <b>new</b> project</h4></button>
-                   </div>
+                            <div class="box-footer">
+                                <button id="SubmitProject" class="btn btn-primary"><h4>Create a <b>new</b> project</h4></button>
+                            </div>
 
-				<div class="overlay" id='create_new_project_overlay'>
-				  <i class="fa fa-refresh fa-spin"></i>
-				</div>
+                            <div class="overlay" id='create_new_project_overlay'>
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
 
-               </div><!-- /.box -->
-            </div>
-
-
-
+                        </div>
+                        <!-- /.box -->
+                    </div>
 
 
-          <div class="col-md-8" >
-            <div class="box box-solid box-primary " id="NewSample">
-               <div class="box-header">
-                 <center><h3 class="box-title"><b>My Projects</b></h3></center>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-					
-                  </div><!-- /.box-tools -->
-              </div><!-- /.box-header -->
 
-                 <div class="box-body" id="NewSampleBody">
-                   <p>Explore and process your current samples. First, select the project you want to analyze
-				   and then click on the type of analysis. <code><b>Assembly</b></code> <i class="fa fa-server" style="color:rgb(200,0,30)"></i> or
-				   <code><b>Read matching</b></code> <i class="fa fa-sliders" style="color:rgb(10,0,200)"></i> pipeline.
-				   Note: The raw data and metadata are independent of the analysis pipeline. For instance, if you create a sample under the Assembly
-				   pipeline, the same sample name and metadata will be available for analysis under the Read matching pipeline. So, you don't need to
-				   fill up the same information twice.</p>
-                   <center><label for="ProjectNameSelect">Select Project: </label><select id='ProjectNameSelect'></select></center>
-				   <!--
+
+
+                    <div class="col-md-8">
+                        <div class="box box-solid box-primary " id="NewSample">
+                            <div class="box-header">
+                                <center>
+                                    <h3 class="box-title"><b>My Projects</b></h3>
+                                </center>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+
+                            <div class="box-body" id="NewSampleBody">
+                                <p>Explore and process your current samples. First, select the project you want to analyze and then click on the type of analysis. <code><b>Assembly</b></code> <i class="fa fa-server" style="color:rgb(200,0,30)"></i> or
+                                    <code><b>Read matching</b></code> <i class="fa fa-sliders" style="color:rgb(10,0,200)"></i> pipeline. Note: The raw data and metadata are independent of the analysis pipeline. For instance, if you create a sample under
+                                    the Assembly pipeline, the same sample name and metadata will be available for analysis under the Read matching pipeline. So, you don't need to fill up the same information twice.</p>
+                                <center><label for="ProjectNameSelect">Select Project: </label><select id='ProjectNameSelect'></select></center>
+                                <!--
                    <label for="PipelineSelect">Select Pipeline: </label>
                    <select id='PipelineSelect'>
                      <option value="assembly">Assembly profile</option>
                      <option value="matches">Read matchig profile</option>
                    </select>
 					-->
-					<center>
-					  <a href="#" id="assembly_go" class="button button-rounded button-flat-primary"> <i class="fa fa-server" style="color:rgb(255,255,255)"></i> <b>Assembly</b></a>
-					  <a href="#" id="matches_go" class="button button-rounded button-flat-action"> <i class="fa fa-sliders" style="color:rgb(255,255,255)"></i> <b>Read Matching</b></a>
-					  <a href="#" id="RemoveProject" class="button button-rounded button-flat-caution"><b>Remove Project</b></a>
-					</center>
-					
-					<!--
+                                <center>
+                                    <a href="#" id="assembly_go" class="button button-rounded button-flat-primary"> <i class="fa fa-server" style="color:rgb(255,255,255)"></i> <b>Assembly</b></a>
+                                    <a href="#" id="matches_go" class="button button-rounded button-flat-action"> <i class="fa fa-sliders" style="color:rgb(255,255,255)"></i> <b>Read Matching</b></a>
+                                    <a href="#" id="RemoveProject" class="button button-rounded button-flat-caution"><b>Remove Project</b></a>
+                                </center>
+
+                                <!--
                    <div class="box-footer">
                      <center><button id="UpdateProject" class="btn btn-primary"><i class="fa fa-plus"> Select  </i></button>
                      <button id="RemoveProject" class="btn btn-warning "><i class="fa fa-minus"> Remove  </i></button></center>
                    </div>
 				   -->
-                 </div>
+                            </div>
 
- <div class="overlay" id='my_projects_overlay'>
-				  <i class="fa fa-refresh fa-spin"></i>
-				</div>
+                            <div class="overlay" id='my_projects_overlay'>
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
 
-             </div><!-- /.box -->
-			
-          </div>
-
-
-        <div class="col-md-8" >
-          <div class="box box-solid box-success" id="ProjectStatus">
-             <div class="box-header">
-               <center><h3 class="box-title"><b>Customize Reference Database</b></h3></center>
-               <div class="box-tools pull-right">
-                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-               </div><!-- /.box-tools -->
-            </div><!-- /.box-header -->
-
-               <div class="box-body">
-                 <p>Submit your own reference data set for helping to analyze your metagenomic samples. For details, click on the <code> button below or check the user manual.</code></p>
-               </div>
-
-               <div class="box-footer">
-                 <button id="upload_reference" class="btn btn-success">Submit a new reference database</button>
-
-
-               </div>
-
-
-				<div class="overlay" id='customize_database_overlay'>
-				  <i class="fa fa-refresh fa-spin"></i>
-				</div>
-
-           </div><!-- /.box -->
-        </div>
-
-
-
-
-
-
-<div class="col-md-12" >
-		  <div class="box box-primary" id="Details">
-			 <div class="box-header with-border">
-			   <center><h3 class="box-title"><b>Browse Projects</b></h3></center>
-				<div class="box-body">
-				  <div id='recent_projects'></div>  
-				</div>
-
-				
-
-			</div><!-- /.box-header -->
-			
-			<div class="overlay" id='browse_projects_overlay'>
-				  <i class="fa fa-refresh fa-spin"></i>
-				</div>
-			
-		  </div><!-- /.box -->   
-        </div>
-
-
-
-
-		<div class="col-md-12" hidden>
-		  
-		  <div class="box box-primary" id="Details">
-			 <div class="box-header">
-			   <center><h2 class="box-title"><b>Project's Location</b></h2></center>
-				<div class="box-tools pull-right">
-				  <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-				</div><!-- /.box-tools -->
-			</div><!-- /.box-header -->
-
-			   <div id='LiveUpdate' class="box-body">
-				  <div id="map"></div>
-			   </div>
-			
-			  <div class="overlay" id='project_location_overlay'><i class="fa fa-refresh fa-spin"></i></div>
-			   
-		  </div><!-- /.box -->
-		  
-		  
-		  
-        </div>
-
-		
-		
-		
-		</div>
-      </div><!-- /.content-wrapper -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-	  
-	  <div style="height: 800px" class="row" id='profile_page' hidden>
-		<div class="content body">
-		  <div class="col-md-6">
-			<div class="box box-primary" id="personal_information_homepage">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Personal Information</h3>
-				</div>
-				<!-- /.box-header -->
-				<!-- form start -->
-				<form role="form">
-				  <div class="box-body">
-					
-					<div class="form-group">
-					  <label for="profile_user_id">User ID</label>
-					  <input type="text" class="form-control" id="profile_user_id" readonly>
-					</div>
-					
-					<div class="form-group">
-					  <label for="profile_user_name">User Name</label>
-					  <input type="text" class="form-control" id="profile_user_name" readonly>
-					</div>
-					
-					
-					<div class="form-group">
-					  <label for="profile_user_email">Email</label>
-					  <input type="email" class="form-control" id="profile_user_email">
-					</div>
-					
-					<div class="form-group">
-					  <label for="profile_user_affiliation">Affiliation</label>
-					  <input type="text" class="form-control" id="profile_user_affiliation">
-					</div>
-							  
-				  </div>
-				  <!-- /.box-body -->
-				  <div class="box-footer">
-					<button type="button" class="btn btn-primary" onclick=update_profile(userID)>Update Profile</button>
-				  </div>
-				</form>
-			  </div>
-			</div>
-		  
-		  
-		  
-		  <div class="col-md-6">
-			<div class="box box-primary" id="change_password_homepage">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Change Password</h3>
-				</div>
-				<!-- box-header -->
-				<!-- form start -->
-				<form role="form" id="change_password_form" method="post" enctype="multipart/form-data">
-				  <div class="box-body">
-					
-					<div class="form-group">
-					  <label for="oldp1">Type old password</label>
-					  <input type="password" class="form-control" name="oldp1" >
-					</div>
-					
-					<div class="form-group">
-					  <label for="oldp2">Type new password </label>
-					  <input type="password" class="form-control" name="newp1">
-					</div>
-					
-					
-					<div class="form-group">
-					  <label for="newp">Re-type new password</label>
-					  <input type="password" class="form-control" name="newp2">
-					</div>
-					
-					<div class="form-group" hidden>
-					  <label for="pass_user_id">User ID</label>
-					  <input type="password" class="form-control" id="pass_user_id" name="pass_user_id">
-					</div>
-							  
-				  </div>
-				  <!-- /.box-body -->
-				  <div class="box-footer">
-					<button type="button" class="btn btn-primary" onclick=change_password()>Change Password</button>
-				  </div>
-				</form>
-			  </div>
-			</div>
-
-		  
-		  </div>
-		
-	  </div>
-	  
-	  
-	  
-	  
-	  
-      <div style="min-height: 800px" class="row" id="documentation_page" hidden="">
-        <div class="content body">
-          <div class="col-md-12">
-                <div class="box box-primary" id="documentation_homepage">
-                        <div class="box-header with-border">
-                          <h3 class="box-title">MetaStorm User Manual</h3>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-			<a href="http://bench.cs.vt.edu/Projects/MetaStormUserManual.pdf" target='_blank'>Pdf User Manual</a>
-                    <div>
-                        <h3>User Account:</h3>
-                        <p>
-                            First, either log in as a guest or login to your user account. If you login as a guest, you can visualize public MetaStorm projects, but can not run any analysis. To login to your account, just type your email (user ID) and password. If you have not already registered for MetaStorm, you can create an account by filling in your name, email, and orginization as well as agreeing to the terms on the Request new account page. Once you have done this, wait for an email confirming you new account.
-                        </p>
-                        <img src="/MetaStorm/static/img/image08.png" width="200" height="204"></img>
-                        <img src="/MetaStorm/static/img/image06.png" width="200" height="204"></img>
+                        <!-- /.box -->
+
                     </div>
-                    <div>
-                        <h3>Home Page:</h3>
-                        <p>
-                            On the Home Page you can create new projects, upload new reference databases, browse other projects that have been submitted to MetaStorm, and see projects you have already created.
-                        </p>
-                    </div>
-                    <div>
-                        <div class="col-md-5">
-                            <h4>Creating a new project:</h4>
-                            <p>
-                                This lets you create new projects after entering a project name and description.
-                            </p>
+
+
+                    <div class="col-md-8">
+                        <div class="box box-solid box-success" id="ProjectStatus">
+                            <div class="box-header">
+                                <center>
+                                    <h3 class="box-title"><b>Customize Reference Database</b></h3>
+                                </center>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+
+                            <div class="box-body">
+                                <p>Submit your own reference data set for helping to analyze your metagenomic samples. For details, click on the <code> button below or check the user manual.</code></p>
+                            </div>
+
+                            <div class="box-footer">
+                                <button id="upload_reference" class="btn btn-success">Submit a new reference database</button>
+
+
+                            </div>
+
+
+                            <div class="overlay" id='customize_database_overlay'>
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+
                         </div>
-                        <img src="/MetaStorm/static/img/image04.png" width="419" height="198"></img>
+                        <!-- /.box -->
                     </div>
-                    <div>
-                        <div class="col-md-12">
-                            <h4>Reference Customization:</h4>
-                            <p>
-                                This interface will allow you to submit your own reference database. You will be able to use it during your metagenomics analysis.
-                            </p>
-                            <p>
-                                First you need to prepare the database in the required format. MetaStorm requires two files for setting up the database. Depending on the type of database (taxonomy or annotation), you need to provide a file that contains the taxonomy or the functions for each gene as follows:
-                                <div class="container">
-                                    1. Gene database <b>(Mandatory)</b>. A fasta file where the header corresponds to the gene id e.g.,
-                                    <div class="container" style="color:#3c8dbc;">
-                                        &gtgene_0001<br/>
-                                        ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC<br/>
-                                        &gtgene_0002<br/>
-                                        ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC<br/>
-                                        &gtgene_0003<br/>
-                                        ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+
+
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="box box-primary" id="Details">
+                            <div class="box-header with-border">
+                                <center>
+                                    <h3 class="box-title"><b>Browse Projects</b></h3>
+                                </center>
+                                <div class="box-body">
+                                    <div id='recent_projects'></div>
+                                </div>
+
+
+
+                            </div>
+                            <!-- /.box-header -->
+
+                            <div class="overlay" id='browse_projects_overlay'>
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+
+
+                    <div class="col-md-12" hidden>
+
+                        <div class="box box-primary" id="Details">
+                            <div class="box-header">
+                                <center>
+                                    <h2 class="box-title"><b>Project's Location</b></h2>
+                                </center>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+
+                            <div id='LiveUpdate' class="box-body">
+                                <div id="map"></div>
+                            </div>
+
+                            <div class="overlay" id='project_location_overlay'><i class="fa fa-refresh fa-spin"></i></div>
+
+                        </div>
+                        <!-- /.box -->
+
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <!-- /.content-wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div style="height: 800px" class="row" id='profile_page' hidden>
+                <div class="content body">
+                    <div class="col-md-6">
+                        <div class="box box-primary" id="personal_information_homepage">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Personal Information</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form role="form">
+                                <div class="box-body">
+
+                                    <div class="form-group">
+                                        <label for="profile_user_id">User ID</label>
+                                        <input type="text" class="form-control" id="profile_user_id" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="profile_user_name">User Name</label>
+                                        <input type="text" class="form-control" id="profile_user_name" readonly>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="profile_user_email">Email</label>
+                                        <input type="email" class="form-control" id="profile_user_email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="profile_user_affiliation">Affiliation</label>
+                                        <input type="text" class="form-control" id="profile_user_affiliation">
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary" onclick=update_profile(userID)>Update Profile</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <div class="box box-primary" id="change_password_homepage">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Change Password</h3>
+                            </div>
+                            <!-- box-header -->
+                            <!-- form start -->
+                            <form role="form" id="change_password_form" method="post" enctype="multipart/form-data">
+                                <div class="box-body">
+
+                                    <div class="form-group">
+                                        <label for="oldp1">Type old password</label>
+                                        <input type="password" class="form-control" name="oldp1">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="oldp2">Type new password </label>
+                                        <input type="password" class="form-control" name="newp1">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="newp">Re-type new password</label>
+                                        <input type="password" class="form-control" name="newp2">
+                                    </div>
+
+                                    <div class="form-group" hidden>
+                                        <label for="pass_user_id">User ID</label>
+                                        <input type="password" class="form-control" id="pass_user_id" name="pass_user_id">
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="button" class="btn btn-primary" onclick=change_password()>Change Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div style="min-height: 800px" class="row" id="documentation_page" hidden="">
+                <div class="content body">
+                    <div class="col-md-12">
+                        <div class="box box-primary" id="documentation_homepage">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">MetaStorm User Manual</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <a href="http://bench.cs.vt.edu/Projects/MetaStormUserManual.pdf" target='_blank'>Pdf User Manual</a>
+                                <div>
+                                    <h3>User Account:</h3>
+                                    <p>
+                                        First, either log in as a guest or login to your user account. If you login as a guest, you can visualize public MetaStorm projects, but can not run any analysis. To login to your account, just type your email (user ID) and password. If you have not already
+                                        registered for MetaStorm, you can create an account by filling in your name, email, and orginization as well as agreeing to the terms on the Request new account page. Once you have done this, wait for an email confirming
+                                        you new account.
+                                    </p>
+                                    <img src="/MetaStorm/static/img/image08.png" width="200" height="204"></img>
+                                    <img src="/MetaStorm/static/img/image06.png" width="200" height="204"></img>
+                                </div>
+                                <div>
+                                    <h3>Home Page:</h3>
+                                    <p>
+                                        On the Home Page you can create new projects, upload new reference databases, browse other projects that have been submitted to MetaStorm, and see projects you have already created.
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="col-md-5">
+                                        <h4>Creating a new project:</h4>
+                                        <p>
+                                            This lets you create new projects after entering a project name and description.
+                                        </p>
+                                    </div>
+                                    <img src="/MetaStorm/static/img/image04.png" width="419" height="198"></img>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <h4>Reference Customization:</h4>
+                                        <p>
+                                            This interface will allow you to submit your own reference database. You will be able to use it during your metagenomics analysis.
+                                        </p>
+                                        <p>
+                                            First you need to prepare the database in the required format. MetaStorm requires two files for setting up the database. Depending on the type of database (taxonomy or annotation), you need to provide a file that contains the taxonomy or the functions
+                                            for each gene as follows:
+                                            <div class="container">
+                                                1. Gene database <b>(Mandatory)</b>. A fasta file where the header corresponds to the gene id e.g.,
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    &gtgene_0001<br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    <br/> &gtgene_0002
+                                                    <br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    <br/> &gtgene_0003
+                                                    <br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                2. Taxonomy link file: A tab delimited file containing the gene id and the full taxonomy (as in SILVA database) separated by “;”. For instance:
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    gene_001 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/> gene_002 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/>                                                    gene_003 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                3. Functional link file: A tab delimited file similar to the taxonomy file, containing the function class or category. If a gene contains multiple functional associations, put all of them in different lines, for instance:
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    gene_001 Transcription<br/> gene_002 Transcription<br/> gene_002 RNA-Binding<br/> gene_003 DNA-Repair
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                4. Description File: Upload a tab delimited file named "dataset.description" containing the description of the functional categories as follows:
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    Transcription GO:0003700 transcription factor activity, sequence-specific DNA binding<br/> Membrane GO:0005737 Cellular component<br/> DNARepair GO:0006281 The process of restoring DNA after damage.<br/>
+                                                </div>
+                                                * descriptions are shown for illustration, the 2nd and 3rd fields can be filled with a more comprehensive description.
+                                            </div>
+                                            <br/> In order to setup your <u>new dataset</u> you need to follow the next steps:
+                                            <div class="container">
+                                                1. Click on <u>Submit a reference dataset</u> under the <u>Customize Reference Database</u> box<br/> 2. Fill out the form with the required information:
+                                                <div class="container">
+                                                    a. <b>Dataset name:</b> Type the name of your reference dataset<br/> b. <b>Sequence type:</b> Type if it is a gene or protein database.<br/> c. <b>Description:</b> IMPORTANT Insert the full description
+                                                    of the dataset
+                                                </div>
+                                                3. Click on <u>register reference</u><br/> 4. Upload the files<br/> 5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)<br/> 6. Click on process.
+                                            </div>
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="container">
-                                    2. Taxonomy link file: A tab delimited file containing the gene id and the full taxonomy (as in SILVA database) separated by “;”. For instance:
-                                    <div class="container" style="color:#3c8dbc;">
-                                        gene_001    Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/>
-                                        gene_002    Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/>
-                                        gene_003    Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                <div>
+                                    <div class="col-md-3">
+                                        <h4>Browse Projects:</h4>
+                                        <p>
+                                            This is a list of projects that have been analysed by MetaStorm. On projects that you have access to (your projects or ones that are public), there are links to the results of whichever pipelines have been run.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <img src="/MetaStorm/static/img/image05.png" width="416" height="419"></img>
                                     </div>
                                 </div>
-                                <div class="container">
-                                    3. Functional link file: A tab delimited file similar to the taxonomy file, containing the function class or category. If a gene contains multiple functional associations, put all of them in different lines, for instance:
-                                    <div class="container" style="color:#3c8dbc;">
-                                        gene_001 Transcription<br/>
-                                        gene_002 Transcription<br/>
-                                        gene_002 RNA-Binding<br/>
-                                        gene_003 DNA-Repair
+                                </br>
+                                <div>
+                                    <div class="col-md-4">
+                                        <h4>My Projects:</h4>
+                                        <p>
+                                            This interface lets you select one of your past projects to either remove or run through a pipeline. Clicking on one of the pipelines will take you to the Update Project page for the selected project.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        </br>
+                                        <img src="/MetaStorm/static/img/image13.png" width="515" height="169"></img>
                                     </div>
                                 </div>
-                                <div class="container">
-                                    4. Description File: Upload a tab delimited file named "dataset.description" containing the description of the functional categories as follows:
-                                    <div class="container" style="color:#3c8dbc;">
-                                        Transcription  GO:0003700   transcription factor activity, sequence-specific DNA binding<br/>
-                                        Membrane     GO:0005737     Cellular component<br/>
-                                        DNARepair    GO:0006281    The process of restoring DNA after damage.<br/>
-                                    </div>
-                                    * descriptions are shown for illustration, the 2nd and 3rd fields can be filled with a more comprehensive description.
+                                <div>
+                                    <h3>Update Project:</h3>
                                 </div>
-                                <br/>
-                                In order to setup your <u>new dataset</u> you need to follow the next steps:
-                                <div class="container">
-                                    1. Click on <u>Submit a reference dataset</u> under the <u>Customize Reference Database</u> box<br/>
-                                    2. Fill out the form with the required information:
-                                    <div class="container">
-                                        a. <b>Dataset name:</b> Type the name of your reference dataset<br/>
-                                        b. <b>Sequence type:</b> Type if it is a gene or protein database.<br/>
-                                        c. <b>Description:</b> IMPORTANT Insert the full description of the dataset
+                                <div>
+                                    <div class="col-md-12">
+                                        <h4>Samples Page:</h4>
+                                        <p>
+                                            The first thing you will see here is the Samples page which lets you see and edit metadata about the samples that you have uploaded for this project.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image02.png" width="845" height="375"></img>
                                     </div>
-                                    3. Click on <u>register reference</u><br/>
-                                    4. Upload the files<br/>
-                                    5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)<br/>
-                                    6. Click on process.
                                 </div>
-                            </p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-md-3">
-                            <h4>Browse Projects:</h4>
-                            <p>
-                                This is a list of projects that have been analysed by MetaStorm.
-                                On projects that you have access to (your projects or ones that are public), there are links to the results of whichever pipelines have been run.
-                            </p>
-                        </div>
-                        <div class="col-md-9">
-                            <img src="/MetaStorm/static/img/image05.png" width="416" height="419"></img>
-                        </div>
-                    </div>
-                    </br>
-                    <div>
-                        <div class="col-md-4">
-                            <h4>My Projects:</h4>
-                            <p>
-                                This interface lets you select one of your past projects to either remove or run through a pipeline. Clicking on one of the pipelines will take you to the Update Project page for the selected project.
-                            </p>
-                        </div>
-                        <div class="col-md-8">
-                            </br>
-                            <img src="/MetaStorm/static/img/image13.png" width="515" height="169"></img>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Update Project:</h3>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            <h4>Samples Page:</h4>
-                            <p>
-                                The first thing you will see here is the Samples page which lets you see and edit metadata about the samples that you have uploaded for this project.
-                            </p>
-                            <img src="/MetaStorm/static/img/image02.png" width="845" height="375"></img>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            </br>
-                            <h4>Project Page:</h4>
-                            <p>
-                                The Project page displays the name and description of your project, lets you share this project with other email address, or make it public.
-                            </p>
-                            <img src="/MetaStorm/static/img/image01.png" width="833" height="291"></img>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            </br>
-                            <h4>Upload Raw Files Page:</h4>
-                            <p>
-                                The Upload Raw Files page lets you upload new samples as gzipped fastq files (e.g. Sample1_R1.fastq.gz).
-                            </p>
-                            <img src="/MetaStorm/static/img/image03.png" width="840" height="415"></img>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            </br>
-                            <h4>Setup Metadata Page:</h4>
-                            <p>
-                                The Setup Metadata page lets you add the samples and associated metadata to your project. There are instructions for this at the bottom of the page.
-                            </p>
-                            <img src="/MetaStorm/static/img/image11.png" width="836" height="376"></img>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            </br>
-                            <h4>Run Analysys Page:</h4>
-                            <p>
-                                The Run Analysis page lets you start the analysis of your samples using the selected pipeline after selecting which reference databases you want to use. This is where you the files that you have uploaded and the metadata that you entered.
-                            </p>
-                            <img src="/MetaStorm/static/img/image09.png" width="843" height="385"></img>
-                            <p>
-                                You will get an email notifying you of the pipeline's completion. The project will then be listed under the Browse Projects section of the main page. Clicking on the pipeline name under the Analysis column will take you to the Explore Project page.
-                            </p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Explore Project:</h3>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            <p>
-                                This screen is a read only copy of the Update Project page.
-                            </p>
-                            <img src="/MetaStorm/static/img/image12.png" width="795" height="172"></img>
-                            <p>
-                                It displays the project and sample metadata. Clicking on the Unique Identifier for a sample will take you to the View Sample page.
-                            </p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>View Sample:</h3>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            <p>
-                                This page shows the metadata for the selected sample, as well as results from the selected pipeline. It also lets you download the original sample files and Scaffolds and Genes found by the Assembly Pipeline.
-                            </p>
-                            <img src="/MetaStorm/static/img/image14.png" width="804" height="230"></img>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Comparison Tool</h3>
-                    </div>
-                    <div>
-                        <div class="col-md-12">
-                            <p>
-                                The Comparison Tool can be found on the menu of the Home page.
-                            </p>
-                            <img src="/MetaStorm/static/img/image10.png" width="785" height="377"></img>
-                            <p>
-                                It lets you compare samples from the selected projects.
-                            </p>
-                            <img src="/MetaStorm/static/img/image07.png" width="877" height="154"></img>
-                            <p>
-                                It visualizes the breakup of taxonomical data (domain, phylum, class, order, family, genus, species) of each sample side by side.
-                            </p>
-                            <img src="/MetaStorm/static/img/image00.png" width="798" height="448"></img>
+                                <div>
+                                    <div class="col-md-12">
+                                        </br>
+                                        <h4>Project Page:</h4>
+                                        <p>
+                                            The Project page displays the name and description of your project, lets you share this project with other email address, or make it public.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image01.png" width="833" height="291"></img>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        </br>
+                                        <h4>Upload Raw Files Page:</h4>
+                                        <p>
+                                            The Upload Raw Files page lets you upload new samples as gzipped fastq files (e.g. Sample1_R1.fastq.gz).
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image03.png" width="840" height="415"></img>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        </br>
+                                        <h4>Setup Metadata Page:</h4>
+                                        <p>
+                                            The Setup Metadata page lets you add the samples and associated metadata to your project. There are instructions for this at the bottom of the page.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image11.png" width="836" height="376"></img>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        </br>
+                                        <h4>Run Analysys Page:</h4>
+                                        <p>
+                                            The Run Analysis page lets you start the analysis of your samples using the selected pipeline after selecting which reference databases you want to use. This is where you the files that you have uploaded and the metadata that you entered.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image09.png" width="843" height="385"></img>
+                                        <p>
+                                            You will get an email notifying you of the pipeline's completion. The project will then be listed under the Browse Projects section of the main page. Clicking on the pipeline name under the Analysis column will take you to the Explore Project page.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Explore Project:</h3>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <p>
+                                            This screen is a read only copy of the Update Project page.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image12.png" width="795" height="172"></img>
+                                        <p>
+                                            It displays the project and sample metadata. Clicking on the Unique Identifier for a sample will take you to the View Sample page.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>View Sample:</h3>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <p>
+                                            This page shows the metadata for the selected sample, as well as results from the selected pipeline. It also lets you download the original sample files and Scaffolds and Genes found by the Assembly Pipeline.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image14.png" width="804" height="230"></img>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Comparison Tool</h3>
+                                </div>
+                                <div>
+                                    <div class="col-md-12">
+                                        <p>
+                                            The Comparison Tool can be found on the menu of the Home page.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image10.png" width="785" height="377"></img>
+                                        <p>
+                                            It lets you compare samples from the selected projects.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image07.png" width="877" height="154"></img>
+                                        <p>
+                                            It visualizes the breakup of taxonomical data (domain, phylum, class, order, family, genus, species) of each sample side by side.
+                                        </p>
+                                        <img src="/MetaStorm/static/img/image00.png" width="798" height="448"></img>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-             </div>
-          </div>
-        </div>
-      </div>
- 
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  <div class="row" id='comparison_form' style="min-height: 1000px" hidden>
-		<div class="col-md-12">
-		  
-		  
-		  
-		  <div class="col-md-7">
-			<div class="box box-primary">
-			  <div id="browse_projects_comparison">  </div>
-			</div>
-		  </div>
-		  
-		  <div class="col-md-5">
-			<h3>Selected Projects:</h3>
-			<select id="projects_compare_list" size=10 style="width: 100%"></select>
-			<center>
-			  <button onclick=remove_selection("#projects_compare_list") id='selected_projects'> Clear </button>
-			  <button onclick=button_selected_projects("#projects_compare_list") id='selected_projects'> Compare </button>
-			</center>
-			<div id='list_selected_projects'></div>
-		  </div>
-		</div> 
-	  </div>
-	  
-	  
-	  
-	  
-	  
-	  
-	<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=ehXV&d=k1Wc56Z5EEs9EEgLlKLZKoNTJhBtXdBLv5cO3SOwkAU"></script>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark control-sidebar-close">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- Home tab content -->
-          <div class="tab-pane active" id="control-sidebar-home-tab"
+            </div>
 
 
 
@@ -982,29 +932,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-          </div><!-- /.tab-pane -->
-          <!-- Stats tab content -->
-          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
-          <!-- Settings tab content -->
-          <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-              <h3 class="control-sidebar-heading">General Settings</h3>
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
+
+
+
+
+
+            <div class="row" id='comparison_form' style="min-height: 1000px" hidden>
+                <div class="col-md-12">
+
+
+
+                    <div class="col-md-7">
+                        <div class="box box-primary">
+                            <div id="browse_projects_comparison"> </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <h3>Selected Projects:</h3>
+                        <select id="projects_compare_list" size=10 style="width: 100%"></select>
+                        <center>
+                            <button onclick=remove_selection( "#projects_compare_list") id='selected_projects'> Clear </button>
+                            <button onclick=button_selected_projects( "#projects_compare_list") id='selected_projects'> Compare </button>
+                        </center>
+                        <div id='list_selected_projects'></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=ehXV&d=k1Wc56Z5EEs9EEgLlKLZKoNTJhBtXdBLv5cO3SOwkAU"></script>
+
+
+
+
+
+
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark control-sidebar-close">
+                <!-- Create the tabs -->
+                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                    <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- Home tab content -->
+                    <div class="tab-pane active" id="control-sidebar-home-tab" </div>
+                        <!-- /.tab-pane -->
+                        <!-- Stats tab content -->
+                        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+                        <!-- /.tab-pane -->
+                        <!-- Settings tab content -->
+                        <div class="tab-pane" id="control-sidebar-settings-tab">
+                            <form method="post">
+                                <h3 class="control-sidebar-heading">General Settings</h3>
+                                <div class="form-group">
+                                    <label class="control-sidebar-subheading">
                   Report panel usage
                   <input type="checkbox" class="pull-right" checked />
                 </label>
-                <p>
-                  Some information about this general settings option
-                </p>
-              </div><!-- /.form-group -->
-            </form>
-          </div><!-- /.tab-pane -->
-        </div>
-      </aside><!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
+                                    <p>
+                                        Some information about this general settings option
+                                    </p>
+                                </div>
+                                <!-- /.form-group -->
+                            </form>
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+            </aside>
+            <!-- /.control-sidebar -->
+            <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
+            <div class="control-sidebar-bg"></div>
 
 
 
@@ -1019,17 +1025,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-    </div><!-- ./wrapper -->
-	
-      <!-- Main Footer -->
-      <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-          Computer Science department VT
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2016 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
-      </footer>
+            </div>
+            <!-- ./wrapper -->
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    Computer Science department VT
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2016 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
+            </footer>
 
 
 
@@ -1055,60 +1062,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-    <!-- REQUIRED JS SCRIPTS -->
+            <!-- REQUIRED JS SCRIPTS -->
 
-    <!-- jQuery 2.1.4 -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
+            <!-- jQuery 2.1.4 -->
+            <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+            <!-- Bootstrap 3.3.2 JS -->
+            <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+            <!-- AdminLTE App -->
+            <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
 
-    <!--main js file-->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main_user_page.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/metadata.js') }}"></script>
-  
-		<link rel="stylesheet" href="/MetaStorm/static/buttons/css/buttons.css">
-	<script type="text/javascript" src="/MetaStorm/static/buttons/js/buttons.js"></script>
-	
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-	
-	
-	<link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
-	
-	<script type="text/javascript" src="/MetaStorm/static/jqw/scripts/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxcore.js"></script>
-	<script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxbuttons.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxscrollbar.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdata.js"></script> 
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdata.export.js"></script> 
-	<script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdatatable.js"></script>	
-    <script type="text/javascript" src="/MetaStorm/static/jqw/demos/jqxgrid/generatedata.js"></script>
-    
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxlistbox.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdropdownlist.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxmenu.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxpanel.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxcalendar.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdatetimeinput.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxnumberinput.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/scripts/demos.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/globalization/globalize.js"></script>
-	
-	<link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.darkblue.css">
-	
-	
+            <!--main js file-->
+            <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js/main_user_page.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js/metadata.js') }}"></script>
 
-	
+            <link rel="stylesheet" href="/MetaStorm/static/buttons/css/buttons.css">
+            <script type="text/javascript" src="/MetaStorm/static/buttons/js/buttons.js"></script>
+
+            <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+
+
+            <link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+            <script type="text/javascript" src="/MetaStorm/static/jqw/scripts/jquery-1.11.1.min.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxcore.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxbuttons.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxscrollbar.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdata.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdata.export.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdatatable.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/demos/jqxgrid/generatedata.js"></script>
+
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxlistbox.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdropdownlist.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxmenu.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxpanel.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxcalendar.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxdatetimeinput.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxnumberinput.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/scripts/demos.js"></script>
+            <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/globalization/globalize.js"></script>
+
+            <link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.darkblue.css">
 
 
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQ__-dkSKo4rGct8JR-zFGNHKdbdqGSc&callback=initMap" ></script>
 
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+
+
+
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQ__-dkSKo4rGct8JR-zFGNHKdbdqGSc&callback=initMap"></script>
+
+            <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the
           fixed layout. -->
-  </body>
+</body>
+
 </html>
