@@ -242,6 +242,8 @@ window.onload = function() {
         var rid = $("#selectDataset option:selected").val();
         var norm = $("#selectNormalization option:selected").val();
         var minA = parseFloat($("#minA").val());
+        var taxoLevel = $("#selectTaxonomyLevel option:selected").val();
+
         sel = get_checkbox("selectSampleToCompare")
         snm = get_checkbox_text("selectSampleToCompare")
 
@@ -264,21 +266,18 @@ window.onload = function() {
             success: function(x) {
 
                 if (x.aid == "taxonomy") {
+                    // show taxonomy relative abundance
+                    display_stack_taxonomy(taxoLevel, "stack_taxo");
+
                     $("#tree").height("800")
                         //stk=process_stacked_from_tree(x.matrix2)
-                    console.log(x)
                     ptree(x.tree, [0, x.N[0].length / 2, x.N[0].length], "#tree", 1, "id", 'samples', width = 2000, height = 750, rsize = 10, condition = "one", pip = pip, rid, 10)
-                } else {
-
                 }
 
-                //treeData, domain,tag,clpd,names, Pcolor='rpkm', width=3000, height=525, rsize=10, condition="one"
-                //$("#PieChart1Taxo").html("well well well")
-                //set_taxonomy_small_pie_chart("Phylum")
             }
         });
 
-        display_stack_taxonomy("Phylum", "stack_taxo");
+        // display_stack_taxonomy("Phylum", "stack_taxo");
         // display_stack_taxonomy("Class", "stack_class");
         // display_stack_taxonomy("Order", "stack_order");
         // display_stack_taxonomy("Family", "stack_family");
