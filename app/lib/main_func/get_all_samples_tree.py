@@ -27,14 +27,14 @@ def taxonomy(data):
     rootvar.mkdir(rootvar.__ROOTPRO__+"/"+pid+"/"+pipeline+"/RESULTS/")
     all_samples_tree_file=rootvar.__ROOTPRO__+"/"+pid+"/"+pipeline+"/RESULTS/"+rid+".all_samples_tree.pk"
     #
-    stored_samples=0
-    if os.path.isfile(all_samples_tree_file):
-        #print '\n\n\n if the X file has been created'
-        x=sql.SQL(all_samples_tree_file+".db")
-        val=x.exe("select distinct sample_name from full_matrix")
-        stored_samples=len(val)
-    #
-    x=sql.SQL(main_db)
+    # stored_samples=0
+    # if os.path.isfile(all_samples_tree_file):
+    #     #print '\n\n\n if the X file has been created'
+    #     x=sql.SQL(all_samples_tree_file+".db")
+    #     val=x.exe("select distinct sample_name from full_matrix")
+    #     stored_samples=len(val)
+    # #
+    # x=sql.SQL(main_db)
     # TODO !! HERE the status of the sample is not being checed, it has to be checked seems that the database is being lock for some unknown reason!! 
     sids=x.exe('select c.sample_id from (select * from samples a inner join (select * from sample_status where pip="'+str(pipeline)+'") b on a.sample_id==b.sid) c where c.project_id=="'+pid+'" and c.rid="'+rid+'"')
     #
@@ -53,17 +53,22 @@ def taxonomy(data):
     #print '\n\n\n So for each sample I get all the information from the sql tables. And create the tree \n\n\n\n\n\n'
     #
     for sid in sids:
-        samples=x.exe('select * from samples where project_id="'+pid+'" and sample_id="'+sid[0]+'"')
-        xpath=x.project(pid)[0][4]
-        sample=rootvar.samples(samples[0],xpath)
-        rf=rootvar.result_files(pid,analysis,pipeline,sample.id,rid)
-        view=rootvar.ViewSampleResults(sample,pipeline,rid,analysis,rf)
-        FULL_MATRIX+=view.all()
-        Gp=nx.read_gpickle(rf.pk)
-        edges+=Gp.edges()
-        for node in Gp.nodes():
-            if not node in nodes:
-                nodes[node]=Gp.node[node]['level']
+        try:
+            samples=x.exe('select * from samples where project_id="'+pid+'" and sample_id="'+sid[0]+'"')
+            xpath=x.project(pid)[0][4]
+            sample=rootvar.samples(samples[0],xpath)
+            rf=rootvar.result_files(pid,analysis,pipeline,sample.id,rid)
+            view=rootvar.ViewSampleResults(sample,pipeline,rid,analysis,rf)
+            FULL_MATRIX+=view.all()
+            Gp=nx.read_gpickle(rf.pk)
+            edges+=Gp.edges()
+            for node in Gp.nodes():
+                if not node in nodes:
+                    nodes[node]=Gp.node[node]['level']
+        except:
+            # IGNORE samples that don't have information
+            pass
+    
     x.close()
     rootvar.full_matrix_sql(all_samples_tree_file+".db", FULL_MATRIX)
     G=nx.DiGraph()
