@@ -270,27 +270,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="tab-pane" id="tafo">
                             <div class="col-md-12">
                                 <div class="box box-solid">
-                                    <div class="col-md-6 col-md-offset-3">
-                                        <div class="box box-solid">
-                                            <div class="box-body">
-                                                <label for='selectPipeline'>Select dataset: </label>
-                                                <select id='selectDataset'></select>
+                                    <div class="box-body">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="box box-solid">
+                                                <div class="box-body">
+                                                    <label for='selectPipeline'>Select dataset: </label>
+                                                    <select id='selectDataset'></select>
 
-                                                <input style="width:40px" type="text" value="0" id="minA" hidden>
-                                                <br>
-                                                <label for='selectNormalization'>Select Normalization: </label>
-                                                <select id='selectNormalization'>
+                                                    <input style="width:40px" type="text" value="0" id="minA" hidden>
+                                                    <br>
+                                                    <label for='selectNormalization'>Select Normalization: </label>
+                                                    <select id='selectNormalization'>
                                           <option value="rpkm">RPKM</option>
                                           <option value="scale">Scale</option>
                                         </select>
-                                                <br>
-                                                <p style="display: inline"><b>Select</b> <code>top</code> <b>results:
+                                                    <br>
+                                                    <p style="display: inline"><b>Select</b> <code>top</code> <b>results:
                                           <br> </b> From </p> <input style="display: inline" style="width:10px" type="text" value="1" id="b2">
-                                                <p style="display: inline"> to: </p>
-                                                <input style="display: inline" style="width:10px" type="text" value="20" id="e2">
-                                                <br>
-                                                <label for='selectNormalization'>Select Taxonomy Level: </label>
-                                                <select id='selectTaxonomyLevel'>
+                                                    <p style="display: inline"> to: </p>
+                                                    <input style="display: inline" style="width:10px" type="text" value="20" id="e2">
+                                                    <br>
+                                                    <label for='selectNormalization'>Select Taxonomy Level: </label>
+                                                    <select id='selectTaxonomyLevel'>
                                           <option value="sphylum">Phylum</option>
                                           <option value="sclass">Class</option>
                                           <option value="sorder">Order</option>
@@ -298,34 +299,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           <option value="sgenus">Genus</option>
                                           <option value="sspecies">Species</option>
                                         </select>
-                                                <hr>
-                                                <button id="compareSamplesButton" type="button" class="btn btn-primary">Compare</button>
+                                                    <hr>
+                                                    <button id="compareSamplesButton" type="button" class="btn btn-primary">Compare</button>
 
-                                                <hr>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12">
-                                        <h3> Sample Comparison</h3>
-                                        <p>This visualization shows the taxonomy relative abundance of the analyzed samples. </p>
-
-
-                                        <div class=" col-md-12">
-                                            <div class="box box-solid">
-
-                                                <h4>Stacked Bars - Relative Abundance</h4>
-                                                <div class="box-body" id='stack_taxo' style="height:auto; width:100%; overflow:auto"></div>
-                                                <h4>Heatmap - Relative Abundance</h4>
-                                                <div class="box-body" id='stack_taxo_ht' style="height:auto; width:100%; overflow:auto"></div>
-
+                                                    <hr>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <h3> Taxonomy Tree</h3>
-                                        <div id="tree" style='height:800px; width:800px; overflow:auto'></div>
 
+                                        <div class="col-md-12">
+                                            <h3> Sample Comparison</h3>
+                                            <p>This visualization shows the taxonomy relative abundance of the analyzed samples. </p>
+
+
+                                            <div class=" col-md-12">
+                                                <div class="box box-solid">
+
+                                                    <h4>Stacked Bars - Relative Abundance</h4>
+                                                    <div class="box-body" id='stack_taxo' style="height:auto; width:100%; overflow:auto"></div>
+                                                    <h4>Heatmap - Relative Abundance</h4>
+                                                    <div class="box-body" id='stack_taxo_ht' style="height:auto; width:100%; overflow:auto"></div>
+
+                                                </div>
+                                            </div>
+
+                                            <h3> Taxonomy Tree</h3>
+                                            <div id="tree" style='height:800px; width:800px; overflow:auto'></div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
