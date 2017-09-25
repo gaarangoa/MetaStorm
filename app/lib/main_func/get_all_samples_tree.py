@@ -36,7 +36,7 @@ def taxonomy(data):
     # #
     x=sql.SQL(main_db)
     # TODO !! HERE the status of the sample is not being checed, it has to be checked seems that the database is being lock for some unknown reason!! 
-    sids=x.exe('select c.sample_id from (select * from samples a inner join (select * from sample_status where pip="'+str(pipeline)+'") b on a.sample_id==b.sid) c where c.project_id=="'+pid+'" and c.rid="'+rid+'"')
+    # sids=x.exe('select c.sample_id from (select * from samples a inner join (select * from sample_status where pip="'+str(pipeline)+'") b on a.sample_id==b.sid) c where c.project_id=="'+pid+'" and c.rid="'+rid+'"')
     #
     #
     #print '\n\n\n\n super important \n', sids
