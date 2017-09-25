@@ -278,8 +278,6 @@ window.onload = function() {
             }
         });
 
-
-        // display_stack_taxonomy("Domain", "stack_domain");
         display_stack_taxonomy("Phylum", "stack_taxo");
         // display_stack_taxonomy("Class", "stack_class");
         // display_stack_taxonomy("Order", "stack_order");
