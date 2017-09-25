@@ -421,7 +421,7 @@ window.onload = function() {
         //$("#tree").html('')
         //$("#PieChart1Taxo").html("")
         sendv = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: level, minA: minA, norm: norm, snames: snm, ib: b2, ie: e2 }
-            //console.log(sendv)
+        console.log(sendv)
         $.ajax({
             url: machine + "get_all_samples_tree",
             type: "POST",
