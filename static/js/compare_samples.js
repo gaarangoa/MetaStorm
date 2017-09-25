@@ -176,7 +176,7 @@ window.onload = function() {
         data: JSON.stringify({ sql: cmd }),
         contentType: "application/json; charset=utf-8",
         success: function(x) {
-            console.log(x)
+            // console.log(x)
             for (i = 0; i < x.data.length; i++) {
                 //if(x.data[i]['']=="done"){
                 $("#selectSampleToCompare").append('<input type="checkbox" name="selectSampleToCompare" value="' + x.data[i]['sample_id'] + "_" + x.data[i]['sample_name'] + '" checked > <b>' + x.data[i]['sample_name'] + '</b>  (' + x.data[i]['sample_id'] + ')<br>')
@@ -254,7 +254,7 @@ window.onload = function() {
             //$("#PieChart1Taxo").html("")
         sent = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: "Phylum", minA: minA, norm: norm, snames: snm }
 
-        console.log(sent);
+        // console.log(sent);
 
         // Display the tree
         $.ajax({
@@ -329,7 +329,7 @@ window.onload = function() {
         $("#stackedplot").width('auto')
             //$("#PieChart1Taxo").html("")
         sent = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: "Phylum", minA: minA, norm: norm, ib: b, ie: e, snames: snm }
-        console.log(sent)
+            // console.log(sent)
 
         $.ajax({
             url: machine + "get_all_samples_tree",
@@ -338,8 +338,8 @@ window.onload = function() {
             data: JSON.stringify(sent),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
-                console.log(x)
-                    //alert(x.heatmap)
+                // console.log(x)
+                //alert(x.heatmap)
                 if (x.aid == "taxonomy") {
 
                 } else {
@@ -412,7 +412,7 @@ window.onload = function() {
         //$("#tree").html('')
         //$("#PieChart1Taxo").html("")
         sendv = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: level, minA: minA, norm: norm, snames: snm, ib: b2, ie: e2 }
-        console.log(sendv)
+            // console.log(sendv)
         $.ajax({
             url: machine + "get_all_samples_tree",
             type: "POST",
@@ -420,9 +420,9 @@ window.onload = function() {
             data: JSON.stringify(sendv),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
-                console.log(x)
-                    //$("#tree").height("600")
-                    //ptree(x.tree,[0,pip.length/2,pip.length],"#tree",1,"id",'samples',width=3000, height=525, rsize=10, condition="mult", pip, rid)
+                // console.log(x)
+                //$("#tree").height("600")
+                //ptree(x.tree,[0,pip.length/2,pip.length],"#tree",1,"id",'samples',width=3000, height=525, rsize=10, condition="mult", pip, rid)
                 cl = x.heatmap.data.feature_names.length
                 clsize = 10 * 10 + 200;
                 //console.log(x.heatmap)
