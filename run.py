@@ -1268,6 +1268,7 @@ from app.lib.inchlib import inchlib_clust as IL
 def get_all_samples_tree():
 	try:
 		data = request.get_json()
+		return "step 1"
 		X=GetSamplesTree.run(data)
 		minA=data['minA']
 		if data['norm']=="scale":
@@ -1292,6 +1293,7 @@ def get_all_samples_tree():
 		if X[0]=='taxonomy':
 			tree=X[1]
 			matrix=rootvar.get_matrix_level(data,data["lid"])
+			
 			#return jsonify(x=matrix)
 			samples_sel=data["snames"]#list(set([str(i[0]) for i in matrix]))
 			M,N=rootvar.v2m(matrix,samples_sel,nzt,0) # N is not log2 transformed, M its id
