@@ -70,7 +70,7 @@ def taxonomy(data):
             pass
     
     x.close()
-    rootvar.full_matrix_sql(all_samples_tree_file+".db", FULL_MATRIX)
+    # rootvar.full_matrix_sql(all_samples_tree_file+".db", FULL_MATRIX)
     G=nx.DiGraph()
     for i in edges:
         if not i in G.edges():
