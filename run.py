@@ -1268,8 +1268,10 @@ from app.lib.inchlib import inchlib_clust as IL
 def get_all_samples_tree():
 	try:
 		data = request.get_json()
-		return "step 1"
+		
 		X=GetSamplesTree.run(data)
+		return "step 1"
+		
 		minA=data['minA']
 		if data['norm']=="scale":
 			nzt=1
