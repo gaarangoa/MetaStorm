@@ -23,7 +23,7 @@ def taxonomy(data):
     FULL_MATRIX=[]
     #first see if the data set contains taxonomy, function or both annotations
     analysis="taxonomy"
-    #print '\n\n\n here we goo!!!\n\n\n', pipeline
+    # print '\n\n\n here we goo!!!\n\n\n', pipeline
     rootvar.mkdir(rootvar.__ROOTPRO__+"/"+pid+"/"+pipeline+"/RESULTS/")
     all_samples_tree_file=rootvar.__ROOTPRO__+"/"+pid+"/"+pipeline+"/RESULTS/"+rid+".all_samples_tree.pk"
     #
@@ -42,11 +42,11 @@ def taxonomy(data):
     #print '\n\n\n\n super important \n', sids
     #print '\n\n\n get all the samples from the X file'
     #   
-    if os.path.isfile(all_samples_tree_file) and stored_samples == len(sids):
-        #print 'both have the same length'
-        G=nx.read_gpickle(all_samples_tree_file)
-        tree=json_graph.tree_data(G,root='R')
-        return ["taxonomy",tree]
+    # if os.path.isfile(all_samples_tree_file) and stored_samples == len(sids):
+    #     #print 'both have the same length'
+    #     G=nx.read_gpickle(all_samples_tree_file)
+    #     tree=json_graph.tree_data(G,root='R')
+    #     return ["taxonomy",tree]
     #section
     #print '\n\n\n SO the file has not been created, because the matrix of abundances has not been fetched for those samples'
     nodes={}
