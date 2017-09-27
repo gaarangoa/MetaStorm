@@ -4,7 +4,8 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>MetaStorm | UpdateProject</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -39,46 +40,66 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <style>
-    h1 { padding: .2em; margin: 0; }
-    #products { float:left; width: 500px; margin-right: 2em; }
-    #cart { width: 200px; float: left; margin-top: 1em; }
-    /* style the list to maximize the droppable hitarea */
-    #cart ol { margin: 0; padding: 1em 0 1em 3em; }
-	
-	.nav-tabs-custom {
-	  margin-bottom: 20px;
-	  background: #fff;
-	  box-shadow: 0 1px 1px rgba(0, 0, 0, 0);
-	  border-radius: 3px;
-	}
-	
+        h1 {
+            padding: .2em;
+            margin: 0;
+        }
+        
+        #products {
+            float: left;
+            width: 500px;
+            margin-right: 2em;
+        }
+        
+        #cart {
+            width: 200px;
+            float: left;
+            margin-top: 1em;
+        }
+        /* style the list to maximize the droppable hitarea */
+        
+        #cart ol {
+            margin: 0;
+            padding: 1em 0 1em 3em;
+        }
+        
+        .nav-tabs-custom {
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0);
+            border-radius: 3px;
+        }
     </style>
 
 
     <!-- pretty tables handsontable -->
     <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
-	<!--	<script src="http://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
+    <script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <!--	<script src="http://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
 		<script src="http://handsontable.com//bower_components/handsontable-ruleJS/src/handsontable.formula.js"></script>
     -->
 
 
-	<!--upload library-->
-	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plupload/jquery.ui.plupload/css/jquery.ui.plupload.css') }}"></link>
-	
-	
-	
+    <!--upload library-->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plupload/jquery.ui.plupload/css/jquery.ui.plupload.css') }}"></link>
+
+
+
 
 
 
 
     <script>
-      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-	</script>
+        var $SCRIPT_ROOT = {
+            {
+                request.script_root | tojson | safe
+            }
+        };
+    </script>
 
-  </head>
-  <!--
+</head>
+<!--
   BODY TAG OPTIONS:
   =================
   Apply one or more of the following classes to get the
@@ -98,31 +119,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
   |               | sidebar-mini                            |
   |---------------------------------------------------------|
   -->
-  <body class="skin-blue sidebar-mini" >
+
+<body class="skin-blue sidebar-mini">
     <div class="wrapper">
 
-      <!-- Main Header -->
-      <header class="main-header">
+        <!-- Main Header -->
+        <header class="main-header">
 
-        <!-- Logo -->
-        <a href="" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>M</b>S</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Meta</b>Storm</span>
-        </a>
+            <!-- Logo -->
+            <a href="" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>M</b>S</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Meta</b>Storm</span>
+            </a>
 
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-              <!-- Tasks Menu 
+                        <!-- Tasks Menu 
               <li class="dropdown tasks-menu">
                 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -159,45 +181,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <!-- User Account Menu -->
 
-              <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
 
-          <!-- Sidebar user panel (optional) -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-              <p id="UserName1"></p>
-              <p id="userID"></p>
-              <p id="UserContact"></p>
-            </div>
-          </div>
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p id="UserName1"></p>
+                        <p id="userID"></p>
+                        <p id="UserContact"></p>
+                    </div>
+                </div>
 
-          <!-- search form (Optional) -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..." />
-              <span class="input-group-btn">
+                <!-- search form (Optional) -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
-            </div>
-          </form>
-          <!-- /.search form -->
-          <ul id='sidemenu' class="sidebar-menu">
-			<!--
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <ul id='sidemenu' class="sidebar-menu">
+                    <!--
 			<li class="treeview">
 			  <a href="#">
 				<i class="fa fa-laptop"></i>
@@ -211,13 +233,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			  </ul>
 			</li>
 			-->
-            <li class="treeview"><a href='#' onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
-			<!-- <li class="treeview"><a href='http://bench.cs.vt.edu/Projects/Metagenome.tar.gz'><i class="fa fa-sign-out"></i> <span>Test sample submission</span></a></li> -->
-          </ul>
-          <!-- Sidebar Menu -->
-        </section>
-        <!-- /.sidebar -->
-      </aside>
+                    <li class="treeview"><a href='#' onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <!-- <li class="treeview"><a href='http://bench.cs.vt.edu/Projects/Metagenome.tar.gz'><i class="fa fa-sign-out"></i> <span>Test sample submission</span></a></li> -->
+                </ul>
+                <!-- Sidebar Menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
 
 
 
@@ -254,131 +276,148 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper" style="height: auto; overflow: auto">
-        <!-- Content Header (Page header) -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="height: auto; overflow: auto">
+            <!-- Content Header (Page header) -->
 
-        <!-- Main content -->
-        <!--############################-->
-
-
-
-
-				<br>
-
-
-
-                 <div class="nav-tabs-custom">
-                   <ul class="nav nav-tabs"  >
-					<li><a href="#pinfo" data-toggle="tab"><h4>Project</h4></a></li>
-                     
-					 <li><a href="#tab_upo" data-toggle="tab"><h4>Upload Raw Files</h4></a></li>
-					 
-					 <li class="active"><a href="#samfo" data-toggle="tab"><h4>Samples</h4></a></li>
-					 <li><a href="#inso" data-toggle="tab"><h4>Setup Metadata</h4></a></li>
-                     
-                     <li><a href="#runo" data-toggle="tab"><h4>Run Analysis</h4></a></li>
-                     
-                     
-                     <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-                   </ul>
-
-                   <div class="tab-content" style="height: 0px; background-color:#ecf0f5">
-					
-					<br><br>
-					
-					<div class="tab-pane" id="tab_upo">
-					  
-					  
-					  
-					  
-					  <form  id="form" method="post" action="dump.php">
-						  <center>
-						  <div style="width:auto" id="uploader" >
-							  <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
-						  </div>
-						  </center>
-						  <br />
-						  <input type="submit" value="Submit" hidden/>
-					  </form>
-					  
-					  
-					  <div class="callout callout-white lead col-md-4">
-						<center>
-						  <h2># Instructions</h2>
-						  Upload your raw files as compressed<b> *.fastq.gz </b> files for both paired-end mates. Uploading compressed files will decrease
-						  the chance of transfer errors. For example <code>Sample1_R1.fastq.gz</code>, <code>Sample1_R2.fastq.gz</code>. 
-						</center>
-					  </div>
-					  
-					  <div class="callout callout-white lead col-md-4">
-						<center>
-						  <h2># Success</h2>
-						  Please don't close this windown untill all the samples have been uploaded. Sometimes even if the upload
-						  status is 100% you may need to wait until the files are completed transfered. <br><b>TIP</b>:
-						  Wait until the <code>Stop Upload</code> button is not visible. 
-						</center>
-					  </div>
-					  
-					  <div class="callout callout-white lead col-md-4">
-						<center>
-						  <h2># Example</h2>
-						  If you are a new MetaStorm user, <a style="color: blue" href="http://bench.cs.vt.edu/Projects/Metagenome.tar.gz">here</a>
-						  you can find a set of small compressed samples for testing the complete process of metagenomics annotation. 
-						</center>
-					  </div>
-            </div>
-				
-					
-					
-                    <div class="tab-pane" id="pinfo" >
-					  
-					  <center><h2 id="updatePname"></h2></center><br><br>
-					  
-					  <div class="callout callout-white lead col-md-4">
-							<div class="box box-primary" >
-							  <center><h2> Description </h2></center>
-                <div class="box-body">
-							    <center><p id="updatePdescription"></p></center>
-                </div>
-              </div>
-					  </div>
-					
-					  
-					  <div class="callout callout-white lead col-md-4">
-              <div class="box box-primary" id="box_share" >
-                <div class='box-body'>
-                  <center><h2 style="color: #000">Share Your Project</h2></center>
-                  <center><p>You can share your project with your collaborators by just providing
-                  their emails (one per line) in the <code>textarea</code> below: </p></center><br>
-                  <textarea style="width: 100%" id='sharedUsers'></textarea>
-                  <button style="width: 100%" id="ShareProject" class="btn btn-primary"> <b>Share</b> </button>
-                </div>
-              </div>
-					  </div>
-					  
-					  <div class="callout callout-white lead col-md-4">
-						<div class="box box-primary" id="box_make_public">
-              <div class='box-body'>
-                <center><h2 style="color: #000">Make Your Project Visible</h2></center>
-                <center><p>By making your project public, other users have the oportunity to look at your data. </p><code>360</code> days are remaining to make your data <b>public</b>. </p></center><br>
-                <button style="width: 48%" id="keepPrivate" class="btn btn-primary"> <b>Keep it Private</b> </button>
-                <button style="width: 48%" id="makePublic" class="btn btn-success"> <b>Make it Public</b> </button>
-						  </div>
-						</div>
-					 </div>
-					  
-					
-					  
-					
-					
-					
-					
-                     </div><!-- /.tab-pane -->
+            <!-- Main content -->
+            <!--############################-->
 
 
 
 
+            <br>
+
+
+
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="#pinfo" data-toggle="tab">
+                            <h4>Project</h4>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#tab_upo" data-toggle="tab">
+                            <h4>Upload Raw Files</h4>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="#samfo" data-toggle="tab">
+                            <h4>Samples</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#inso" data-toggle="tab">
+                            <h4>Setup Metadata</h4>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#runo" data-toggle="tab">
+                            <h4>Run Analysis</h4>
+                        </a>
+                    </li>
+
+
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+
+                <div class="tab-content" style="height: 0px; background-color:#ecf0f5">
+
+                    <br><br>
+
+                    <div class="tab-pane" id="tab_upo">
+
+
+
+
+                        <form id="form" method="post" action="dump.php">
+                            <center>
+                                <div style="width:auto" id="uploader">
+                                    <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+                                </div>
+                            </center>
+                            <br />
+                            <input type="submit" value="Submit" hidden/>
+                        </form>
+
+
+                        <div class="callout callout-white lead col-md-4">
+                            <center>
+                                <h2># Instructions</h2>
+                                Upload your raw files as compressed<b> *.fastq.gz </b> files for both paired-end mates. Uploading compressed files will decrease the chance of transfer errors. For example <code>Sample1_R1.fastq.gz</code>, <code>Sample1_R2.fastq.gz</code>.
+                            </center>
+                        </div>
+
+                        <div class="callout callout-white lead col-md-4">
+                            <center>
+                                <h2># Success</h2>
+                                Please don't close this windown untill all the samples have been uploaded. Sometimes even if the upload status is 100% you may need to wait until the files are completed transfered. <br><b>TIP</b>: Wait until the <code>Stop Upload</code>                                button is not visible.
+                            </center>
+                        </div>
+
+                        <div class="callout callout-white lead col-md-4">
+                            <center>
+                                <h2># Example</h2>
+                                If you are a new MetaStorm user, <a style="color: blue" href="http://bench.cs.vt.edu/Projects/Metagenome.tar.gz">here</a> you can find a set of small compressed samples for testing the complete process of metagenomics annotation.
+                            </center>
+                        </div>
+                    </div>
+
+
+
+                    <div class="tab-pane" id="pinfo">
+
+                        <center>
+                            <h2 id="updatePname"></h2>
+                        </center><br><br>
+
+                        <div class="callout callout-white lead col-md-4">
+                            <div class="box box-primary">
+                                <center>
+                                    <h2> Description </h2>
+                                </center>
+                                <div class="box-body">
+                                    <center>
+                                        <p id="updatePdescription"></p>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="callout callout-white lead col-md-4">
+                            <div class="box box-primary" id="box_share">
+                                <div class='box-body'>
+                                    <center>
+                                        <h2 style="color: #000">Share Your Project</h2>
+                                    </center>
+                                    <center>
+                                        <p>You can share your project with your collaborators by just providing their emails (one per line) in the <code>textarea</code> below: </p>
+                                    </center><br>
+                                    <textarea style="width: 100%" id='sharedUsers'></textarea>
+                                    <button style="width: 100%" id="ShareProject" class="btn btn-primary"> <b>Share</b> </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="callout callout-white lead col-md-4">
+                            <div class="box box-primary" id="box_make_public">
+                                <div class='box-body'>
+                                    <center>
+                                        <h2 style="color: #000">Make Your Project Visible</h2>
+                                    </center>
+                                    <center>
+                                        <p>By making your project public, other users have the oportunity to look at your data. </p><code>360</code> days are remaining to make your data <b>public</b>. </p>
+                                    </center><br>
+                                    <button style="width: 48%" id="keepPrivate" class="btn btn-primary"> <b>Keep it Private</b> </button>
+                                    <button style="width: 48%" id="makePublic" class="btn btn-success"> <b>Make it Public</b> </button>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -386,36 +425,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<!-- list of samples -->
-                     <div  class="tab-pane active" id="samfo">
-						
-						<button id="RefreshSampleGetForm" class="btn btn-success"><i class="fa fa-refresh"></i> Refresh </button>
-						<button id="RunComparativeAnalysis" class="btn btn-success"><i class="fa fa-exchange"></i> Compare Sample Abundance</button>
-						<br><br>
-						
-						 <div class="hot" id="BodyCurrentSamples" style='height: auto; overflow-y: auto'></div>
-						 <br><br>
- 
-						   <!--<button id="InsertSample" class="btn btn-primary"><i class="fa fa-plus"></i> Insert</button>
+                    </div>
+                    <!-- /.tab-pane -->
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- list of samples -->
+                    <div class="tab-pane active" id="samfo">
+
+                        <button id="RefreshSampleGetForm" class="btn btn-success"><i class="fa fa-refresh"></i> Refresh </button>
+                        <button id="RunComparativeAnalysis" class="btn btn-success"><i class="fa fa-exchange"></i> Compare Sample Abundance</button>
+                        <br><br>
+
+                        <div class="hot" id="BodyCurrentSamples" style='height: auto; overflow-y: auto'></div>
+                        <br><br>
+
+                        <!--<button id="InsertSample" class="btn btn-primary"><i class="fa fa-plus"></i> Insert</button>
 						   <button id="ViewSample" class="btn btn-success"><i class="fa fa-plus"></i> View</button>
 						   <button id="ReRunSampleGetForm" class="btn btn-success"><i class="fa fa-plus"></i> Re-run</button>
 						   <button id="RemoveSampleGO" class="btn btn-warning"><i class="fa fa-minus"></i> Remove</button>-->
-						   
- 
-					
-					
-					<br><br>
-					<center><h2>Samples TimeLine</h2></center>
-					
-						<ul id="logs" class="timeline">
-						  <!-- timeline time label -->
-						  
-						</ul>
-					
-					
-					
-					
-                     </div><!-- /.tab-pane -->
+
+
+
+
+                        <br><br>
+                        <center>
+                            <h2>Samples TimeLine</h2>
+                        </center>
+
+                        <ul id="logs" class="timeline">
+                            <!-- timeline time label -->
+
+                        </ul>
+
+
+
+
+                    </div>
+                    <!-- /.tab-pane -->
 
 
 
@@ -433,116 +488,109 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<!-- ADD SAMPLES -->
-<div  class="tab-pane" id="inso">
+                    <!-- ADD SAMPLES -->
+                    <div class="tab-pane" id="inso">
 
-					  <div class="callout callout-white lead col-md-3">
-              <div class="box box-primary" >
-                <div class="box-body">
-                  <center><h2># Samples </h2></center>
-                  <center>Inser the number of samples to be added to the project.</center> <br>
-                  <center><input type="text" style="width:50px" id="NumberSamples" placeholder="" value=1></center>
-                  <br>
-                  <center><button style="width: 50%" id="NumberSamplesButton" class="btn btn-success">GO</button><br><br></center>
-                  <center><br>
-                  Fill up the table using your sample's information and the
-                  instructions provided above. you can copy an paste several rows at
-                  the time (useful for large set of samples).
-                  <br><br><br></center>
-                  <center><button style="width: 50%" id="submitMetagenome" class="btn btn-primary" data-widget="collapse" disabled="true">Submit</button></center>
-                </div>
-              </div>
-					  </div>
-				   
-					  
-            
-            
-            
-            <div  class='col-md-6' id="metadata_table">
-						  
-						  <center><h2># Metadata</h2></center>
-						  <div id="table" ></div>
-							  
-					  
-					  </div>
+                        <div class="callout callout-white lead col-md-3">
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <center>
+                                        <h2># Samples </h2>
+                                    </center>
+                                    <center>Inser the number of samples to be added to the project.</center> <br>
+                                    <center><input type="text" style="width:50px" id="NumberSamples" placeholder="" value=1></center>
+                                    <br>
+                                    <center><button style="width: 50%" id="NumberSamplesButton" class="btn btn-success">GO</button><br><br></center>
+                                    <center><br> Fill up the table using your sample's information and the instructions provided above. you can copy an paste several rows at the time (useful for large set of samples).
+                                        <br><br><br></center>
+                                    <center><button style="width: 50%" id="submitMetagenome" class="btn btn-primary" data-widget="collapse" disabled="true">Submit</button></center>
+                                </div>
+                            </div>
+                        </div>
 
 
 
-					<div class="callout col-md-12"></div>
+
+
+                        <div class='col-md-6' id="metadata_table">
+
+                            <center>
+                                <h2># Metadata</h2>
+                            </center>
+                            <div id="table"></div>
+
+
+                        </div>
 
 
 
-					<div class='row' id="add_sample_instructions">
-					  
-                       <div class="callout col-md-4">
-						<h2># Instructions</h2>
-                          Upload new samples to the project is a very simple task, just follow the next steps: 
-                            <ul>
-                              <li> <b>Insert</b> the number of samples you want to aggregate into your project. </li>
-                              <li> Click <b>GO</b> or hit the enter key.</li>
-                              <li> <b>Fill</b> the fields on the table and click on submit.</li>
-							  <li> <b>Wait</b> until you receive an alert of success creating the samples.</li>
-					
-                            </ul>
-						  <b>TIP:</b> This process only creates the sample environment, it does not process your data. To process you data, after you created the sample environment you need to go to <b>Analyze Samples</b> tab.
-						  
-					   </div>
-			
-			
-				  
-					  <div class="callout col-md-4">
-						<h2># Biome</h2>
-                          Select one of the following biome for your sample:
-                            <ul>
-                              <li>Air </li>
-                              <li>Built environment</li>
-                              <li>Human-associated </li>
-							  <li>Human-oral </li>
-							  <li>Human-skin</li>
-							  <li>Human-vaginal</li>
-							  <li>Microbial mat/biofilm</li>
-							  <li>Miscellaneous natural or artificial environment</li>
-							  <li>Plant-associated</li>
-							  <li>Sediment</li>
-							  <li>Soil</li>
-							  <li>Wastewater</li>
-							  <li>Water</li>
-							  
-                            </ul>
-						  <b>TIP:</b> If your biome is not in the list, please use the <a style="color:blue" target="_blank" href='http://www.bioontology.org/'>bioontology</a> to fill up the category as accurate as possible to your experiments.
-					   </div>
-						
-						<div class="callout col-md-4">
-						  <h2># Experiment Type</h2>
-						  Select one of the following experiment types for your sample:
-                            <ul>
-                              <li> Metagenome </li>
-                              <li>Amplicon 16S </li>
-                            </ul>
-						  <h2># Sequencing Methods</h2>
-							List of sequencing methods:
-                            <ul>
-                              <li> Sanger </li>
-                              <li> Illumina </li>
-							  <li> Pyrosequencing</li>
-							  <li> abi-solid</li>
-							  <li> ion torrent</li>
-							  <li> 454</li>
-							  <li> other</li>
-                            </ul>
-						  <h2># Latitude-Longitude</h2>
-							Visit <a style="color:blue" target="_blank" href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en"> google maps </a> for getting the decimal degrees of latitude and longitude
-						  
-						</div>
-					</div>
-		
-		
-						
-						
-						
-						
-						 
-				</div>
+                        <div class="callout col-md-12"></div>
+
+
+
+                        <div class='row' id="add_sample_instructions">
+
+                            <div class="callout col-md-4">
+                                <h2># Instructions</h2>
+                                Upload new samples to the project is a very simple task, just follow the next steps:
+                                <ul>
+                                    <li> <b>Insert</b> the number of samples you want to aggregate into your project. </li>
+                                    <li> Click <b>GO</b> or hit the enter key.</li>
+                                    <li> <b>Fill</b> the fields on the table and click on submit.</li>
+                                    <li> <b>Wait</b> until you receive an alert of success creating the samples.</li>
+
+                                </ul>
+                                <b>TIP:</b> This process only creates the sample environment, it does not process your data. To process you data, after you created the sample environment you need to go to <b>Analyze Samples</b> tab.
+
+                            </div>
+
+
+
+                            <div class="callout col-md-4">
+                                <h2># Biome</h2>
+                                Select one of the following biome for your sample:
+                                <ul>
+                                    <li>Air </li>
+                                    <li>Built environment</li>
+                                    <li>Human-associated </li>
+                                    <li>Human-oral </li>
+                                    <li>Human-skin</li>
+                                    <li>Human-vaginal</li>
+                                    <li>Microbial mat/biofilm</li>
+                                    <li>Miscellaneous natural or artificial environment</li>
+                                    <li>Plant-associated</li>
+                                    <li>Sediment</li>
+                                    <li>Soil</li>
+                                    <li>Wastewater</li>
+                                    <li>Water</li>
+
+                                </ul>
+                                <b>TIP:</b> If your biome is not in the list, please use the <a style="color:blue" target="_blank" href='http://www.bioontology.org/'>bioontology</a> to fill up the category as accurate as possible to your experiments.
+                            </div>
+
+                            <div class="callout col-md-4">
+                                <h2># Experiment Type</h2>
+                                Select one of the following experiment types for your sample:
+                                <ul>
+                                    <li> Metagenome </li>
+                                    <li>Amplicon 16S </li>
+                                </ul>
+                                <h2># Sequencing Methods</h2>
+                                List of sequencing methods:
+                                <ul>
+                                    <li> Sanger </li>
+                                    <li> Illumina </li>
+                                    <li> Pyrosequencing</li>
+                                    <li> abi-solid</li>
+                                    <li> ion torrent</li>
+                                    <li> 454</li>
+                                    <li> other</li>
+                                </ul>
+                                <h2># Latitude-Longitude</h2>
+                                Visit <a style="color:blue" target="_blank" href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en"> google maps </a> for getting the decimal degrees of latitude and longitude
+
+                            </div>
+                        </div>
 
 
 
@@ -550,18 +598,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+                    </div>
 
 
-                     <div style="width:800px"  class="tab-pane" id="remo">
+
+
+
+
+
+
+
+                    <div style="width:800px" class="tab-pane" id="remo">
                         <label for="SampleNameSelectToRemove"> <h5>Select Sample ID: </h5></label>
                         <br>
-                          <select id='SampleNameSelectToRemove'>
+                        <select id='SampleNameSelectToRemove'>
                             <option>Sample</option>
                           </select>
                         <br>
                         <br>
                         <button id="RemoveSample" class="btn btn-danger"><i class="fa fa-minus"></i> Remove</button>
-                     </div>
+                    </div>
 
 
 
@@ -570,99 +626,111 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<!-- ANALYZE SAMPLES -->
+                    <!-- ANALYZE SAMPLES -->
 
 
 
 
-<div id="rawreads_list" hidden></div>
+                    <div id="rawreads_list" hidden></div>
 
-                     <div class="tab-pane" id="runo">
-
-
-
-
-
-					  <div class="col-md-8 col-md-offset-2" id='jqxWidget' style="float: left;">
-					  <center><h2> <b>1</b> Select References</h2></center>
-					  <div id='jqxNavigationBar'>
-						  <!--Header-->
-						  
-						  
-						  
-						  <div>
-							  Default Reference Databases</div>
-						  <!--Content-->
-						  <div>
-							  <form id="selectTaxonomyDatabase"></form>
-						  </div>
-						  
-						  <!--Header-->
-						  <div>Antibiotic Resistance databases</div>
-						  <!--Content-->
-						  <div>
-							  <form id="selectARGdatabases"></form>
-						  </div>
-						  
-						  <!--Header-->
-						  <div>My Submited Databases</div>
-						  <!--Content-->
-						  <div>
-							  <form id="selectMyDatabases"></form>
-						  </div>
-						  <!--Header-->
-						  <div>
-							  Databases submited by community</div>
-						  <!--Content-->
-						  <div>
-							  <form id="selectCommunityDatabases"></form>
-						  </div>
-						  
-						  					  
-						  
-					  </div>
-				  </div>
-
-
-				    <hr>
-
-					  <div class='col-md-8 col-md-offset-2'>
-            <center><h2><b>2</b> Run Samples</h2></center>
-            
-            <p>Make sure you select a proper fastq.gz file. Most of the <code>Running time errors</code> are because the files are not fastq.gz or the fastq.gz files are not selected in the form below. If you tried several times to run your samples and you are getting always an error, let us know at MetaStorm (cmetangen@gmail.com) </p>
-            </div>
-            <br>
-            <br>
-					  
-					  <div class="col-md-12 col-md-offset-2" id="tab_runo_box" style="background: none; border-radius: 0; border-top: hidden; box-shadow: none">
-              <button id="RefreshSampleTabRuno" class="btn btn-success"><i class="fa fa-refresh"></i> Refresh </button><br><br>
-						  <div id="run_table" ></div>
-					  </div>
-					  
-					  <div class='col-md-12' style="height: 500px"></div>
-					  
-
-
-
-
-						
-				  
-                         
-                         
-						 
-						 
+                    <div class="tab-pane" id="runo">
 
 
 
 
 
+                        <div class="col-md-8 col-md-offset-2" id='jqxWidget' style="float: left;">
+                            <center>
+                                <h2> <b>1</b> Select References</h2>
+                            </center>
+
+                            <div class="col-md-6 col-md-offset-3">
+                                <h4>deepARG-DB</h4>
+                                <p>Please, be aware that the deepARG-DB under metastorm runs under the MetaStorm pipeline. It does not use the models under deepARG project. If you are intereste don running your samples using our deep learning models. Please
+                                    look at the deepARG webserver <a href="http://bench.cs.vt.edu/deeparg/"> here </a> under the <u>online analysis</u> section.</p>
+                            </div>
+
+                            <div id='jqxNavigationBar'>
+                                <!--Header-->
+
+
+
+                                <div>
+                                    Default Reference Databases</div>
+                                <!--Content-->
+                                <div>
+                                    <form id="selectTaxonomyDatabase"></form>
+                                </div>
+
+                                <!--Header-->
+                                <div>Antibiotic Resistance databases</div>
+                                <!--Content-->
+                                <div>
+                                    <form id="selectARGdatabases"></form>
+                                </div>
+
+                                <!--Header-->
+                                <div>My Submited Databases</div>
+                                <!--Content-->
+                                <div>
+                                    <form id="selectMyDatabases"></form>
+                                </div>
+                                <!--Header-->
+                                <div>
+                                    Databases submited by community</div>
+                                <!--Content-->
+                                <div>
+                                    <form id="selectCommunityDatabases"></form>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                        <hr>
+
+                        <div class='col-md-8 col-md-offset-2'>
+                            <center>
+                                <h2><b>2</b> Run Samples</h2>
+                            </center>
+
+                            <p>Make sure you select a proper fastq.gz file. Most of the <code>Running time errors</code> are because the files are not fastq.gz or the fastq.gz files are not selected in the form below. If you tried several times to run your
+                                samples and you are getting always an error, let us know at MetaStorm (cmetangen@gmail.com) </p>
+                        </div>
+                        <br>
+                        <br>
+
+                        <div class="col-md-12 col-md-offset-2" id="tab_runo_box" style="background: none; border-radius: 0; border-top: hidden; box-shadow: none">
+                            <button id="RefreshSampleTabRuno" class="btn btn-success"><i class="fa fa-refresh"></i> Refresh </button><br><br>
+                            <div id="run_table"></div>
+                        </div>
+
+                        <div class='col-md-12' style="height: 500px"></div>
 
 
 
 
 
 
-                    <!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!--
 
 					<div >
                             <label for="SampleNameSelect"> <h5>Select Sample Name: <h5></label>
@@ -692,35 +760,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+                    </div>
+
+
+
+
+
+
                 </div>
+                <!-- /.tab-pane -->
 
 
 
 
+            </div>
+            <!-- /.tab-content -->
 
 
-                          </div><!-- /.tab-pane -->
 
 
+        </div>
+        <!-- nav-tabs-custom -->
 
 
-                          </div><!-- /.tab-content -->
 
 
 
+    </div>
+    <!-- /.tab-pane -->
 
-                        </div><!-- nav-tabs-custom -->
+    </div>
 
+    </div>
+    <!-- /.box -->
+    </div>
 
 
 
 
-                          </div><!-- /.tab-pane -->
 
-                     </div>
 
-             </div><!-- /.box -->
-          </div>
 
 
 
@@ -848,13 +927,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+    </div>
+    <!-- /.content-wrapper -->
 
 
 
 
 
 
-      </div><!-- /.content-wrapper -->
 
 
 
@@ -890,73 +970,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-
-
-
-
-
-
-      <!-- Main Footer -->
-      <footer class="main-footer">
+    <!-- Main Footer -->
+    <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-          Computer Science department VT
+            Computer Science department VT
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
-      </footer>
+    </footer>
 
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark control-sidebar-close">
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark control-sidebar-close">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-          <!-- Home tab content -->
-          <div class="tab-pane active" id="control-sidebar-home-tab">
+            <!-- Home tab content -->
+            <div class="tab-pane active" id="control-sidebar-home-tab">
 
 
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <h4 class="control-sidebar-subheading">
-                    Project Setup
-                    <span id="StatusBarLabel" class="label label-danger pull-right">0%</span>
-                  </h4>
-                  <div class="progress progress-xxs" id='StatusBar'>
-                    <div  class="progress-bar progress-bar-danger" style="width: 0%"></div>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- /.control-sidebar-menu -->
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript::;">
+                            <h4 class="control-sidebar-subheading">
+                                Project Setup
+                                <span id="StatusBarLabel" class="label label-danger pull-right">0%</span>
+                            </h4>
+                            <div class="progress progress-xxs" id='StatusBar'>
+                                <div class="progress-bar progress-bar-danger" style="width: 0%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
 
 
-            <h3 class="control-sidebar-heading">Terminology</h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                  <div>
+                <h3 class="control-sidebar-heading">Terminology</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <div>
 
-                     <p>This section help you to get started on completing the data parameters associated to your samples.</p>
+                            <p>This section help you to get started on completing the data parameters associated to your samples.</p>
 
-                    <ul>
-                    <li><b>Project</b> - a set of samples comprising different conditions</li>
-                    <li><b>Sample</b> - a single entity that has been obtained for analysis</li>
-                    <li><b>Environment</b> - the characteristics which describe the environment in which your samples were obtained </li>
-                    <li><b>Sample set</b> - a group of samples sharing the same library and environmental characteristics</li>
-                    <li><b>Library preparation</b> - Environmental package the sample belongs to. (metagenome, meta transcriptome, amplicon metagenome 16s)</li>
-                    <li><b>Reads 1-2</b> - The file names corresponding to the data from your library (fasq-fasta format). Be aware that this name has to be </strong>EXACTLY</strong> the same as the file you will upload.</li>
-                  </ul>
-                </div>
-              </li>
+                            <ul>
+                                <li><b>Project</b> - a set of samples comprising different conditions</li>
+                                <li><b>Sample</b> - a single entity that has been obtained for analysis</li>
+                                <li><b>Environment</b> - the characteristics which describe the environment in which your samples were obtained </li>
+                                <li><b>Sample set</b> - a group of samples sharing the same library and environmental characteristics</li>
+                                <li><b>Library preparation</b> - Environmental package the sample belongs to. (metagenome, meta transcriptome, amplicon metagenome 16s)</li>
+                                <li><b>Reads 1-2</b> - The file names corresponding to the data from your library (fasq-fasta format). Be aware that this name has to be </strong>EXACTLY</strong> the same as the file you will upload.</li>
+                            </ul>
+                        </div>
+                    </li>
 
-            </ul>
-
-
-
-
+                </ul>
 
 
 
@@ -970,30 +1041,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-          </div><!-- /.tab-pane -->
-          <!-- Stats tab content -->
-          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
-          <!-- Settings tab content -->
-          <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-              <h3 class="control-sidebar-heading">General Settings</h3>
-              <div class="form-group">
-                <label class="control-sidebar-subheading">
+
+
+
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
                   Report panel usage
                   <input type="checkbox" class="pull-right" checked />
                 </label>
-                <p>
-                  Some information about this general settings option
-                </p>
-              </div><!-- /.form-group -->
-            </form>
-          </div><!-- /.tab-pane -->
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
+            </div>
+            <!-- /.tab-pane -->
         </div>
-      </aside><!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
+    <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
 
 
 
@@ -1021,7 +1102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED JS SCRIPTS -->
 
-	
+
 
     <!-- jQuery 2.1.4 -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
@@ -1037,36 +1118,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- icheck -->
     <script type="text/javascript" src="{{ url_for('static', filename='icheck/icheck.js') }}"></script>
     <!--main js file-->
-		<!-- production -->
-	
-	
-	<link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
-	
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='plupload/plupload.full.min.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='plupload/jquery.ui.plupload/jquery.ui.plupload.js') }}"></script>
-	
+    <!-- production -->
+
+
+    <link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='plupload/plupload.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='plupload/jquery.ui.plupload/jquery.ui.plupload.js') }}"></script>
+
     <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/UpdateProject.js') }}"></script>
 
 
 
 
-	
-    
+
+
     <script type="text/javascript" src="/MetaStorm/static/jqw/scripts/demos.js"></script>
     <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxnavigationbar.js"></script>
 
 
 
-	<script type="text/javascript" src="/MetaStorm/static/tipped/js/tipped/tipped.js"></script>
-	<link rel="stylesheet" type="text/css" href="/MetaStorm/static/tipped/css/tipped/tipped.css"/>
+    <script type="text/javascript" src="/MetaStorm/static/tipped/js/tipped/tipped.js"></script>
+    <link rel="stylesheet" type="text/css" href="/MetaStorm/static/tipped/css/tipped/tipped.css" />
 
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the
           fixed layout. -->
-  </body>
+</body>
+
 </html>
