@@ -674,12 +674,12 @@ def process_up_ref_dataset():
 		
 		## make the directory at arc
 		arcdir='/groups/metastorm_cscee/MetaStorm/Files/REFERENCE/'
-		SArc=bench2archu('mkdir -p '+arcdir+data['rid'])
-		scp=arcon()
+		os.system('ssh gustavo1@newriver1.arc.vt.edu "mkdir -p '+arcdir+data['rid'] + '"')
+		# scp=arcon()
 		
 		## move the files to arc
 		for fi in listdir(refdb['reference_path']):
-			scp.put(refdb['reference_path']+"/"+fi, arcdir+"/"+data['rid']+"/"+fi)
+			os.system('scp '+refdb['reference_path']+"/"+fi+' gustavo1@newriver.arc.vt.edu:'arcdir+"/"+data['rid']+"/"+fi)
 		
 		
 		return 'ok'
