@@ -679,7 +679,7 @@ def process_up_ref_dataset():
 		
 		## move the files to arc
 		# for fi in listdir(refdb['reference_path']):
-		os.system('scp '+refdb['reference_path']+'/* gustavo1@newriver1.arc.vt.edu:'+arcdir+"/"+data['rid']+"/"+fi)
+		os.system('scp '+refdb['reference_path']+'/* gustavo1@newriver1.arc.vt.edu:'+arcdir+"/"+data['rid']+"/")
 		os.system('rm -r'+refdb['reference_path']+"/*")
 
 		return 'ok'
