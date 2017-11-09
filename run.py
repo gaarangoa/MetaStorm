@@ -678,8 +678,9 @@ def process_up_ref_dataset():
 		# scp=arcon()
 		
 		## move the files to arc
-		for fi in listdir(refdb['reference_path']):
-			os.system('scp '+refdb['reference_path']+"/"+fi+' gustavo1@newriver.arc.vt.edu:'+arcdir+"/"+data['rid']+"/"+fi)
+		# for fi in listdir(refdb['reference_path']):
+		os.system('scp '+refdb['reference_path']+'/* gustavo1@newriver1.arc.vt.edu:'+arcdir+"/"+data['rid']+"/"+fi)
+		os.system('rm -r'+refdb['reference_path']+"/*")
 
 		return 'ok'
 	except Exception as inst:
