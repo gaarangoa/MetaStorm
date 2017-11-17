@@ -29,15 +29,15 @@ while 1:
 			#
 			# 1st send the data
 			#
-			print(json.dumps(
-					{
-						"projectID": pid,
-						"sampleID":sid,
-						"user":USER,
-						"jobid":jid
-					},
-					indent=6
-				))
+			# print(json.dumps(
+			# 		{
+			# 			"projectID": pid,
+			# 			"sampleID":sid,
+			# 			"user":USER,
+			# 			"jobid":jid
+			# 		},
+			# 		indent=6
+			# 	))
 			if pip=="assembly":
 				tof=rootvar.__ROOTPRO__+"/"+data['pid']+"/assembly/idba_ud/"+sid+"/"
 				fromf='/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/assembly/idba_ud/"+sid+"/"
