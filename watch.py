@@ -13,6 +13,7 @@ database=sql.SQL(rootvar.__FILEDB__)
 import re
 
 while 1:
+    status = ''
 	try:
 		jobs=database.exe("select * from jobs where priority='normal' and status!='done'")
 		for job in jobs:
@@ -26,6 +27,7 @@ while 1:
 			USER=inp[6]
 			SAMPLE=inp[7]
 			jid=job[-1]
+			
 			#
 			# 1st send the data
 			#
