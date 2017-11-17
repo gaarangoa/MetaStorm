@@ -89,13 +89,13 @@ while 1:
 				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],'error','normal',job[7],job[8]])
 				database.commit()
 			
-			time.sleep(15)
-		time.sleep(15)
+			time.sleep(5)
+		time.sleep(5)
 	except Exception as inst:
 		print "ERROR: "+str(datetime.datetime.now())+" | "+str(inst)
 		errda = json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + '\nStatus: ' + status + "\n" + errda)
-		time.sleep(15)
+		time.sleep(5)
 		
 	
 	
