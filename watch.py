@@ -26,9 +26,6 @@ while 1:
 			USER=inp[6]
 			SAMPLE=inp[7]
 			jid=job[-1]
-
-			json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
-			
 			# 1st send the data
 			#
 			# print(json.dumps(
@@ -50,7 +47,7 @@ while 1:
 				msg='Dear MetaStorm user, <br><br> The analysis using the un-assembled reads pipeline is done. <br> Please visit <a href="bench.cs.vt.edu/MetaStorm/login"><b>MetaStorm</b></a> to check your results <br><br><br> Thank you <br><b>MetaStorm</b> Team'
 			# 1. Check if the job is done:
 			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")[0]
-			# print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
+			print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 			
 				
 			if status=='done':
