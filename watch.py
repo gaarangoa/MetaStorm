@@ -26,12 +26,10 @@ while 1:
 			USER=inp[6]
 			SAMPLE=inp[7]
 			jid=job[-1]
-			status = ''
 			#
 			# 1st send the data
 			#
-			print(
-				json.loads(
+			print(json.dumps(
 					{
 						"projectID": pid,
 						"sampleID":sid,
@@ -39,9 +37,7 @@ while 1:
 						"jobid":jid
 					},
 					indent=6
-				)
-			)
-
+				))
 			if pip=="assembly":
 				tof=rootvar.__ROOTPRO__+"/"+data['pid']+"/assembly/idba_ud/"+sid+"/"
 				fromf='/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/assembly/idba_ud/"+sid+"/"
@@ -54,7 +50,7 @@ while 1:
 			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")[0]
 			# print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 			
-			 
+				
 			if status=='done':
 				# scp=arcon()
 				# 2. get list of files in remote server	
@@ -69,7 +65,7 @@ while 1:
 				f2s=[]
 				for ref in refs+['nucl.fa', 'prot.fa', 'log', 'pred.genes.gff']:
 					f2s.append([f for f in SArc if ref in f])
-	
+
 				for refi in f2s:
 					for fi in refi:
 						print fi
@@ -84,11 +80,11 @@ while 1:
 				# scp.get(qci,qct)
 
 				for ref in refs:
-    					update_status(database,sid,ref,pip,"Done")
+						update_status(database,sid,ref,pip,"Done")
 				database.commit()
 
 				x=email.send_email(USER[0]['user_name'],USER[0]['user_affiliation'],
-							   'Processing sample: '+SAMPLE[0]['sample_name'], msg)
+								'Processing sample: '+SAMPLE[0]['sample_name'], msg)
 			
 			if  status!=job[5] and not "Error:" in status: #"the status is not the same"
 				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],status,'normal',job[7],job[8]]) #update the database
