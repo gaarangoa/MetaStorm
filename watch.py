@@ -26,7 +26,9 @@ while 1:
 			USER=inp[6]
 			SAMPLE=inp[7]
 			jid=job[-1]
-			#
+
+			json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
+			
 			# 1st send the data
 			#
 			# print(json.dumps(
