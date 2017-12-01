@@ -15,6 +15,7 @@ import re
 while 1:
 	try:
 		jobs=database.exe("select * from jobs where priority='normal' and status!='done'")
+		
 		for job in jobs:
 			inp=json.loads(base64.b64decode(job[4]))
 			data=inp[0]
