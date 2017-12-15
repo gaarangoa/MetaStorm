@@ -166,7 +166,7 @@ window.onload = function() {
                 total_hits = x.matrix[4]
 
 
-                $("#blue_text_box").prepend(['<h3>Metagenome Summary</h3><p>' +
+                $("#blue_text_box").prepend(['<strong>Metagenome Summary</strong><p>' +
                     x.matrix[5] + '</p>'
                 ])
 
