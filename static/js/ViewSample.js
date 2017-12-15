@@ -485,7 +485,7 @@ window.onload = function() {
             data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
-                //console.log('this matrix',x)
+                console.log('this matrix', x)
 
 
                 ////console.log(x)

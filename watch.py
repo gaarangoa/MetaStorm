@@ -72,8 +72,8 @@ while 1:
 						os.system('scp gustavo1@newriver1.arc.vt.edu:/'+fromf+fi+" "+tof+fi)
 						# scp.get(fromf+fi, tof+fi)
 				
-				qci='/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/READS/"+sid+"trim.log"
-				qct=rootvar.__ROOTPRO__+"/"+data['pid']+"/READS/"+sid+"trim.log"
+				qci = '/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/READS/"+sid+"trim.log"
+				qct = rootvar.__ROOTPRO__+"/"+data['pid']+"/READS/"+sid+"trim.log"
 				
 				# print qci,qct
 				os.system('scp gustavo1@newriver1.arc.vt.edu:/'+qci+" "+qct)
