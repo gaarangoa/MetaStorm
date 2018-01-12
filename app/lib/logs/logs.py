@@ -35,9 +35,9 @@ def assembly(file):
                 'maxScaff':int(sca[5]), 
                 'avgScaff':int(sca[7]), 
                 'totalScaffLen':int(sca[-1]), 
-                'NumGenes':0, 
-                'maxGeneLength':0, 
-                'avgGene':0
+                'NumGenes':None, 
+                'maxGeneLength':None, 
+                'avgGene':None
                 }
 
     
