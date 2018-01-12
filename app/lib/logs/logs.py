@@ -25,7 +25,20 @@ def assembly(file):
                 'maxGeneLength':max(ldist), 
                 'avgGene':int(np.mean(ldist))}
     except Exception as e:
-        return {"error": str(e)}
+        return {
+                "error": str(e),
+                'reads':int(reads)/2,
+                'alreads':aligned_reads/2,
+                'avgreads':int(avgreads), 
+                'scaffolds':int(sca[1]), 
+                'n50':int(sca[3]), 
+                'maxScaff':int(sca[5]), 
+                'avgScaff':int(sca[7]), 
+                'totalScaffLen':int(sca[-1]), 
+                'NumGenes':0, 
+                'maxGeneLength':0, 
+                'avgGene':0
+                }
 
     
 
