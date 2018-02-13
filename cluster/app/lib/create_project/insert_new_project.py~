@@ -1,0 +1,63 @@
+import sqlite3 as sql
+
+class SQL:
+	def __init__(self,db):
+		self.dbname=db
+		self.conn=sql.connect(db)
+		self.c=self.conn.cursor()
+	
+	def close(self):	
+		self.conn.close()
+	
+	def exe(self,value):
+		return(self.c.execute(value).fetchall())
+	
+	def prev(self,db):
+		return(self.c.execute("select * from {v1}".format(v1=db)).fetchall())	
+	
+	def drop(self,db):
+			self.c.execute("drop table {v1}".format(v1=db))
+	
+	def get_max_id(self,table):
+		max_id=self.c.execute("select max({v1}) from {v2}".format(v1=table+"_id", v2=table)).fetchall()[0][0]
+		if max_id==None: max_id=1;
+		else: max_id=max_id+1;
+		return max_id
+	
+	### INSERT element to a table
+	def insert(self,db,values):		
+		max_id=self.get_max_id(db)
+		self.c.execute("insert into {db} values {values}".format(db=db,values=((max_id,)+values)))
+		self.conn.commit()
+
+
+main_path="/research/gustavo1/metagenomics/MetaGenFiles/"
+x=SQL(main_path+'/SQL/projects.db')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

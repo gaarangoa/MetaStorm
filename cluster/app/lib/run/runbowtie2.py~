@@ -1,0 +1,46 @@
+import sys
+sys.path.append("../../../")
+import postProcessSam as sam
+from app.lib.common.module import load_features
+from app.lib.common.module import load_taxodb
+import app.lib.common.rootvar as root
+from subprocess import call, Popen, PIPE
+
+
+taxo=load_features(sys.argv[2]) # taxonomy file from the database.
+lens=load_features(sys.argv[3]) # length of the sequences on the database.
+taxodb=load_taxodb(sys.argv[4])
+
+dataset="/research/gustavo1/metagenomics/MetaGenFiles/REFERENCE/silva/dataset"
+inputfile="/research/gustavo1/Dropbox/PhDProjects/metagenomics/Xiao/S2.extendedFrags.fastq"
+outputfile="/research/gustavo1/metagenomics/MetaGenFiles/PROJECTS/XIAO/BOWTIE/"
+programPath="/research/gustavo1/libraries/bin/bowtie2"
+samplename="S2"
+options="--sensitive-local --no-unal"
+threads="-p 20"
+
+
+#**************************************************
+#************** merge paired end reads ************
+#**************************************************
+
+
+
+#**************************************************
+#************** Alignment using bowtie ************
+#**************************************************
+# all the inputs are clear here!
+status=call([programPath," ".join(["-x", dataset, "-U", inputfile, threads, options,"-S", outputfile+"/"+samplename+".sam >>"+outputfile+"/"+samplename+".log 2>&1"])])
+
+# if the alignment cannot be made, stop the process and report, at this point the alignment has to be stopped.
+if(status!=0): return 0  
+
+
+#**************************************************
+#*************** Post-Processing ******************
+#**************************************************
+# filename: alignment file (sam format)
+# taxo: sequence, id.taxonomy from the dataset.taxo
+# lens: lengths of the sequences. dataset.lens
+# taxodb: taxonomy from the dataset taxo.db
+abundance=sam.process(outputfile+"/"+samplename+".sam", taxo, lens, taxodb)
