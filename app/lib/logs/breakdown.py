@@ -1,5 +1,6 @@
 import app.lib.common.rootvar as rootvar
 import json
+import os
 
 def assembly(data):
     pid=data["pid"]
@@ -92,6 +93,7 @@ def matches(data):
             taxo.append([ki[1],genes,i, ki[2]])
         else:            
             file=diri+"alignment."+i+".matches.taxonomy.abundance.rpkm"
+            if not os.path.exists(file): continue
             genes=0
             for ti in open(file):
                 genes+=int(ti.split()[2])
@@ -104,6 +106,7 @@ def matches(data):
         ki=i
         i=i[0]
         file=diri+"alignment."+i+".matches.function.genes.abundance.rpkm"
+        if not os.path.exists(file): continue
         genes=0
         isgenes={}
         for ti in open(file):
