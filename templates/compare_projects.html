@@ -4,7 +4,8 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>MetaStorm | Compare</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -41,40 +42,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <!-- pretty tables handsontable -->
-    <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <link href="https://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+    <script src="https://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
-      <style>
-
-      .node {
-        cursor: pointer;
-      }
-      .node circle {
-        fill: #fff;
-        stroke: #000;
-        stroke-width: 2px;
-      }
-      .node text {
-        font: 12px sans-serif;
-        display: block;
-        border: solid 1px #dcdcdc;
-      }
-      .link {
-        fill: none;
-        stroke: #ccc;
-        stroke-width: 1px;
-      }
-
+    <style>
+        .node {
+            cursor: pointer;
+        }
+        
+        .node circle {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 2px;
+        }
+        
+        .node text {
+            font: 12px sans-serif;
+            display: block;
+            border: solid 1px #dcdcdc;
+        }
+        
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1px;
+        }
     </style>
 
     <script>
-      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-      //$( "#draggable" ).draggable();
-	</script>
+        var $SCRIPT_ROOT = {
+            {
+                request.script_root | tojson | safe
+            }
+        };
+        //$( "#draggable" ).draggable();
+    </script>
 
 
-  </head>
-  <!--
+</head>
+<!--
   BODY TAG OPTIONS:
   =================
   Apply one or more of the following classes to get the
@@ -94,348 +100,378 @@ scratch. This page gets rid of all links and provides the needed markup only.
   |               | sidebar-mini                            |
   |---------------------------------------------------------|
   -->
-  <body class="skin-purple sidebar-mini  sidebar-collapse" >
+
+<body class="skin-purple sidebar-mini  sidebar-collapse">
 
 
     <div class="wrapper">
 
-      <!-- Main Header -->
-      <header class="main-header">
+        <!-- Main Header -->
+        <header class="main-header">
 
-        <!-- Logo -->
-        <a href=="" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>M</b>S</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Meta</b>Storm</span>
-        </a>
+            <!-- Logo -->
+            <a href=="" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>M</b>S</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Meta</b>Storm</span>
+            </a>
 
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-              <!-- Tasks Menu -->
+                        <!-- Tasks Menu -->
 
-              <!-- User Account Menu -->
+                        <!-- User Account Menu -->
 
-              <!-- Control Sidebar Toggle Button -->
-              <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
 
-          <!-- Sidebar user panel (optional) -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-              <p id="UserName1"></p>
-              <p id="userID"></p>
-              <p id="UserContact"></p>
-            </div>
-          </div>
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p id="UserName1"></p>
+                        <p id="userID"></p>
+                        <p id="UserContact"></p>
+                    </div>
+                </div>
 
-          <!-- search form (Optional) -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..." />
-              <span class="input-group-btn">
+                <!-- search form (Optional) -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+
+                <!-- Sidebar Menu -->
+                <ul id='sidemenu' class="sidebar-menu">
+                    <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar">
+                <ul>
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Content Wrapper. Contains page content -->
+
+
+        <div class="content-wrapper" style="height: auto; overflow: auto">
+            <!-- Content Header (Page header) -->
+
+            <div class="col-md-2" style="height: auto">
+
+                <div class="  lead  col-md-12">
+                    <br><br>
+                    <h3 id="updatePname"></h3>
+                    <p id="sidePipeline"></p>
+                    <p id="numSamples"></p>
+                </div>
+
+                <div id="blue_text_box" class="  lead  col-md-12"></div>
+                <div class="lead col-md-12">
+                    <p class="header"><span id="updatePdescription"></span></p>
+                </div>
+
+
             </div>
-          </form>
-          <!-- /.search form -->
-
-          <!-- Sidebar Menu -->
-          <ul id='sidemenu' class="sidebar-menu">
-            <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
-          </ul>
-        </section>
-		
-		<section class="sidebar">
-		  <ul>
-			
-		  </ul>
-		</section>
-			   <!-- /.sidebar -->
-      </aside>
+            <!-- Main content -->
+            <!--############################-->
 
 
+            <!-- Main display with the results of the comparisons -->
+            <div class="col-md-9">
+                <div class="nav-tabs-custom" style="height:auto">
+                    <ul class="nav nav-tabs">
+                        <li>
+                            <a href="#dinfo" data-toggle="tab" class="active">
+                                <h4><b>Samples</b></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tafo" data-toggle="tab">
+                                <h4><b>Taxonomy Annotation</b></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pinfo" data-toggle="tab">
+                                <h4><b>Functional Annotation</b></h4>
+                            </a>
+                        </li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tafo">
+
+                            <br>
+                            <br>
 
 
+                            <label for='selectPipeline'>Select dataset: </label>
+                            <select id='selectDataset'></select>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- Content Wrapper. Contains page content -->
-	  
-	  
-<div class="content-wrapper" style="height: auto; overflow: auto">
-        <!-- Content Header (Page header) -->
-
-		<div class="col-md-2" style="height: auto">
-			  
-			  <div class="  lead  col-md-12">
-				<br><br>
-				<h3 id="updatePname"></h3>
-				<p id="sidePipeline"></p>
-				<p id="numSamples"></p>
-			  </div>
-			  
-			  <div id="blue_text_box" class="  lead  col-md-12"></div>
-			  <div class="lead col-md-12">
-				  <p class="header"><span id="updatePdescription"></span></p>				  
-			  </div>		  
-					
-
-			</div>
-        <!-- Main content -->
-        <!--############################-->
-
-
-<!-- Main display with the results of the comparisons -->
-		<div class="col-md-9">
-            <div class="nav-tabs-custom"  style="height:auto">
-               <ul class="nav nav-tabs">
-                 <li><a href="#dinfo" data-toggle="tab" class="active"><h4><b>Samples</b></h4></a></li>
-                 <li><a href="#tafo" data-toggle="tab"><h4><b>Taxonomy Annotation</b></h4></a></li>
-                 <li><a href="#pinfo" data-toggle="tab"><h4><b>Functional Annotation</b></h4></a></li>
-
-                 <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-               </ul>
-                <div class="tab-content">
-                    <div class="tab-pane" id="tafo">
-						
-						<br>
-						<br>
-						
-                        
-                        <label for='selectPipeline' >Select dataset: </label>
-                        <select id='selectDataset'></select>
-                        
-						<input style="width:40px" type="text" value="0" id="minA" hidden>
-						<br>
-						<label for='selectNormalization' >Select Normalization: </label>
-						<select id='selectNormalization'>
+                            <input style="width:40px" type="text" value="0" id="minA" hidden>
+                            <br>
+                            <label for='selectNormalization'>Select Normalization: </label>
+                            <select id='selectNormalization'>
 						  <option value="rpkm">RPKM</option>
 						  <option value="scale">Scale</option>
 						</select>
-						<br>
-						<p style="display: inline"><b>Select</b> <code>top</code> <b>results:</b> From </p> <input style="display: inline" style="width:10px" type="text" value="1" id="b2"> <p style="display: inline"> to: </p>
-						<input style="display: inline" style="width:10px" type="text" value="20" id="e2">
-						
-						<br><br>
-                        <button id="compareSamplesButton" type="button"  class="btn btn-primary">Compare</button>
-						
-						
-						<legend><h1> Sample Comparison</h1></legend>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								
-								
-								
-								<center><h2 class="box-title">Domain</h2></center>
-								
-								<div class="box-tools pull-right">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_domain') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_domain')  class="btn btn-primary">HeatMap</button>
-								</div>
-								
-							  </div>
-							  
-							  <div class="box-body" id='stack_domain' style="height:auto; width:100%; overflow:auto"></div>
-							  <div class="box-body" id='stack_domain_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								<center><h2 class="box-title">Phylum</h2></center>
-								<div class="box-tools pull-left">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_phylum') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_phylum')  class="btn btn-primary">HeatMap</button>
-								</div>
-							  </div>
-							  
-							  <div class="box-body" id='stack_phylum' style="height:auto; width:100%; overflow:auto"></div>
-							  <div class="box-body" id='stack_phylum_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								<center><h2 class="box-title">Class</h2></center>
-								<div class="box-tools pull-left">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_class') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_class')  class="btn btn-primary">HeatMap</button>
-								</div>
-							  </div>
-							  
-							   <div class="box-body" id='stack_class' style="height:auto; width:100%; overflow:auto"></div>
-							    <div class="box-body" id='stack_class_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								<center><h2 class="box-title">Order</h2></center>
-								<div class="box-tools pull-left">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_order') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_order')  class="btn btn-primary">HeatMap</button>
-								</div>
-							  </div>
-							  
-							   <div class="box-body" id='stack_order' style="height:auto; width:100%; overflow:auto"></div>
-							   <div class="box-body" id='stack_order_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								<center><h2 class="box-title">Family</h2></center>
-								<div class="box-tools pull-left">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_family') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_family')  class="btn btn-primary">HeatMap</button>
-								</div>
-							  </div>
-							  
-							   <div class="box-body" id='stack_family' style="height:auto; width:100%; overflow:auto"></div>
-							   <div class="box-body" id='stack_family_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								<center><h2 class="box-title">Genus</h2></center>
-								<div class="box-tools pull-left">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_genus') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_genus')  class="btn btn-primary">HeatMap</button>
-								</div>
-							  </div>
-							  
-							   <div class="box-body" id='stack_genus' style="height:auto; width:100%; overflow:auto"></div>
-							   <div class="box-body" id='stack_genus_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						<div  class=" col-md-12">
-							<div class="box box-success">
-							  <div class="box-header with-border">
-								<center><h2 class="box-title">Species</h2></center>
-								<div class="box-tools pull-left">						
-								  <button type="button" onclick=enable_st_ht('st','#stack_species') class="btn btn-success">Stacked Columns</button>
-								  <button type="button" onclick=enable_st_ht('ht','#stack_species')  class="btn btn-primary">HeatMap</button>
-								</div>
-							  </div>
-							  
-							   <div class="box-body" id='stack_species' style="height:auto; width:100%; overflow:auto"></div>
-							   <div class="box-body" id='stack_species_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
-							  
-							</div>
-						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-                        
-						
-                        <div style='height:8px; width:800px; overflow:auto'></div>
-					  
-						
-                    </div>
+                            <br>
+                            <p style="display: inline"><b>Select</b> <code>top</code> <b>results:</b> From </p> <input style="display: inline" style="width:10px" type="text" value="1" id="b2">
+                            <p style="display: inline"> to: </p>
+                            <input style="display: inline" style="width:10px" type="text" value="20" id="e2">
 
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<!-- FUNCTIONAL ANNOTATION -->
-					
-					
-					
-					
-					
-                    <div class="tab-pane" id="pinfo" >
-                        <!--
-                        <legend><h1> Downloads</h1></legend> 
+                            <br><br>
+                            <button id="compareSamplesButton" type="button" class="btn btn-primary">Compare</button>
+
+
+                            <legend>
+                                <h1> Sample Comparison</h1>
+                            </legend>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+
+
+
+                                        <center>
+                                            <h2 class="box-title">Domain</h2>
+                                        </center>
+
+                                        <div class="box-tools pull-right">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_domain') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_domain') class="btn btn-primary">HeatMap</button>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="box-body" id='stack_domain' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_domain_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <center>
+                                            <h2 class="box-title">Phylum</h2>
+                                        </center>
+                                        <div class="box-tools pull-left">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_phylum') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_phylum') class="btn btn-primary">HeatMap</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body" id='stack_phylum' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_phylum_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <center>
+                                            <h2 class="box-title">Class</h2>
+                                        </center>
+                                        <div class="box-tools pull-left">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_class') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_class') class="btn btn-primary">HeatMap</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body" id='stack_class' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_class_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <center>
+                                            <h2 class="box-title">Order</h2>
+                                        </center>
+                                        <div class="box-tools pull-left">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_order') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_order') class="btn btn-primary">HeatMap</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body" id='stack_order' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_order_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <center>
+                                            <h2 class="box-title">Family</h2>
+                                        </center>
+                                        <div class="box-tools pull-left">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_family') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_family') class="btn btn-primary">HeatMap</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body" id='stack_family' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_family_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <center>
+                                            <h2 class="box-title">Genus</h2>
+                                        </center>
+                                        <div class="box-tools pull-left">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_genus') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_genus') class="btn btn-primary">HeatMap</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body" id='stack_genus' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_genus_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+                            <div class=" col-md-12">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <center>
+                                            <h2 class="box-title">Species</h2>
+                                        </center>
+                                        <div class="box-tools pull-left">
+                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_species') class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_species') class="btn btn-primary">HeatMap</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-body" id='stack_species' style="height:auto; width:100%; overflow:auto"></div>
+                                    <div class="box-body" id='stack_species_ht' style="height:auto; width:100%; overflow:auto" hidden></div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div style='height:8px; width:800px; overflow:auto'></div>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- FUNCTIONAL ANNOTATION -->
+
+
+
+
+
+                        <div class="tab-pane" id="pinfo">
+                            <!--
+                        <legend><h1> Downloads</h1></legend>
                         <p>
 
                             <button class="btn bg-maroon btn-flat margin">Scaffolds</button>
@@ -445,104 +481,115 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <button class="btn bg-navy btn-flat margin">Functional Categories Abundance</button>
 
                         </p> -->
-                        
-						
-						<div class="col-md-12">
-						  <div class="box box-success">
-							  <div class='box-body'>
-								  <center><h2>Setup Reference Datbase</h2></center> <br><br>
-								  <label for='selectPipelinef' >Select dataset: </label>
-								  <select id='selectDatasetf'></select>
-								  <br>
-								  
-								  <label for='selectNormalizationF' >Select Normalization: </label>
-								  <select id='selectNormalizationF'>
+
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <div class='box-body'>
+                                        <center>
+                                            <h2>Setup Reference Datbase</h2>
+                                        </center> <br><br>
+                                        <label for='selectPipelinef'>Select dataset: </label>
+                                        <select id='selectDatasetf'></select>
+                                        <br>
+
+                                        <label for='selectNormalizationF'>Select Normalization: </label>
+                                        <select id='selectNormalizationF'>
 									<option value="rpkm">RPKM</option>
 									<option value="scale">Scale</option>
 									<option value="16s">16S rRNA</option>
 								  </select>
-								  
-								  
-								  <br><br>
-								  
-									<div id="sel_categories"></div>
-									<br>
-									<center>Visualize <code> Functional Categories</code> from <b>Top</b>: <input style="width:40px" type="text" value="1" id="b"> to:
-									<input style="width:40px" type="text" value="20" id="e"></center>
-									
-									<br><br>
-									 <input style="width:40px" type="text" value="0" id="minA" hidden>
-								
-									<center><button id="compareSamplesButtonf" type="button"  class="btn btn-primary">Compare</button></center>
-									
-									<br>
-									
-									<!--
+
+
+                                        <br><br>
+
+                                        <div id="sel_categories"></div>
+                                        <br>
+                                        <center>Visualize <code> Functional Categories</code> from <b>Top</b>: <input style="width:40px" type="text" value="1" id="b"> to:
+                                            <input style="width:40px" type="text" value="20" id="e"></center>
+
+                                        <br><br>
+                                        <input style="width:40px" type="text" value="0" id="minA" hidden>
+
+                                        <center><button id="compareSamplesButtonf" type="button" class="btn btn-primary">Compare</button></center>
+
+                                        <br>
+
+                                        <!--
 									<center><div class="box-body">
 									  <a class="btn btn-app">
 										<span id="VFHeatMap" class="badge bg-yellow">1</span>
 										<i class="fa ion-earth"></i> Stacked Bars
 									  </a>
-									  
+
 									  <a class="btn btn-app">
 										<span id="VFStackedBars" class="badge bg-yellow">1</span>
 										<i class="fa ion-earth"></i> Heat Map
 									  </a>
-									  
+
 									  <a class="btn btn-app">
 										<span id="VFTable" class="badge bg-yellow">1</span>
 										<i class="fa ion-earth"></i> Table
 									  </a>
 									</div></center>
 									-->
-								</div>
-							</div>	
-								
-								
-								<br>
-						</div>
-						
-                       
-						
-						<div class="col-md-12">
-						  <div class="box box-success">
-							  <div class='box-body'>
-								<center><h2>Stacked Bars</h2></center><br><br>
-								<center><div class="col-md-12" id='stackedplotf' style="height:auto; width:100%; overflow:auto"></div></center>
-								<center><h2>Heat Map</h2></center><br>
-								<center><div id='HeatMapFun' style="resize:both;overflow:auto;height:auto" class="box-body" hide></div></center>
-								
-							  </div>
-						  </div>
-						</div>
-						
-                        
-                        
-						
-						
-						
-						
-                        <div id='PieChart2Taxof' style="resize:both;overflow:auto;height:auto" class="box-body"></div>
-						
-						
-						
-              
+                                    </div>
+                                </div>
 
+
+                                <br>
+                            </div>
+
+
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
+                                    <div class='box-body'>
+                                        <center>
+                                            <h2>Stacked Bars</h2>
+                                        </center><br><br>
+                                        <center>
+                                            <div class="col-md-12" id='stackedplotf' style="height:auto; width:100%; overflow:auto"></div>
+                                        </center>
+                                        <center>
+                                            <h2>Heat Map</h2>
+                                        </center><br>
+                                        <center>
+                                            <div id='HeatMapFun' style="resize:both;overflow:auto;height:auto" class="box-body" hide></div>
+                                        </center>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <div id='PieChart2Taxof' style="resize:both;overflow:auto;height:auto" class="box-body"></div>
+
+
+
+
+
+
+                        </div>
+
+
+                        <div class="tab-pane active" id='dinfo' style="height:auto">
+                            <h2>Samples</h2>
+                            <form id="selectSampleToCompare" style="height:auto;overflow:auto"></form>
+                        </div>
 
                     </div>
-
-
-					<div class="tab-pane active" id='dinfo' style="height:auto">
-						<h2>Samples</h2>
-					    <form id="selectSampleToCompare" style="height:auto;overflow:auto"></form>
-					</div>
-
-				</div>
+                </div>
             </div>
-		</div>
 
 
-</div><!-- /.content-wrapper
+        </div>
+        <!-- /.content-wrapper
 
 
 
@@ -585,16 +632,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-    </div><!-- ./wrapper -->
+    </div>
+    <!-- ./wrapper -->
 
     <!-- Main Footer -->
-    <footer >
-      <!-- To the right -->
-      <div class="pull-right hidden-xs">
-        Computer Science department VT
-      </div>
-      <!-- Default to the left -->
-      <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
+    <footer>
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Computer Science department VT
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
     </footer>
 
 
@@ -635,16 +683,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/heatmap.js') }}"></script> -->
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
-	<script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
-	
+    <script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
+
 
 
     <!-- d3 -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 
     <!-- pretty tables -->
-    <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-		<script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <link href="https://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+    <script src="https://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
     <!--main js file-->
     <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
@@ -662,5 +710,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the
           fixed layout. -->
-  </body>
+</body>
+
 </html>

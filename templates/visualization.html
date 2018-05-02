@@ -1,88 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!--ModalWindow-->
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/default.css') }}"></link>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/component.css') }}"></link>
-		<!--<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modernizr.custom.js') }}"></script>-->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!--main scripts-->
-		<script type="text/javascript" src="{{ url_for('static', filename='js/correxplorer.js') }}"></script>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/correxplorer.css') }}"></link>
+    <!--ModalWindow-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/default.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ModalWindow/css/component.css') }}"></link>
+    <!--<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modernizr.custom.js') }}"></script>-->
 
-		<!--dragable-->
-		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-1.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-ui.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/style.css') }}"></script>
+    <!--main scripts-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/correxplorer.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/correxplorer.css') }}"></link>
 
-
-		<!--jQuery-->
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
-		<script type="text/javascript"src="https://code.jquery.com/jquery-2.1.3.js"></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
-		<script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
-		<script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
-
-		<script>
-			var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-		</script>
-		<script>
-			$( document ).ready(function() {
-					var dfi=data_from_index.listp
-
-					var projects={}
-					for(i=0; i<dfi.length; i++){
-						$("#project_list").append("<input type='radio' style='color:#000' name='selProject' value='"+dfi[i][1]+"' id='"+i+"' ><label for='"+i+"'><p>"+dfi[i][0]+"</p></label><br></input>")
-						projects[i]=[dfi[i][0], dfi[i][1]]
-						}
-
-			});
-		</script>
-
-	</head>
-	<body>
-	<!--highcharts-->
-	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
+    <!--dragable-->
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-1.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/dragable/style.css') }}"></script>
 
 
-		<div class="container">
-			<!-- Top Navigation -->
-			<header>
-				<h1>Visualization <span>Metagenomics aseembly</span></h1>
-			</header>
-			<div class="main clearfix">
-				<div class="column">
-					<p>Please select the <b>Project</b> to analyze, then, click on the <b>start</b> button.</p>
-				</div>
-				<div class="column" style="width: 50%; background:rgba(255,250,255,0.2); color:#000">
-					<fieldset id="project_list" style='width:100%; height:auto; overflow:auto; border:none;'>
-						<legend><p><b>Projects:</b></p></legend>
-					</fieldset>
-					<button id="GetBroadInfo" style='font-size:20px; margin: 10px 0px; width:100%;'>Start</button>
-				</div>
+    <!--jQuery-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+    <script src="https://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
+    <script type='text/javascript' src='https://d3js.org/d3.v3.min.js'></script>
 
-			</div>
-		</div><!-- /container -->
+    <script>
+        var $SCRIPT_ROOT = {
+            {
+                request.script_root | tojson | safe
+            }
+        };
+    </script>
+    <script>
+        $(document).ready(function() {
+            var dfi = data_from_index.listp
 
-		<div  id='SecondSection' class="main clearfix" style="width:100%; height:100%; padding:0"></div>
+            var projects = {}
+            for (i = 0; i < dfi.length; i++) {
+                $("#project_list").append("<input type='radio' style='color:#000' name='selProject' value='" + dfi[i][1] + "' id='" + i + "' ><label for='" + i + "'><p>" + dfi[i][0] + "</p></label><br></input>")
+                projects[i] = [dfi[i][0], dfi[i][1]]
+            }
 
-		<div  id='ThirdSection' class="main clearfix" style="width:100%; height:100%; padding:0"></div>
+        });
+    </script>
 
-		<div id='test'></div>
+</head>
 
-		<div class='tooltip' style='opacity:0'></div>
+<body>
+    <!--highcharts-->
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
 
-		<!--<div class="md-overlay"></div>-->
-		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
-		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/classie.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modalEffects.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/cssParser.js') }}"></script>
-		<script> var polyfilter_scriptpath = "../static/ModalWindow/js/"; </script>
-		<script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/css-filters-polyfill.js') }}"></script>
-	</body>
+
+    <div class="container">
+        <!-- Top Navigation -->
+        <header>
+            <h1>Visualization <span>Metagenomics aseembly</span></h1>
+        </header>
+        <div class="main clearfix">
+            <div class="column">
+                <p>Please select the <b>Project</b> to analyze, then, click on the <b>start</b> button.</p>
+            </div>
+            <div class="column" style="width: 50%; background:rgba(255,250,255,0.2); color:#000">
+                <fieldset id="project_list" style='width:100%; height:auto; overflow:auto; border:none;'>
+                    <legend>
+                        <p><b>Projects:</b></p>
+                    </legend>
+                </fieldset>
+                <button id="GetBroadInfo" style='font-size:20px; margin: 10px 0px; width:100%;'>Start</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- /container -->
+
+    <div id='SecondSection' class="main clearfix" style="width:100%; height:100%; padding:0"></div>
+
+    <div id='ThirdSection' class="main clearfix" style="width:100%; height:100%; padding:0"></div>
+
+    <div id='test'></div>
+
+    <div class='tooltip' style='opacity:0'></div>
+
+    <!--<div class="md-overlay"></div>-->
+    <!-- classie.js by @desandro: https://github.com/desandro/classie -->
+    <script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/classie.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/modalEffects.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/cssParser.js') }}"></script>
+    <script>
+        var polyfilter_scriptpath = "../static/ModalWindow/js/";
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='ModalWindow/js/css-filters-polyfill.js') }}"></script>
+</body>
+
 </html>

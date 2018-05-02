@@ -106,9 +106,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Logo -->
             <a href="index2.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>M</b>S</span>
+                <span class="logo-mini">
+                    <b>M</b>S</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Meta</b>Storm</span>
+                <span class="logo-lg">
+                    <b>Meta</b>Storm</span>
             </a>
 
             <!-- Header Navbar -->
@@ -126,7 +128,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <!-- Control Sidebar Toggle Button -->
                         <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            <a href="#" data-toggle="control-sidebar">
+                                <i class="fa fa-gears"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -156,15 +160,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                 </form>
                 <!-- /.search form -->
 
                 <!-- Sidebar Menu -->
                 <ul id='sidemenu' class="sidebar-menu">
-                    <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <li class="active">
+                        <a onclick=logout(uid)>
+                            <i class="fa fa-sign-out"></i>
+                            <span>Log out</span>
+                        </a>
+                    </li>
 
                 </ul>
 
@@ -224,16 +235,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-md-3" style="height: auto">
                 <div class="box box-default">
                     <!-- <div class="box-header text-center">
-                        
+
                     </div> -->
                     <div class="box-body">
                         <h3 class="text-center" id="updatePname"></h3>
                         <p id="updateSampleName"></p>
-                        <p><span id="updatePdescription"></span></p>
+                        <p>
+                            <span id="updatePdescription"></span>
+                        </p>
 
                         <hr>
-                        <p> <strong> Raw reads: </strong><span id="sfReads"></span></p>
-                        <p> <strong> Reads after QC: </strong><span id="hqReads"></span></p>
+                        <p>
+                            <strong> Raw reads: </strong>
+                            <span id="sfReads"></span>
+                        </p>
+                        <p>
+                            <strong> Reads after QC: </strong>
+                            <span id="hqReads"></span>
+                        </p>
                         <p class="small">*QC after quality control using Trimmomatic</p>
                         <hr>
                         <span class="badge bg-blue" id="sidePipeline"></span>
@@ -262,21 +281,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-tabs">
                         <li class="active">
                             <a href="#tab1" data-toggle="tab">
-                                <h4><b>Overview</b></h4>
+                                <h4>
+                                    <b>Overview</b>
+                                </h4>
                             </a>
                         </li>
                         <li>
                             <a href="#tab3" data-toggle="tab">
-                                <h4><b>Taxonomy Annotation</b></h4>
+                                <h4>
+                                    <b>Taxonomy Annotation</b>
+                                </h4>
                             </a>
                         </li>
                         <li>
                             <a href="#tab4" data-toggle="tab">
-                                <h4><b>Functional Annotation</b></h4>
+                                <h4>
+                                    <b>Functional Annotation</b>
+                                </h4>
                             </a>
                         </li>
                         <!--<li><a href="#inso" data-toggle="tab"><h4><b>Download</b></h4></a></li>-->
-                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                        <li class="pull-right">
+                            <a href="#" class="text-muted">
+                                <i class="fa fa-gear"></i>
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content" style="height:auto;width:100%; overflow:auto">
 
@@ -285,8 +314,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class="tab-pane active" id="tab1">
 
-                            <p>The graps below display the number of reads that were annotated by the different taxonomy/functional databases. The bars represent the number of annotated reads. Point the cursor through the <i class="fa fa-fw fa-question-circle"
-                                    style="color:#cc0000"></i> icon to get the database description.</p>
+                            <p>The graps below display the number of reads that were annotated by the different taxonomy/functional databases. The bars represent the number of annotated reads. Point the cursor through the
+                                <i class="fa fa-fw fa-question-circle" style="color:#cc0000"></i> icon to get the database description.</p>
                             <div class='col-md-6'>
                                 <center>
                                     <h2>Taxonomy Hits Distribution</h2>
@@ -334,12 +363,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                             <div class=" col-md-12">
-                                <p style="color: #000">These are the results of the taxonomy analysis using the <b id='which_pipeline'></b>. This interactive tree will show you the distribution of the taxonomy annotation in your sample. Just click on the nodes (taxa) and see
-                                    the connections. The pie-chart will show the abundance distribution. Fisrt, select the results from the reference dataset you are interestend and click on <b>See Results</b>.</p>
+                                <p style="color: #000">These are the results of the taxonomy analysis using the
+                                    <b id='which_pipeline'></b>. This interactive tree will show you the distribution of the taxonomy annotation in your sample. Just click on the nodes (taxa) and see the connections. The pie-chart will show the abundance
+                                    distribution. Fisrt, select the results from the reference dataset you are interestend and click on
+                                    <b>See Results</b>.</p>
                                 <label for='selectPipeline'>Select dataset: </label>
                                 <select id='selectDataset'></select>
                                 <br>
-                                <center><button id="VisualizeDBR" type="button" class="btn btn-primary">SEE RESULTS</button></center><br><br>
+                                <center>
+                                    <button id="VisualizeDBR" type="button" class="btn btn-primary">SEE RESULTS</button>
+                                </center>
+                                <br>
+                                <br>
                             </div>
 
                             <div class=" col-md-12">
@@ -443,7 +478,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <h2 class="box-title">Taxonomy Tree</h2>
                                             </center>
                                             <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
                                             </div>
                                         </div>
                                         <button id="download_tree">Download image</button>
@@ -459,7 +496,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                            <a id="download_one_sample_table_taxo" class="btn btn-default btn-xs"><i class="fa fa-download"></i> Get Table of Taxonomy Annotation</a>
+                            <a id="download_one_sample_table_taxo" class="btn btn-default btn-xs">
+                                <i class="fa fa-download"></i> Get Table of Taxonomy Annotation</a>
 
 
 
@@ -487,24 +525,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <h1> Functional Annotation Hit Distribution</h1>
                             </legend>
                             <div class="callout callout-info lead ">
-                                <p>These are the results of the functional analysis using the <b id="which_pipeline2"></b>. The pie charts will show you the distributions of functional categories. Each slide represents percentage of genes that were predicted
-                                    to a specific functional category.</p>
+                                <p>These are the results of the functional analysis using the
+                                    <b id="which_pipeline2"></b>. The pie charts will show you the distributions of functional categories. Each slide represents percentage of genes that were predicted to a specific functional category.</p>
                             </div>
 
                             <label for='selectFuncPipeline'>Select dataset: </label>
                             <select id='selectFuncDataset'></select>
                             <button id="loadFunction" type="button" class="btn btn-primary btn-xs">SEE RESULTS</button>
 
-                            <br><br>
+                            <br>
+                            <br>
                             <dic class="col-sm-12">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div id="chart-ring-year">
                                         <center>
                                             <h2>Functional Categories</h2>
                                             <p>Distribution of the functional categories. This pie chart represents the percentage of reads with predicted functions. Click to any slide of the pie chart to filter out the genes associated to this function.</p>
-                                        </center><br><br>
+                                        </center>
+                                        <br>
+                                        <br>
 
-                                        <br><br>
+                                        <br>
+                                        <br>
                                     </div>
                                 </div>
 
@@ -513,8 +555,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <center>
                                             <h2>Genes</h2>
                                             <p>
-                                                Distribution of top <code>15</code> genes through the categories. Each bar represents a gene and its number of hits. Labels on the bars corresponds to the gene ID provided by the database </p>
-                                        </center><br></div>
+                                                Distribution of top
+                                                <code>15</code> genes through the categories. Each bar represents a gene and its number of hits. Labels on the bars corresponds to the gene ID provided by the database </p>
+                                        </center>
+                                        <br>
+                                    </div>
                                     <!--<div style="height: 0px; width: 0px" id='PieChartFunction' class="box-body"></div>-->
                                 </div>
                                 <!--<button id="clearMetadata" type="button"  class="btn btn-primary">clear</button>-->
@@ -527,8 +572,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div style="min-height: 200px; overflow: auto" id="categories_metadata"></div>
                                 </div>
 
-                                <a id="download_one_sample_table_func" class="btn btn-default btn-xs"><i class="fa fa-download"></i> Get Table of Funcional Annotation</a>
-                                <a id="download_function_alignment" class="btn btn-default btn-xs"><i class="fa fa-download"></i> Get Alignments File</a>
+                                <a id="download_one_sample_table_func" class="btn btn-default btn-xs">
+                                    <i class="fa fa-download"></i> Get Table of Funcional Annotation</a>
+                                <a id="download_function_alignment" class="btn btn-default btn-xs">
+                                    <i class="fa fa-download"></i> Get Alignments File</a>
 
                         </div>
 
@@ -635,24 +682,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--For nice plots-->
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/highcharts.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/modules/exporting.js') }}"></script>
-    <script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
+    <script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
 
     <!-- d3 -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 
-    <script type="text/javascript" src="http://bench.cs.vt.edu/Projects/lib/crossfilter/crossfilter.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://bench.cs.vt.edu/Projects/lib/dc/dc.css" />
-    <script type="text/javascript" src="http://bench.cs.vt.edu/Projects/lib/dc/dc.js"></script>
-    <script type="text/javascript" src="http://bench.cs.vt.edu/Projects/lib/reductio/reductio.js"></script>
+    <script type="text/javascript" src="https://bench.cs.vt.edu/Projects/lib/crossfilter/crossfilter.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://bench.cs.vt.edu/Projects/lib/dc/dc.css" />
+    <script type="text/javascript" src="https://bench.cs.vt.edu/Projects/lib/dc/dc.js"></script>
+    <script type="text/javascript" src="https://bench.cs.vt.edu/Projects/lib/reductio/reductio.js"></script>
 
 
-    <!-- DC 
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.min.js"></script> -->
+    <!-- DC
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.min.js"></script> -->
 
 
     <!-- pretty tables -->
-    <link href="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-    <script src="http://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <link href="https://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+    <script src="https://handsontable.com//bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
 
 
