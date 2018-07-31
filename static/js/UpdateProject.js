@@ -3,8 +3,8 @@ window.onload = function() {
     // table with all the results from the assembly -  this is an overall of the assembly performance
 
 
-    machine = "/MetaStorm/"
-    upload_dir = "/home/raid/www/MetaStorm/main/Files/PROJECTS/"
+    machine = "/"
+    upload_dir = "/src/Files/PROJECTS/"
 
     uid = urlParam('uid')
     pid = urlParam('pid')

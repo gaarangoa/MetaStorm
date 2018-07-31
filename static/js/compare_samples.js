@@ -10,7 +10,7 @@ window.onload = function() {
 
     vsession(uid)
 
-    machine = "/MetaStorm/"
+    machine = "/"
         //machine="/"
 
 
@@ -38,7 +38,9 @@ window.onload = function() {
     $.ajax({
         url: machine + "GetAllInfo",
         type: "POST",
-        data: JSON.stringify({ uid: uid }),
+        data: JSON.stringify({
+            uid: uid
+        }),
         async: true,
         contentType: "application/json; charset=utf-8",
         success: function(dat) {
@@ -63,7 +65,9 @@ window.onload = function() {
         url: machine + "consult",
         type: "POST",
         async: true,
-        data: JSON.stringify({ sql: 'select * from project where project_id="' + pid + '"' }),
+        data: JSON.stringify({
+            sql: 'select * from project where project_id="' + pid + '"'
+        }),
         contentType: "application/json; charset=utf-8",
         success: function(x) {
             ////console.log(x)
@@ -173,7 +177,9 @@ window.onload = function() {
         url: machine + "consult",
         type: "POST",
         async: true,
-        data: JSON.stringify({ sql: cmd }),
+        data: JSON.stringify({
+            sql: cmd
+        }),
         contentType: "application/json; charset=utf-8",
         success: function(x) {
             // console.log(x)
@@ -252,7 +258,17 @@ window.onload = function() {
             //$("#stackedplot").height("600")
             //$("#stackedplot").width('auto')
             //$("#PieChart1Taxo").html("")
-        sent = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: "Phylum", minA: minA, norm: norm, snames: snm }
+        sent = {
+            uid: uid,
+            pid: pid,
+            sid: sel,
+            pip: pip,
+            rid: rid,
+            lid: "Phylum",
+            minA: minA,
+            norm: norm,
+            snames: snm
+        }
 
         // console.log(sent);
 
@@ -328,7 +344,19 @@ window.onload = function() {
         $("#stackedplot").height("600")
         $("#stackedplot").width('auto')
             //$("#PieChart1Taxo").html("")
-        sent = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: "Phylum", minA: minA, norm: norm, ib: b, ie: e, snames: snm }
+        sent = {
+                uid: uid,
+                pid: pid,
+                sid: sel,
+                pip: pip,
+                rid: rid,
+                lid: "Phylum",
+                minA: minA,
+                norm: norm,
+                ib: b,
+                ie: e,
+                snames: snm
+            }
             // console.log(sent)
 
         $.ajax({
@@ -345,7 +373,9 @@ window.onload = function() {
                 } else {
                     //$("#tree").attr("height","1200")
                     clsize = x.heatmap.data.feature_names.length * 10 + 200;
-                    if (clsize > 1000) { clsize = 1000 }
+                    if (clsize > 1000) {
+                        clsize = 1000
+                    }
                     //if(cl<100){clsize=300}
                     ////console.log(clsize)
                     //$("#tree").height("800")
@@ -411,7 +441,19 @@ window.onload = function() {
         //$("#PieChart1Taxo").height(height)
         //$("#tree").html('')
         //$("#PieChart1Taxo").html("")
-        sendv = { uid: uid, pid: pid, sid: sel, pip: pip, rid: rid, lid: level, minA: minA, norm: norm, snames: snm, ib: b2, ie: e2 }
+        sendv = {
+                uid: uid,
+                pid: pid,
+                sid: sel,
+                pip: pip,
+                rid: rid,
+                lid: level,
+                minA: minA,
+                norm: norm,
+                snames: snm,
+                ib: b2,
+                ie: e2
+            }
             // console.log(sendv)
         $.ajax({
             url: machine + "get_all_samples_tree",
@@ -426,8 +468,12 @@ window.onload = function() {
                 cl = x.heatmap.data.feature_names.length
                 clsize = 10 * 10 + 200;
                 //console.log(x.heatmap)
-                if (clsize > 1000) { clsize = 1500 }
-                if (cl < 100) { clsize = 800 }
+                if (clsize > 1000) {
+                    clsize = 1500
+                }
+                if (cl < 100) {
+                    clsize = 800
+                }
                 clustergram(div + "_ht", x.heatmap, clsize)
 
                 stk = process_stacked(x.matrix)
@@ -458,7 +504,14 @@ window.onload = function() {
             url: machine + "get_all_samples_tree",
             type: "POST",
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sel, value: pip, rid: rid, lid: lid }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sel,
+                value: pip,
+                rid: rid,
+                lid: lid
+            }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
                 //alert(x.data)

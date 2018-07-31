@@ -1,0 +1,49 @@
+version: '3'
+services:
+
+# The front end is copied to the nginx
+#   frontend:
+#     image: nginx
+#     build:
+#       context: ./frontend/
+#       dockerfile: Dockerfile
+#     volumes:
+#       - ./frontend/dist/:/usr/share/nginx/html
+#     tty: true
+#     ports:
+#       - "8081:80"
+#       - "4431:443"
+#     depends_on:
+#       - database
+#       - backend
+
+# python rest API with the analysis algorithms
+  backend:
+    environment:
+      - DB_FILE=./src/database/projects.db
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/src/
+      - ./static:/static/
+      - ./templates/:/static/template/
+    tty: true
+    ports:
+      - "55001:5000"
+
+# database with everything!
+  # database:
+  #   image: mongo
+  #   environment:
+  #     - MONGO_DATA_DIR=./database/mongo
+  #     - MONGO_LOG_DIR=./database/mongo
+  #   volumes:
+  #     - ./database/mongo:/data/db
+  #   ports:
+  #     - 27897:17863
+  #   tty: true
+  #   command: mongod --dbpath /data/db --directoryperdb --port 17863 --maxConns 5000
+
+
+# daemon process that will check the status of the analysis

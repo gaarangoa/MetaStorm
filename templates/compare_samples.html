@@ -115,9 +115,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Logo -->
             <a href=="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>M</b>S</span>
+                <span class="logo-mini">
+                    <b>M</b>S</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Meta</b>Storm</span>
+                <span class="logo-lg">
+                    <b>Meta</b>Storm</span>
             </a>
 
             <!-- Header Navbar -->
@@ -136,7 +138,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <!-- Control Sidebar Toggle Button -->
                         <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            <a href="#" data-toggle="control-sidebar">
+                                <i class="fa fa-gears"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -152,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                        <img src="static/template/dist/img/user.png" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="UserName1"></p>
@@ -166,15 +170,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                 </form>
                 <!-- /.search form -->
 
                 <!-- Sidebar Menu -->
                 <ul id='sidemenu' class="sidebar-menu">
-                    <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <li class="active">
+                        <a onclick=logout(uid)>
+                            <i class="fa fa-sign-out"></i>
+                            <span>Log out</span>
+                        </a>
+                    </li>
                 </ul>
             </section>
 
@@ -230,7 +241,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-md-2" style="height: auto">
 
                 <div class="  lead  col-md-12">
-                    <br><br>
+                    <br>
+                    <br>
                     <h3 id="updatePname"></h3>
                     <p id="sidePipeline"></p>
                     <p id="numSamples"></p>
@@ -238,7 +250,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <div id="blue_text_box" class="  lead  col-md-12"></div>
                 <div class="lead col-md-12">
-                    <p class="header"><span id="updatePdescription"></span></p>
+                    <p class="header">
+                        <span id="updatePdescription"></span>
+                    </p>
                 </div>
 
 
@@ -253,21 +267,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-tabs">
                         <li>
                             <a href="#dinfo" data-toggle="tab" class="active">
-                                <h4><b>Samples</b></h4>
+                                <h4>
+                                    <b>Samples</b>
+                                </h4>
                             </a>
                         </li>
                         <li>
                             <a href="#tafo" data-toggle="tab">
-                                <h4><b>Taxonomy Annotation</b></h4>
+                                <h4>
+                                    <b>Taxonomy Annotation</b>
+                                </h4>
                             </a>
                         </li>
                         <li>
                             <a href="#pinfo" data-toggle="tab">
-                                <h4><b>Functional Annotation</b></h4>
+                                <h4>
+                                    <b>Functional Annotation</b>
+                                </h4>
                             </a>
                         </li>
 
-                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                        <li class="pull-right">
+                            <a href="#" class="text-muted">
+                                <i class="fa fa-gear"></i>
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane" id="tafo">
@@ -281,27 +305,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <select id='selectDataset'></select>
 
                                                 <input style="width:40px" type="text" value="0" id="minA" hidden>
-                                                <br><br>
+                                                <br>
+                                                <br>
                                                 <label for='selectNormalization'>Select Normalization: </label>
                                                 <select id='selectNormalization'>
-                                                      <option value="rpkm">RPKM</option>
-                                                      <option value="scale">Scale</option>
-                                                    </select>
-                                                <br><br>
-                                                <p style="display: inline"><b>Select</b> <code>top</code> <b>results:
-                                                    </b> From </p> <input style="display: inline" style="width:10px" type="text" value="1" id="b2">
+                                                    <option value="rpkm">RPKM</option>
+                                                    <option value="scale">Scale</option>
+                                                </select>
+                                                <br>
+                                                <br>
+                                                <p style="display: inline">
+                                                    <b>Select</b>
+                                                    <code>top</code>
+                                                    <b>results:
+                                                    </b> From </p>
+                                                <input style="display: inline" style="width:10px" type="text" value="1" id="b2">
                                                 <p style="display: inline"> to: </p>
                                                 <input style="display: inline" style="width:10px" type="text" value="20" id="e2">
-                                                <br><br>
+                                                <br>
+                                                <br>
                                                 <label for='selectTaxonomyLevel'>Select Taxonomy Level: </label>
                                                 <select id='selectTaxonomyLevel'>
-                                                      <option value="Phylum">Phylum</option>
-                                                      <option value="Class">Class</option>
-                                                      <option value="Order">Order</option>
-                                                      <option value="Family">Family</option>
-                                                      <option value="Genus">Genus</option>
-                                                      <option value="Species">Species</option>
-                                                    </select>
+                                                    <option value="Phylum">Phylum</option>
+                                                    <option value="Class">Class</option>
+                                                    <option value="Order">Order</option>
+                                                    <option value="Family">Family</option>
+                                                    <option value="Genus">Genus</option>
+                                                    <option value="Species">Species</option>
+                                                </select>
                                                 <hr>
                                                 <button id="compareSamplesButton" type="button" class="btn btn-primary">Compare</button>
 
@@ -313,7 +344,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="col-md-12">
                                         <h3> Sample Comparison</h3>
-                                        <p>This visualization shows the taxonomy relative abundance of the analyzed samples. </p>
+                                        <p>This visualization shows the taxonomy relative abundance of the analyzed samples.
+                                        </p>
 
 
                                         <div class=" col-md-12">
@@ -378,30 +410,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class='box-body'>
                                         <center>
                                             <h2>Setup Reference Datbase</h2>
-                                        </center> <br><br>
+                                        </center>
+                                        <br>
+                                        <br>
                                         <label for='selectPipelinef'>Select dataset: </label>
                                         <select id='selectDatasetf'></select>
                                         <br>
 
                                         <label for='selectNormalizationF'>Select Normalization: </label>
                                         <select id='selectNormalizationF'>
-									<option value="rpkm">RPKM</option>
-									<option value="scale">Scale</option>
-									<option value="16s">16S rRNA</option>
-								  </select>
+                                            <option value="rpkm">RPKM</option>
+                                            <option value="scale">Scale</option>
+                                            <option value="16s">16S rRNA</option>
+                                        </select>
 
 
-                                        <br><br>
+                                        <br>
+                                        <br>
 
                                         <div id="sel_categories"></div>
                                         <br>
-                                        <center>Visualize <code> Functional Categories</code> from <b>Top</b>: <input style="width:40px" type="text" value="1" id="b"> to:
-                                            <input style="width:40px" type="text" value="20" id="e"></center>
+                                        <center>Visualize
+                                            <code> Functional Categories</code> from
+                                            <b>Top</b>:
+                                            <input style="width:40px" type="text" value="1" id="b"> to:
+                                            <input style="width:40px" type="text" value="20" id="e">
+                                        </center>
 
-                                        <br><br>
+                                        <br>
+                                        <br>
                                         <input style="width:40px" type="text" value="0" id="minA" hidden>
 
-                                        <center><button id="compareSamplesButtonf" type="button" class="btn btn-primary">Compare</button></center>
+                                        <center>
+                                            <button id="compareSamplesButtonf" type="button" class="btn btn-primary">Compare</button>
+                                        </center>
 
                                         <br>
 
@@ -437,19 +479,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class='box-body'>
                                         <center>
                                             <h2>Stacked Bars</h2>
-                                        </center><br><br>
+                                        </center>
+                                        <br>
+                                        <br>
                                         <center>
                                             <div class="col-md-12" id='stackedplotf' style="height:auto; width:100%; overflow:auto"></div>
                                         </center>
                                         <center>
                                             <h2>Heat Map</h2>
-                                        </center><br>
+                                        </center>
+                                        <br>
                                         <center>
                                             <div id='HeatMapFun' style="resize:both;overflow:auto;height:auto" class="box-body" hide></div>
                                         </center>
                                         <center>
                                             <h2>Table</h2>
-                                        </center><br>
+                                        </center>
+                                        <br>
                                         <div style="height: 500px; overflow: auto" id="function_table" hide></div>
                                     </div>
                                 </div>
@@ -535,7 +581,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             Computer Science department VT
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015
+            <a href="#">Virginia Tech</a>.</strong> All rights reserved.
     </footer>
 
 

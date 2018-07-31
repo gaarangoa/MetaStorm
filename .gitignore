@@ -30,3 +30,6 @@ watch.log
 .ssh/
 .idea/
 .TemporaryItems/
+
+database/projects.db
+app/lib/email/credentials.py

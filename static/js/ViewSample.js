@@ -25,8 +25,8 @@ window.onload = function() {
 
     vsession(uid)
 
-    machine = "/MetaStorm/"
-    machine_http = "http://bench.cs.vt.edu/MetaStorm/"
+    machine = "/"
+    machine_http = "/"
 
 
     /*Get the user, projects and samples info*/
@@ -34,7 +34,9 @@ window.onload = function() {
     $.ajax({
         url: machine + "GetAllInfo",
         type: "POST",
-        data: JSON.stringify({ uid: uid }),
+        data: JSON.stringify({
+            uid: uid
+        }),
         async: true,
         contentType: "application/json; charset=utf-8",
         success: function(dat) {
@@ -51,7 +53,9 @@ window.onload = function() {
         url: machine + "consult",
         type: "POST",
         async: true,
-        data: JSON.stringify({ sql: 'select * from project where project_id="' + pid + '"' }),
+        data: JSON.stringify({
+            sql: 'select * from project where project_id="' + pid + '"'
+        }),
         contentType: "application/json; charset=utf-8",
         success: function(x) {
 
@@ -67,7 +71,9 @@ window.onload = function() {
         url: machine + "consult",
         type: "POST",
         async: true,
-        data: JSON.stringify({ sql: 'select * from samples where sample_id="' + sid + '"' }),
+        data: JSON.stringify({
+            sql: 'select * from samples where sample_id="' + sid + '"'
+        }),
         contentType: "application/json; charset=utf-8",
         success: function(x) {
             ////console.log(x.data)
@@ -129,7 +135,13 @@ window.onload = function() {
             url: machine + "download_files",
             type: "POST",
             async: true,
-            data: JSON.stringify({ file: file, uid: uid, sid: sid, pid: pid, name: x[2] }),
+            data: JSON.stringify({
+                file: file,
+                uid: uid,
+                sid: sid,
+                pid: pid,
+                name: x[2]
+            }),
             contentType: "application/json; charset=utf-8",
             success: function(data) {
 
@@ -152,7 +164,13 @@ window.onload = function() {
 
 
     var breakdown = function(dataset) {
-        sent = { uid: uid, pid: pid, sid: sid, rid: dataset, pip: pip }
+        sent = {
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                rid: dataset,
+                pip: pip
+            }
             ////console.log(sent)
             ////console.log('THIS:',sent)
         $.ajax({
@@ -262,7 +280,14 @@ window.onload = function() {
             url: machine + "get_tree",
             type: "POST",
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip, value: "rpkm", rid: rid }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip,
+                value: "rpkm",
+                rid: rid
+            }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
                 console.log(x)
@@ -288,7 +313,13 @@ window.onload = function() {
     $(document).on("click", "#loadFunction", function() {
         var rid = $("#selectFuncDataset option:selected").val();
         //alert([d.level,uid,pid,sid])
-        sent = { uid: uid, pid: pid, sid: sid, pip: pip, rid: rid }
+        sent = {
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip,
+                rid: rid
+            }
             //console.log(sent)
         $.ajax({
             url: machine + "get_functional_counts",
@@ -317,7 +348,15 @@ window.onload = function() {
             url: machine + "get_taxo_by_name",
             type: "POST",
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, tid: "none", lid: lid, pip: pip, rid: rid }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                tid: "none",
+                lid: lid,
+                pip: pip,
+                rid: rid
+            }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
                 ////console.log(x)
@@ -445,7 +484,12 @@ window.onload = function() {
             url: machine + "get_assembly_logs",
             type: "POST",
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip
+            }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
 
@@ -482,7 +526,12 @@ window.onload = function() {
             url: machine + "get_matches_logs",
             type: "POST",
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip
+            }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
                 console.log('this matrix', x)
