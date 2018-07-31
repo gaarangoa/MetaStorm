@@ -130,9 +130,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Logo -->
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>M</b>S</span>
+                <span class="logo-mini">
+                    <b>M</b>S</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Meta</b>Storm</span>
+                <span class="logo-lg">
+                    <b>Meta</b>Storm</span>
             </a>
 
             <!-- Header Navbar -->
@@ -184,7 +186,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <!-- Control Sidebar Toggle Button -->
                         <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            <a href="#" data-toggle="control-sidebar">
+                                <i class="fa fa-gears"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -214,8 +218,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
                 </form>
                 <!-- /.search form -->
@@ -234,7 +240,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			  </ul>
 			</li>
 			-->
-                    <li class="treeview"><a href='#' onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <li class="treeview">
+                        <a href='#' onclick=logout(uid)>
+                            <i class="fa fa-sign-out"></i>
+                            <span>Log out</span>
+                        </a>
+                    </li>
                     <!-- <li class="treeview"><a href='https://bench.cs.vt.edu/Projects/Metagenome.tar.gz'><i class="fa fa-sign-out"></i> <span>Test sample submission</span></a></li> -->
                 </ul>
                 <!-- Sidebar Menu -->
@@ -323,12 +334,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
 
-                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    <li class="pull-right">
+                        <a href="#" class="text-muted">
+                            <i class="fa fa-gear"></i>
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="tab-content" style="height: 0px; background-color:#ecf0f5">
 
-                    <br><br>
+                    <br>
+                    <br>
 
                     <div class="tab-pane" id="tab_upo">
 
@@ -349,22 +365,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="callout callout-white lead col-md-4">
                             <center>
                                 <h2># Instructions</h2>
-                                Upload your raw files as compressed<b> *.fastq.gz </b> files for both paired-end mates. Uploading compressed files will decrease the chance of transfer errors. For example <code>Sample1_R1.fastq.gz</code>, <code>Sample1_R2.fastq.gz</code>.
+                                Upload your raw files as compressed
+                                <b> *.fastq.gz </b> files for both paired-end mates. Uploading compressed files will decrease the chance of transfer errors. For example
+                                <code>Sample1_R1.fastq.gz</code>,
+                                <code>Sample1_R2.fastq.gz</code>.
                             </center>
                         </div>
 
                         <div class="callout callout-white lead col-md-4">
                             <center>
                                 <h2># Success</h2>
-                                Please don't close this windown untill all the samples have been uploaded. Sometimes even if the upload status is 100% you may need to wait until the files are completed transfered. <br><b>TIP</b>: Wait until the <code>Stop Upload</code>                                button is not visible.
+                                Please don't close this windown untill all the samples have been uploaded. Sometimes even if the upload status is 100% you may need to wait until the files are completed transfered.
+                                <br>
+                                <b>TIP</b>: Wait until the
+                                <code>Stop Upload</code> button is not visible.
                             </center>
                         </div>
 
                         <div class="callout callout-white lead col-md-4">
                             <center>
                                 <h2># Example</h2>
-                                If you are a new MetaStorm user, <a style="color: blue" href="https://bench.cs.vt.edu/Projects/Metagenome.tar.gz">here</a> you can find a set of small compressed samples for testing the complete process of metagenomics
-                                annotation.
+                                If you are a new MetaStorm user,
+                                <a style="color: blue" href="https://bench.cs.vt.edu/Projects/Metagenome.tar.gz">here</a> you can find a set of small compressed samples for testing the complete process of metagenomics annotation.
                             </center>
                         </div>
                     </div>
@@ -375,7 +397,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <center>
                             <h2 id="updatePname"></h2>
-                        </center><br><br>
+                        </center>
+                        <br>
+                        <br>
 
                         <div class="callout callout-white lead col-md-4">
                             <div class="box box-primary">
@@ -398,10 +422,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <h2 style="color: #000">Share Your Project</h2>
                                     </center>
                                     <center>
-                                        <p>You can share your project with your collaborators by just providing their emails (one per line) in the <code>textarea</code> below: </p>
-                                    </center><br>
+                                        <p>You can share your project with your collaborators by just providing their emails (one per line) in the
+                                            <code>textarea</code> below: </p>
+                                    </center>
+                                    <br>
                                     <textarea style="width: 100%" id='sharedUsers'></textarea>
-                                    <button style="width: 100%" id="ShareProject" class="btn btn-primary"> <b>Share</b> </button>
+                                    <button style="width: 100%" id="ShareProject" class="btn btn-primary">
+                                        <b>Share</b>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -413,10 +441,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <h2 style="color: #000">Make Your Project Visible</h2>
                                     </center>
                                     <center>
-                                        <p>By making your project public, other users have the oportunity to look at your data. </p><code>360</code> days are remaining to make your data <b>public</b>. </p>
-                                    </center><br>
-                                    <button style="width: 48%" id="keepPrivate" class="btn btn-primary"> <b>Keep it Private</b> </button>
-                                    <button style="width: 48%" id="makePublic" class="btn btn-success"> <b>Make it Public</b> </button>
+                                        <p>By making your project public, other users have the oportunity to look at your data.
+                                        </p>
+                                        <code>360</code> days are remaining to make your data
+                                        <b>public</b>. </p>
+                                    </center>
+                                    <br>
+                                    <button style="width: 48%" id="keepPrivate" class="btn btn-primary">
+                                        <b>Keep it Private</b>
+                                    </button>
+                                    <button style="width: 48%" id="makePublic" class="btn btn-success">
+                                        <b>Make it Public</b>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -443,12 +479,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- list of samples -->
                     <div class="tab-pane active" id="samfo">
 
-                        <button id="RefreshSampleGetForm" class="btn btn-success"><i class="fa fa-refresh"></i> Refresh </button>
-                        <button id="RunComparativeAnalysis" class="btn btn-success"><i class="fa fa-exchange"></i> Compare Sample Abundance</button>
-                        <br><br>
+                        <button id="RefreshSampleGetForm" class="btn btn-success">
+                            <i class="fa fa-refresh"></i> Refresh </button>
+                        <button id="RunComparativeAnalysis" class="btn btn-success">
+                            <i class="fa fa-exchange"></i> Compare Sample Abundance</button>
+                        <br>
+                        <br>
 
                         <div class="hot" id="BodyCurrentSamples" style='height: auto; overflow-y: auto'></div>
-                        <br><br>
+                        <br>
+                        <br>
 
                         <!--<button id="InsertSample" class="btn btn-primary"><i class="fa fa-plus"></i> Insert</button>
 						   <button id="ViewSample" class="btn btn-success"><i class="fa fa-plus"></i> View</button>
@@ -458,7 +498,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                        <br><br>
+                        <br>
+                        <br>
                         <center>
                             <h2>Samples TimeLine</h2>
                         </center>
@@ -499,13 +540,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <center>
                                         <h2># Samples </h2>
                                     </center>
-                                    <center>Inser the number of samples to be added to the project.</center> <br>
-                                    <center><input type="text" style="width:50px" id="NumberSamples" placeholder="" value=1></center>
+                                    <center>Inser the number of samples to be added to the project.</center>
                                     <br>
-                                    <center><button style="width: 50%" id="NumberSamplesButton" class="btn btn-success">GO</button><br><br></center>
-                                    <center><br> Fill up the table using your sample's information and the instructions provided above. you can copy an paste several rows at the time (useful for large set of samples).
-                                        <br><br><br></center>
-                                    <center><button style="width: 50%" id="submitMetagenome" class="btn btn-primary" data-widget="collapse" disabled="true">Submit</button></center>
+                                    <center>
+                                        <input type="text" style="width:50px" id="NumberSamples" placeholder="" value=1>
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <button style="width: 50%" id="NumberSamplesButton" class="btn btn-success">GO</button>
+                                        <br>
+                                        <br>
+                                    </center>
+                                    <center>
+                                        <br> Fill up the table using your sample's information and the instructions provided above. you can copy an paste several rows at the time (useful for large set of samples).
+                                        <br>
+                                        <br>
+                                        <br>
+                                    </center>
+                                    <center>
+                                        <button style="width: 50%" id="submitMetagenome" class="btn btn-primary" data-widget="collapse" disabled="true">Submit</button>
+                                    </center>
                                 </div>
                             </div>
                         </div>
@@ -536,13 +590,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <h2># Instructions</h2>
                                 Upload new samples to the project is a very simple task, just follow the next steps:
                                 <ul>
-                                    <li> <b>Insert</b> the number of samples you want to aggregate into your project. </li>
-                                    <li> Click <b>GO</b> or hit the enter key.</li>
-                                    <li> <b>Fill</b> the fields on the table and click on submit.</li>
-                                    <li> <b>Wait</b> until you receive an alert of success creating the samples.</li>
+                                    <li>
+                                        <b>Insert</b> the number of samples you want to aggregate into your project. </li>
+                                    <li> Click
+                                        <b>GO</b> or hit the enter key.</li>
+                                    <li>
+                                        <b>Fill</b> the fields on the table and click on submit.</li>
+                                    <li>
+                                        <b>Wait</b> until you receive an alert of success creating the samples.</li>
 
                                 </ul>
-                                <b>TIP:</b> This process only creates the sample environment, it does not process your data. To process you data, after you created the sample environment you need to go to <b>Analyze Samples</b> tab.
+                                <b>TIP:</b> This process only creates the sample environment, it does not process your data. To process you data, after you created the sample environment you need to go to
+                                <b>Analyze Samples</b> tab.
 
                             </div>
 
@@ -567,7 +626,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li>Water</li>
 
                                 </ul>
-                                <b>TIP:</b> If your biome is not in the list, please use the <a style="color:blue" target="_blank" href='https://www.bioontology.org/'>bioontology</a> to fill up the category as accurate as possible to your experiments.
+                                <b>TIP:</b> If your biome is not in the list, please use the
+                                <a style="color:blue" target="_blank" href='https://www.bioontology.org/'>bioontology</a> to fill up the category as accurate as possible to your experiments.
                             </div>
 
                             <div class="callout col-md-4">
@@ -589,7 +649,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li> other</li>
                                 </ul>
                                 <h2># Latitude-Longitude</h2>
-                                Visit <a style="color:blue" target="_blank" href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en"> google maps </a> for getting the decimal degrees of latitude and longitude
+                                Visit
+                                <a style="color:blue" target="_blank" href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en">
+                                google maps </a> for getting the decimal degrees of latitude and longitude
 
                             </div>
                         </div>
@@ -611,14 +673,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     <div style="width:800px" class="tab-pane" id="remo">
-                        <label for="SampleNameSelectToRemove"> <h5>Select Sample ID: </h5></label>
+                        <label for="SampleNameSelectToRemove">
+                            <h5>Select Sample ID: </h5>
+                        </label>
                         <br>
                         <select id='SampleNameSelectToRemove'>
                             <option>Sample</option>
-                          </select>
+                        </select>
                         <br>
                         <br>
-                        <button id="RemoveSample" class="btn btn-danger"><i class="fa fa-minus"></i> Remove</button>
+                        <button id="RemoveSample" class="btn btn-danger">
+                            <i class="fa fa-minus"></i> Remove</button>
                     </div>
 
 
@@ -643,14 +708,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class="col-md-8 col-md-offset-2" id='jqxWidget' style="float: left;">
                             <center>
-                                <h2> <b>1</b> Select References</h2>
+                                <h2>
+                                    <b>1</b> Select References</h2>
                             </center>
 
                             <div class="col-md-12">
                                 <span class="badge bg-red">Warning</span>
                                 <h4> Regarding deepARG-DB</h4>
                                 <p>Please, be aware that the deepARG-DB in MetaStorm consits only of the protein sequence database. It runs under the MetaStorm pipeline. Therefore, It does not use the models from deepARG. If you are interested on running
-                                    your samples using our deep learning models. Please look at the deepARG webserver <a href="https://bench.cs.vt.edu/deeparg"> here </a> under the <u>online analysis</u> section.</p>
+                                    your samples using our deep learning models. Please look at the deepARG webserver
+                                    <a href="https://bench.cs.vt.edu/deeparg"> here </a> under the
+                                    <u>online analysis</u> section.</p>
                             </div>
 
                             <div id='jqxNavigationBar'>
@@ -696,17 +764,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class='col-md-8 col-md-offset-2'>
                             <center>
-                                <h2><b>2</b> Run Samples</h2>
+                                <h2>
+                                    <b>2</b> Run Samples</h2>
                             </center>
 
-                            <p>Make sure you select a proper fastq.gz file. Most of the <code>Running time errors</code> are because the files are not fastq.gz or the fastq.gz files are not selected in the form below. If you tried several times to run your
-                                samples and you are getting always an error, let us know at MetaStorm (cmetangen@gmail.com) </p>
+                            <p>
+                                Make sure you select a proper fastq.gz file. Most of the
+                                <code>Running time errors</code> are because the files are not fastq.gz or the fastq.gz files are not selected in the form below. If you tried several times to run your samples and you are getting always an error, let us
+                                know at MetaStorm (cmetangen@gmail.com)
+                            </p>
+
+                            <p>
+                                For large number of samples, please submit batches of maximum
+                                <strong>20</strong> jobs. Submitting a large number of analysis at the same may cause that your samples get ignored.
+                            </p>
+
                         </div>
                         <br>
                         <br>
 
                         <div class="col-md-12 col-md-offset-2" id="tab_runo_box" style="background: none; border-radius: 0; border-top: hidden; box-shadow: none">
-                            <button id="RefreshSampleTabRuno" class="btn btn-success"><i class="fa fa-refresh"></i> Refresh </button><br><br>
+                            <button id="RefreshSampleTabRuno" class="btn btn-success">
+                                <i class="fa fa-refresh"></i> Refresh </button>
+                            <br>
+                            <br>
                             <div id="run_table"></div>
                         </div>
 
@@ -980,15 +1061,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
             Computer Science department VT
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Virginia Tech</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015
+            <a href="#">Virginia Tech</a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark control-sidebar-close">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            <li class="active">
+                <a href="#control-sidebar-home-tab" data-toggle="tab">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#control-sidebar-settings-tab" data-toggle="tab">
+                    <i class="fa fa-gears"></i>
+                </a>
+            </li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -1020,12 +1110,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <p>This section help you to get started on completing the data parameters associated to your samples.</p>
 
                             <ul>
-                                <li><b>Project</b> - a set of samples comprising different conditions</li>
-                                <li><b>Sample</b> - a single entity that has been obtained for analysis</li>
-                                <li><b>Environment</b> - the characteristics which describe the environment in which your samples were obtained </li>
-                                <li><b>Sample set</b> - a group of samples sharing the same library and environmental characteristics</li>
-                                <li><b>Library preparation</b> - Environmental package the sample belongs to. (metagenome, meta transcriptome, amplicon metagenome 16s)</li>
-                                <li><b>Reads 1-2</b> - The file names corresponding to the data from your library (fasq-fasta format). Be aware that this name has to be </strong>EXACTLY</strong> the same as the file you will upload.</li>
+                                <li>
+                                    <b>Project</b> - a set of samples comprising different conditions</li>
+                                <li>
+                                    <b>Sample</b> - a single entity that has been obtained for analysis</li>
+                                <li>
+                                    <b>Environment</b> - the characteristics which describe the environment in which your samples were obtained </li>
+                                <li>
+                                    <b>Sample set</b> - a group of samples sharing the same library and environmental characteristics</li>
+                                <li>
+                                    <b>Library preparation</b> - Environmental package the sample belongs to. (metagenome, meta transcriptome, amplicon metagenome 16s)</li>
+                                <li>
+                                    <b>Reads 1-2</b> - The file names corresponding to the data from your library (fasq-fasta format). Be aware that this name has to be </strong>EXACTLY</strong> the same as the file you will upload.</li>
                             </ul>
                         </div>
                     </li>
@@ -1059,9 +1155,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <h3 class="control-sidebar-heading">General Settings</h3>
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
-                  Report panel usage
-                  <input type="checkbox" class="pull-right" checked />
-                </label>
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked />
+                        </label>
                         <p>
                             Some information about this general settings option
                         </p>
