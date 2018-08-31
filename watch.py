@@ -15,7 +15,7 @@ import re
 while 1:
 	try:
 		jobs=database.exe("select * from jobs where priority='normal' and status!='done'")
-		
+
 		for job in jobs:
 			inp=json.loads(base64.b64decode(job[4]))
 			data=inp[0]
@@ -49,11 +49,11 @@ while 1:
 			# 1. Check if the job is done:
 			status=os.popen('ssh gustavo1@newriver1.arc.vt.edu "cat '+fromf+'/arc_run.qsub.status "').read().split("\n")[0]
 			print json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof, "jobid":jid, "sample": SAMPLE}, indent=4)
-			
-				
+
+
 			if status=='done':
 				# scp=arcon()
-				# 2. get list of files in remote server	
+				# 2. get list of files in remote server
 				try:
 					SArc=os.popen('ssh gustavo1@newriver1.arc.vt.edu " ls '+fromf+'"').read().split("\n")
 					reg = "matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$"
@@ -61,7 +61,7 @@ while 1:
 				except:
 					SArc = []
 				# print SArc
-				
+
 				f2s=[]
 				for ref in refs+['nucl.fa', 'prot.fa', 'log', 'pred.genes.gff']:
 					f2s.append([f for f in SArc if ref in f])
@@ -71,10 +71,10 @@ while 1:
 						print fi
 						os.system('scp gustavo1@newriver1.arc.vt.edu:/'+fromf+fi+" "+tof+fi)
 						# scp.get(fromf+fi, tof+fi)
-				
+
 				qci = '/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/'+data['pid']+"/READS/"+sid+"trim.log"
 				qct = rootvar.__ROOTPRO__+"/"+data['pid']+"/READS/"+sid+"trim.log"
-				
+
 				# print qci,qct
 				os.system('scp gustavo1@newriver1.arc.vt.edu:/'+qci+" "+qct)
 				# scp.get(qci,qct)
@@ -85,11 +85,11 @@ while 1:
 
 				x=email.send_email(USER[0]['user_name'],USER[0]['user_affiliation'],
 								'Processing sample: '+SAMPLE[0]['sample_name'], msg)
-			
+
 			if  status!=job[5] and not "Error:" in status: #"the status is not the same"
 				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],status,'normal',job[7],job[8]]) #update the database
 				database.commit()
-			
+
 			if "Error:" in status and job[5]!="error":
 				messe="MetaStorm team: During the execution of a job under the ARC resources, an error has been triggered: <br> Please take a look at the project under <b>"+SAMPLE[0]['project_id']+"</b> and sample <b>"+SAMPLE[0]['sample_id']+"</b> under the <b>"+pip+"</b> pipeline and contact the user "+USER[0]['user_affiliation']+". <br><br>Thanks for the cooperation <br>MetaStorm Team - User Assistance"
 				x=email.send_email('Gustavo Arango','gustavo1@vt.edu','MetaStorm', messe.strip())
@@ -97,16 +97,16 @@ while 1:
 				x=email.send_email(USER[0]['user_name'],USER[0]['user_affiliation'],'Processing sample: '+SAMPLE[0]['sample_name'], messe2.strip())
 				update_jobs(database,[uid,SAMPLE[0]['project_id'],sid,pip,job[4],'error','normal',job[7],job[8]])
 				database.commit()
-			
-			time.sleep(5)
-		time.sleep(5)
+
+			time.sleep(300)
+		time.sleep(300)
 	except Exception as inst:
 		print "ERROR: "+str(datetime.datetime.now())+" | "+str(inst)
 		errda = json.dumps({"Pipeline":pip, "sampleID":sid,"ProjectID":data['pid'],"UserID":uid,"Status":status, "from":fromf, "tof":tof}, indent=4)
 		x=email.send_email('Gustavo Arango','gustavo1@vt.edu', 'MetaStorm Notification: '+sid, 'error in watch.py: '+str(inst) + '\nStatus: ' + status + "\n" + errda)
-		time.sleep(5)
-		
-	
-	
+		time.sleep(1500)
+
+
+
 
 
