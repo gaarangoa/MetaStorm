@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+  # rest:
+  #   container_name: MetaStorm
+  #   image: python:metastorm
+  #   build:
+  #     context: ../
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ../:/main/
+  #   tty: true
+  #   ports:
+  #     - "5001:5000"
+
+  admin:
+    build:
+      context: ./REST_admin/
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/src/
+      - ./SQL:/src/REST_admin/database/
+    tty: true
+    ports:
+      - 6001:8000
+    command: python3 /src/REST_admin/manage.py runserver 0.0.0.0:8000

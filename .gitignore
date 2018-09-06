@@ -1,3 +1,4 @@
+*.pyc
 REST_admin/database/
 Files/
 SQL/
