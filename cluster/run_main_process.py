@@ -61,7 +61,7 @@ try:
     main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
     # make a request to the listener in the localhost
     os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py'+sys.argv[1]+' completed')
+              rootdir+'/listener.py '+sys.argv[1]+' completed')
 except Exception as inst:
     os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py'+sys.argv[1]+' failed')
+              rootdir+'/listener.py '+sys.argv[1]+' failed')
