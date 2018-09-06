@@ -119,9 +119,9 @@ def get_results(job='', status=''):
                 " the job has been terminated. <br> A notification of the error has been sent to the " + \
                 " Administrators of MetaStorm. Please check your submission parameters (databases, fastq files, etc.) " + \
                 " and try it again. Please contact us at cmetangen@gmail.com providing the following information:  \n" + \
-                " Sample ID:" + sid + \
-                " Project ID:" + data['pid'] + \
-                " Pipeline: " + pip + \
+                "<br><br><strong>Sample ID:</strong>" + sid + \
+                "<br><strong> Project ID:</strong>" + data['pid'] + \
+                "<br><strong>Pipeline:</strong>" + pip + \
                 "<br><br>This notification tool has been enabled in order to improve the efficience of MetaStorm. " + \
                 "<br><br> Thanks, <br> MetaStorm Team"
             x = email.send_email(
