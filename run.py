@@ -1349,7 +1349,7 @@ def TaxonomyHTML():
     return render_template('TaxonomyTree.html')
 
 
-from app.lib.retrieve import retrieve
+from app.lib.retrieve import get_results
 
 
 @app.route('/status', methods=['POST'])
@@ -1363,7 +1363,7 @@ def retrieve_job_status():
     log.debug((job, _status))
 
     log.debug('retrieving the results')
-    retrieve(job=job, status=_status)
+    get_results(job=job, status=_status)
     log.debug('returning status')
 
 

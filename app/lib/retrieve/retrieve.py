@@ -13,7 +13,7 @@ import re
 import logging
 
 
-def retrieve(job='', status=''):
+def get_results(job='', status=''):
 
     main_logfile = rootvar.__root_dir__+"/"+"/retrieve.log"
     logging.basicConfig(
