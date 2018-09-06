@@ -16,6 +16,9 @@ from .opts import SECRET_KEY
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+USE_X_FORWARDED_HOST = True
+FORCE_SCRIPT_NAME = '/metastorm_admin'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'bench.cs.vt.edu'
+    '*'
 ]
 
 
