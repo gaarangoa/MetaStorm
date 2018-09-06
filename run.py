@@ -1349,7 +1349,7 @@ def TaxonomyHTML():
     return render_template('TaxonomyTree.html')
 
 
-from app.lib.retrieve import get_results
+from app.lib.retrieve.retrieve import get_results
 
 
 @app.route('/status', methods=['POST'])
