@@ -101,10 +101,9 @@ def get_results(job='', status=''):
             x = email.send_email(USER[0]['user_name'], USER[0]['user_affiliation'],
                                  'Processing sample: '+SAMPLE[0]['sample_name'], msg)
 
-        if status != job[5] and not "Error:" in status:  # "the status is not the same"
-            update_jobs(database, [uid, SAMPLE[0]['project_id'], sid, pip,
-                                   job[4], status, 'normal', job[7], job[8]])  # update the database
-            database.commit()
+        update_jobs(database, [uid, SAMPLE[0]['project_id'], sid, pip,
+                               job[4], status, 'normal', job[7], job[8]])  # update the database
+        database.commit()
 
         if status == 'failed':
             messe = "MetaStorm team: During the execution of a job under the ARC resources, an error has been triggered: <br> Please take a look at the project under <b>" + \
