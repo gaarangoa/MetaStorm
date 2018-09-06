@@ -1347,7 +1347,7 @@ def jobstatus():
     data = request.get_json()
     job = data['job']
     _status = data['status']
-    retrieve(job=job, status=status)
+    retrieve(job=job, status=_status)
 
 
 if __name__ == '__main__':
