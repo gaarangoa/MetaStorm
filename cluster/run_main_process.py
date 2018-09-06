@@ -56,8 +56,6 @@ dbfile = rootvar.__FILEDB__  # "~/MetaStorm/SQL/projects.db"#inp[5]
 USER = inp[6]
 SAMPLE = inp[7]
 
-#print USER, SAMPLE
-
 try:
     main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
     # make a request to the listener in the localhost

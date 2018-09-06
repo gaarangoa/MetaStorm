@@ -23,9 +23,9 @@ def qsub(ni, fi, idr):
         '# Change to the directory from which the job was submitted',
         '#cd '+idr,
         'module load jdk/1.8.0 cuda/7.0.28 gcc/4.7.2  python/2.7.10  atlas',
-        # 'python /groups/metastorm_cscee/MetaStorm/run_main_process.py ' + ni,
+        'python /groups/metastorm_cscee/MetaStorm/run_main_process.py ' + ni,
         'echo "the job is done"',
-        'python /groups/metastorm_cscee/MetaStorm/scheduler.py ' + ni,
+        # 'python /groups/metastorm_cscee/MetaStorm/scheduler.py ' + ni,
         'exit;'
     ]
     fi.write("\n".join(cmd))

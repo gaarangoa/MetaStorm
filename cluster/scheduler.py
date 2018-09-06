@@ -12,7 +12,7 @@ from scp import SCPClient
 import re
 from os import listdir
 from os.path import isfile, join
-
+import options
 
 inpt = json.loads(base64.b64decode(sys.argv[1]))
 
@@ -52,7 +52,7 @@ def main(inpt):
         s = paramiko.SSHClient()
         s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         s.load_system_host_keys()
-        s.connect("bench.cs.vt.edu", 22, "gustavo1", "gustavillo2006.")
+        s.connect(options.host, options.port, options.user, options.password)
         scp = SCPClient(s.get_transport())
         #
         for i in f2s:
@@ -61,12 +61,7 @@ def main(inpt):
                 scp.put(do+j, tof+j)
         #
         scp.close()
-        #
-        # 2nd send email that the analysis is done
-        #
-        x = email.send_email(USER[0]['user_name'], USER[0]['user_affiliation'],
-                             'Processing sample: '+SAMPLE[0]['sample_name']+" ("+sid+")", msg)
-        #stdin, stdout, stderr = s.exec_command("python /home/raid/www/MetaStorm/main/done.py "+run[4])
+
         #
         s.close()
     return 'done'
