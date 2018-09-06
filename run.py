@@ -1344,11 +1344,10 @@ def TaxonomyHTML():
 
 @app.route('/status', methods=['POST'])
 def jobstatus():
-    return jsonify(data="true")
-    # data = request.json()
-    # job = data['job']
-    # _status = data['status']
-    # return jsonify(data=[job, _status])
+    data = request.json()
+    job = data['job']
+    _status = data['status']
+    return jsonify(data=[job, _status])
 
 
 if __name__ == '__main__':
