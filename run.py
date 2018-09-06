@@ -1341,12 +1341,13 @@ def TaxonomyHTML():
 
 from app.lib.retrieve import retrieve
 
+
 @app.route('/status', methods=['POST'])
 def jobstatus():
     data = request.get_json()
     job = data['job']
     _status = data['status']
-    return jsonify(data=[job, _status])
+    retrieve(job=job, status=status)
 
 
 if __name__ == '__main__':
