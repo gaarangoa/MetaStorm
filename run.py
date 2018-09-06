@@ -29,13 +29,14 @@ main_db = DATABASE
 
 main_logfile = rootvar.__root_dir__+"/"+"/metastorm.log"
 logging.basicConfig(
-	filename=main_logfile,
-	level=logging.DEBUG,
-	filemode="w",
-	format="%(levelname)s %(asctime)s - %(message)s"
+    filename=main_logfile,
+    level=logging.DEBUG,
+    filemode="w",
+    format="%(levelname)s %(asctime)s - %(message)s"
 )
 
 log = logging.getLogger()
+
 
 def connect_db():
     return sqlite3.connect(DATABASE)
@@ -1356,13 +1357,13 @@ def jobstatus():
     log.debug('getting request')
     data = request.get_json()
 
-	log.debug('loading json data')
-	job = data['job']
+    log.debug('loading json data')
+    job = data['job']
     _status = data['status']
 
-	log.debug('retrieving the results')
+    log.debug('retrieving the results')
     retrieve(job=job, status=_status)
-	log.debug('returning status')
+    log.debug('returning status')
 
 
 if __name__ == '__main__':
