@@ -1345,7 +1345,10 @@ from app.lib.retrieve import retrieve
 @app.route('/status', methods=['POST'])
 def jobstatus():
     return jsonfiy(data="true")
-    u
+    # data = request.json()
+    # job = data['job']
+    # _status = data['status']
+    # return jsonify(data=[job, _status])
 
 
 if __name__ == '__main__':
