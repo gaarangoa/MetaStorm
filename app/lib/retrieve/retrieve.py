@@ -22,7 +22,7 @@ def get_results(job='', status=''):
         format="%(levelname)s %(asctime)s - %(message)s"
     )
 
-    main_log = logging.getLogger()
+    log = logging.getLogger()
 
     try:
         inp = json.loads(base64.b64decode(job))
@@ -33,16 +33,6 @@ def get_results(job='', status=''):
         pip = inp[4]
         USER = inp[6]
         SAMPLE = inp[7]
-
-        logfile = rootvar.__ROOTPRO__+"/" + \
-            data['pid'] + "/assembly/idba_ud/" + sid + "/log.txt"
-
-        logging.basicConfig(
-            filename=logfile,
-            level=logging.DEBUG,
-            filemode="w",
-            format="%(levelname)s %(asctime)s - %(message)s"
-        )
 
         log = logging.getLogger()
 
@@ -147,4 +137,4 @@ def get_results(job='', status=''):
 
             database.commit()
     except Exception as e:
-        main_log.error(str(e))
+        log.error(str(e))
