@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from app.lib.common import rootvar
 from app.lib.common.sqlite3_commands import update_jobs, update_status
 from app.lib.create_project import insert_new_project as sql
