@@ -1,6 +1,5 @@
 import sys
 import json
-import base64
 import os
 
 os.system(" ".join([
