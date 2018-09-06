@@ -17,5 +17,5 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('metastorm_admin/admin/', admin.site.urls),
+    path('metastorm_admin/', admin.site.urls),
 ]
