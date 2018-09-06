@@ -6,6 +6,6 @@ os.system(" ".join([
     ' curl ',
     ' --header "Content-Type: application/json"'
     ' --request POST',
-    ' --data '+json.dumps({"job": sys.argv[1], "status": sys.argv[2]}),
+    " --data '"+json.dumps({"job": sys.argv[1], "status": sys.argv[2]})+"'",
     ' http://bench.cs.vt.edu/MetaStorm/status'
 ]))
