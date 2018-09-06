@@ -1366,7 +1366,7 @@ def retrieve_job_status():
     get_results(job=job, status=_status)
     log.debug('returning status')
 
-	return jsonify(status="processing")
+    return jsonify(status=["processing"])
 
 
 if __name__ == '__main__':
