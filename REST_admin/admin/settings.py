@@ -12,12 +12,14 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from .opts import SECRET_KEY
+from .opts import prod
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 USE_X_FORWARDED_HOST = True
-FORCE_SCRIPT_NAME = '/metastorm_admin'
+if prod:
+    FORCE_SCRIPT_NAME = '/metastorm_admin'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
