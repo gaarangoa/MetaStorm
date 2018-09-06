@@ -1339,13 +1339,13 @@ def TaxonomyHTML():
     return render_template('TaxonomyTree.html')
 
 
-@app.route('/status', methods=['GET'])
+from app.lib.common.retrieve import retrieve
+@app.route('/status', methods=['POST'])
 def jobstatus():
-    pip = request.args.get('pip')
-    uid = request.args.get('uid')
-    status = request.args.get('status')
-    sid = request.args.get('sid')
-    return jsonify(data=[pip, uid, status, sid])
+	data = request.json()
+	job = data['job']
+	_status = data['status']
+	return jsonify(data=[job, _status])
 
 
 if __name__ == '__main__':
