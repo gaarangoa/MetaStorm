@@ -2,6 +2,7 @@
 import sys
 rootdir = '/groups/metastorm_cscee/MetaStorm/'
 sys.path.insert(0, rootdir)
+import os
 
 from app.lib.main_func import mRunMetaGen
 from app.lib.common import rootvar
