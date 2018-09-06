@@ -120,7 +120,7 @@ def get_results(job='', status=''):
                 " Administrators of MetaStorm. Please check your submission parameters (databases, fastq files, etc.) " + \
                 " and try it again. Please contact us at cmetangen@gmail.com providing the following information:  \n" + \
                 " Sample ID:" + sid + \
-                " Project ID:" + pid + \
+                " Project ID:" + data['pid'] + \
                 " Pipeline: " + pip + \
                 "<br><br>This notification tool has been enabled in order to improve the efficience of MetaStorm. " + \
                 "<br><br> Thanks, <br> MetaStorm Team"
