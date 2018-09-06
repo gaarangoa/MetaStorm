@@ -23,5 +23,5 @@ services:
       - ./SQL:/src/REST_admin/database/
     tty: true
     ports:
-      - 6001:8000
+      - 6006:8000
     command: python3 /src/REST_admin/manage.py runserver 0.0.0.0:8000
