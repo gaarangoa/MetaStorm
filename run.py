@@ -19,7 +19,7 @@ from app.lib.email import Email as email
 import time
 import requests
 import threading
-
+import logging
 
 app = Flask(__name__)
 
@@ -27,6 +27,15 @@ app = Flask(__name__)
 DATABASE = rootvar.__FILEDB__
 main_db = DATABASE
 
+main_logfile = rootvar.__root_dir__+"/"+"/metastorm.log"
+logging.basicConfig(
+	filename=main_logfile,
+	level=logging.DEBUG,
+	filemode="w",
+	format="%(levelname)s %(asctime)s - %(message)s"
+)
+
+log = logging.getLogger()
 
 def connect_db():
     return sqlite3.connect(DATABASE)
@@ -1344,10 +1353,16 @@ from app.lib.retrieve import retrieve
 
 @app.route('/status', methods=['POST'])
 def jobstatus():
+    log.debug('getting request')
     data = request.get_json()
-    job = data['job']
+
+	log.debug('loading json data')
+	job = data['job']
     _status = data['status']
+
+	log.debug('retrieving the results')
     retrieve(job=job, status=_status)
+	log.debug('returning status')
 
 
 if __name__ == '__main__':
