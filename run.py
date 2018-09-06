@@ -31,7 +31,7 @@ main_logfile = rootvar.__root_dir__+"/"+"/metastorm.log"
 logging.basicConfig(
     filename=main_logfile,
     level=logging.DEBUG,
-    filemode="w",
+    # filemode="w",
     format="%(levelname)s %(asctime)s - %(message)s"
 )
 
@@ -1353,7 +1353,7 @@ from app.lib.retrieve import retrieve
 
 
 @app.route('/status', methods=['POST'])
-def jobstatus():
+def retrieve_job_status():
     log.debug('getting request')
     data = request.get_json()
 
