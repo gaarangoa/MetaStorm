@@ -150,4 +150,3 @@ def get_results(job='', status=''):
             database.commit()
     except Exception as e:
         main_log.error(str(e))
-        main_log.error(inp)
