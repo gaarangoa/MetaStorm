@@ -1,0 +1,12 @@
+AUTHORS.rst
+HISTORY.rst
+LICENSE
+MANIFEST.in
+README.rst
+inchlib_clust.py
+setup.cfg
+setup.py
+inchlib_clust.egg-info/PKG-INFO
+inchlib_clust.egg-info/SOURCES.txt
+inchlib_clust.egg-info/dependency_links.txt
+inchlib_clust.egg-info/top_level.txt

@@ -175,9 +175,9 @@ def change_password():
 		new1=request.form.get("newp1",None)
 		new2=request.form.get("newp2",None)
 		uid=request.form.get('pass_user_id', None)
-		
+
 		if new1!=new2: return 'Error: passwords do not match'
-		
+
 		cpass=query_db('select user_password from user where user_id="'+str(uid)+'"')
 		if cpass[0]['user_password']==oldp1:
 			g.db.execute('UPDATE user SET user_password="'+new1+'" WHERE user_id="'+uid+'"')
@@ -185,10 +185,10 @@ def change_password():
 			return 'Password has been updated!'
 		else:
 			return 'Error: old password does not match'
-		
+
 	except Exception as inst:
 		return jsonify(status="ERROR", error=str(inst))
-	
+
 
 
 
@@ -255,7 +255,7 @@ def GetAllInfo():
 		return jsonify(uname=userInfo[0]['user_name'], email=userInfo[0]['user_affiliation'], affiliation=userInfo[0]['organization'], projects=projectsInfo, samples=samplesInfo)
 	except Exception as inst:
 		return jsonify(status="ERROR", error=str(inst))
-		
+
 
 
 
@@ -360,7 +360,7 @@ def sqlgo():
 		data = request.get_json()
 		#return jsonify(data['sql'])
 		exe=base64.b64decode(str(data['sql']))
-		
+
 		#print exe
 		g.db.execute(exe);
 		g.db.commit();
@@ -627,7 +627,7 @@ def upload(file,dir):
 
 @app.route('/uploadref', methods=['GET','POST'])
 def uploadref():
-	try:			
+	try:
 		rid=request.form.get("rid",None)
 		file =request.files['file']
 		dir=rootvar.__ROOTDBS__+"/"+rid+"/"
@@ -653,7 +653,7 @@ def process_up_ref_dataset():
 	try:
 		data = request.get_json() #{'taxofile':'none', 'functfile':'DATASET.func', 'rid':'eyzbhakkpq', 'seqfile':'dataset.fa', 'rname':'card_sample', 'uid':'ihqvnteormayzoy'}#
 		#x=sql.SQL(main_db)
-		
+
 		g.db.execute('UPDATE reference SET seqfile="'+data['seqfile']+'",  taxofile="'+data['taxofile']+'", functfile="'+data['functfile']+'" WHERE reference_id="'+data['rid']+'"')
 		g.db.commit()
 		refdb=query_db('SELECT * from reference where reference_id="'+data['rid']+'"')[0]
@@ -671,12 +671,12 @@ def process_up_ref_dataset():
 			rootvar.tsv2json(refdb['reference_format_path']+'/dataset.description',"\t")
 			g.db.execute('UPDATE reference SET status="done" WHERE reference_id="'+data['rid']+'"')
 		g.db.commit()
-		
+
 		## make the directory at arc
 		arcdir='/groups/metastorm_cscee/MetaStorm/Files/REFERENCE/'
 		os.system('ssh gustavo1@newriver1.arc.vt.edu "mkdir -p '+arcdir+data['rid'] + '"')
 		# scp=arcon()
-		
+
 		## move the files to arc
 		# for fi in listdir(refdb['reference_path']):
 		os.system('scp '+refdb['reference_path']+'/* gustavo1@newriver1.arc.vt.edu:'+arcdir+"/"+data['rid']+"/")
@@ -759,7 +759,7 @@ def RunMetaGen():
 		uid=data['uid']
 		pip=data['pip']
 		msg=data['msg']
-		
+
 		if uid=="TesREPDooc73Ohw": return 'User not allowed'
 		S=query_db('select * from user  where user_id="'+uid+'"')
 		T=query_db('select * from samples where sample_id="'+sid+'"')
@@ -767,24 +767,24 @@ def RunMetaGen():
 		pid=T[0]['project_id']
 		arg=base64.b64encode(json.dumps([data,refs,sid,uid,pip,rootvar.__FILEDB__, S, T]))
 		SArc=bench2archu('python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
-		
+
 		x=sql.SQL(rootvar.__FILEDB__)
 		update_jobs(x,[uid,T[0]['project_id'],sid,pip,arg,'queue','normal',date,SArc['out'].split(".")[0]])
-		
+
 		val=x.exe('update samples set reads1="'+data['read1']+'" where project_id="'+data['pid']+'" and sample_id="'+sid+'"')
 		val=x.exe('update samples set reads2="'+data['read2']+'" where project_id="'+data['pid']+'" and sample_id="'+sid+'"')
-		
-		
-		
+
+
+
 		for ref in refs:
 			update_status(x,sid,ref,pip,"queue")
 			if not x.exe('select * from '+pip+' where sample_id="'+sid+'" and datasets="'+ref+'"'):
 				x.c.execute('INSERT OR IGNORE INTO '+pip+' VALUES (?,?,?,?)', (sid,uid,pid,ref))
 				x.commit()
-		
+
 		x.close()
-		
-		
+
+
 		try:
 			os.system("mkdir -p "+rootvar.__ROOTPRO__+"/"+data['pid']+"/assembly/idba_ud/"+sid)
 			os.system("mkdir -p "+rootvar.__ROOTPRO__+"/"+data['pid']+"/assembly/RESULTS/")
@@ -793,7 +793,7 @@ def RunMetaGen():
 			os.system("mkdir -p "+rootvar.__ROOTPRO__+"/"+data['pid']+"/READS")
 		except:
 			pass
-		
+
 		x=email.send_email(S[0]['user_name'],S[0]['user_affiliation'],
 							   'Processing sample: '+T[0]['sample_name'], "Dear MetaStorm User, <br><br><br> the sample <b>"+
 							   T[0]['sample_name']+
@@ -801,10 +801,10 @@ def RunMetaGen():
 							   'The time for making the analysis depends on the current web traffic and availability of the web server. Once the '+
 							   'analysis is done you will receive a notification via email. <br><br><br><br>'+
 							   'Thank you<br><b>MetaStorm Team</b>')
-		
+
 		return jsonify(SArc)
 	except Exception as inst:
-		return "ERROR: "+str(inst) 
+		return "ERROR: "+str(inst)
 
 
 
@@ -964,7 +964,7 @@ def get_taxo_by_name():
 		return jsonify(matrix=view.level(lid,type="matches"))
 	except Exception as inst:
 		return "ERROR: "+str(inst)
-	
+
 
 #******************************************************************************
 # BEGIN: when click on the node tree
@@ -1246,7 +1246,7 @@ def format_matrix_ht(Q, description):
 	header=Q[0]
 	data={}
 	for ix, i in enumerate(Q):
-		data.setdefault("data",[]).append({str(header[jx]):j for jx,j in enumerate(i)})	
+		data.setdefault("data",[]).append({str(header[jx]):j for jx,j in enumerate(i)})
 	return data['data']
 
 def process_matrix_vis(N, ie, ib):
@@ -1268,10 +1268,10 @@ from app.lib.inchlib import inchlib_clust as IL
 def get_all_samples_tree():
 	try:
 		data = request.get_json()
-		
+
 		X=GetSamplesTree.run(data)
 		# return "step 2"
-		
+
 		minA=data['minA']
 		if data['norm']=="scale":
 			nzt=1
@@ -1279,23 +1279,23 @@ def get_all_samples_tree():
 			nzt=0
 		elif data['norm']=='16s':
 			nzt=2
-		
+
 		try:
 			ib=data['ib']-1; ie=data['ie'];
 		except:
 			ib=0; ie=10;
 		#b=0; e=10
 		###print minA
-		
+
 		try:
 			db_desc=json.load(open(rootvar.__ROOTDBS__+"/"+data['rid']+"/dataset.description.json"))
 		except:
 			db_desc=False
-		
+
 		if X[0]=='taxonomy':
 			tree=X[1]
 			matrix=rootvar.get_matrix_level(data,data["lid"])
-			
+
 			#return jsonify(x=matrix)
 			samples_sel=data["snames"]#list(set([str(i[0]) for i in matrix]))
 			M,N=rootvar.v2m(matrix,samples_sel,nzt,0) # N is not log2 transformed, M its id
@@ -1313,7 +1313,7 @@ def get_all_samples_tree():
 			#return jsonify(N=N, X=X[1], s=samples_sel)
 			P=process_matrix_vis(N, ie, ib)
 			Q=format_matrix_ht(format_matrix(np.transpose(P).tolist()), db_desc)
-			
+
 			for ix,i in enumerate(Q):
 				try:
 					Q[ix]['description']=db_desc[i['samples']]['X1'].replace('"',"")
@@ -1323,13 +1323,13 @@ def get_all_samples_tree():
 					Q[ix]['Long_Description']=db_desc[i['samples']]['X2'].replace('"',"")
 				except:
 					Q[ix]['Long_Description']='Description'
-					
-			
+
+
 			m2js=map(list, zip(*P))
 			heatmap=IL.main(m2js,None)
 			tmp=m2js[1:]
 			tmp.sort(key=lambda x: float(x[1]+x[2]) , reverse=True)
-			
+
 			return(jsonify(aid="function",heatmap=heatmap[0],matrix=[m2js[0]]+tmp, table=Q, samples=samples_sel))
 	except Exception as inst:
 		return "ERROR: "+str(inst)
@@ -1348,9 +1348,9 @@ def get_multiple_projects():
 		data = request.get_json()
 		M=[]
 		for pid in data['pids']:
-			
+
 			data['pid']=pid
-			
+
 			samples_sel=data["snames"]
 			X=GetSamplesTree.run(data)
 			if data['norm']=="scale":
@@ -1363,13 +1363,13 @@ def get_multiple_projects():
 				ib=data['ib']-1; ie=data['ie'];
 			except:
 				ib=0; ie=10;
-			
+
 			if X[0]=='taxonomy':
 				matrix=[[pid+":"+i[0], i[1], i[2], i[3]] for i in rootvar.get_matrix_level(data,data["lid"])]
 			elif X[0]=='function':
 				matrix=[[pid+":"+i[0], i[1], i[2], i[3]] for i in X[1]]
 			M+=matrix
-			
+
 		M,N=rootvar.v2m(M,samples_sel,0,0)
 		P=process_matrix_vis(N, ie, ib)
 		m2js=map(list, zip(*P))
@@ -1377,7 +1377,7 @@ def get_multiple_projects():
 		#tmp.sort(key=lambda x: float(x[1]+x[2]) , reverse=True)
 		heatmap=IL.main(m2js,None)
 		heatmap[0]['data']['feature_names']=order=[i.split(":")[1] for i in heatmap[0]['data']['feature_names']]
-		
+
 		return jsonify(matrix=[m2js[0]]+tmp, heatmap=heatmap[0], P=P)
 	except Exception as inst:
 		return "ERROR: "+str(inst)
@@ -1415,12 +1415,12 @@ def download_files():
 		sid = data['sid']
 		pid = data['pid']
 		fnm = data['name']
-		
+
 		os.system('mkdir /home/raid/www/MetaStorm/main/tmp/'+sid+"/")
 		scp=arcon()
-		
+
 		scp.get(fi, '/home/raid/www/MetaStorm/main/tmp/'+sid+"/"+fnm)
-		
+
 		return jsonify(fo = '/home/raid/www/MetaStorm/main/tmp/'+sid+"/"+fnm)
 	except Exception as inst:
 		return str(inst)
@@ -1708,6 +1708,10 @@ def visualizationR():
 def TaxonomyHTML():
 	return render_template('TaxonomyTree.html')
 
+
+@app.route('/status/')
+def jobstatus():
+    	return 0
 
 
 if __name__ == '__main__':
