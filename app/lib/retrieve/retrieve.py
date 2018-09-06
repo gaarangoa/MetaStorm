@@ -69,7 +69,6 @@ def get_results(job='', status=''):
             "Status": status,
             "from": fromf,
             "tof": tof,
-            "jobid": jid,
             "sample": SAMPLE
         })
 
