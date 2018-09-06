@@ -1344,7 +1344,7 @@ def TaxonomyHTML():
 
 @app.route('/status', methods=['POST'])
 def jobstatus():
-    return jsonfiy(data="true")
+    return jsonify(data="true")
     # data = request.json()
     # job = data['job']
     # _status = data['status']
