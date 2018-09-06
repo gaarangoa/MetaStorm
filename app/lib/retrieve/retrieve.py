@@ -18,7 +18,7 @@ def get_results(job='', status=''):
     main_logfile = rootvar.__root_dir__+"/"+"/logs/retrieve.log"
     logging.basicConfig(
         filename=main_logfile,
-        level=logging.DEBUG,
+        level=logging.INFO,
         format="%(levelname)s %(asctime)s - %(message)s"
     )
 
@@ -81,7 +81,7 @@ def get_results(job='', status=''):
 
             for refi in f2s:
                 for fi in refi:
-                    log.info(('Reference: ', fi))
+                    log.debug(('Reference: ', fi))
                     os.system('scp gustavo1@newriver1.arc.vt.edu:/' +
                               fromf+fi+" "+tof+fi)
 
