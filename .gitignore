@@ -1,4 +1,5 @@
 *.pyc
+REST_admin/admin/opts.py
 REST_admin/database/
 Files/
 SQL/
