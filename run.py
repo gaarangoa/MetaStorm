@@ -1360,6 +1360,7 @@ def jobstatus():
     log.debug('loading json data')
     job = data['job']
     _status = data['status']
+    log.debug((job, _status))
 
     log.debug('retrieving the results')
     retrieve(job=job, status=_status)
