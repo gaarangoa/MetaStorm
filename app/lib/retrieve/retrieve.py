@@ -15,11 +15,10 @@ import logging
 
 def get_results(job='', status=''):
 
-    main_logfile = rootvar.__root_dir__+"/"+"/retrieve.log"
+    main_logfile = rootvar.__root_dir__+"/"+"/logs/retrieve.log"
     logging.basicConfig(
         filename=main_logfile,
         level=logging.DEBUG,
-        filemode="w",
         format="%(levelname)s %(asctime)s - %(message)s"
     )
 

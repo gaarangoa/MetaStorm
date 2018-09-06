@@ -27,7 +27,7 @@ app = Flask(__name__)
 DATABASE = rootvar.__FILEDB__
 main_db = DATABASE
 
-main_logfile = rootvar.__root_dir__+"/"+"/metastorm.log"
+main_logfile = rootvar.__root_dir__+"/"+"/logs/metastorm.log"
 logging.basicConfig(
     filename=main_logfile,
     level=logging.DEBUG,
