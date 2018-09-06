@@ -16,6 +16,17 @@ import logging
 
 
 def retrieve(job='', status=''):
+
+    main_logfile = rootvar.__root_dir__+"/"+"/retrieve.log"
+    logging.basicConfig(
+        filename=main_logfile,
+        level=logging.DEBUG,
+        filemode="w",
+        format="%(levelname)s %(asctime)s - %(message)s"
+    )
+
+    main_log = logging.getLogger()
+
     try:
         inp = json.loads(base64.b64decode(job))
         data = inp[0]
@@ -140,5 +151,5 @@ def retrieve(job='', status=''):
 
             database.commit()
     except Exception as e:
-        log.error(str(e))
-        log.error(inp)
+        main_log.error(str(e))
+        main_log.error(inp)
