@@ -109,8 +109,8 @@ def get_results(job='', status=''):
             job[4],
             status,
             'normal',
-            job[7],
-            str(time.time())
+            str(int(time.time()) ),
+            str(int(time.time()) )
             ]
         )  # update the database
 
