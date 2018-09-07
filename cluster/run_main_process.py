@@ -50,7 +50,7 @@ USER = inp[6]
 SAMPLE = inp[7]
 
 try:
-    # main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
+    main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
     # make a request to the listener in the localhost
     # get status file and check if was succesfully annotated
 
@@ -63,7 +63,8 @@ try:
     message = base64.b64encode(json.dumps(status))
 
     os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py '+sys.argv[1]+' done '+ message)
+              rootdir + '/listener.py ' + sys.argv[1] + ' done ' + message)
+
 except Exception as inst:
     os.system('ssh newriver1.arc.vt.edu python ' +
               rootdir+'/listener.py '+sys.argv[1]+' failed '+ message)

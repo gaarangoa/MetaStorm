@@ -18,7 +18,7 @@ def get_results(job='', status='', message=[]):
     main_logfile = rootvar.__root_dir__+"/"+"/logs/retrieve.log"
     logging.basicConfig(
         filename=main_logfile,
-        level=logging.INFO,
+        level=logging.DEBUG,
         format="%(levelname)s %(asctime)s - %(message)s"
     )
 
