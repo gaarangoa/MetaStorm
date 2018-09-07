@@ -112,7 +112,7 @@ def get_results(job='', status=''):
             ]
         )  # update the database
 
-        log.info(('updating database: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4], status, 'normal', datetime.datetime.now().isoformat(), str(int(time.time()) ) ]))
+        log.info(('updating sample: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4], status, 'normal', datetime.datetime.now().isoformat(), str(int(time.time()) ) ]))
         database.commit()
 
         if status == 'failed':
