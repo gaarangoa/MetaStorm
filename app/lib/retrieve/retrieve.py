@@ -34,8 +34,6 @@ def get_results(job='', status=''):
         USER = inp[6]
         SAMPLE = inp[7]
 
-        log = logging.getLogger()
-
         if pip == "assembly":
             tof = rootvar.__ROOTPRO__+"/" + \
                 data['pid']+"/assembly/idba_ud/"+sid+"/"
