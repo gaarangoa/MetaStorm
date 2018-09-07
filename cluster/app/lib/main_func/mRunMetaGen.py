@@ -27,7 +27,7 @@ def run(data,main_db,DBS, uinfo, sample):
 
     logging.basicConfig(
         filename=logfile,
-        level=logging.ERROR,
+        level=logging.DEBUG,
         filemode="w",
         format="%(levelname)s %(asctime)s - %(message)s"
     )
@@ -89,6 +89,15 @@ def run(data,main_db,DBS, uinfo, sample):
                         "reference_id": ref
                     }
                 )))
+
+                log.debug(
+                    {
+                        "status": "failed",
+                        "exception": str(e),
+                        "sample_id": sample_id,
+                        "reference_id": ref
+                    }
+                )
     #
     #this is for the aseembly section
     #
@@ -106,6 +115,15 @@ def run(data,main_db,DBS, uinfo, sample):
                         "reference_id": ref
                     }
                 )))
+
+                log.debug(
+                    {
+                        "status": "failed",
+                        "exception": str(e),
+                        "sample_id": sample_id,
+                        "reference_id": ref
+                    }
+                )
 
 
     if not rootvar.isdir(rdir+reads1+".gz"):

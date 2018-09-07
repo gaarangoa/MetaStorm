@@ -55,10 +55,10 @@ try:
     # get status file and check if was succesfully annotated
 
     if pip == 'matches':
-        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log')]
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log') if "ERROR" in i]
 
     else:
-        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log')]
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log') if 'ERROR' in i]
 
     message = base64.b64encode(json.dumps(status))
 
