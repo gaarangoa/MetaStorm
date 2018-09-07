@@ -63,6 +63,9 @@ def get_results(job='', status='', message=[]):
                 log.debug(('decoded message', message))
                 message = [json.loads(i) for i in message]
                 log.debug(('message data', message))
+                failed_databases = [i['reference_id'] for i in message]
+                log.debug('failed databases', failed_databases)
+
 
             try:
                 SArc = os.popen(
