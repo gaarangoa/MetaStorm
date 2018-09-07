@@ -13,7 +13,7 @@ import re
 import logging
 import datetime
 
-def get_results(job='', status=''):
+def get_results(job='', status='', message=[]):
 
     main_logfile = rootvar.__root_dir__+"/"+"/logs/retrieve.log"
     logging.basicConfig(
@@ -96,8 +96,12 @@ def get_results(job='', status=''):
                 update_status(database, sid, ref, pip, "Done")
             database.commit()
 
-            x = email.send_email(USER[0]['user_name'], USER[0]['user_affiliation'],
-                                 'Processing sample: '+SAMPLE[0]['sample_name'], msg)
+            x = email.send_email(
+                USER[0]['user_name'],
+                USER[0]['user_affiliation'],
+                'Processing sample: ' + SAMPLE[0]['sample_name'],
+                msg
+            )
 
         update_jobs(database,
             [uid,

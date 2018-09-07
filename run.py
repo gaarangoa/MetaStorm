@@ -1360,10 +1360,12 @@ def retrieve_job_status():
     log.debug('loading json data')
     job = data['job']
     _status = data['status']
+    message = data['message']
+
     log.debug((job, _status))
 
     log.debug('retrieving the results')
-    get_results(job=job, status=_status)
+    get_results(job=job, status=_status, message=message)
     log.debug('returning status')
 
     return jsonify(status=["done"])
