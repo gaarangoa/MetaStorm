@@ -76,7 +76,6 @@ def get_results(job='', status='', message=[]):
 
             for refi in f2s:
                 for fi in refi:
-                    log.debug(('Reference: ', fi))
                     os.system('scp gustavo1@newriver1.arc.vt.edu:/' +
                               fromf+fi+" "+tof+fi)
 
