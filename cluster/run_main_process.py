@@ -50,7 +50,7 @@ USER = inp[6]
 SAMPLE = inp[7]
 
 try:
-    # main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
+    main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
     # make a request to the listener in the localhost
     # get status file and check if was succesfully annotated
 
