@@ -63,6 +63,10 @@ def get_results(job='', status='', message=[]):
         if status == 'done':
             # scp=arcon()
             # 2. get list of files in remote server
+            if message:
+                message = [json.loads(base64.b64decode(i)) for in json.loads(message)]
+                log.debug(message)
+
             try:
                 SArc = os.popen(
                     'ssh gustavo1@newriver1.arc.vt.edu " ls '+fromf+'"').read().split("\n")
