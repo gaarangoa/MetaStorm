@@ -11,6 +11,18 @@ import numpy as np
 from app.lib.create_project import insert_new_project as sql
 from app.lib.preprocessing import functions as pre
 import os
+import logging
+
+def my_logger(logfile=''):
+    main_logfile = logfile
+    logging.basicConfig(
+        filename=main_logfile,
+        level=logging.DEBUG,
+        filemode="w",
+        format="%(levelname)s %(asctime)s - %(message)s"
+    )
+
+    return logging.getLogger()
 
 def run(data,main_db,DBS):
     project_id=str(data['pid'])
@@ -24,7 +36,7 @@ def run(data,main_db,DBS):
         a=refs[0]
     except:
         return 'Error: No database has been selected'
-    
+
     x=sql.SQL(main_db)
     x.exe('UPDATE project_status SET status="queue" WHERE project_id="'+project_id+'" AND sample_id="'+sample_id+'"')
     x.insert("sample_run",(sample_id,"created")) # let know that the files have been uploaded and the files created
@@ -55,28 +67,37 @@ def run(data,main_db,DBS):
             raw_reads=float(i[3])
             good_reads=float(i[6]) # the number of high quality reads after trimming and quality filter
     print good_reads
-    
-    if pipeline=="matches":
-        print 'matches'
+
+    if pipeline == "matches":
+        log = my_logger(logfile=rootvar.__ROOTPRO__+"/"+project_id+"/matches/"+sample_id+"/arc_run.qsub.log")
+        log.info('running read match pipeline')
         for ref in refs:
-            print ref
+            log.info('Processing %s with reference id: %s'%(sample_id, ref) )
             if not x.exe('select * from matches where sample_id="'+sample_id+'" and datasets="'+ref+'"'):
                 x.c.execute('INSERT OR IGNORE INTO matches VALUES (?,?,?,?)', (sample_id,user_id,project_id,ref))
                 x.commit()
-            #print 'analyzing: ',ref
-            val=MP(project_id,sample_id,DBS[ref],"matches",reads1,reads2,good_reads)
+            try:
+                val = MP(project_id, sample_id, DBS[ref], "matches", reads1, reads2, good_reads)
+            except Exception as e:
+                log.error(str(e))
+                log.error('Exception\t%s\t%s'%(sample_id, ref))
     #
     #this is for the aseembly section
     #
     if pipeline=="assembly":
-        #print 'assembly'
-        #print "references:::::::::::",refs
+        log = my_logger(logfile=rootvar.__ROOTPRO__ + "/" + project_id + "/assembly/idba_ud/" + sample_id + "/arc_run.qsub.log")
+        log.info('running assembly pipeline')
         for ref in refs:
-            print ref
+            log.info('Processing %s with reference id: %s'%(sample_id, ref) )
             if not x.exe('select * from assembly where sample_id="'+sample_id+'" and datasets="'+ref+'"'):
                 x.c.execute('INSERT OR IGNORE INTO assembly VALUES (?,?,?,?)', (sample_id,user_id,project_id,ref))
                 x.commit()
-            idba(project_id,sample_id,DBS[ref],"assembly",reads1,reads2, good_reads)
+            try:
+                idba(project_id, sample_id, DBS[ref], "assembly", reads1, reads2, good_reads)
+            except Exception as e:
+                log.error(str(e))
+                log.error('Exception\t%s\t%s' % (sample_id, ref))
+
     x.close()
     # in the end the fastq files need to be removed in order to save storage space;
     if not rootvar.isdir(rdir+reads1+".gz"):
@@ -84,13 +105,13 @@ def run(data,main_db,DBS):
         os.system('rm '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
     else:
         os.system('rm '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
-            
+
     if not rootvar.isdir(rdir+reads2+".gz"):
         os.system('gzip '+rdir+reads2+' >> '+rootvar.log+" 2>&1")
         os.system('rm '+rdir+reads2+' >> '+rootvar.log+" 2>&1")
     else:
         os.system('rm '+rdir+reads2+' >> '+rootvar.log+" 2>&1")
-    
+
     return 'success'
 
 

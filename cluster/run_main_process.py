@@ -43,6 +43,7 @@ def main_run(data, refs, sid, uid, pip, dbfile, U, S):
     except Exception as excp:
         status(S['project_id'], sid, pip,
                'Error: check your submission and try it again')
+        return {"status": "Failed", ""}
         print("this is the exception:", str(excp))
 
 
@@ -59,6 +60,13 @@ SAMPLE = inp[7]
 try:
     main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
     # make a request to the listener in the localhost
+    # get status file and check if was succesfully annotated
+
+    if pip == 'matches':
+        status = rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log'
+    else:
+        status = rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log'
+
     os.system('ssh newriver1.arc.vt.edu python ' +
               rootdir+'/listener.py '+sys.argv[1]+' done')
 except Exception as inst:
