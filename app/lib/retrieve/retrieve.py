@@ -96,7 +96,11 @@ def get_results(job='', status='', message=[]):
             os.system('scp gustavo1@newriver1.arc.vt.edu:/'+qci+" "+qct)
 
             for ref in refs:
-                update_status(database, sid, ref, pip, "Done")
+                if ref in failed_databases:
+                    update_status(database, sid, ref, pip, "Fail")
+                else:
+                    update_status(database, sid, ref, pip, "Done")
+
             database.commit()
 
             x = email.send_email(

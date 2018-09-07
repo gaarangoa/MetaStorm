@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Job, Fastqfile, Reference
+from .models import Job, Fastqfile, Reference, SampleStatus
 # Register your models here.
 
 
@@ -16,6 +16,12 @@ class ReferenceDisplay(admin.ModelAdmin):
     search_fields = ('reference_name', 'user_id')
 
 
+class SampleStatusDisplay(admin.ModelAdmin):
+    list_display = ('id', 'sid', 'rid', 'pip','status')
+    list_filter = ('rid', )
+    search_fields = ('id', 'sid', 'pip')
+
 admin.site.register(Job, JobDisplay)
 admin.site.register(Fastqfile)
 admin.site.register(Reference, ReferenceDisplay)
+admin.site.register(SampleStatus, SampleStatusDisplay)
