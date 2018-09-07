@@ -149,7 +149,8 @@ def get_results(job='', status=''):
                 'error',
                 'normal',
                 datetime.datetime.now().isoformat(),
-                str(int(time.time()) )
+                str(int(time.time()))
+                ]
             )
 
             database.commit()
