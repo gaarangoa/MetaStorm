@@ -30,7 +30,7 @@ main_db = DATABASE
 main_logfile = rootvar.__root_dir__+"/"+"/logs/metastorm.log"
 logging.basicConfig(
     filename=main_logfile,
-    level=logging.INFO,
+    level=logging.DEBUG,
     # filemode="w",
     format="%(levelname)s %(asctime)s - %(message)s"
 )
