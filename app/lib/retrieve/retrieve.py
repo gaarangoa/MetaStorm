@@ -58,7 +58,7 @@ def get_results(job='', status='', message=[]):
             # 2. get list of files in remote server
             if message:
                 message = [json.loads(base64.b64decode(i)) for i in base64.b64decode(message)]
-                log.debug(message)
+                log.debug(('Message:', message) )
 
             try:
                 SArc = os.popen(
