@@ -18,8 +18,8 @@ class ReferenceDisplay(admin.ModelAdmin):
 
 class SampleStatusDisplay(admin.ModelAdmin):
     list_display = ('id', 'sid', 'rid', 'pip','status')
-    list_filter = ('sid', 'pip', 'status')
-    search_fields = ('sid', )
+    list_filter = ('pip', 'status')
+    search_fields = ('sid', 'rid')
 
 admin.site.register(Job, JobDisplay)
 admin.site.register(Fastqfile)
