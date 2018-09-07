@@ -4,13 +4,10 @@ import os,re
 from app.lib.common import module
 from app.lib.common import rootvar
 import json
-import networkx as nx
-from networkx.readwrite import json_graph
-import numpy as np
-#from app.lib.run import MAIN_PROCESS as MP
-from app.lib.create_project import insert_new_project as sql
 from app.lib.preprocessing import functions as pre
-import os
+import logging
+import traceback
+import base64
 
 def run(data,main_db,DBS, uinfo, sample):
     project_id=str(data['pid'])
@@ -19,24 +16,42 @@ def run(data,main_db,DBS, uinfo, sample):
     reads2=str(data['read2'])
     sample_id=str(data['sid'])
     user_id=str(data['uid'])
-    refs=data["rids"]; refs=[i for i in refs if not i=="Gbfbquhild"]; refs=["Gbfbquhild"]+refs
+    refs = data["rids"]
+    refs = [i for i in refs if not i == "Gbfbquhild"]
+    refs = ["Gbfbquhild"] + refs
+
+    if pipeline == "matches":
+        logfile=rootvar.__ROOTPRO__ + "/" + project_id + "/matches/" + sample_id + "/arc_run.qsub.log"
+    else:
+        logfile=rootvar.__ROOTPRO__ + "/" + project_id + "/assembly/idba_ud/" + sample_id + "/arc_run.qsub.log"
+
+    logging.basicConfig(
+        filename=logfile,
+        level=logging.ERROR,
+        filemode="w",
+        format="%(levelname)s %(asctime)s - %(message)s"
+    )
+
+    log = logging.getLogger()
+
     try:
-        a=refs[0]
+        assert(refs[0])
     except:
-        return 'Error: No database has been selected'
-    
-    #x=sql.SQL(main_db)
-    #x.exe('UPDATE project_status SET status="queue" WHERE project_id="'+project_id+'" AND sample_id="'+sample_id+'"')
-    #x.insert("sample_run",(sample_id,"created")) # let know that the files have been uploaded and the files created
-    #x.commit()
-    #preprocessing FIXME: I need to get permisions to write
+        e = traceback.format_exc()
+        log.error(base64.b64encode(json.dumps(
+            {
+                "status": "failed",
+                "exception": str(e),
+                "sample_id": sample_id,
+                "reference_id": 'unknown'
+            }
+        )))
+        return False
+
     rdir=rootvar.__ROOTPRO__+"/"+project_id+"/READS/"
-    print 'running trimmomatic'
+    log.info('running trimmomatic')
     trim=pre.trimmomatic(rdir+reads1,rdir+reads2,rdir,sample_id)
-    #if not rootvar.isdir(trim.outd+sample_id+'.trim.log'): trim.run()
     trim.run()
-    print 'end trimmomatic'
-    #print "trimming"
     reads1=reads1.replace(".gz","")
     reads2=reads2.replace(".gz","")
     #print pipeline
@@ -50,49 +65,61 @@ def run(data,main_db,DBS, uinfo, sample):
     #_______________________________________________________________##################################
     #
     # Get the number of reads
-    tfile=trim.outd+sample_id+'trim.log'
+    log.info('running pipeline %s'%(pipeline,))
+    tfile = trim.outd + sample_id + 'trim.log'
+    log.info('trimmomatic log file: %s'%(tfile,) )
+    good_reads = 0
     for i in open(tfile):
         if "Input Read Pairs:" in i:
             i=i.split()
-            raw_reads=float(i[3])
             good_reads=float(i[6]) # the number of high quality reads after trimming and quality filter
-    # print tfile
-    
+
     if pipeline=="matches":
-        print 'matches'
         for ref in refs:
-            # print ref
-            #if not x.exe('select * from matches where sample_id="'+sample_id+'" and datasets="'+ref+'"'):
-                #x.c.execute('INSERT OR IGNORE INTO matches VALUES (?,?,?,?)', (sample_id,user_id,project_id,ref))
-                #x.commit()
-            #print 'analyzing: ',ref
-            val=MP(project_id,sample_id,DBS[ref],"matches",reads1,reads2,good_reads,sample)
+            log.info('Processing %s with reference id: %s' % (sample_id, ref))
+            try:
+                val = MP(project_id, sample_id, DBS[ref], "matches", reads1, reads2, good_reads, sample)
+            except:
+                e = traceback.format_exc()
+                log.error(base64.b64encode(json.dumps(
+                    {
+                        "status": "failed",
+                        "exception": str(e),
+                        "sample_id": sample_id,
+                        "reference_id": ref
+                    }
+                )))
     #
     #this is for the aseembly section
     #
     if pipeline=="assembly":
-        #print 'assembly'
-        #print "references:::::::::::",refs
         for ref in refs:
-            # print ref
-            #if not x.exe('select * from assembly where sample_id="'+sample_id+'" and datasets="'+ref+'"'):
-                #x.c.execute('INSERT OR IGNORE INTO assembly VALUES (?,?,?,?)', (sample_id,user_id,project_id,ref))
-                #x.commit()
-            idba(project_id,sample_id,DBS[ref],"assembly",reads1,reads2, good_reads, sample)
-    #x.close()
-    # in the end the fastq files need to be removed in order to save storage space;
+            try:
+                idba(project_id, sample_id, DBS[ref], "assembly", reads1, reads2, good_reads, sample)
+            except:
+                e = traceback.format_exc()
+                log.error(base64.b64encode(json.dumps(
+                    {
+                        "status": "failed",
+                        "exception": str(e),
+                        "sample_id": sample_id,
+                        "reference_id": ref
+                    }
+                )))
+
+
     if not rootvar.isdir(rdir+reads1+".gz"):
         os.system('gzip '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
         os.system('rm '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
     else:
         os.system('rm '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
-            
+
     if not rootvar.isdir(rdir+reads2+".gz"):
         os.system('gzip '+rdir+reads2+' >> '+rootvar.log+" 2>&1")
         os.system('rm '+rdir+reads2+' >> '+rootvar.log+" 2>&1")
     else:
         os.system('rm '+rdir+reads2+' >> '+rootvar.log+" 2>&1")
-    
+
     return 'success'
 
 

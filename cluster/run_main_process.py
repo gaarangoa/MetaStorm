@@ -34,17 +34,9 @@ def main_run(data, refs, sid, uid, pip, dbfile, U, S):
     sample = [S['sample_id'], S['project_id'], S['sample_name'], S['sample_set'],
               S['environment'], S['library_preparation'], data['read1'], data['read2']]
     try:
-        if pip == 'matches':
-            st = mRunMetaGen.run(data, dbfile, DBS, USER, sample)
-        else:
-            st = mRunMetaGen.run(data, dbfile, DBS, USER, sample)
-            # update status done
-        status(S['project_id'], sid, pip, 'done')
-    except Exception as excp:
-        status(S['project_id'], sid, pip,
-               'Error: check your submission and try it again')
-        return {"status": "Failed", ""}
-        print("this is the exception:", str(excp))
+        assert(mRunMetaGen.run(data, dbfile, DBS, USER, sample))
+    except:
+        pass
 
 
 inp = json.loads(base64.b64decode(sys.argv[1]))
@@ -58,17 +50,20 @@ USER = inp[6]
 SAMPLE = inp[7]
 
 try:
-    main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
+    # main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
     # make a request to the listener in the localhost
     # get status file and check if was succesfully annotated
 
     if pip == 'matches':
-        status = rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log'
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log')]
+
     else:
-        status = rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log'
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log')]
+
+    message = base64.b64encode(json.dumps(status))
 
     os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py '+sys.argv[1]+' done')
+              rootdir+'/listener.py '+sys.argv[1]+' done '+ message)
 except Exception as inst:
     os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py '+sys.argv[1]+' failed')
+              rootdir+'/listener.py '+sys.argv[1]+' failed '+ message)
