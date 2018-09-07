@@ -11,7 +11,7 @@ import datetime
 database = sql.SQL(rootvar.__FILEDB__)
 import re
 import logging
-
+import datetime
 
 def get_results(job='', status=''):
 
@@ -109,12 +109,12 @@ def get_results(job='', status=''):
             job[4],
             status,
             'normal',
-            str(int(time.time()) ),
+            datetime.datetime.now().isoformat(),
             str(int(time.time()) )
             ]
         )  # update the database
 
-        log.info(('updating database: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4], status, 'normal', job[7], str(time.time()) ]))
+        log.info(('updating database: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4], status, 'normal', job[7], job[8], str(time.time()) ]))
         database.commit()
 
         if status == 'failed':
@@ -143,13 +143,13 @@ def get_results(job='', status=''):
             update_jobs(
                 database,
                 [uid, SAMPLE[0]['project_id'],
-                 sid,
-                 pip,
-                 job[4],
-                 'error',
-                 'normal',
-                 job[7],
-                 job[8]]
+                sid,
+                pip,
+                job[4],
+                'error',
+                'normal',
+                datetime.datetime.now().isoformat(),
+                str(int(time.time()) )
             )
 
             database.commit()
