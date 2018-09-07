@@ -101,8 +101,20 @@ def get_results(job='', status=''):
             x = email.send_email(USER[0]['user_name'], USER[0]['user_affiliation'],
                                  'Processing sample: '+SAMPLE[0]['sample_name'], msg)
 
-        update_jobs(database, [uid, SAMPLE[0]['project_id'], sid, pip,
-                               job[4], status, 'normal', job[7], job[8]])  # update the database
+        update_jobs(database,
+            [uid,
+            SAMPLE[0]['project_id'],
+            sid,
+            pip,
+            job[4],
+            status,
+            'normal',
+            job[7],
+            str(time.time())
+            ]
+        )  # update the database
+
+        log.info(('updating database: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4], status, 'normal', job[7], str(time.time()) ]))
         database.commit()
 
         if status == 'failed':
