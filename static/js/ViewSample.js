@@ -503,7 +503,9 @@ window.onload = function() {
                 ]);
 
                 console.log('assembly', x);
-                $('#after_fq2fa').html('<strong>After Fq2Fa</strong> from IDBA-UD: ' + x.matrix.reads.toLocaleString());
+                $('#after_fq2fa').html(
+                    '<br><strong>After Fq2Fa</strong> from IDBA-UD: ' + x.matrix.reads.toLocaleString()
+                );
 
                 $('#sfAvgReads').html(x.matrix.avgreads.toLocaleString());
                 $('#sfScaffolds').html(x.matrix.scaffolds.toLocaleString());
