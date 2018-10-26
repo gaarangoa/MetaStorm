@@ -229,7 +229,7 @@ window.onload = function() {
                         );
                     });
                 } catch (e) {
-                    console.log(e);
+                    // console.log(e);
                 }
             }
         });
