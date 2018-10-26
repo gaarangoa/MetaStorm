@@ -173,53 +173,64 @@ window.onload = function() {
             data: JSON.stringify(sent),
             contentType: 'application/json; charset=utf-8',
             success: function(x) {
-                console.log('breakdown', x);
-                total_hits = x.matrix[4];
+                try {
+                    console.log('breakdown', x);
+                    total_hits = x.matrix[4];
 
-                $('#sfReads').html(parseInt(x.matrix[5].split(' ')[3]).toLocaleString());
-                $('#hqReads').html(parseInt(x.matrix[5].split(' ')[6]).toLocaleString());
+                    $('#sfReads').html(parseInt(x.matrix[5].split(' ')[3]).toLocaleString());
+                    $('#hqReads').html(parseInt(x.matrix[5].split(' ')[6]).toLocaleString());
 
-                $('#blue_text_box').prepend(['<strong>Metagenome Summary</strong><p>' + x.matrix[5] + '</p>']);
+                    $('#blue_text_box').prepend(['<strong>Metagenome Summary</strong><p>' + x.matrix[5] + '</p>']);
 
-                x.matrix[2].forEach(function(item, index) {
-                    $('#databases_run').append(
-                        html_progress_bar(item[0], item[1], total_hits, 100 * item[1] / total_hits, 'black', item[2])
-                    );
+                    x.matrix[2].forEach(function(item, index) {
+                        $('#databases_run').append(
+                            html_progress_bar(
+                                item[0],
+                                item[1],
+                                total_hits,
+                                100 * item[1] / total_hits,
+                                'black',
+                                item[2]
+                            )
+                        );
 
-                    Tipped.create(
-                        '#tp_' + item[2],
-                        function(element) {
-                            return {
-                                title: item[0],
-                                content: '<div style="width:300px; min-height:50px; max-height:200px; overflow: auto">' +
-                                    item[3] +
-                                    '</div>'
-                            };
-                        }, {
-                            skin: 'red'
-                        }
-                    );
-                });
+                        Tipped.create(
+                            '#tp_' + item[2],
+                            function(element) {
+                                return {
+                                    title: item[0],
+                                    content: '<div style="width:300px; min-height:50px; max-height:200px; overflow: auto">' +
+                                        item[3] +
+                                        '</div>'
+                                };
+                            }, {
+                                skin: 'red'
+                            }
+                        );
+                    });
 
-                x.matrix[3].forEach(function(item, index) {
-                    $('#databases_run_func').append(
-                        html_progress_bar(item[0], item[1], total_hits, 100 * item[1] / total_hits, 'blue', item[2])
-                    );
+                    x.matrix[3].forEach(function(item, index) {
+                        $('#databases_run_func').append(
+                            html_progress_bar(item[0], item[1], total_hits, 100 * item[1] / total_hits, 'blue', item[2])
+                        );
 
-                    Tipped.create(
-                        '#tp_' + item[2],
-                        function(element) {
-                            return {
-                                title: item[0],
-                                content: '<div style="width:300px; min-height:50px; max-height:200px; overflow: auto">' +
-                                    item[3] +
-                                    '</div>'
-                            };
-                        }, {
-                            skin: 'red'
-                        }
-                    );
-                });
+                        Tipped.create(
+                            '#tp_' + item[2],
+                            function(element) {
+                                return {
+                                    title: item[0],
+                                    content: '<div style="width:300px; min-height:50px; max-height:200px; overflow: auto">' +
+                                        item[3] +
+                                        '</div>'
+                                };
+                            }, {
+                                skin: 'red'
+                            }
+                        );
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
             }
         });
     };
