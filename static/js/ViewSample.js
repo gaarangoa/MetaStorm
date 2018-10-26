@@ -504,7 +504,11 @@ window.onload = function() {
 
                 console.log(x);
                 // $("#sfReads").html(parseInt($("#blue_text_box").html().split(' ')[4]).toLocaleString())
-                // $("#hqReads").html(parseInt($("#blue_text_box").html().split(' ')[7]).toLocaleString() + "<br> <strong>After IDBA-UD fq2fa:</strong> " + x.matrix.reads.toLocaleString())
+                $('#hqReads').html(
+                    $('#hqReads').html() +
+                    '<br> <strong>After IDBA-UD fq2fa:</strong> ' +
+                    x.matrix.reads.toLocaleString()
+                );
                 $('#sfAvgReads').html(x.matrix.avgreads.toLocaleString());
                 $('#sfScaffolds').html(x.matrix.scaffolds.toLocaleString());
                 $('#sfAvgScaffold').html(x.matrix.avgScaff.toLocaleString());
