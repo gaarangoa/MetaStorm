@@ -176,9 +176,9 @@ window.onload = function() {
                 console.log('breakdown', x);
                 total_hits = x.matrix[4];
 
-                $('#sfReads').html(parseInt(x.matrix[5].split(' ')[4]).toLocaleString());
+                $('#sfReads').html(parseInt(x.matrix[3].split(' ')[4]).toLocaleString());
                 $('#hqReads').html(
-                    parseInt(x.matrix[5].split(' ')[7]).toLocaleString() +
+                    parseInt(x.matrix[5].split(' ')[6]).toLocaleString() +
                     '<br> <strong>After IDBA-UD fq2fa:</strong> ' +
                     x.matrix.reads.toLocaleString()
                 );
