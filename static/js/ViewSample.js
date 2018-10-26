@@ -176,12 +176,8 @@ window.onload = function() {
                 console.log('breakdown', x);
                 total_hits = x.matrix[4];
 
-                $('#sfReads').html(x.matrix[5].split(' ')[3]);
-                $('#hqReads').html(
-                    x.matrix[5].split(' ')[6] +
-                    '<br> <strong>After IDBA-UD fq2fa:</strong> ' +
-                    x.matrix.reads.toLocaleString()
-                );
+                $('#sfReads').html(parseInt(x.matrix[5].split(' ')[3]).toLocaleString());
+                $('#hqReads').html(parseInt(x.matrix[5].split(' ')[6]).toLocaleString());
 
                 $('#blue_text_box').prepend(['<strong>Metagenome Summary</strong><p>' + x.matrix[5] + '</p>']);
 
