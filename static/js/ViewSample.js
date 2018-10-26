@@ -503,12 +503,8 @@ window.onload = function() {
                 ]);
 
                 console.log('assembly', x);
-                // $("#sfReads").html(parseInt($("#blue_text_box").html().split(' ')[4]).toLocaleString())
-                $('#hqReads').html(
-                    $('#hqReads').html() +
-                    '<br> <strong>After IDBA-UD fq2fa:</strong> ' +
-                    x.matrix.reads.toLocaleString()
-                );
+                $('#after_fq2fa').html('<strong>After Fq2Fa</strong> from IDBA-UD: ' + x.matrix.reads.toLocaleString());
+
                 $('#sfAvgReads').html(x.matrix.avgreads.toLocaleString());
                 $('#sfScaffolds').html(x.matrix.scaffolds.toLocaleString());
                 $('#sfAvgScaffold').html(x.matrix.avgScaff.toLocaleString());
