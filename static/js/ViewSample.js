@@ -449,13 +449,13 @@ window.onload = function() {
             contentType: "application/json; charset=utf-8",
             success: function(x) {
 
-                // $("#blue_text_box").html(['<p style="color:black">The dataset <b id="sfName"></b> contains <b id="sfReads"></b> high quality sequences for assembly (idba-fq2fa preprocess). Reads have an average length of ' +
-                //     '<b id="sfAvgReads"></b> bps. <br><br> Reads are assembled using <a target="_blank" href="http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/"><b>IDBA-UD</b></a> software. <br> In total ' +
-                //     '<b id="areads"></b> reads were assembled (<b id="areadsp"></b>%) forming a total of <b id="sfScaffolds"> ' +
-                //     '</b> scaffolds with an average length of <b id="sfAvgScaffold"></b> bps, and n50 of <b id="sfn50"></b> ' +
-                //     'bps. A total of <b id="sfGenes"></b> genes were predicted from the assembled sequeces using the <a href="http://prodigal.ornl.gov/" target="_blank"><b>PRODIGAL</b></a> ' +
-                //     'software. The average length of the genes is <b id="sfAvgGenes"></b> bp. </p>'
-                // ])
+                $("#blue_text_box").html([$("#blue_text_box").html() +
+                    '<br><br> Reads are assembled using <a target="_blank" href="http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/"><b>IDBA-UD</b></a> software. <br> In total ' +
+                    '<b id="areads"></b> reads were assembled (<b id="areadsp"></b>%) forming a total of <b id="sfScaffolds"> ' +
+                    '</b> scaffolds with an average length of <b id="sfAvgScaffold"></b> bps, and n50 of <b id="sfn50"></b> ' +
+                    'bps. A total of <b id="sfGenes"></b> genes were predicted from the assembled sequeces using the <a href="http://prodigal.ornl.gov/" target="_blank"><b>PRODIGAL</b></a> ' +
+                    'software. The average length of the genes is <b id="sfAvgGenes"></b> bp. </p>'
+                ])
 
                 console.log(x)
                     // $("#sfReads").html(x.matrix.rawReads.toLocaleString())
