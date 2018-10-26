@@ -502,7 +502,7 @@ window.onload = function() {
                     'software. The average length of the genes is <b id="sfAvgGenes"></b> bp. </p>'
                 ]);
 
-                console.log(x);
+                console.log('assembly', x);
                 // $("#sfReads").html(parseInt($("#blue_text_box").html().split(' ')[4]).toLocaleString())
                 $('#hqReads').html(
                     $('#hqReads').html() +
