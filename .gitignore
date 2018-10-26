@@ -3,7 +3,7 @@ REST_admin/admin/opts.py
 REST_admin/database/
 cluster/options.py
 Files/
-SQL/
+SQL
 tmp/
 static/buttons/
 static/Checkboxes/

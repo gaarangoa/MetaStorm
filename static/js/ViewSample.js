@@ -458,7 +458,8 @@ window.onload = function() {
                 ])
 
                 console.log(x)
-                $("#sfReads").html(x.matrix.reads.toLocaleString())
+                    // $("#sfReads").html(x.matrix.rawReads.toLocaleString())
+                $("#hqReads").html("(+fq2fa) " + x.matrix.reads.toLocaleString())
                 $("#sfAvgReads").html(x.matrix.avgreads.toLocaleString())
                 $("#sfScaffolds").html(x.matrix.scaffolds.toLocaleString())
                 $("#sfAvgScaffold").html(x.matrix.avgScaff.toLocaleString())
