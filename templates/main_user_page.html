@@ -14,18 +14,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta content="MetaStorm, Metagenomics, Analysis, Samples, soils, environmental, enginnering, genomics, NGS, WGS, Amplicon, sequencing, Taxonomy, functional, CARD, antibiotic resistance, genes, genomes, scaffolds, contigs, bacteria" name="subject">
 
     <!-- Bootstrap 3.3.4 -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}">
+    </link>
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}">
+    </link>
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}">
+    </link>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -184,21 +187,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
                     </div>
                 </form>
                 <!-- /.search form -->
 
 
                 <ul id='sidemenu' class="sidebar-menu">
-                    <li class="treeview"><a href="#" onclick=open_home_page_form(userID)><i class="fa fa-home"></i> <span>Home Page</span></a></li>
+                    <li class="treeview"><a href="https://bench.cs.vt.edu/argminer/#/forum"><i class="fa fa-home"></i>
+                            <span>Contact <span class="badge bg-yellow">New</span> </span></a></li>
+                    <li class="treeview"><a href="#" onclick=open_home_page_form(userID)><i class="fa fa-home"></i>
+                            <span>Home Page</span></a></li>
                     <li class="treeview"><a href="#" onclick=open_profile(userID)><i class="fa fa-edit"></i> <span>Profile</span></a></li>
-                    <li class="treeview"><a href="#" onclick=open_comparison(userID)><i class="fa fa-pie-chart"></i> <span>Comparison tool</span></a></li>
-                    <li class="treeview"><a href="#" onclick=open_documentation(userID)><i class="fa fa-life-bouy"></i> <span>Documentation</span></a></li>
+                    <li class="treeview"><a href="#" onclick=open_comparison(userID)><i class="fa fa-pie-chart"></i>
+                            <span>Comparison tool</span></a></li>
+                    <li class="treeview"><a href="#" onclick=open_documentation(userID)><i class="fa fa-life-bouy"></i>
+                            <span>Documentation</span></a></li>
                     <!--<li class="treeview"><a href="https://bench.cs.vt.edu/Projects/MetaStorm/" target='_blank'><i class="fa fa-code"></i> <span>Source code</span></a></li>-->
-                    <li class="treeview"><a href="https://github.com/gaarangoa/MetaStorm-webserver" target='_blank'><i class="fa fa-github"></i> <span>Source code - GitHub</span></a></li>
-                    <li class="treeview"><a href="#" onclick=logout(userID)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <li class="treeview"><a href="https://github.com/gaarangoa/MetaStorm-webserver" target='_blank'><i
+                                class="fa fa-github"></i> <span>Source code - GitHub</span></a></li>
+                    <li class="treeview"><a href="#" onclick=logout(userID)><i class="fa fa-sign-out"></i> <span>Log
+                                out</span></a></li>
                     <!--<li class="active"><a><i class="fa fa-arrow-circle-up"></i> <span>Help</span></a></li>-->
                 </ul>
 
@@ -423,7 +433,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button id="SubmitProject" class="btn btn-primary"><h4>Create a <b>new</b> project</h4></button>
+                                <button id="SubmitProject" class="btn btn-primary">
+                                    <h4>Create a <b>new</b> project</h4>
+                                </button>
                             </div>
 
                             <div class="overlay" id='create_new_project_overlay'>
@@ -467,7 +479,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <center>
                                     <a href="#" id="assembly_go" class="button button-rounded button-flat-primary"> <i class="fa fa-server" style="color:rgb(255,255,255)"></i> <b>Assembly</b></a>
                                     <a href="#" id="matches_go" class="button button-rounded button-flat-action"> <i class="fa fa-sliders" style="color:rgb(255,255,255)"></i> <b>Read Matching</b></a>
-                                    <a href="#" id="RemoveProject" class="button button-rounded button-flat-caution"><b>Remove Project</b></a>
+                                    <a href="#" id="RemoveProject" class="button button-rounded button-flat-caution"><b>Remove
+                                            Project</b></a>
                                 </center>
 
                                 <!--
@@ -649,7 +662,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary" onclick=update_profile(userID)>Update Profile</button>
+                                    <button type="button" class="btn btn-primary" onclick=update_profile(userID)>Update
+                                        Profile</button>
                                 </div>
                             </form>
                         </div>
@@ -691,7 +705,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary" onclick=change_password()>Change Password</button>
+                                    <button type="button" class="btn btn-primary" onclick=change_password()>Change
+                                        Password</button>
                                 </div>
                             </form>
                         </div>
@@ -715,7 +730,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <a href="https://bench.cs.vt.edu/Projects/MetaStormUserManual.pdf" target='_blank'>Pdf User Manual</a>
+                                <a href="https://bench.cs.vt.edu/Projects/MetaStormUserManual.pdf" target='_blank'>Pdf
+                                    User Manual</a>
                                 <div>
                                     <h3>User Account:</h3>
                                     <p>
@@ -753,40 +769,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="container">
                                                 1. Gene database <b>(Mandatory)</b>. A fasta file where the header corresponds to the gene id e.g.,
                                                 <div class="container" style="color:#3c8dbc;">
-                                                    &gtgene_0001<br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                                    <br/> &gtgene_0002
-                                                    <br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                                    <br/> &gtgene_0003
-                                                    <br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    &gtgene_0001<br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    <br /> &gtgene_0002
+                                                    <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    <br /> &gtgene_0003
+                                                    <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 2. Taxonomy link file: A tab delimited file containing the gene id and the full taxonomy (as in SILVA database) separated by “;”. For instance:
                                                 <div class="container" style="color:#3c8dbc;">
-                                                    gene_001 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/> gene_002 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/>                                                    gene_003 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                                    gene_001 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                                    <br /> gene_002 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                                    <br /> gene_003 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 3. Functional link file: A tab delimited file similar to the taxonomy file, containing the function class or category. If a gene contains multiple functional associations, put all of them in different lines, for instance:
                                                 <div class="container" style="color:#3c8dbc;">
-                                                    gene_001 Transcription<br/> gene_002 Transcription<br/> gene_002 RNA-Binding<br/> gene_003 DNA-Repair
+                                                    gene_001 Transcription<br /> gene_002 Transcription<br /> gene_002 RNA-Binding
+                                                    <br /> gene_003 DNA-Repair
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 4. Description File: Upload a tab delimited file named "dataset.description" containing the description of the functional categories as follows:
                                                 <div class="container" style="color:#3c8dbc;">
-                                                    Transcription GO:0003700 transcription factor activity, sequence-specific DNA binding<br/> Membrane GO:0005737 Cellular component<br/> DNARepair GO:0006281 The process of restoring DNA after damage.<br/>
+                                                    Transcription GO:0003700 transcription factor activity, sequence-specific DNA binding<br /> Membrane GO:0005737 Cellular component
+                                                    <br /> DNARepair GO:0006281 The process of restoring DNA after damage.
+                                                    <br />
                                                 </div>
                                                 * descriptions are shown for illustration, the 2nd and 3rd fields can be filled with a more comprehensive description.
                                             </div>
-                                            <br/> In order to setup your <u>new dataset</u> you need to follow the next steps:
+                                            <br /> In order to setup your <u>new dataset</u> you need to follow the next steps:
                                             <div class="container">
-                                                1. Click on <u>Submit a reference dataset</u> under the <u>Customize Reference Database</u> box<br/> 2. Fill out the form with the required information:
+                                                1. Click on <u>Submit a reference dataset</u> under the <u>Customize
+                                                    Reference Database</u> box<br /> 2. Fill out the form with the required information:
                                                 <div class="container">
-                                                    a. <b>Dataset name:</b> Type the name of your reference dataset<br/> b. <b>Sequence type:</b> Type if it is a gene or protein database.<br/> c. <b>Description:</b> IMPORTANT Insert the full description
+                                                    a. <b>Dataset name:</b> Type the name of your reference dataset<br /> b. <b>Sequence type:</b> Type if it is a gene or protein database.<br /> c. <b>Description:</b> IMPORTANT Insert the full description
                                                     of the dataset
                                                 </div>
-                                                3. Click on <u>register reference</u><br/> 4. Upload the files<br/> 5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)<br/> 6. Click on process.
+                                                3. Click on <u>register reference</u><br /> 4. Upload the files<br /> 5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)
+                                                <br /> 6. Click on process.
                                             </div>
                                         </p>
                                     </div>
@@ -952,8 +975,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <h3>Selected Projects:</h3>
                         <select id="projects_compare_list" size=10 style="width: 100%"></select>
                         <center>
-                            <button onclick=remove_selection( "#projects_compare_list") id='selected_projects'> Clear </button>
-                            <button onclick=button_selected_projects( "#projects_compare_list") id='selected_projects'> Compare </button>
+                            <button onclick=remove_selection( "#projects_compare_list" ) id='selected_projects'> Clear
+                            </button>
+                            <button onclick=button_selected_projects( "#projects_compare_list" ) id='selected_projects'>
+                                Compare </button>
                         </center>
                         <div id='list_selected_projects'></div>
                     </div>
@@ -994,9 +1019,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <h3 class="control-sidebar-heading">General Settings</h3>
                                 <div class="form-group">
                                     <label class="control-sidebar-subheading">
-                  Report panel usage
-                  <input type="checkbox" class="pull-right" checked />
-                </label>
+                                        Report panel usage
+                                        <input type="checkbox" class="pull-right" checked />
+                                    </label>
                                     <p>
                                         Some information about this general settings option
                                     </p>
