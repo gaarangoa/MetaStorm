@@ -1109,20 +1109,13 @@ window.onload = function() {
                     //     </ul>
                     // </div>
 
-                    rawreads_option = ""
-                    rawreads.forEach(e => {
-                        rawreads_option + "<option>" + e + "</option>"
-                    })
-
-                    console.log(rawreads_option)
-
                     $("#run_samples_tbody").append(
                         "<tr>" +
                         "<td>" + x.data[i]['sample_name'] + "</td>" +
                         "<td>" +
 
                         '<select value="' + x.data[i]['reads1'] + '" class="form-control" id="selected_fq_1">' +
-
+                        "<option>" + rawreads.join("</option><option>") + "</option>" +
                         '</select>' +
 
 
