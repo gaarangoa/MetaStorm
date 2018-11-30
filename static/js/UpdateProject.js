@@ -1115,6 +1115,7 @@ window.onload = function() {
                         "<td>" +
 
                         '<select value="' + x.data[i]['reads1'] + '" class="form-control" id="selected_fq_1">' +
+                        "<option selected='selected'>" + x.data[i]['reads1'] + "</option>" +
                         "<option>" + rawreads.join("</option><option>") + "</option>" +
                         '</select>' +
 
