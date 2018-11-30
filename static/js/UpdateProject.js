@@ -1027,6 +1027,18 @@ window.onload = function() {
                         // console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
                 }
 
+                save_sample_2 = function(argv) {
+                    console.log(argv)
+                    row = arg[0]
+                    sample = table_samples_run.getCell(row, 0);
+                    fq1 = table_samples_run.getCell(row, 1);
+                    fq2 = table_samples_run.getCell(row, 2);
+
+                    //if($(fq1).text().slice(0,-1)==""){console.log('Error: No fastq.gz file provided')}
+
+                    // submit_analysis(arg[1], $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1), $(sample).text())
+                    // console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
+                }
 
                 remove_sample = function(arg) {
                     $("#tab_runo_box").append("<div class='overlay' id='tab_runo_box_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
@@ -1115,7 +1127,7 @@ window.onload = function() {
 
                         // fastq1
                         "<td>" +
-                        '<select class="form-control" id="selected_fq_1">' +
+                        '<select class="form-control" id="selected_fq_1_sample_' + x.data[i]['sample_id'] + '">' +
                         "<option selected='selected'>" + x.data[i]['reads1'] + "</option>" +
                         "<option>" + rawreads.join("</option><option>") + "</option>" +
                         '</select>' +
@@ -1123,15 +1135,15 @@ window.onload = function() {
 
                         // fastq2
                         "<td>" +
-                        '<select class="form-control" id="selected_fq_2">' +
+                        '<select class="form-control" id="selected_fq_2_sample_' + x.data[i]['sample_id'] + '">' +
                         "<option selected='selected'>" + x.data[i]['reads2'] + "</option>" +
                         "<option>" + rawreads.join("</option><option>") + "</option>" +
                         '</select>' +
                         "<td>" +
 
 
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample_2(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample_2(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
                         "</td>" +
                         "</tr>"
                     )
