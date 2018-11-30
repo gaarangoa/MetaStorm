@@ -1092,14 +1092,6 @@ window.onload = function() {
 
                 for (i = 0; i < x.data.length; i++) {
 
-                    $("#run_samples_tbody").append(
-                        "<tr>" +
-                        "<td>John</td>" +
-                        "<td>Doe</td>" +
-                        "<td>john@example.com</td>" +
-                        "</tr>"
-                    )
-
                     item = {
                         ID: x.data[i]['sample_id'] + ":" + x.data[i]['status'],
                         Sample: x.data[i]['sample_name'],
@@ -1107,6 +1099,19 @@ window.onload = function() {
                         Mate2: x.data[i]['reads2'],
                         run: 0
                     }
+
+                    $("#run_samples_tbody").append(
+                        "<tr>" +
+                        "<td>" + x.data[i]['sample_name'] + "</td>" +
+                        "<td>" + x.data[i]['reads1'] + "</td>" +
+                        "<td>" + x.data[i]['reads2'] + "</td>" +
+                        "<td>" +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + row + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + row + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Remove</button>' +
+                        "</td>" +
+                        "</tr>"
+                    )
+
                     data.push(item)
                 }
 
