@@ -1055,7 +1055,7 @@ window.onload = function() {
 
                 var runHTML = function(instance, td, row, col, prop, value, cellProperties) {
                     console.log(td, row, col, prop, value)
-                    $("#table_of_samples_to_run").append(td)
+                        // $("#table_of_samples_to_run").append(td)
                     if (value != "") {
                         value = value.split(':')
                         if (value[1] == 'done') {
