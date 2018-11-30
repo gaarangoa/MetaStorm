@@ -1054,8 +1054,8 @@ window.onload = function() {
                 }
 
                 var runHTML = function(instance, td, row, col, prop, value, cellProperties) {
-                    console.log(td, row, col, prop, value)
-                        // $("#table_of_samples_to_run").append(td)
+                    // console.log(td, row, col, prop, value)
+                    // $("#table_of_samples_to_run").append(td)
                     if (value != "") {
                         value = value.split(':')
                         if (value[1] == 'done') {
@@ -1112,7 +1112,7 @@ window.onload = function() {
                         data.push(item)
                     }
                 }
-                //console.log("DATA:",data, data.length)
+                console.log("DATA:", data, data.length)
 
 
 
