@@ -797,23 +797,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div id="run_table"></div>
                         </div>
 
+                        <div class='col-md-12' style="height: 5000px"></div>
+
                         <div class="col-md-12">
                             <div class="box box-solid">
                                 <div class="box-body">
                                     <div id="table_of_samples_to_run">
                                         <div class="container">
-                                            <h2>Basic Table</h2>
-                                            <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+                                            <h2>Run Samples</h2>
+                                            <p>This table contains the samples and actions to perform</p>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Firstname</th>
-                                                        <th>Lastname</th>
-                                                        <th>Email</th>
+                                                        <th>Sample</th>
+                                                        <th>Fastq_1 file</th>
+                                                        <th>Fastq_2 file</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
+                                                <tbody id="run_samples_tbody">
+                                                    <!-- <tr>
                                                         <td>John</td>
                                                         <td>Doe</td>
                                                         <td>john@example.com</td>
@@ -827,7 +830,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <td>July</td>
                                                         <td>Dooley</td>
                                                         <td>july@example.com</td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </tbody>
                                             </table>
                                         </div>
