@@ -672,7 +672,7 @@ window.onload = function() {
                     async: true,
                     contentType: "application/json; charset=utf-8",
                     success: function(data) {
-                        console.log(data, pip)
+                        // console.log(data, pip)
 
                         for (i = 0; i < data.samples.length; i++) {
                             $("#SampleNameSelect").append('<option value=' + data.samples[i]['c.sample_name'] + '>' + data.ids[data.samples[i].id] + '</option>')
@@ -998,7 +998,7 @@ window.onload = function() {
 
 
         rawreads = $("#rawreads_list").text().split(",")
-        console.log(rawreads)
+            // console.log(rawreads)
 
         //cmd='select c.sample_id,c.sample_name, c.sample_set, c.environment, c.library_preparation, c.reads1, c.reads2, c.status from (select * from samples a inner join project_status b on a.project_id==b.project_id and a.sample_id==b.sample_id) c where project_id=="'+pid+'"'
         cmd = 'select project_id,sample_id,sample_name, pip, status, reads1, reads2 from (select * from samples a left join (select pid, sid, pip, status from jobs) b on b.sid=a.sample_id  and pip="' + pip + '") c where c.project_id="' + pid + '"'
@@ -1024,7 +1024,7 @@ window.onload = function() {
                     //if($(fq1).text().slice(0,-1)==""){console.log('Error: No fastq.gz file provided')}
 
                     submit_analysis(arg[1], $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1), $(sample).text())
-                    console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
+                        // console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
                 }
 
 
