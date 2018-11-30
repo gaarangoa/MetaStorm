@@ -1146,7 +1146,7 @@ window.onload = function() {
                         "<td>" +
 
 
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample_2( [' + btoa(JSON.stringify(item)) + '] ) ' + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample_2([' + btoa(JSON.stringify(item)) + '])' + '>Run</button> ' +
                         '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample_2(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
                         "</td>" +
                         "</tr>"
