@@ -1073,8 +1073,8 @@ window.onload = function() {
                             avl = '';
                             type = 'primary'
                         }
-                        $(td).html('<center><button id="run_button_' + value[0] + '" class="btn btn-' + type + ' btn-xs" onclick=save_sample(["' + row + '","' + value[0] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
-                                '<button id="run_button_' + value[0] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + row + '","' + value[0] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button></center>')
+                        $(td).html('<center><button id="run_button_' + value[0] + '" class="btn btn-' + type + ' btn-xs" onclick=save_sample(["' + row + '","' + value[0] + '","' + pip + '","' + pid + '"]) ' + avl + '>Run</button> ' +
+                                '<button id="run_button_' + value[0] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + row + '","' + value[0] + '","' + pip + '","' + pid + '"]) ' + avl + '>Remove</button></center>')
                             //$(td).html("<a href="+machine+'ViewSample?sid='+value+"&pid="+pid+"&uid="+uid+"&pip="+pip+" target='_blank'>"+value+"</a>"); //empty is needed because you are rendering to an existing cell
                     }
                 };
@@ -1106,8 +1106,8 @@ window.onload = function() {
                         "<td>" + x.data[i]['reads1'] + "</td>" +
                         "<td>" + x.data[i]['reads2'] + "</td>" +
                         "<td>" +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Run</button> ' +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Remove</button>' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
                         "</td>" +
                         "</tr>"
                     )
