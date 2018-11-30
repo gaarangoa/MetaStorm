@@ -1029,10 +1029,11 @@ window.onload = function() {
 
                 save_sample_2 = function(argv) {
                     console.log(argv)
-                    row = arg[0]
-                    sample = table_samples_run.getCell(row, 0);
-                    fq1 = table_samples_run.getCell(row, 1);
-                    fq2 = table_samples_run.getCell(row, 2);
+
+                    // row = arg[0]
+                    // sample = table_samples_run.getCell(row, 0);
+                    // fq1 = table_samples_run.getCell(row, 1);
+                    // fq2 = table_samples_run.getCell(row, 2);
 
                     //if($(fq1).text().slice(0,-1)==""){console.log('Error: No fastq.gz file provided')}
 
@@ -1108,6 +1109,9 @@ window.onload = function() {
                         Sample: x.data[i]['sample_name'],
                         Mate1: x.data[i]['reads1'],
                         Mate2: x.data[i]['reads2'],
+                        pip: pip,
+                        pid: pid,
+
                         run: 0
                     }
 
@@ -1142,7 +1146,7 @@ window.onload = function() {
                         "<td>" +
 
 
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample_2(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample_2(' + JSON.stringify(item) + ') ' + '>Run</button> ' +
                         '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample_2(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
                         "</td>" +
                         "</tr>"
