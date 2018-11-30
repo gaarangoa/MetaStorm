@@ -1112,17 +1112,24 @@ window.onload = function() {
                     $("#run_samples_tbody").append(
                         "<tr>" +
                         "<td>" + x.data[i]['sample_name'] + "</td>" +
-                        "<td>" +
 
+                        // fastq1
+                        "<td>" +
                         '<select class="form-control" id="selected_fq_1">' +
                         "<option selected='selected'>" + x.data[i]['reads1'] + "</option>" +
                         "<option>" + rawreads.join("</option><option>") + "</option>" +
                         '</select>' +
-
-
                         "</td>" +
-                        "<td>" + x.data[i]['reads2'] + "</td>" +
+
+                        // fastq2
                         "<td>" +
+                        '<select class="form-control" id="selected_fq_2">' +
+                        "<option selected='selected'>" + x.data[i]['reads2'] + "</option>" +
+                        "<option>" + rawreads.join("</option><option>") + "</option>" +
+                        '</select>' +
+                        "<td>" +
+
+
                         '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
                         '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
                         "</td>" +
