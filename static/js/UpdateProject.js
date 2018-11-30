@@ -1106,8 +1106,8 @@ window.onload = function() {
                         "<td>" + x.data[i]['reads1'] + "</td>" +
                         "<td>" + x.data[i]['reads2'] + "</td>" +
                         "<td>" +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + row + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Run</button> ' +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + row + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Remove</button>' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + avl + '>Remove</button>' +
                         "</td>" +
                         "</tr>"
                     )
