@@ -1091,6 +1091,15 @@ window.onload = function() {
                 data = [] //[{ID:"ID",Name:"Sample Name",Condition:"Sequence Method",Environment:"Biome",Library:"Experiment Type",Mate1:"FastQ1",Mate2:"FastQ2"}]
 
                 for (i = 0; i < x.data.length; i++) {
+
+                    $("#run_samples_tbody").append(
+                        "<tr>" +
+                        "<td>John</td>" +
+                        "<td>Doe</td>" +
+                        "<td>john@example.com</td>" +
+                        "</tr>"
+                    )
+
                     item = {
                         ID: x.data[i]['sample_id'] + ":" + x.data[i]['status'],
                         Sample: x.data[i]['sample_name'],
@@ -1112,6 +1121,8 @@ window.onload = function() {
                         data.push(item)
                     }
                 }
+
+
                 console.log("DATA:", data, data.length)
 
 
