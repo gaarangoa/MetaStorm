@@ -1106,8 +1106,8 @@ window.onload = function() {
                         "<td>" + x.data[i]['reads1'] + "</td>" +
                         "<td>" + x.data[i]['reads2'] + "</td>" +
                         "<td>" +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
-                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + item + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
+                        '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'danger' + ' btn-xs" onclick=remove_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Remove</button>' +
                         "</td>" +
                         "</tr>"
                     )
@@ -1129,11 +1129,6 @@ window.onload = function() {
 
 
                 console.log("DATA:", data, data.length)
-
-
-
-
-
 
                 $("#run_table").html('')
 
