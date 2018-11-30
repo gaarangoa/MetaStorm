@@ -1011,8 +1011,8 @@ window.onload = function() {
             }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
-                console.log(x)
-                    //alert(x.data[0])
+                // console.log(x)
+                //alert(x.data[0])
 
 
                 save_sample = function(arg) {
@@ -1024,7 +1024,6 @@ window.onload = function() {
                     //if($(fq1).text().slice(0,-1)==""){console.log('Error: No fastq.gz file provided')}
 
                     submit_analysis(arg[1], $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1), $(sample).text())
-
                     console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
                 }
 
@@ -1100,10 +1099,34 @@ window.onload = function() {
                         run: 0
                     }
 
+                    // <div class="dropdown">
+                    //     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    //     <span class="caret"></span></button>
+                    //     <ul class="dropdown-menu">
+                    //     <li><a href="#">HTML</a></li>
+                    //     <li><a href="#">CSS</a></li>
+                    //     <li><a href="#">JavaScript</a></li>
+                    //     </ul>
+                    // </div>
+
+                    rawreads_option = ""
+                    rawreads.forEach(e => {
+                        rawreads_option + "<option>" + e + "</option>"
+                    })
+
+                    console.log(rawreads_option)
+
                     $("#run_samples_tbody").append(
                         "<tr>" +
                         "<td>" + x.data[i]['sample_name'] + "</td>" +
-                        "<td>" + x.data[i]['reads1'] + "</td>" +
+                        "<td>" +
+
+                        '<select value="' + x.data[i]['reads1'] + '" class="form-control" id="selected_fq_1">' +
+
+                        '</select>' +
+
+
+                        "</td>" +
                         "<td>" + x.data[i]['reads2'] + "</td>" +
                         "<td>" +
                         '<button id="run_button_' + x.data[i]['sample_id'] + '" class="btn btn-' + 'primary' + ' btn-xs" onclick=save_sample(["' + i + '","' + x.data[i]['sample_id'] + '","' + pip + '","' + pid + '"]) ' + '>Run</button> ' +
@@ -1128,7 +1151,7 @@ window.onload = function() {
                 }
 
 
-                console.log("DATA:", data, data.length)
+                // console.log("DATA:", data, data.length)
 
                 $("#run_table").html('')
 
