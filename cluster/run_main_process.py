@@ -55,10 +55,19 @@ try:
     # get status file and check if was succesfully annotated
 
     if pip == 'matches':
-        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log') if "ERROR" in i]
-
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]
+                                             ['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log') if "ERROR" in i]
+        os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+                  SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/*.matches')
+        os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+                  SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/*.daa')
     else:
-        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log') if 'ERROR' in i]
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]
+                                             ['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log') if 'ERROR' in i]
+        # os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+        #           SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/*.matches')
+        os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+                  SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/*.daa')
 
     message = base64.b64encode(json.dumps(status))
 
@@ -67,4 +76,4 @@ try:
 
 except Exception as inst:
     os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py '+sys.argv[1]+' failed '+ message)
+              rootdir+'/listener.py '+sys.argv[1]+' failed ' + message)
