@@ -888,8 +888,8 @@ window.onload = function () {
                         $("#runstatusbar").html = ""
                         $("#RunMetaGen").disabled = false;
                         $("#runstatusbar").html("")
-                        //send_email(uid,msg,'Processing sample: '+sname)
-                        //get_samples_info()
+                        send_email(uid, msg, 'Processing sample: ' + sname)
+                        get_samples_info()
 
 
                         $("#tab_runo_box_overlay").remove()
@@ -1201,7 +1201,7 @@ window.onload = function () {
                     },
                     {
                         data: 'Mate1',
-                        //renderer: mate1HTML,
+                        // renderer: mate1HTML,
                         type: 'dropdown',
                         source: rawreads
                     },
