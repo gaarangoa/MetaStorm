@@ -872,7 +872,7 @@ window.onload = function () {
                     rids: rids,
                     msg: msg
                 }
-                //console.log(datasent)
+                console.log(datasent)
                 $.ajax({
                     url: machine + "RunMetaGen",
                     type: "POST",
@@ -883,7 +883,7 @@ window.onload = function () {
 
 
 
-                        //console.log(dat)
+                        console.log(dat)
                         $("#runstatusbar").html(wait_bar(100))
                         $("#runstatusbar").html = ""
                         $("#RunMetaGen").disabled = false;
