@@ -1038,7 +1038,7 @@ window.onload = function () {
                     //if($(fq1).text().slice(0,-1)==""){console.log('Error: No fastq.gz file provided')}
 
                     // submit_analysis(arg[1], $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1), $(sample).text())
-                    // console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
+                    console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
                 }
 
                 remove_sample = function (arg) {
