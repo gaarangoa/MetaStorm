@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, "/home/raid/www/MetaStorm/main/")
+sys.path.insert(0, "/src/")
 
 from flask import Flask, render_template, jsonify, request, send_from_directory, redirect, url_for
 import os
