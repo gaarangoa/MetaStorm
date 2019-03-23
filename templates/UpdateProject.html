@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}">
     </link>
 
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/css/dataTables.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,12 +73,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0);
             border-radius: 3px;
         }
+        
+        .wtHolder {
+            min-height: 200px !important;
+            width: 100% !important;
+        }
+        
+        .wtHider {
+            width: 100% !important;
+        }
     </style>
 
 
     <!-- pretty tables handsontable -->
     <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js">
+    </script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/handsontable@7.0.0/dist/handsontable.full.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@7.0.0/dist/handsontable.full.min.css"> -->
 
     <!--	<script src="https://handsontable.com//bower_components/ruleJS/dist/full/ruleJS.all.full.js"></script>
 		<script src="https://handsontable.com//bower_components/handsontable-ruleJS/src/handsontable.formula.js"></script>
@@ -95,14 +108,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-
+    <!--
     <script>
         var $SCRIPT_ROOT = {
             {
                 request.script_root | tojson | safe
             }
         };
-    </script>
+    </script> -->
 
 </head>
 <!--
@@ -209,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                        <img src="/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="UserName1"></p>
@@ -304,8 +317,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
             <br>
-
-
 
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
@@ -491,7 +502,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <br>
                         <br>
 
-                        <div class="hot" id="BodyCurrentSamples" style='height: auto; overflow-y: auto'></div>
+                        <div id="app-2">
+                            <div id="app_2_content"></div>
+                        </div>
                         <br>
                         <br>
 
@@ -535,36 +548,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-
                     <!-- ADD SAMPLES -->
                     <div class="tab-pane" id="inso">
 
-                        <div class="callout callout-white lead col-md-3">
+                        <div class="col-md-12">
                             <div class="box box-primary">
                                 <div class="box-body">
-                                    <center>
-                                        <h2># Samples </h2>
-                                    </center>
-                                    <center>Inser the number of samples to be added to the project.</center>
-                                    <br>
-                                    <center>
-                                        <input type="text" style="width:50px" id="NumberSamples" placeholder="" value=1>
-                                    </center>
-                                    <br>
-                                    <center>
-                                        <button style="width: 50%" id="NumberSamplesButton" class="btn btn-success">GO</button>
-                                        <br>
-                                        <br>
-                                    </center>
-                                    <center>
-                                        <br> Fill up the table using your sample's information and the instructions provided above. you can copy an paste several rows at the time (useful for large set of samples).
-                                        <br>
-                                        <br>
-                                        <br>
-                                    </center>
-                                    <center>
-                                        <button style="width: 50%" id="submitMetagenome" class="btn btn-primary" data-widget="collapse" disabled="true">Submit</button>
-                                    </center>
+
+                                    <h4>Add Metadata and samples to your project </h4>
+                                    <p>Please insert the number of samples to be added into the project.</p>
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="NumberSamples" placeholder="Samples" value=10>
+                                        <span class="input-group-btn" style="width:0;">
+                                            <button id="NumberSamplesButton" class="btn btn-success">Add
+                                                Samples</button>
+                                        </span>
+                                    </div>
+
+                                    <hr>
+                                    <div class="hot handsontable htColumnHeaders" id="table"></div>
+
+
+                                    <hr>
+                                    <p>
+                                        Fill up the table using your sample's information and the instructions provided above. you can copy an paste several rows at the time (useful for large set of samples).
+                                    </p>
+
+                                    <hr>
+                                    <button style="width: 20%" id="submitMetagenome" class="btn btn-primary" disabled="true">Save Metadata</button>
+
                                 </div>
                             </div>
                         </div>
@@ -573,15 +586,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                        <div class='col-md-6' id="metadata_table">
 
-                            <center>
-                                <h2># Metadata</h2>
-                            </center>
-                            <div id="table"></div>
-
-
-                        </div>
 
 
 
@@ -789,38 +794,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <br>
                         <br>
 
-                        <div class="col-md-12 col-md-offset-2" id="tab_runo_box" style="background: none; border-radius: 0; border-top: hidden; box-shadow: none">
+                        <!-- <div class="col-md-12 col-md-offset-2" id="tab_runo_box" style="background: none; border-radius: 0; border-top: hidden; box-shadow: none">
                             <button id="RefreshSampleTabRuno" class="btn btn-success">
                                 <i class="fa fa-refresh"></i> Refresh </button>
                             <br>
                             <br>
                             <div id="run_table"></div>
-                        </div>
+                        </div> -->
 
-                        <div class='col-md-12' style="height: 5000px"></div>
+                        <!-- <div class='col-md-12' style="height: 5000px"></div> -->
 
-                        <div class="col-md-12">
-                            <div class="box box-solid">
-                                <div class="box-body">
-                                    <div id="table_of_samples_to_run">
-                                        <div class="container">
-                                            <h2>Run Samples</h2>
-                                            <p>This table contains the samples and actions to perform</p>
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Sample</th>
-                                                        <th>Fastq_1 file</th>
-                                                        <th>Fastq_2 file</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="run_samples_tbody">
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-md-8 col-md-offset-2" id="app_table_run_sample">
+                            <div id="app_table_run_sample_content">
                             </div>
                         </div>
 
@@ -1140,7 +1125,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li>
                         <div>
 
-                            <p>This section help you to get started on completing the data parameters associated to your samples.</p>
+                            <p>This section help you to get started on completing the data parameters associated to your samples.
+                            </p>
 
                             <ul>
                                 <li>
@@ -1244,7 +1230,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
     <!-- Bootstrap 3.3.2 JS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}">
+    </script>
     <!-- Bootstrap buttons -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap-filestyle.min.js') }}"></script>
     <!-- AdminLTE App -->
@@ -1254,12 +1241,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--main js file-->
     <!-- production -->
 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.js') }}"></script>
 
-    <link rel="stylesheet" href="/MetaStorm/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='plupload/plupload.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='plupload/jquery.ui.plupload/jquery.ui.plupload.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/vue.js') }}"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/UpdateProject.js') }}"></script>
@@ -1269,14 +1259,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-    <script type="text/javascript" src="/MetaStorm/static/jqw/scripts/demos.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="/MetaStorm/static/jqw/jqwidgets/jqxnavigationbar.js"></script>
+    <script type="text/javascript" src="/static/jqw/scripts/demos.js"></script>
+    <script type="text/javascript" src="/static/jqw/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="/static/jqw/jqwidgets/jqxnavigationbar.js"></script>
 
 
 
-    <script type="text/javascript" src="/MetaStorm/static/tipped/js/tipped/tipped.js"></script>
-    <link rel="stylesheet" type="text/css" href="/MetaStorm/static/tipped/css/tipped/tipped.css" />
+    <script type="text/javascript" src="/static/tipped/js/tipped/tipped.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/tipped/css/tipped/tipped.css" />
 
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

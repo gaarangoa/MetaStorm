@@ -1,7 +1,7 @@
-machine = "/MetaStorm/"
+machine = "http://localhost:5001/"
 
 
-wait_bar = function (value_now) {
+wait_bar = function(value_now) {
     return '<div class="progress progress-sm active">' +
         '<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow=' + value_now + ' aria-valuemin="0" aria-valuemax="100" style="width: ' + value_now + '%">' +
         '<span class="sr-only">20% Complete</span>' +
@@ -9,7 +9,7 @@ wait_bar = function (value_now) {
         '</div>'
 }
 
-urlParam = function (name) {
+urlParam = function(name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results == null) {
         return null;
@@ -20,7 +20,7 @@ urlParam = function (name) {
 
 
 
-logout = function (uid) {
+logout = function(uid) {
     $.ajax({
         url: machine + "logout",
         type: "POST",
@@ -29,14 +29,14 @@ logout = function (uid) {
             uid: uid
         }),
         contentType: "application/json; charset=utf-8",
-        success: function (x) {
+        success: function(x) {
             window.open(machine + "login", "_self")
         }
     });
 }
 
 
-vsession = function (uid) {
+vsession = function(uid) {
     $.ajax({
         url: machine + "vsession",
         type: "POST",
@@ -45,7 +45,7 @@ vsession = function (uid) {
             uid: uid
         }),
         contentType: "application/json; charset=utf-8",
-        success: function (x) {
+        success: function(x) {
             if (x == 'offline') {
                 window.open(machine + "login", "_self");
             }
@@ -56,7 +56,7 @@ vsession = function (uid) {
 
 
 //format_names_taxonomy
-fnt = function (name) {
+fnt = function(name) {
     if (/unknown/.test(name)) {
         return "unknown"
     } else {
@@ -70,15 +70,15 @@ fnt = function (name) {
     }
 }
 
-var get_checkbox = function (name) {
-    var sel = $('input[name="' + name + '"]:checked').map(function (_, el) {
+var get_checkbox = function(name) {
+    var sel = $('input[name="' + name + '"]:checked').map(function(_, el) {
         return $(el).val().split("_")[0];
     }).get();
     return (sel)
 }
 
-var get_checkbox_text = function (name) {
-    var sel = $('input[name="' + name + '"]:checked').map(function (_, el) {
+var get_checkbox_text = function(name) {
+    var sel = $('input[name="' + name + '"]:checked').map(function(_, el) {
         namep = $(el).val().split("_");
         namep.shift()
         return namep.join('_')
@@ -89,7 +89,7 @@ var get_checkbox_text = function (name) {
 
 var Base64 = {
     _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-    encode: function (e) {
+    encode: function(e) {
         var t = "";
         var n, r, i, s, o, u, a;
         var f = 0;
@@ -111,7 +111,7 @@ var Base64 = {
         }
         return t
     },
-    decode: function (e) {
+    decode: function(e) {
         var t = "";
         var n, r, i;
         var s, o, u, a;
@@ -136,7 +136,7 @@ var Base64 = {
         t = Base64._utf8_decode(t);
         return t
     },
-    _utf8_encode: function (e) {
+    _utf8_encode: function(e) {
         e = e.replace(/\r\n/g, "\n");
         var t = "";
         for (var n = 0; n < e.length; n++) {
@@ -154,7 +154,7 @@ var Base64 = {
         }
         return t
     },
-    _utf8_decode: function (e) {
+    _utf8_decode: function(e) {
         var t = "";
         var n = 0;
         var r = c1 = c2 = 0;
@@ -198,15 +198,15 @@ var experiment_type = ['Metagenome',
     'Amplicon 16S rRNA'
 ]
 var sequencing_method = ['Illumina HiSeq 2500',
-    'Illumina HiSeq 3/4000',
-    'Illumina HiSeq X',
-    'Illumina MiniSeq',
-    'Illumina MiSeq',
-    'Illumina NextSeq',
-    'SOLiD'
+        'Illumina HiSeq 3/4000',
+        'Illumina HiSeq X',
+        'Illumina MiniSeq',
+        'Illumina MiSeq',
+        'Illumina NextSeq',
+        'SOLiD'
 
-]
-// this function returns the box with the selected projects:
+    ]
+    // this function returns the box with the selected projects:
 
 function rpro(color, pname, numsamples, pdescription) {
     return ['<div class="info-box ' + color + '">' +
@@ -227,7 +227,7 @@ function rpro(color, pname, numsamples, pdescription) {
 }
 
 
-var html_progress_bar = function (title, value, ofmany, percent, color, id) {
+var html_progress_bar = function(title, value, ofmany, percent, color, id) {
     arg = ''
     if (id != 'none') {
         arg = '<a href="#"><i class="fa fa-fw fa-question-circle" style="color:#cc0000" id="tp_' + id + '"></i></a>'
@@ -243,7 +243,7 @@ var html_progress_bar = function (title, value, ofmany, percent, color, id) {
 }
 
 
-var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height, rsize, condition, pip, rid, offset, stk) {
+var ptree = function(treeData, domain, tag, clpd, names, Pcolor, width, height, rsize, condition, pip, rid, offset, stk) {
 
     if (!offset) {
         offset = 3
@@ -268,7 +268,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
     var tree = d3.layout.tree()
         .size([height, width]);
     var diagonal = d3.svg.diagonal()
-        .projection(function (d) {
+        .projection(function(d) {
             return [d.y, d.x];
         });
     var svg = d3.select(tag).append("svg")
@@ -307,12 +307,12 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
         var nodes = tree.nodes(root).reverse(),
             links = tree.links(nodes);
         // Normalize for fixed-depth.
-        nodes.forEach(function (d) {
+        nodes.forEach(function(d) {
             d.y = d.depth * 150;
         });
         // Update the nodes…
         var node = svg.selectAll("g.node")
-            .data(nodes, function (d) {
+            .data(nodes, function(d) {
                 return d.id || (d.id = ++i);
             });
 
@@ -320,7 +320,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
         // Enter any new nodes at the parent's previous position.
         var nodeEnter = node.enter().append("g")
             .attr("class", "node")
-            .attr("transform", function (d) {
+            .attr("transform", function(d) {
                 return "translate(" + source.y0 + "," + source.x0 + ")";
             })
             .on("click", click);
@@ -329,19 +329,19 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
 
         nodeEnter.append("circle")
             .attr("r", 10)
-            .style("fill", function (d) {
+            .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
             });
         nodeEnter.append("text")
-            .attr("x", function (d) {
+            .attr("x", function(d) {
                 return d.children || d._children ? -12 : 12;
             })
             //.attr("y", function(d) { return d.children || d._children ? -8 : 8; })
             .attr("dy", ".35em")
-            .attr("text-anchor", function (d) {
+            .attr("text-anchor", function(d) {
                 return d.children || d._children ? "end" : "start";
             })
-            .text(function (d) {
+            .text(function(d) {
                 if (/unknown/.test(d[names])) {
                     return "unknown"
                 } else {
@@ -360,14 +360,14 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
             .duration(duration)
-            .attr("transform", function (d) {
+            .attr("transform", function(d) {
                 return "translate(" + (d.y + 0) + "," + (d.x + 0) + ")";
             });
         nodeUpdate.select("circle")
-            .attr("r", function (d) {
+            .attr("r", function(d) {
                 return rsize
             }) //!FIXME EDIT HERE!!!
-            .style("fill", function (d) {
+            .style("fill", function(d) {
                 return d._children ? color(d[Pcolor]) : color(d[Pcolor]);
             });
         nodeUpdate.select("text")
@@ -375,7 +375,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
         // Transition exiting nodes to the parent's new position.
         var nodeExit = node.exit().transition()
             .duration(duration)
-            .attr("transform", function (d) {
+            .attr("transform", function(d) {
                 return "translate(" + source.y + "," + source.x + ")";
             })
             .remove();
@@ -385,7 +385,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
             .style("fill-opacity", 1e-6);
         // Update the links…
         var link = svg.selectAll("path.link")
-            .data(links, function (d) {
+            .data(links, function(d) {
                 return d.target.id;
             });
         // Enter any new links at the parent's previous position.
@@ -394,7 +394,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
             .style("stroke", "rgba(0,0,255,0.08)")
             .style("stroke-width", 15)
             //.style("stroke-border","solid 1px #000")
-            .attr("d", function (d) {
+            .attr("d", function(d) {
                 var o = {
                     x: source.x0,
                     y: source.y0
@@ -408,12 +408,12 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
         link.transition()
             .duration(duration)
             .attr("d", diagonal)
-        //.style('stroke','#000');
-        // Transition exiting nodes to the parent's new position.
+            //.style('stroke','#000');
+            // Transition exiting nodes to the parent's new position.
         link.exit().transition()
             .duration(duration)
             //.style('stroke','#000')
-            .attr("d", function (d) {
+            .attr("d", function(d) {
                 var o = {
                     x: source.x,
                     y: source.y
@@ -425,7 +425,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
             })
             .remove();
         // Stash the old positions for transition.
-        nodes.forEach(function (d) {
+        nodes.forEach(function(d) {
             d.x0 = d.x;
             d.y0 = d.y;
         });
@@ -456,7 +456,7 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
 
 
             children_stack = []
-            d.children.forEach(function (item, index) {
+            d.children.forEach(function(item, index) {
 
                 name = fnt(item.id)
                 matches = Math.round(item.matches)
@@ -490,11 +490,11 @@ var ptree = function (treeData, domain, tag, clpd, names, Pcolor, width, height,
 
 
 
-var draw_pie_chart = function (tag, data, title, type, label_on) {
+var draw_pie_chart = function(tag, data, title, type, label_on) {
     //alert()
     type = 'pie'
     label_on = false
-    data.sort(function (a, b) {
+    data.sort(function(a, b) {
         return b[1] - a[1];
     });
 
@@ -509,7 +509,7 @@ var draw_pie_chart = function (tag, data, title, type, label_on) {
     }
     data = ndata
     ndata = []
-    // Build the chart
+        // Build the chart
     var chartx = new Highcharts.Chart({
         chart: {
             renderTo: tag.replace("#", ''),
@@ -543,7 +543,7 @@ var draw_pie_chart = function (tag, data, title, type, label_on) {
                     enabled: true,
                     //distance: -100,
                     //format: '<b>{point.percentage:.1f} %',
-                    formatter: function () {
+                    formatter: function() {
                         perc = Math.round(this.percentage * 100) / 100
                         if (perc >= 5) {
                             return perc + ' %';
@@ -579,9 +579,9 @@ var draw_pie_chart = function (tag, data, title, type, label_on) {
 
 
 
-var draw_line = function (tag, data, title) {
+var draw_line = function(tag, data, title) {
     //alert()
-    data.sort(function (a, b) {
+    data.sort(function(a, b) {
         return b[1] - a[1];
     });
 
@@ -594,7 +594,7 @@ var draw_line = function (tag, data, title) {
     }
     data = ndata
     ndata = []
-    // Build the chart
+        // Build the chart
     $(tag).highcharts({
         chart: {
             plotBackgroundColor: null,
@@ -726,7 +726,7 @@ var draw_line = function (tag, data, title) {
 
 
 
-send_email = function (uid, msg, sub) {
+send_email = function(uid, msg, sub) {
 
     $.ajax({
         url: machine + "sendEmail",
@@ -738,7 +738,7 @@ send_email = function (uid, msg, sub) {
         }),
         async: true,
         contentType: "application/json; charset=utf-8",
-        success: function (dat) { }
+        success: function(dat) {}
     });
 }
 
@@ -762,7 +762,7 @@ send_email = function (uid, msg, sub) {
 
 
 
-clustergram = function (target, heatmap, width) {
+clustergram = function(target, heatmap, width) {
     window.inchlib = new InCHlib({ //instantiate InCHlib
         target: target, //ID of a target HTML element
         metadata: true, //turn on the metadata
@@ -805,7 +805,7 @@ clustergram = function (target, heatmap, width) {
 
 
 
-stacked = function (tag, data, categories) {
+stacked = function(tag, data, categories) {
 
     /*Highcharts.setOptions({
         colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4', '#000000', '#00FF5655']
@@ -870,7 +870,7 @@ stacked = function (tag, data, categories) {
 
 
 
-process_stacked = function (data) {
+process_stacked = function(data) {
     categories = data[0].splice(1)
     d = []
     for (i = 1; i < data.length; i++) {
@@ -885,9 +885,9 @@ process_stacked = function (data) {
 
 
 
-process_stacked2 = function (data) {
+process_stacked2 = function(data) {
     categories = []
-    data[0].splice(1).forEach(function (i, ix) {
+    data[0].splice(1).forEach(function(i, ix) {
         categories.push(i.split(":")[1])
     })
 
@@ -904,9 +904,9 @@ process_stacked2 = function (data) {
 
 
 
-process_stacked_from_tree = function (data) {
+process_stacked_from_tree = function(data) {
     categories = []
-    data[0].splice(1).forEach(function (i, ix) {
+    data[0].splice(1).forEach(function(i, ix) {
         categories.push(i.split(":")[1])
     })
 
@@ -931,10 +931,10 @@ process_stacked_from_tree = function (data) {
 
 //when uploading a file, first setup the database to put the upload status to uploading
 //g.db.execute()
-loading_status_sql = function (pid, filename, status) {
+loading_status_sql = function(pid, filename, status) {
     sql = "INSERT or REPLACE INTO fastqFiles VALUES ('" + pid + '_' + filename + "','" + pid + "','" + filename + "','" + status + "')"
-    //sql='INSERT or REPLACE INTO fastqFiles VALUES ("a","b","c","d")'
-    //console.log(sql)
+        //sql='INSERT or REPLACE INTO fastqFiles VALUES ("a","b","c","d")'
+        //console.log(sql)
     $.ajax({
         url: machine + "sqlgo",
         type: "POST",
@@ -943,7 +943,7 @@ loading_status_sql = function (pid, filename, status) {
             sql: Base64.encode(sql)
         }),
         contentType: "application/json; charset=utf-8",
-        success: function (x) {
+        success: function(x) {
             ////console.log(x)
         }
     });
@@ -1028,13 +1028,13 @@ function upload_php(obj, sid, pid, pip, uid, upload_dir) {
             max_file_size: '100gb',
             // Specify what files to browse for
             mime_types: [{
-                title: "Raw NGS files",
-                extensions: "fastq,gz,fasta,fa,fq"
-            },
-            {
-                title: "Compressed NGS files",
-                extensions: "gz"
-            }
+                    title: "Raw NGS files",
+                    extensions: "fastq,gz,fasta,fa,fq"
+                },
+                {
+                    title: "Compressed NGS files",
+                    extensions: "gz"
+                }
             ]
         },
 
@@ -1109,9 +1109,9 @@ function upload_php(obj, sid, pid, pip, uid, upload_dir) {
 
 
 
-var draw_table = function (div, data) {
+var draw_table = function(div, data) {
 
-    var headerRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+    var headerRenderer = function(instance, td, row, col, prop, value, cellProperties) {
         Handsontable.renderers.TextRenderer.apply(this, arguments);
         //td.style.fontWeight = 'bold';
         td.style.color = 'white'
@@ -1119,12 +1119,12 @@ var draw_table = function (div, data) {
         td.style.backgroundColor = 'rgba(0,125,10,1)';
     };
 
-    var rowOrder = function (data) {
+    var rowOrder = function(data) {
         x = []
         x.push({
             data: "samples"
         })
-        Object.keys(data[0]).forEach(function (element, index, array) {
+        Object.keys(data[0]).forEach(function(element, index, array) {
             //return d.children || d._children ? "end" : "start";
             if (element != 'Long_Description' && element != "description" && element != "samples") {
                 x.push({
@@ -1141,10 +1141,10 @@ var draw_table = function (div, data) {
         return (x)
     }
 
-    var colWidth = function (data) {
+    var colWidth = function(data) {
         x = []
         x.push(100)
-        Object.keys(data[0]).forEach(function (element, index, array) {
+        Object.keys(data[0]).forEach(function(element, index, array) {
             //return d.children || d._children ? "end" : "start";
             if (element != 'Long_Description' && element != "description" && element != "samples") {
                 x.push(50)
@@ -1176,7 +1176,7 @@ var draw_table = function (div, data) {
         fixedColumnsLeft: 1,
         columns: rowOrder(data),
 
-        cells: function (row, col, prop) {
+        cells: function(row, col, prop) {
             var cellProperties = {};
             if (row === 0) {
                 cellProperties.renderer = headerRenderer;

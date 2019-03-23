@@ -6,10 +6,11 @@ services:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - ./:/main/
+      - ./:/src/
     tty: true
     ports:
       - "5001:5000"
+    command: python /src/run.py
   # admin:
   #   build:
   #     context: ./REST_admin/

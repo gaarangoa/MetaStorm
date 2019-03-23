@@ -15,8 +15,8 @@ import json
 #******************************************************************************
 # BASIC CONSTANTS
 #******************************************************************************
-__root_dir__="/home/raid/www/MetaStorm/main/"
-__ROOTM__=__root_dir__                                 
+__root_dir__="/src/"
+__ROOTM__=__root_dir__
 __FILEDB__=__root_dir__+"/SQL/projects.db"
 __ROOTEXEDIR__=__root_dir__+"/Files/bin/"
 __ROOTPRO__=__root_dir__+"/Files/PROJECTS/"
@@ -37,7 +37,7 @@ def tsv2json(fi,delimiter):
 		   data[sp[0]]={'X'+str(ix):i for ix,i in enumerate(sp)}
 		json.dump(data, outfile)
 	return data
-	
+
 def validate_session():
 	a=1
 
@@ -45,7 +45,7 @@ def flog(status):
 	fo=open(log,'w')
 	fo.write(status+"\n")
 	fo.close()
-	
+
 
 def isdir(direc):
     try:
@@ -61,7 +61,7 @@ def v2m(X,filters,index, minA): # from a vector x,y,value create an square matri
 	A={}
 	#x=list(set([str(i[0]) for i in X]))
 	#y=list(set([str(i[1]) for i in X]))
-	
+
 	#print len(x),len(y)
 	x=[]
 	y=[]
@@ -605,7 +605,7 @@ class ViewSampleResults:
 		file=self.file
 		#print file
 		conn=sql.connect(file)
-		c=conn.cursor()  #select 
+		c=conn.cursor()  #select
 		value = c.execute('SELECT "'+self.sample.name+'", a.Function, a.relAbundance, a.allGenes, b.relAbundance from function_counts a inner join function_counts_16s b where a.fid==b.fid').fetchall()
 		conn.close()
 		return value
@@ -620,7 +620,7 @@ class ViewSampleResults:
 	def func_structure(self,pid,pip,sid):
 		conn=sql.connect(self.file)
 		conn.row_factory = dict_factory
-		c=conn.cursor()  #select 
+		c=conn.cursor()  #select
 		value = c.execute('SELECT * from ( select "'+self.sample.name+'" sample , a.Function category, a.relAbundance rpkm, a.allGenes counts, '+
 						  'b.relAbundance as n16s, a.uniqueGenes as gene_counts from function_counts a inner join function_counts_16s b where a.fid==b.fid ) c ').fetchall()
 		value={i['category']:i for i in value}
@@ -638,22 +638,22 @@ class ViewSampleResults:
 			#dbann={ i:dbann[i] for i in value}
 		except:
 			dbann=['no data']
-		
+
 		dbfun={i.split()[0]:i.split()[2] for i in open(__ROOTDBS__+self.dbname+"/func.db")}
 		if pip=='assembly':
 			dbcnt=__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/pred.genes."+self.dbname+".matches.function.genes.abundance"
 		else:
 			dbcnt=__ROOTPRO__+"/"+pid+"/matches/"+sid+"/alignment."+self.dbname+".matches.function.genes.abundance"
-		
+
 		sample_n16s={i.split()[0]:i.split()[0:4] for i in open(dbcnt+".16s")}
 		sample_rpkm={i.split()[0]:i.split()[0:4] for i in open(dbcnt+".rpkm")}
-		
+
 		conn.close()
-		
+
 		return {'A':value, 'B':dbann, 'Cn16S':sample_n16s, 'CRPKM':sample_rpkm, 'D':dbfun, 'missing':missing_cat}
 
 
-				
+
 
 
 
