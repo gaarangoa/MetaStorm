@@ -13,31 +13,43 @@ class Admin(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'admin'
+        db_table = "admin"
 
 
 class Aligner(models.Model):
     aligner_id = models.TextField(unique=True)  # This field type is a guess.
     aligner_name = models.TextField(unique=True)  # This field type is a guess.
-    aligner_default = models.TextField(blank=True, null=True)  # This field type is a guess.
-    aligner_fast = models.TextField(blank=True, null=True)  # This field type is a guess.
-    aligner_sensitive = models.TextField(blank=True, null=True)  # This field type is a guess.
+    aligner_default = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    aligner_fast = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    aligner_sensitive = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = 'aligner'
+        db_table = "aligner"
 
 
 class Assembler(models.Model):
     assembler_id = models.TextField(unique=True)  # This field type is a guess.
     assembler_name = models.TextField(unique=True)  # This field type is a guess.
-    assembler_default = models.TextField(blank=True, null=True)  # This field type is a guess.
-    assembler_fast = models.TextField(blank=True, null=True)  # This field type is a guess.
-    assembler_sensitive = models.TextField(blank=True, null=True)  # This field type is a guess.
+    assembler_default = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    assembler_fast = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    assembler_sensitive = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = 'assembler'
+        db_table = "assembler"
 
 
 class Assembly(models.Model):
@@ -48,7 +60,7 @@ class Assembly(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'assembly'
+        db_table = "assembly"
 
 
 class Fastqfile(models.Model):
@@ -59,7 +71,7 @@ class Fastqfile(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'fastqFiles'
+        db_table = "fastqFiles"
 
 
 class Files(models.Model):
@@ -69,7 +81,7 @@ class Files(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'files'
+        db_table = "files"
 
 
 class Job(models.Model):
@@ -85,8 +97,8 @@ class Job(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'jobs'
-        unique_together = (('arc_id'),)
+        db_table = "jobs"
+        unique_together = (("arc_id"),)
 
     def __unicode__(self):
         return self.arc_id
@@ -100,7 +112,7 @@ class Matches(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'matches'
+        db_table = "matches"
 
 
 class NumberJobs(models.Model):
@@ -109,19 +121,29 @@ class NumberJobs(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'number_jobs'
+        db_table = "number_jobs"
 
 
 class Project(models.Model):
-    project_id = models.TextField(unique=True)  # This field type is a guess.
-    project_name = models.TextField(blank=True, null=True)  # This field type is a guess.
-    project_short_description = models.TextField(blank=True, null=True)  # This field type is a guess.
-    project_description = models.TextField(blank=True, null=True)  # This field type is a guess.
-    project_path = models.TextField(blank=True, null=True)  # This field type is a guess.
+    project_id = models.TextField(
+        unique=True, primary_key=True
+    )  # This field type is a guess.
+    project_name = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    project_short_description = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    project_description = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    project_path = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = 'project'
+        db_table = "project"
 
 
 class ProjectStatus(models.Model):
@@ -133,7 +155,7 @@ class ProjectStatus(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'project_status'
+        db_table = "project_status"
 
 
 class ProjectStatusReads(models.Model):
@@ -145,7 +167,7 @@ class ProjectStatusReads(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'project_status_reads'
+        db_table = "project_status_reads"
 
 
 class QualityFilter(models.Model):
@@ -155,15 +177,25 @@ class QualityFilter(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'quality_filter'
+        db_table = "quality_filter"
 
 
 class Reference(models.Model):
-    reference_id = models.TextField(unique=True, primary_key=True)  # This field type is a guess.
-    reference_name = models.TextField(blank=True, null=True)  # This field type is a guess.
-    sequence_type = models.TextField(blank=True, null=True)  # This field type is a guess.
-    reference_description = models.TextField(blank=True, null=True)  # This field type is a guess.
-    reference_path = models.TextField(blank=True, null=True)  # This field type is a guess.
+    reference_id = models.TextField(
+        unique=True, primary_key=True
+    )  # This field type is a guess.
+    reference_name = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    sequence_type = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    reference_description = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    reference_path = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
     user_id = models.TextField(blank=True, null=True)  # This field type is a guess.
     seqfile = models.TextField(blank=True, null=True)  # This field type is a guess.
     taxofile = models.TextField(blank=True, null=True)  # This field type is a guess.
@@ -173,7 +205,7 @@ class Reference(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'reference'
+        db_table = "reference"
 
 
 class SampleRun(models.Model):
@@ -182,7 +214,7 @@ class SampleRun(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sample_run'
+        db_table = "sample_run"
 
 
 class SampleStatus(models.Model):
@@ -194,7 +226,7 @@ class SampleStatus(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sample_status'
+        db_table = "sample_status"
 
 
 class Samples(models.Model):
@@ -203,7 +235,9 @@ class Samples(models.Model):
     sample_name = models.TextField(blank=True, null=True)  # This field type is a guess.
     sample_set = models.TextField(blank=True, null=True)  # This field type is a guess.
     environment = models.TextField(blank=True, null=True)  # This field type is a guess.
-    library_preparation = models.TextField(blank=True, null=True)  # This field type is a guess.
+    library_preparation = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
     reads1 = models.TextField(blank=True, null=True)  # This field type is a guess.
     reads2 = models.TextField(blank=True, null=True)  # This field type is a guess.
     lat = models.TextField(blank=True, null=True)
@@ -211,7 +245,7 @@ class Samples(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'samples'
+        db_table = "samples"
 
 
 class Session(models.Model):
@@ -222,13 +256,15 @@ class Session(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'session'
-        unique_together = (('uid', 'ip', 'browser'),)
+        db_table = "session"
+        unique_together = (("uid", "ip", "browser"),)
 
 
 class User(models.Model):
     user_id = models.TextField()  # This field type is a guess.
-    user_password = models.TextField(blank=True, null=True)  # This field type is a guess.
+    user_password = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
     user_name = models.TextField()  # This field type is a guess.
     user_affiliation = models.TextField(unique=True)  # This field type is a guess.
     organization = models.TextField()
@@ -237,7 +273,7 @@ class User(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'user'
+        db_table = "user"
 
 
 class UserProjects(models.Model):
@@ -246,18 +282,29 @@ class UserProjects(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'user_projects'
+        db_table = "user_projects"
 
 
 class Version(models.Model):
     version_id = models.TextField(unique=True)  # This field type is a guess.
-    metagenome_id = models.TextField(blank=True, null=True)  # This field type is a guess.
+    metagenome_id = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
     aligner_id = models.TextField(blank=True, null=True)  # This field type is a guess.
-    aligner_parameters = models.TextField(blank=True, null=True)  # This field type is a guess.
-    assembler_id = models.TextField(blank=True, null=True)  # This field type is a guess.
-    assembler_parameters = models.TextField(blank=True, null=True)  # This field type is a guess.
-    reference_id = models.TextField(blank=True, null=True)  # This field type is a guess.
+    aligner_parameters = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    assembler_id = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    assembler_parameters = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
+    reference_id = models.TextField(
+        blank=True, null=True
+    )  # This field type is a guess.
 
     class Meta:
         managed = False
-        db_table = 'version'
+        db_table = "version"
+

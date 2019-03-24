@@ -1,4 +1,4 @@
-machine = "http://localhost:5001/"
+var machine = Parameters.host;
 
 
 wait_bar = function(value_now) {
@@ -1016,7 +1016,7 @@ function upload_php(obj, sid, pid, pip, uid, upload_dir) {
     $(obj).plupload({
         // General settings
         runtimes: 'html5,flash,silverlight,html4',
-        url: 'https://bench.cs.vt.edu/plupload/examples/upload.php',
+        url: 'http://localhost:7001/upload.php',
 
         // User can upload no more then 20 files in one go (sets multiple_queues to false)
         max_file_count: 50,
@@ -1048,7 +1048,7 @@ function upload_php(obj, sid, pid, pip, uid, upload_dir) {
         dragdrop: true,
 
         multipart_params: {
-            "upload_dir": upload_dir + "/" + pid + "/READS/",
+            "upload_dir": "/Files/PROJECTS/" + pid + "/READS/",
             "arc_dir": "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/" + pid + "/READS/"
         }
     });

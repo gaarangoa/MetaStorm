@@ -101,7 +101,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--upload library-->
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plupload/jquery.ui.plupload/css/jquery.ui.plupload.css') }}">
-    </link>
 
 
 
@@ -222,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                        <img src="{{ url_for('static', filename='template/dist/img/user.png') }}" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="UserName1"></p>
@@ -1222,10 +1221,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED JS SCRIPTS -->
 
-
+    <script type="text/javascript" src="{{ url_for('static', filename='js/prod.js') }}"></script>
 
     <!-- jQuery 2.1.4 -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}">
+    </script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
@@ -1233,40 +1233,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}">
     </script>
     <!-- Bootstrap buttons -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap-filestyle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap-filestyle.min.js') }}">
+    </script>
     <!-- AdminLTE App -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
     <!-- icheck -->
-    <script type="text/javascript" src="{{ url_for('static', filename='icheck/icheck.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='icheck/icheck.js') }}">
+    </script>
     <!--main js file-->
     <!-- production -->
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.js') }}">
+    </script>
 
-    <link rel="stylesheet" href="/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='jqw/jqwidgets/styles/jqx.base.css') }}" type="text/css" />
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='plupload/plupload.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='plupload/jquery.ui.plupload/jquery.ui.plupload.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='plupload/jquery.ui.plupload/jquery.ui.plupload.js') }}">
+    </script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/vue.js') }}"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/UpdateProject.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/UpdateProject.js') }}">
+    </script>
 
 
 
 
 
 
-    <script type="text/javascript" src="/static/jqw/scripts/demos.js"></script>
-    <script type="text/javascript" src="/static/jqw/jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="/static/jqw/jqwidgets/jqxnavigationbar.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jqw/scripts/demos.js') }}">
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxcore.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxnavigationbar.js') }}"></script>
 
 
 
-    <script type="text/javascript" src="/static/tipped/js/tipped/tipped.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/tipped/css/tipped/tipped.css" />
+    <script type="text/javascript" src="{{ url_for('static', filename='tipped/js/tipped/tipped.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tipped/css/tipped/tipped.css') }}" />
 
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

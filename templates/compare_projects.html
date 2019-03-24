@@ -11,24 +11,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}">
+    </link>
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}">
+    </link>
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
 
     <!-- i check library -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icheck/skins/square/blue.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icheck/skins/square/blue.css') }}">
+    </link>
 
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.css') }}"></link>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-purple.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.css') }}">
+    </link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-purple.css') }}">
+    </link>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +48,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- pretty tables handsontable -->
     <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js">
+    </script>
 
 
     <style>
@@ -164,15 +170,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                    class="fa fa-search"></i></button>
+                        </span>
                     </div>
                 </form>
                 <!-- /.search form -->
 
                 <!-- Sidebar Menu -->
                 <ul id='sidemenu' class="sidebar-menu">
-                    <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a></li>
+                    <li class="active"><a onclick=logout(uid)><i class="fa fa-sign-out"></i> <span>Log out</span></a>
+                    </li>
                 </ul>
             </section>
 
@@ -281,9 +289,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <br>
                             <label for='selectNormalization'>Select Normalization: </label>
                             <select id='selectNormalization'>
-						  <option value="rpkm">RPKM</option>
-						  <option value="scale">Scale</option>
-						</select>
+                                <option value="rpkm">RPKM</option>
+                                <option value="scale">Scale</option>
+                            </select>
                             <br>
                             <p style="display: inline"><b>Select</b> <code>top</code> <b>results:</b> From </p> <input style="display: inline" style="width:10px" type="text" value="1" id="b2">
                             <p style="display: inline"> to: </p>
@@ -308,8 +316,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </center>
 
                                         <div class="box-tools pull-right">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_domain') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_domain') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_domain' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_domain' ) class="btn btn-primary">HeatMap</button>
                                         </div>
 
                                     </div>
@@ -327,8 +335,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <h2 class="box-title">Phylum</h2>
                                         </center>
                                         <div class="box-tools pull-left">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_phylum') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_phylum') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_phylum' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_phylum' ) class="btn btn-primary">HeatMap</button>
                                         </div>
                                     </div>
 
@@ -345,8 +353,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <h2 class="box-title">Class</h2>
                                         </center>
                                         <div class="box-tools pull-left">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_class') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_class') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_class' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_class' ) class="btn btn-primary">HeatMap</button>
                                         </div>
                                     </div>
 
@@ -363,8 +371,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <h2 class="box-title">Order</h2>
                                         </center>
                                         <div class="box-tools pull-left">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_order') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_order') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_order' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_order' ) class="btn btn-primary">HeatMap</button>
                                         </div>
                                     </div>
 
@@ -381,8 +389,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <h2 class="box-title">Family</h2>
                                         </center>
                                         <div class="box-tools pull-left">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_family') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_family') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_family' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_family' ) class="btn btn-primary">HeatMap</button>
                                         </div>
                                     </div>
 
@@ -399,8 +407,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <h2 class="box-title">Genus</h2>
                                         </center>
                                         <div class="box-tools pull-left">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_genus') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_genus') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_genus' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_genus' ) class="btn btn-primary">HeatMap</button>
                                         </div>
                                     </div>
 
@@ -417,8 +425,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <h2 class="box-title">Species</h2>
                                         </center>
                                         <div class="box-tools pull-left">
-                                            <button type="button" onclick=enable_st_ht( 'st', '#stack_species') class="btn btn-success">Stacked Columns</button>
-                                            <button type="button" onclick=enable_st_ht( 'ht', '#stack_species') class="btn btn-primary">HeatMap</button>
+                                            <button type="button" onclick=enable_st_ht( 'st' , '#stack_species' ) class="btn btn-success">Stacked Columns</button>
+                                            <button type="button" onclick=enable_st_ht( 'ht' , '#stack_species' ) class="btn btn-primary">HeatMap</button>
                                         </div>
                                     </div>
 
@@ -496,10 +504,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <label for='selectNormalizationF'>Select Normalization: </label>
                                         <select id='selectNormalizationF'>
-									<option value="rpkm">RPKM</option>
-									<option value="scale">Scale</option>
-									<option value="16s">16S rRNA</option>
-								  </select>
+                                            <option value="rpkm">RPKM</option>
+                                            <option value="scale">Scale</option>
+                                            <option value="16s">16S rRNA</option>
+                                        </select>
 
 
                                         <br><br>
@@ -569,7 +577,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                            <div id='PieChart2Taxof' style="resize:both;overflow:auto;height:auto" class="box-body"></div>
+                            <div id='PieChart2Taxof' style="resize:both;overflow:auto;height:auto" class="box-body">
+                            </div>
 
 
 
@@ -671,11 +680,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <!-- REQUIRED JS SCRIPTS -->
-
+    <script type="module" src="{{ url_for('static', filename='js/prod.js') }}"></script>
     <!-- jQuery 2.1.4 -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}">
+    </script>
     <!-- AdminLTE App -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
     <!--For nice plots

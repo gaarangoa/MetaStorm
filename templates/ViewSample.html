@@ -37,14 +37,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <![endif]-->
 
 
-    <script>
-        var $SCRIPT_ROOT = {
-            {
-                request.script_root | tojson | safe
-            }
-        };
-    </script>
-
     <style>
         .node {
             cursor: pointer;
@@ -150,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                        <img src="{{ url_for('static', filename='template/dist/img/user.png') }}" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="UserName1"></p>
@@ -489,7 +481,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>
                                         </div>
                                         <button id="download_tree">Download image</button>
-                                        <div id="tree" style="height:550px; width:auto; overflow:auto; background:rgba(0,0,100,0);"></div>
+                                        <div id="tree" style="height:550px; width:auto; overflow:auto; background:rgba(0,0,100,0);">
+                                        </div>
 
                                     </div>
                                 </div>
@@ -678,11 +671,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <!-- REQUIRED JS SCRIPTS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/prod.js') }}"></script>
 
     <!-- jQuery 2.1.4 -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}">
+    </script>
     <!-- AdminLTE App -->
     <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
     <!--For nice plots-->
@@ -711,27 +706,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- pretty tables -->
     <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js">
+    </script>
 
 
 
     <!--main js file-->
 
-    <script type="text/javascript" src="/MetaStorm/static/js/getsvg.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/getsvg.js') }}"></script>
 
-    <script type="text/javascript" src="/MetaStorm/static/d3tooltip/d3.tp.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='d3tooltip/d3.tp.js') }}"></script>
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/visualize_individual_samples.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/visualize_individual_samples.js') }}">
+    </script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/ViewSample.js') }}"></script>
 
 
 
 
-    <script type="text/javascript" src="/MetaStorm/static/tipped/js/tipped/tipped.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='tipped/js/tipped/tipped.js') }}"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="/MetaStorm/static/tipped/css/tipped/tipped.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tipped/css/tipped/tipped.css') }}" />
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the

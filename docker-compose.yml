@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 services:
   backend:
@@ -7,18 +7,34 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/src/
+      - ~/.ssh/:/root/.ssh/
     tty: true
     ports:
       - "5001:5000"
     command: python /src/run.py
-  # admin:
-  #   build:
-  #     context: ./REST_admin/
-  #     dockerfile: Dockerfile
-  #   volumes:
-  #     - ./:/src/
-  #     - ./SQL:/src/REST_admin/database/
-  #   tty: true
-  #   ports:
-  #     - 6006:8000
-  #   command: python3 /src/REST_admin/manage.py runserver 0.0.0.0:8000
+    restart: always
+
+  plupload:
+    build:
+      context: ./plupload/
+      dockerfile: Dockerfile
+    volumes:
+      - ./plupload/:/var/www/html/
+      - ./Files/:/Files/
+      - ~/.ssh/:/var/www/.ssh/
+    ports:
+      - 7001:80
+    restart: always
+
+  admin:
+    build:
+      context: ./REST_admin/
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/src/
+      - ./SQL:/src/REST_admin/database/
+    tty: true
+    ports:
+      - 6001:8000
+    command: python3 /src/REST_admin/manage.py runserver 0.0.0.0:8000
+    restart: always

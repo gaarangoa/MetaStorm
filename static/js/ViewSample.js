@@ -19,15 +19,16 @@ window.onload = function() {
 
     vsession(uid);
 
-    machine = '/MetaStorm/';
-    machine_http = 'http://bench.cs.vt.edu/MetaStorm/';
+    machine = Parameters.host;
 
     /*Get the user, projects and samples info*/
 
     $.ajax({
         url: machine + 'GetAllInfo',
         type: 'POST',
-        data: JSON.stringify({ uid: uid }),
+        data: JSON.stringify({
+            uid: uid
+        }),
         async: true,
         contentType: 'application/json; charset=utf-8',
         success: function(dat) {
@@ -44,7 +45,9 @@ window.onload = function() {
         url: machine + 'consult',
         type: 'POST',
         async: true,
-        data: JSON.stringify({ sql: 'select * from project where project_id="' + pid + '"' }),
+        data: JSON.stringify({
+            sql: 'select * from project where project_id="' + pid + '"'
+        }),
         contentType: 'application/json; charset=utf-8',
         success: function(x) {
             $('#updatePdescription').html(x.data[0]['project_description'] + '<br>');
@@ -58,7 +61,9 @@ window.onload = function() {
         url: machine + 'consult',
         type: 'POST',
         async: true,
-        data: JSON.stringify({ sql: 'select * from samples where sample_id="' + sid + '"' }),
+        data: JSON.stringify({
+            sql: 'select * from samples where sample_id="' + sid + '"'
+        }),
         contentType: 'application/json; charset=utf-8',
         success: function(x) {
             ////console.log(x.data)
@@ -101,7 +106,7 @@ window.onload = function() {
 
     download_f = function(x) {
         var rid = $('#selectFuncDataset option:selected').val();
-        arc_pro = '/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/';
+        var arc_pro = Parameters.arc_pro;
 
         if (x[0] == 1) {
             // code 1: fastq files
@@ -147,13 +152,19 @@ window.onload = function() {
             url: machine + 'download_files',
             type: 'POST',
             async: true,
-            data: JSON.stringify({ file: file, uid: uid, sid: sid, pid: pid, name: x[2] }),
+            data: JSON.stringify({
+                file: file,
+                uid: uid,
+                sid: sid,
+                pid: pid,
+                name: x[2]
+            }),
             contentType: 'application/json; charset=utf-8',
             success: function(data) {
                 console.log(data);
 
                 //e.preventDefault();  //stop the browser from following
-                window.location.href = machine_http + 'download/' + Base64.encode(data.fo);
+                window.location.href = machine + 'download/' + Base64.encode(data.fo);
                 $('#updateSampleF' + x[5] + '_overlay').remove();
                 $('#Dscaffolds_overlay').remove();
                 $('#Dgenes_overlay').remove();
@@ -163,7 +174,13 @@ window.onload = function() {
     };
 
     var breakdown = function(dataset) {
-        sent = { uid: uid, pid: pid, sid: sid, rid: dataset, pip: pip };
+        sent = {
+            uid: uid,
+            pid: pid,
+            sid: sid,
+            rid: dataset,
+            pip: pip
+        };
         ////console.log(sent)
         ////console.log('THIS:',sent)
         $.ajax({
@@ -304,7 +321,14 @@ window.onload = function() {
             url: machine + 'get_tree',
             type: 'POST',
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip, value: 'rpkm', rid: rid }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip,
+                value: 'rpkm',
+                rid: rid
+            }),
             contentType: 'application/json; charset=utf-8',
             success: function(x) {
                 console.log(x);
@@ -339,7 +363,13 @@ window.onload = function() {
     $(document).on('click', '#loadFunction', function() {
         var rid = $('#selectFuncDataset option:selected').val();
         //alert([d.level,uid,pid,sid])
-        sent = { uid: uid, pid: pid, sid: sid, pip: pip, rid: rid };
+        sent = {
+            uid: uid,
+            pid: pid,
+            sid: sid,
+            pip: pip,
+            rid: rid
+        };
         //console.log(sent)
         $.ajax({
             url: machine + 'get_functional_counts',
@@ -366,7 +396,15 @@ window.onload = function() {
             url: machine + 'get_taxo_by_name',
             type: 'POST',
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, tid: 'none', lid: lid, pip: pip, rid: rid }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                tid: 'none',
+                lid: lid,
+                pip: pip,
+                rid: rid
+            }),
             contentType: 'application/json; charset=utf-8',
             success: function(x) {
                 ////console.log(x)
@@ -410,7 +448,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -429,7 +467,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -454,7 +492,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -473,7 +511,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -492,7 +530,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDatasetf option:selected').val();
             window.location.href =
-                machine_http + 'Files/PROJECTS/' + pid + '/assembly/RESULTS/' + '/' + rid + '.all_samples_tree.pk.db';
+                machine + 'Files/PROJECTS/' + pid + '/assembly/RESULTS/' + '/' + rid + '.all_samples_tree.pk.db';
         });
 
         // GET LOGS AND GENERAL STATISTICS OF THE Assembly
@@ -501,7 +539,12 @@ window.onload = function() {
             url: machine + 'get_assembly_logs',
             type: 'POST',
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip
+            }),
             contentType: 'application/json; charset=utf-8',
             success: function(x) {
                 $('#blue_text_box').html([
@@ -535,7 +578,12 @@ window.onload = function() {
             url: machine + 'get_matches_logs',
             type: 'POST',
             async: true,
-            data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
+            data: JSON.stringify({
+                uid: uid,
+                pid: pid,
+                sid: sid,
+                pip: pip
+            }),
             contentType: 'application/json; charset=utf-8',
             success: function(x) {
                 console.log('this matrix', x);
@@ -560,14 +608,14 @@ window.onload = function() {
         /*$('#fbtn01').click(function(e) {
            e.preventDefault();  //stop the browser from following
            var rid = $( "#selectFuncDataset option:selected" ).val();
-           window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+'/'+sid+"/"+"alignment."+rid+".matches");
+           window.location.href = machine+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+'/'+sid+"/"+"alignment."+rid+".matches");
         });*/
 
         $('#fbtn02').click(function(e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -586,7 +634,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -605,7 +653,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -623,7 +671,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -654,14 +702,14 @@ window.onload = function() {
         /*$('#btn01').click(function(e) {
       e.preventDefault();  //stop the browser from following
       var rid = $( "#selectDataset option:selected" ).val();
-      window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+'/'+sid+"/"+"alignment."+rid+".matches");
+      window.location.href = machine+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+'/'+sid+"/"+"alignment."+rid+".matches");
   });*/
 
         $('#btn02').click(function(e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +
@@ -680,7 +728,7 @@ window.onload = function() {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
-                machine_http +
+                machine +
                 'download/' +
                 Base64.encode(
                     'Files/PROJECTS/' +

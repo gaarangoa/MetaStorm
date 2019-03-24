@@ -15,20 +15,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Bootstrap 3.3.4 -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}">
-    </link>
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}">
-    </link>
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}">
-    </link>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,14 +37,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/css/dataTables.css') }}">
     <!-- table -->
-
-
-
-
-    <!-- pretty tables -->
-    <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js">
-    </script>
 
 
 
@@ -174,7 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                        <img src="{{ url_for('static', filename='template/dist/img/user.png') }}" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="UserName1"></p>
@@ -286,7 +275,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 		  <div class="row">
             <div class="col-md-12" >
-              <div class="box" id="" style='background:url("/static/template/dist/img/pattern1.jpg");'>
+              <div class="box" id="" style='background:url("/static/template/distimg/pattern1.jpg");'>
                  <div class="box-header">
                    <h3 class="box-title"></h3>
                    <div class="box-tools pull-right">
@@ -794,8 +783,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         registered for MetaStorm, you can create an account by filling in your name, email, and orginization as well as agreeing to the terms on the Request new account page. Once you have done this, wait for an email confirming
                                         you new account.
                                     </p>
-                                    <img src="/static/img/image08.png" width="200" height="204"></img>
-                                    <img src="/static/img/image06.png" width="200" height="204"></img>
+                                    <img src="{{ url_for('static', filename='img/image08.png') }}" width="200" height="204"></img>
+                                    <img src="{{ url_for('static', filename='img/image06.png') }}" width="200" height="204"></img>
                                 </div>
                                 <div>
                                     <h3>Home Page:</h3>
@@ -810,7 +799,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             This lets you create new projects after entering a project name and description.
                                         </p>
                                     </div>
-                                    <img src="/static/img/image04.png" width="419" height="198"></img>
+                                    <img src="{{ url_for('static', filename='img/image04.png') }}" width="419" height="198"></img>
                                 </div>
                                 <div>
                                     <div class="col-md-12">
@@ -878,7 +867,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </p>
                                     </div>
                                     <div class="col-md-9">
-                                        <img src="/static/img/image05.png" width="416" height="419"></img>
+                                        <img src="{{ url_for('static', filename='img/image05.png') }}" width="416" height="419"></img>
                                     </div>
                                 </div>
                                 </br>
@@ -891,7 +880,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <div class="col-md-8">
                                         </br>
-                                        <img src="/static/img/image13.png" width="515" height="169"></img>
+                                        <img src="{{ url_for('static', filename='img/image13.png') }}" width="515" height="169"></img>
                                     </div>
                                 </div>
                                 <div>
@@ -903,7 +892,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             The first thing you will see here is the Samples page which lets you see and edit metadata about the samples that you have uploaded for this project.
                                         </p>
-                                        <img src="/static/img/image02.png" width="845" height="375"></img>
+                                        <img src="{{ url_for('static', filename='img/image02.png') }}" width="845" height="375"></img>
                                     </div>
                                 </div>
                                 <div>
@@ -913,7 +902,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             The Project page displays the name and description of your project, lets you share this project with other email address, or make it public.
                                         </p>
-                                        <img src="/static/img/image01.png" width="833" height="291"></img>
+                                        <img src="{{ url_for('static', filename='img/image01.png') }}" width="833" height="291"></img>
                                     </div>
                                 </div>
                                 <div>
@@ -923,7 +912,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             The Upload Raw Files page lets you upload new samples as gzipped fastq files (e.g. Sample1_R1.fastq.gz).
                                         </p>
-                                        <img src="/static/img/image03.png" width="840" height="415"></img>
+                                        <img src="{{ url_for('static', filename='img/image03.png') }}" width="840" height="415"></img>
                                     </div>
                                 </div>
                                 <div>
@@ -933,7 +922,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             The Setup Metadata page lets you add the samples and associated metadata to your project. There are instructions for this at the bottom of the page.
                                         </p>
-                                        <img src="/static/img/image11.png" width="836" height="376"></img>
+                                        <img src="{{ url_for('static', filename='img/image11.png') }}" width="836" height="376"></img>
                                     </div>
                                 </div>
                                 <div>
@@ -943,7 +932,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             The Run Analysis page lets you start the analysis of your samples using the selected pipeline after selecting which reference databases you want to use. This is where you the files that you have uploaded and the metadata that you entered.
                                         </p>
-                                        <img src="/static/img/image09.png" width="843" height="385"></img>
+                                        <img src="{{ url_for('static', filename='img/image09.png') }}" width="843" height="385"></img>
                                         <p>
                                             You will get an email notifying you of the pipeline's completion. The project will then be listed under the Browse Projects section of the main page. Clicking on the pipeline name under the Analysis column will take you to the Explore Project page.
                                         </p>
@@ -957,7 +946,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             This screen is a read only copy of the Update Project page.
                                         </p>
-                                        <img src="/static/img/image12.png" width="795" height="172"></img>
+                                        <img src="{{ url_for('static', filename='img/image12.png') }}" width="795" height="172"></img>
                                         <p>
                                             It displays the project and sample metadata. Clicking on the Unique Identifier for a sample will take you to the View Sample page.
                                         </p>
@@ -971,7 +960,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             This page shows the metadata for the selected sample, as well as results from the selected pipeline. It also lets you download the original sample files and Scaffolds and Genes found by the Assembly Pipeline.
                                         </p>
-                                        <img src="/static/img/image14.png" width="804" height="230"></img>
+                                        <img src="{{ url_for('static', filename='img/image14.png') }}" width="804" height="230"></img>
                                         <p></p>
                                     </div>
                                 </div>
@@ -983,15 +972,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>
                                             The Comparison Tool can be found on the menu of the Home page.
                                         </p>
-                                        <img src="/static/img/image10.png" width="785" height="377"></img>
+                                        <img src="{{ url_for('static', filename='img/image10.png') }}" width="785" height="377"></img>
                                         <p>
                                             It lets you compare samples from the selected projects.
                                         </p>
-                                        <img src="/static/img/image07.png" width="877" height="154"></img>
+                                        <img src="{{ url_for('static', filename='img/image07.png') }}" width="877" height="154"></img>
                                         <p>
                                             It visualizes the breakup of taxonomical data (domain, phylum, class, order, family, genus, species) of each sample side by side.
                                         </p>
-                                        <img src="/static/img/image00.png" width="798" height="448"></img>
+                                        <img src="{{ url_for('static', filename='img/image00.png') }}" width="798" height="448"></img>
                                     </div>
                                 </div>
                             </div>
@@ -1146,6 +1135,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- REQUIRED JS SCRIPTS -->
 
+            <script type="text/javascript" src="{{ url_for('static', filename='js/prod.js') }}"></script>
+
             <!-- jQuery 2.1.4 -->
             <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
             <!-- Bootstrap 3.3.2 JS -->
@@ -1161,35 +1152,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <script type="text/javascript" src="{{ url_for('static', filename='js/main_user_page.js') }}"></script>
             <script type="text/javascript" src="{{ url_for('static', filename='js/metadata.js') }}"></script>
 
-            <link rel="stylesheet" href="/static/buttons/css/buttons.css">
-            <script type="text/javascript" src="/static/buttons/js/buttons.js"></script>
+            <link rel="stylesheet" href="{{ url_for('static', filename='buttons/css/buttons.css') }}">
+            <script type="text/javascript" src="{{ url_for('static', filename='buttons/js/buttons.js') }}"></script>
 
             <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
 
+            <script type="text/javascript" src="{{ url_for('static', filename='buttons/js/buttons.js') }}"></script>
+            <link rel="stylesheet" href="{{ url_for('static', filename='jqw/jqwidgets/styles/jqx.base.css') }}">
 
-            <link rel="stylesheet" href="/static/jqw/jqwidgets/styles/jqx.base.css" type="text/css" />
 
-            <script type="text/javascript" src="/static/jqw/scripts/jquery-1.11.1.min.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxcore.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxbuttons.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxscrollbar.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxdata.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxdata.export.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxdatatable.js"></script>
-            <script type="text/javascript" src="/static/jqw/demos/jqxgrid/generatedata.js"></script>
 
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxlistbox.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxdropdownlist.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxmenu.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxpanel.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxcalendar.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxdatetimeinput.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/jqxnumberinput.js"></script>
-            <script type="text/javascript" src="/static/jqw/scripts/demos.js"></script>
-            <script type="text/javascript" src="/static/jqw/jqwidgets/globalization/globalize.js"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/scripts/jquery-1.11.1.min.js') }}">
+            </script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxcore.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxbuttons.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxscrollbar.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxdata.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxdata.export.js') }}">
+            </script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxdatatable.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/demos/jqxgrid/generatedata.js') }}">
+            </script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxlistbox.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxdropdownlist.js') }}">
+            </script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxmenu.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxpanel.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxcalendar.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxdatetimeinput.js') }}">
+            </script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/jqxnumberinput.js') }}">
+            </script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/scripts/demos.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='jqw/jqwidgets/globalization/globalize.js') }}">
+            </script>
 
-            <link rel="stylesheet" href="/static/jqw/jqwidgets/styles/jqx.darkblue.css">
-            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js/vue.js') }}"></script>
+            <!-- <link rel="stylesheet" href="/static/jqw/jqwidgets/styles/jqx.darkblue.css"> -->
+
 
             <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQ__-dkSKo4rGct8JR-zFGNHKdbdqGSc&callback=initMap"></script> -->
 

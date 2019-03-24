@@ -30,8 +30,8 @@ main_db = DATABASE
 main_logfile = rootvar.__root_dir__+"/"+"/logs/metastorm.log"
 logging.basicConfig(
     filename=main_logfile,
-    level=logging.DEBUG,
-    # filemode="w",
+    level=logging.ERROR,
+    filemode="w",
     format="%(levelname)s %(asctime)s - %(message)s"
 )
 
@@ -166,8 +166,12 @@ def get_raw_reads_names():
         data = request.get_json()
         pid = data['pid']
         mypath = rootvar.__ROOTPRO__+"/"+pid+"/READS/"
-        onlyfiles = sorted([f.replace(".arc.md5", "") for f in listdir(
+
+        onlyfiles = sorted([f.replace(".arc","").replace(".md5", "") for f in listdir(
             mypath) if ".gz.arc.md5" in f and not "unpaired" in f])
+
+        onlyfiles = sorted(list(set([ i.replace(".arc", "").replace(".md5", "") for i in listdir(mypath) ])))
+
         return jsonify(files=onlyfiles)
     except Exception as inst:
         return jsonify(status="ERROR", error=str(inst))
@@ -1129,6 +1133,8 @@ def get_all_samples_tree():
         X = GetSamplesTree.run(data)
         # return "step 2"
 
+        log.debug(X)
+
         minA = data['minA']
         if data['norm'] == "scale":
             nzt = 1
@@ -1154,19 +1160,30 @@ def get_all_samples_tree():
 
         if X[0] == 'taxonomy':
             tree = X[1]
+            log.debug(tree)
+
             matrix = rootvar.get_matrix_level(data, data["lid"])
+            log.debug(matrix)
 
             # return jsonify(x=matrix)
             # list(set([str(i[0]) for i in matrix]))
             samples_sel = data["snames"]
+            log.debug(samples_sel)
+
             # N is not log2 transformed, M its id
             M, N = rootvar.v2m(matrix, samples_sel, nzt, 0)
+
             P = process_matrix_vis(N, ie, ib)
+            log.debug(P)
+
             m2js = map(list, zip(*P))
             tmp = m2js[1:]
             tmp.sort(key=lambda x: float(x[1]+x[2]), reverse=True)
             heatmap = IL.main(m2js, None)
-            return jsonify(tree=[tree], heatmap=heatmap[0], aid="taxonomy", matrix=[m2js[0]]+tmp, N=heatmap[1])
+            log.debug(heatmap)
+
+            return jsonify(tree=[tree], heatmap=heatmap[0], aid="taxonomy", matrix=[m2js[0]] + tmp, N=heatmap[1])
+
         elif X[0] == 'function':
             # list(set([str(i[0]) for i in X[1]]))
             samples_sel = data["snames"]

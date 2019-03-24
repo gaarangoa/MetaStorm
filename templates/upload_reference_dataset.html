@@ -11,18 +11,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}">
+    </link>
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}">
+    </link>
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}">
+    </link>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +42,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js">
+    </script>
 
 
     <script>
@@ -117,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel" style="height:100px">
                     <div class="pull-left image">
-                        <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                        <img src="/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="UserName1"></p>
@@ -131,8 +135,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search..." />
                         <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                    class="fa fa-search"></i></button>
+                        </span>
                     </div>
                 </form>
                 <!-- /.search form -->
@@ -195,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
             <div class="col-md-12">
-                <div class="box" id="" style='background:url("/MetaStorm/static/template/dist/img/pattern1.jpg");'>
+                <div class="box" id="" style='background:url("/static/template/dist/img/pattern1.jpg");'>
                     <div class="box-header">
                         <h3 class="box-title"></h3>
                         <div class="box-tools pull-right">
@@ -207,7 +212,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <br>
                     <div class="box-body">
                         <center>
-                            <h1 style='font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; color:rgba(255,255,255,0.9)'>Upload your own reference database
+                            <h1 style='font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; color:rgba(255,255,255,0.9)'>
+                                Upload your own reference database
                     </div>
                     <br><br><br>
 
@@ -226,7 +232,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box-header">
                             <h3 class="box-title">Dataset information</h3>
                             <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i></button>
                             </div>
                             <!-- /.box-tools -->
                         </div>
@@ -245,7 +252,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <textarea style="height:200px" class="form-control" type="text" id="rdesc" name="rdesc"></textarea>
 
                             <div class="box-footer">
-                                <button id="register_dataset" type="button" class="btn btn-primary">Register reference</button>
+                                <button id="register_dataset" type="button" class="btn btn-primary">Register
+                                    reference</button>
                                 <div>
                                 </div>
                             </div>
@@ -259,7 +267,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box-header">
                             <h3 class="box-title">Setup file information</h3>
                             <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i></button>
                             </div>
                             <!-- /.box-tools -->
                         </div>
@@ -283,16 +292,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class="box-body">
                             <select class="form-control" id='rsequences'>
-                     <option>Reference Sequence File</option>
-                   </select>
+                                <option>Reference Sequence File</option>
+                            </select>
                             <select class="form-control" id='rtaxonomy'>
-                     <option>Reference Taxonomy File</option>
-                     <option value="none">none</option>
-                   </select>
+                                <option>Reference Taxonomy File</option>
+                                <option value="none">none</option>
+                            </select>
                             <select class="form-control" id='rfunction'>
-                     <option>Reference Function File</option>
-                     <option value="none">none</option>
-                   </select>
+                                <option>Reference Function File</option>
+                                <option value="none">none</option>
+                            </select>
                         </div>
 
                         <div class="box-footer">
@@ -312,7 +321,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box-header">
                             <h3 class="box-title">Reference Database Upload Instructions</h3>
                             <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i></button>
                             </div>
                             <!-- /.box-tools -->
                         </div>
@@ -326,39 +336,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="container" style="margin-left:0">
                                     1. Gene database <b>(Mandatory)</b>. A fasta file where the header corresponds to the gene id e.g.,
                                     <div class="container" style="margin-left:0;color:#3c8dbc;">
-                                        &gtgene_0001<br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                        <br/> &gtgene_0002
-                                        <br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                        <br/> &gtgene_0003
-                                        <br/> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                        &gtgene_0001<br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                        <br /> &gtgene_0002
+                                        <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                        <br /> &gtgene_0003
+                                        <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
                                     </div>
                                 </div>
                                 <div class="container" style="margin-left:0">
                                     2. Taxonomy link file: A tab delimited file containing the gene id and the full taxonomy (as in SILVA database) separated by “;”. For instance:
                                     <div class="container" style="margin-left:0;color:#3c8dbc;">
-                                        gene_001 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/> gene_002 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis<br/>                                        gene_003 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                        gene_001 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                        <br /> gene_002 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                        <br /> gene_003 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
                                     </div>
                                 </div>
                                 <div class="container" style="margin-left:0; width:auto">
                                     3. Functional link file: A tab delimited file similar to the taxonomy file, containing the function class or category. If a gene contains multiple functional associations, put all of them in different lines, for instance:
                                     <div class="container" style="margin-left:0;color:#3c8dbc;">
-                                        gene_001 Transcription<br/> gene_002 Transcription<br/> gene_002 RNA-Binding<br/> gene_003 DNA-Repair
+                                        gene_001 Transcription<br /> gene_002 Transcription<br /> gene_002 RNA-Binding
+                                        <br /> gene_003 DNA-Repair
                                     </div>
                                 </div>
                                 <div class="container" style="margin-left:0">
                                     4. Description File (mandatory): Upload a tab delimited file named "dataset.description" containing the description of the functional categories as follows:
                                     <div class="container" style="color:#3c8dbc;">
-                                        Transcription GO:0003700 transcription factor activity, sequence-specific DNA binding<br/> Membrane GO:0005737 Cellular component<br/> DNARepair GO:0006281 The process of restoring DNA after damage.<br/>
+                                        Transcription GO:0003700 transcription factor activity, sequence-specific DNA binding
+                                        <br /> Membrane GO:0005737 Cellular component<br /> DNARepair GO:0006281 The process of restoring DNA after damage.<br />
                                     </div>
                                     * descriptions are shown for illustration, the 2nd and 3rd fields can be filled with a more comprehensive description.
                                 </div>
-                                <br/> In order to setup your <u>new dataset</u> you need to follow the next steps:
+                                <br /> In order to setup your <u>new dataset</u> you need to follow the next steps:
                                 <div class="container" style="margin-left:0">
-                                    1. Click on <u>Submit a reference dataset</u> under the <u>Customize Reference Database</u> box<br/> 2. Fill out the form with the required information:
+                                    1. Click on <u>Submit a reference dataset</u> under the <u>Customize Reference
+                                        Database</u> box<br /> 2. Fill out the form with the required information:
                                     <div class="container">
-                                        a. <b>Dataset name:</b> Type the name of your reference dataset<br/> b. <b>Sequence type:</b> Type if it is a gene or protein database.<br/> c. <b>Description:</b> IMPORTANT Insert the full description of the dataset
+                                        a. <b>Dataset name:</b> Type the name of your reference dataset<br /> b.
+                                        <b>Sequence type:</b> Type if it is a gene or protein database.<br /> c.
+                                        <b>Description:</b> IMPORTANT Insert the full description of the dataset
                                     </div>
-                                    3. Click on <u>register reference</u><br/> 4. Upload the files<br/> 5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)<br/> 6. Click on process.
+                                    3. Click on <u>register reference</u><br /> 4. Upload the files<br /> 5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)<br /> 6. Click on process.
                                 </div>
                             </p>
 
@@ -455,13 +472,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li>
                                 <div>
 
-                                    <p>This section help you to get started on completing the data parameters associated to your samples.</p>
+                                    <p>This section help you to get started on completing the data parameters associated to your samples.
+                                    </p>
 
                                     <ul>
                                         <li><b>Project</b> - a set of samples comprising different conditions</li>
                                         <li><b>Sample</b> - a single entity that has been obtained for analysis</li>
                                         <li><b>Environment</b> - the characteristics which describe the environment in which your samples were obtained </li>
-                                        <li><b>Sample set</b> - a group of samples sharing the same library and environmental characteristics</li>
+                                        <li><b>Sample set</b> - a group of samples sharing the same library and environmental characteristics
+                                        </li>
                                         <li><b>Library preparation</b> - Environmental package the sample belongs to. (metagenome, meta transcriptome, amplicon metagenome 16s)</li>
                                         <li><b>Reads 1-2</b> - The file names corresponding to the data from your library (fasq-fasta format). Be aware that this name has to be </strong>EXACTLY</strong> the same as the file you will upload.</li>
                                     </ul>
@@ -497,9 +516,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <h3 class="control-sidebar-heading">General Settings</h3>
                             <div class="form-group">
                                 <label class="control-sidebar-subheading">
-                  Report panel usage
-                  <input type="checkbox" class="pull-right" checked />
-                </label>
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked />
+                        </label>
                                 <p>
                                     Some information about this general settings option
                                 </p>
@@ -543,10 +562,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- REQUIRED JS SCRIPTS -->
 
+            <script type="text/javascript" src="{{ url_for('static', filename='js/prod.js') }}"></script>
+
             <!-- jQuery 2.1.4 -->
             <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
             <!-- Bootstrap 3.3.2 JS -->
-            <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}">
+            </script>
             <!-- AdminLTE App -->
             <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
             <!-- Bootstrap 3.3.2 JS -->

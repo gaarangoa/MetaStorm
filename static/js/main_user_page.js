@@ -1,14 +1,6 @@
 window.onload = function() {
 
-    var machine = "/";
-
-    var app2 = new Vue({
-        el: '#app-2',
-        data: {
-            message: 'You loaded this page on ' + new Date().toLocaleString()
-        }
-    })
-
+    var machine = Parameters.host;
 
 
     $.urlParam = function(name) {
@@ -132,7 +124,7 @@ window.onload = function() {
 
             $("#browse_projects_overlay").remove()
 
-            console.log(dat.data)
+            // console.log(dat.data)
             pron = 0
             dat.data.forEach(function(a, b, c) {
                 return (pron += a.samples)
@@ -194,7 +186,7 @@ window.onload = function() {
         exp = new RegExp(userID);
         if (exp.test(rowData.users) || rowData.access == "unlock") {
             $("#projects_compare_list").append("<option selected name='PCL' value='" + rowData.project_id + "' > " + rowData.project_name + " </option>")
-            console.log(rowData);
+                // console.log(rowData);
         } else {
             alert("You DO NOT have access to this project.\nThis can happen because: \n1) the project is private and \n2) The project is not shared with you.")
         }
@@ -531,7 +523,7 @@ window.onload = function() {
 
 
     change_password = function() {
-        console.log('change password')
+        // console.log('change password')
 
         $("#change_password_homepage").append("<div class='overlay' id='change_password_homepage_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
 

@@ -3,8 +3,8 @@ window.onload = function() {
     // table with all the results from the assembly -  this is an overall of the assembly performance
 
 
-    machine = "/"
-    upload_dir = "/src/Files/PROJECTS/"
+    var machine = Parameters.host;
+    var upload_dir = Parameters.upload_dir;
 
     uid = urlParam('uid')
     pid = urlParam('pid')
@@ -232,7 +232,7 @@ window.onload = function() {
                         <tbody>
                             <tr v-for="sample in samples">
                                 <td>
-                                    <a v-bind:href="sample.link">
+                                    <a v-bind:href="sample.link" target="_blank">
                                         {{ sample.ID }}
                                     </a>
                                 </td>
@@ -354,10 +354,13 @@ window.onload = function() {
         });
     }
 
-
     var add_table_run_samples = function(data) {
         var content = document.querySelector("#app_table_run_sample_content")
         content.innerHTML = `
+            <div class="col-md-12">
+                <button v-on:click="update_reads()" style="width: 20%" class="btn btn-success btn-xs"><strong>Update Raw Reads List</strong></button>
+                <br><br><br>
+            </div>
             <div class="col-md-4" v-for="(sample, index) in samples">
                 <div class="box box-solid">
                     <div class="box-body">
@@ -387,44 +390,26 @@ window.onload = function() {
 
                         <hr>
 
-                        <button v-bind:id="sample.run_button_id" v-on:click="save_sample_vue(sample)" style="width: 100%" class="btn btn-primary btn-xs"><strong>Run</strong></button>
-                        <button v-bind:id="sample.remove_button_id" v-on:click="remove_sample_vue(index)" style="width: 100%" class="btn btn-warning btn-xs"><strong>Remove</strong></button>
+                        <button  v-on:click="save_sample_vue(index)" style="width: 100%" class="btn btn-primary btn-xs"><strong>Run</strong></button>
+                        <button  v-on:click="remove_sample_vue(index)" style="width: 100%" class="btn btn-warning btn-xs"><strong>Remove</strong></button>
 
                     </div>
                 </div>
             </div>
 
         `
-        data = data.map(e => {
-            e.link = "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
-            e.fq_1_id = "selected_fq_1_sample_" + e.ID;
-            e.fq_2_id = "selected_fq_2_sample_" + e.ID;
-            e.run_button_id = "run_button_" + e.ID;
-            e.remove_button_id = "remove_button_" + e.ID;
-            e.selected_fq_1 = e.Mate1;
-            e.selected_fq_2 = e.Mate2;
-            e.pid = pid;
-            e.uid = uid;
-            e.pip = pip;
 
-            return e;
-        })
-
-        var all_read_files = []
-        data.map(e => {
-            all_read_files.push(e.Mate1);
-            all_read_files.push(e.Mate2);
-        })
 
         var run_sample_section = new Vue({
             el: '#app_table_run_sample',
             data: {
-                samples: data,
-                all_read_files: all_read_files,
+                samples: [],
+                all_read_files: [],
             },
             methods: {
                 save_sample_vue: function(index) {
                     var sample = this.samples[index];
+                    console.log(sample);
                     submit_analysis(sample);
                 },
 
@@ -432,7 +417,58 @@ window.onload = function() {
                     sample = this.samples[index];
                     destroy_sample(sample);
                     this.samples.splice(index, 1);
+                },
+                update_reads: function() {
+                    fetch(machine + 'get_raw_reads_names', {
+                            method: 'post',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                pid: pid
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(json => {
+                            // console.log(json.files);
+                            this.all_read_files = json.files;
+                        })
                 }
+
+            },
+            created() {
+                fetch(machine + 'get_raw_reads_names', {
+                        method: 'post',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            pid: pid
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(json => {
+
+                        this.all_read_files = json.files;
+                        this.samples = data.map(e => {
+                            e.link = "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
+                            e.fq_1_id = "selected_fq_1_sample_" + e.ID;
+                            e.fq_2_id = "selected_fq_2_sample_" + e.ID;
+                            e.run_button_id = "run_button_" + e.ID;
+                            e.remove_button_id = "remove_button_" + e.ID;
+                            e.selected_fq_1 = e.Mate1;
+                            e.selected_fq_2 = e.Mate2;
+                            e.pid = pid;
+                            e.uid = uid;
+                            e.pip = pip;
+
+                            return e;
+                        });
+
+                        console.log(this.samples);
+                    })
             }
         })
     }
@@ -572,30 +608,7 @@ window.onload = function() {
         });
     }
 
-    /*remove samples*/
-    $(document).on("click", "#RemoveSample", function() {
-        var sid = $("#SampleNameSelectToRemove option:selected").val();
 
-        $.ajax({
-            url: machine + "removesample",
-            type: "POST",
-            async: true,
-            data: JSON.stringify({
-                sid: sid,
-                pid: pid,
-                pip: pip,
-                uid: uid
-            }),
-            contentType: "application/json; charset=utf-8",
-            success: function(dat) {
-                //console.log(dat)
-
-            }
-        });
-
-        get_samples_info()
-
-    });
 
 
 
@@ -913,6 +926,7 @@ window.onload = function() {
             }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
+                alert('Project has been shared with: ' + shared_users);
                 $("#share_overlay").remove()
             }
         });
@@ -936,6 +950,7 @@ window.onload = function() {
             }),
             contentType: "application/json; charset=utf-8",
             success: function(x) {
+                alert('The project has been open to public')
                 $("#make_public_overlay").remove()
             }
         });
@@ -948,30 +963,6 @@ window.onload = function() {
 
 
 
-
-
-    /*get raw reads file names*/
-    $('#update_raw_reads').click(function() {
-        $.ajax({
-            type: 'POST',
-            url: machine + 'get_raw_reads_names',
-            data: JSON.stringify({
-                pid: pid
-            }),
-            contentType: "application/json; charset=utf-8",
-            async: true,
-            success: function(data) {
-                $("#Read1Select").html('')
-                $("#Read2Select").html('')
-                for (i = 0; i < data.files.length; i++) {
-                    $("#Read1Select").append('<option value=' + data.files[i] + '>' + data.files[i] + '</option>')
-                    $("#Read2Select").append('<option value=' + data.files[i] + '>' + data.files[i] + '</option>')
-                }
-
-            }
-        }); //end ajax
-
-    });
 
 
 
@@ -1092,7 +1083,7 @@ window.onload = function() {
             async: true,
             success: function(data) {
                 $("#rawreads_list").text(data.files)
-                get_run_table()
+                    // get_run_table()
             }
         });
 
@@ -1115,7 +1106,7 @@ window.onload = function() {
         async: true,
         success: function(data) {
             $("#rawreads_list").text(data.files)
-            get_run_table()
+                // get_run_table()
         }
     });
 
