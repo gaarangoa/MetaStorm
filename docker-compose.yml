@@ -10,7 +10,7 @@ services:
       - ~/.ssh/:/root/.ssh/
     tty: true
     ports:
-      - "15001:5000"
+      - 15001:5000
     command: python /src/run.py
     restart: always
 
