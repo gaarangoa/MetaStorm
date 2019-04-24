@@ -250,7 +250,7 @@ window.onload = function() {
             <br><br><br>
         `
         data = data.map(e => {
-            e.link = "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
+            e.link = machine + "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
             return e;
         })
 
