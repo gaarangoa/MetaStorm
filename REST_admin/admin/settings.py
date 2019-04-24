@@ -18,9 +18,9 @@ from .opts import prod
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_HOST = False
 if prod:
-    FORCE_SCRIPT_NAME = "/metastorm2_admin/"
+    FORCE_SCRIPT_NAME = "/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
