@@ -18,7 +18,7 @@ from .opts import prod
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-USE_X_FORWARDED_HOST = False
+USE_X_FORWARDED_HOST = True
 if prod:
     FORCE_SCRIPT_NAME = "/"
 
