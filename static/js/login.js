@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    machine = "/"
+    var machine = Parameters.host;
 
     $('#Blogin').click(function() {
         var form_data = new FormData($('#loginForm')[0]);
