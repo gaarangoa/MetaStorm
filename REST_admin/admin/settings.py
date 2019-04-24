@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 USE_X_FORWARDED_HOST = True
 if prod:
-    FORCE_SCRIPT_NAME = "/metastorm2_admin"
+    FORCE_SCRIPT_NAME = "/metastorm2_admin/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -29,7 +29,7 @@ if prod:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
