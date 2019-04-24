@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    var machine = Parameters.host;
+    var machine = '/metastorm2/';
 
     $('#Blogin').click(function() {
         var form_data = new FormData($('#loginForm')[0]);
