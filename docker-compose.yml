@@ -10,7 +10,7 @@ services:
       - ~/.ssh/:/root/.ssh/
     tty: true
     ports:
-      - "5001:5000"
+      - "15001:5000"
     command: python /src/run.py
     restart: always
 
@@ -23,7 +23,7 @@ services:
       - ./Files/:/Files/
       - ~/.ssh/:/var/www/.ssh/
     ports:
-      - 7001:80
+      - 17001:80
     restart: always
 
   admin:
@@ -35,6 +35,6 @@ services:
       - ./SQL:/src/REST_admin/database/
     tty: true
     ports:
-      - 6001:8000
+      - 16001:8000
     command: python3 /src/REST_admin/manage.py runserver 0.0.0.0:8000
     restart: always
