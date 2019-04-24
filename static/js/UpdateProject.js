@@ -250,7 +250,7 @@ window.onload = function() {
             <br><br><br>
         `
         data = data.map(e => {
-            e.link = "/metastorm2/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
+            e.link = machine + "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
             return e;
         })
 
@@ -453,7 +453,7 @@ window.onload = function() {
 
                         this.all_read_files = json.files;
                         this.samples = data.map(e => {
-                            e.link = "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
+                            e.link = machine + "/ViewSample?sid=" + e.ID + '&pid=' + pid + '&uid=' + uid + '&pip=' + pip;
                             e.fq_1_id = "selected_fq_1_sample_" + e.ID;
                             e.fq_2_id = "selected_fq_2_sample_" + e.ID;
                             e.run_button_id = "run_button_" + e.ID;
@@ -467,7 +467,7 @@ window.onload = function() {
                             return e;
                         });
 
-                        console.log(this.samples);
+                        // console.log(this.samples);
                     })
             }
         })
