@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+
 import sys
 sys.path.insert(0, "/src/")
+
 
 from flask import Flask, render_template, jsonify, request, send_from_directory, redirect, url_for
 import os
@@ -1389,4 +1392,4 @@ def retrieve_job_status():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
