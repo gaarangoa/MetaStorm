@@ -26,7 +26,7 @@ services:
       - 17001:80
     restart: always
 
-  admin:
+  admin_metastorm:
     build:
       context: ./REST_admin/
       dockerfile: Dockerfile
