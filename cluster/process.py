@@ -9,12 +9,21 @@ import json
 import base64
 
 
-def qsub(ni, fi, idr):
+def qsub(ni, fi, idr, pip):
+
+    pmem = ''
+    q='normal_q'
+
+    if pip=='assembly':
+        pmem = ',pmem=100gb' 
+        q = 'largemem_q'       
+
+
     cmd = [
         '#!/bin/bash',
-        '#PBS -l nodes=1:ppn='+rootvar.p,
-        '#PBS -l walltime=100:00:00',
-        '#PBS -q normal_q',
+        '#PBS -l nodes=1:ppn='+rootvar.p+pmem,
+        '#PBS -l walltime=144:00:00',
+        '#PBS -q {}'.format(q),
         '#PBS -A computeomics',
         '#PBS -W group_list=newriver',
         '# Uncomment and add your email address to get an email when your job starts, completes, or aborts',
@@ -64,7 +73,7 @@ if pip == "assembly":
 else:
     do = rootvar.__ROOTPRO__+"/"+data['pid']+"/matches/"+sid+"/"
 
-qsub(sys.argv[1], open(do+"arc_run.qsub", 'w'), do)
+qsub(sys.argv[1], open(do+"arc_run.qsub", 'w'), do, pip)
 
 statusf = open(do+"arc_run.qsub.status", 'w')
 statusf.write("queue")
