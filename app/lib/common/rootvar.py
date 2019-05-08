@@ -449,12 +449,13 @@ class program:
             self.cmd=" ".join([self.exe, sample.reads1+","+sample.reads2," --bowtie2out ", self.out+".sam" ,"--input_type fastq --mpa_pkl", self.root+"db_v20/mpa_v20_m200.pkl", "--bowtie2db", self.root+"db_v20/mpa_v20_m200","-t rel_ab_w_read_stats", "--sample_id_key",sample.id, "-o", self.out, ' --biom', self.out+".biom", "--bowtie2_exe", __ROOTEXEDIR__+"/bowtie2"])
     def run(self):
         if self.program=="diamond_blastp":
-            #print self.cmd1
+            print(self.cmd1)
+            print(self.cmd2)
             status=os.system(self.cmd1+">>"+log+" 2>&1")
             status=os.system(self.cmd2+">>"+log+" 2>&1")
             return status
         else:
-            #print self.cmd
+            print(self.cmd)
             status=os.system(self.cmd+">>"+log+" 2>&1")
         return status
 

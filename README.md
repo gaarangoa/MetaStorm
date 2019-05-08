@@ -1,16 +1,23 @@
-## Metastorm Admin
-go to settings and setup the right url
+## Metastorm
+Metastorm has been released using a microservice architecture. Details about the microservices can be found in the docker-compose.yml file. 
 
-## Metastorm backend
-need to update few things with the URL to work:
+### How to start
 
-* For login, hardcode the url in the ./static/js/login.js file
-* Add the url in the configuration file ./static/js/prod.js
-* On the apache configuration need to add a proxy:
+    docker-compose build
+    docker-compose up -d
 
-    ProxyPass /static/ http://localhost:15001/static/
+This will expose the ports from the different microservices:
 
-This is not nice, but, works, basically there is a problem with the container and
-it cannot access to the static files, therefore, nothing gets loaded, By adding
-this proxy we just point to the static to MS automatically.
+* **15001: for the backend (Flask API)**: This is the endpoint to the main API. It was developed using Flask, see ./app/ for details
+* **17001: for the plupload microservice**: This microservice uploads raw reads to MetaStorm server and then moves it to the high computing cluster efficiently.
+* **16001: Administration interface for MetaStorm**: This endpoint contains the admin interface for the database of MetaStorm. 
 
+
+## Requirements to run MetaStorm
+backend and plupload need access to the high performance computing cluster. Therefore, you need to provide a valid .ssh key, that will automatically access the cluster without the need to login with password. 
+
+## Frontend requirements
+If you are running a local copy of MetaStorm. You need to modify two lines in the login.js and prod.js files. These are the links to the endpoints, if you are in local use / if you are in a cluster, use the proxy link you setup. For instance /MetaStorm/
+
+## Cluster computing requirements
+Most of the tools used by MetaStorm are under the ./bin/ directory. However, there will be multiple python modules that will need to be installed in the cluster. Test few examples and check the logs to see what modules are missing. 

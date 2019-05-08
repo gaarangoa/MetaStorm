@@ -34,3 +34,4 @@ watch.log
 .ssh/
 .idea/
 .TemporaryItems/
+.vscode

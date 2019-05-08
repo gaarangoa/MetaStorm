@@ -51,7 +51,7 @@ def idbaud(projectid,sampleid,db,protocol,reads1, reads2, good_reads):
     if not root.isdir(prodigal.output+".gff"): prodigal.run()
 
     if db.name=="abcdefghij":
-        print "MetaPlAn2"
+        print("MetaPlAn2")
         update_status(x,sampleid,db.id,protocol,"Processing")
         metaphlan=root.program('MetaPhlAn',sample,db)
         if not root.isdir(metaphlan.out): metaphlan.run()
