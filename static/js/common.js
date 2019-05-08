@@ -1016,7 +1016,7 @@ function upload_php(obj, sid, pid, pip, uid, upload_dir) {
     $(obj).plupload({
         // General settings
         runtimes: 'html5,flash,silverlight,html4',
-        url: machine+'/plupload2/upload.php',
+        url: 'https://bench.cs.vt.edu/plupload2/upload.php',
 
         // User can upload no more then 20 files in one go (sets multiple_queues to false)
         max_file_count: 50,
