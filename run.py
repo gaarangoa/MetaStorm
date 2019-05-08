@@ -1294,12 +1294,13 @@ def download_files():
         pid = data['pid']
         fnm = data['name']
 
-        os.system('mkdir /home/raid/www/MetaStorm/main/tmp/'+sid+"/")
+        os.system('mkdir /src/tmp/'+sid+"/")
         scp = arcon()
 
-        scp.get(fi, '/home/raid/www/MetaStorm/main/tmp/'+sid+"/"+fnm)
+        os.system('scp gustavo1@newriver1.arc.vt.edu:{} /src/tmp/{}/{}'.format(fi, sid, fnm))
+        # scp.get(fi, '/src/tmp/'+sid+"/"+fnm)
 
-        return jsonify(fo='/home/raid/www/MetaStorm/main/tmp/'+sid+"/"+fnm)
+        return jsonify(fo='/src/tmp/'+sid+"/"+fnm)
     except Exception as inst:
         return str(inst)
 
