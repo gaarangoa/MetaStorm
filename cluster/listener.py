@@ -13,7 +13,7 @@ os.system(
                 {"job": sys.argv[1], "status": sys.argv[2], "message": sys.argv[3]}
             )
             + "'",
-            " http://bench.cs.vt.edu/MetaStorm/status",
+            " https://bench.cs.vt.edu/MetaStorm/status",
         ]
     )
 )
@@ -29,7 +29,7 @@ os.system(
                 {"job": sys.argv[1], "status": sys.argv[2], "message": sys.argv[3]}
             )
             + "'",
-            " http://bench.cs.vt.edu/metastorm2/status",
+            " https://bench.cs.vt.edu/metastorm2/status",
         ]
     )
 )

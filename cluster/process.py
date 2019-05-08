@@ -16,7 +16,7 @@ def qsub(ni, fi, idr, pip):
 
     if pip=='assembly':
         pmem = ',pmem=100gb' 
-        q = 'largemem_q'       
+        q = 'normal_q'       
 
 
     cmd = [

@@ -5,7 +5,8 @@
 userID = urlParam('uid')
     /*Get the user, projects and samples info*/
 
-machine = "/"
+// machine = "/"
+var machine = Parameters.host;
 
 $.ajax({
     //url: "/zhanglab/software/CMetAnn/start.wsgi/GetAllInfo",
