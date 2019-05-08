@@ -1048,7 +1048,7 @@ function upload_php(obj, sid, pid, pip, uid, upload_dir) {
         dragdrop: true,
 
         multipart_params: {
-            "upload_dir": "/src/Files/PROJECTS/" + pid + "/READS/",
+            "upload_dir": "/Files/PROJECTS/" + pid + "/READS/",
             "arc_dir": "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/" + pid + "/READS/"
         }
     });
