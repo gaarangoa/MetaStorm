@@ -27,36 +27,39 @@ def assembly(data):
         #print i
         ki=i
         i=i[0]
-        
-        
-
-        if i=="abcdefghij":
-            file=diri+"pred.genes."+i+".matches.taxonomy.abundance.json"
-            x=json.load(open(file))
-            genes=0
-            for ti in x['children']: genes+=ti['matches']
-            taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
-            taxo.append([ki[1],int(genes), i, ki[2]])
-        else:
-            file=diri+"pred.genes."+i+".matches.taxonomy.abundance.rpkm"
-            genes=0
-            
-            for ti in open(file):
-                genes+=int(ti.split()[2])
-            taxo.append([ki[1],genes, i, ki[2]])
-            taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        try:
+            if i=="abcdefghij":
+                file=diri+"pred.genes."+i+".matches.taxonomy.abundance.json"
+                x=json.load(open(file))
+                genes=0
+                for ti in x['children']: genes+=ti['matches']
+                taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+                taxo.append([ki[1],int(genes), i, ki[2]])
+            else:
+                file=diri+"pred.genes."+i+".matches.taxonomy.abundance.rpkm"
+                genes=0
+                
+                for ti in open(file):
+                    genes+=int(ti.split()[2])
+                taxo.append([ki[1],genes, i, ki[2]])
+                taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        except:
+            pass
 
     function={}
     func=[]
     for i in rid[1]:
-        ki=i
-        i=i[0]
-        file=diri+"pred.genes."+i+".matches.function.genes.abundance.rpkm"
-        genes=0
-        for ti in open(file):
-            genes+=int(ti.split()[2])
-        func.append([ki[1],genes, i, ki[2]])
-        function.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        try:
+            ki=i
+            i=i[0]
+            file=diri+"pred.genes."+i+".matches.function.genes.abundance.rpkm"
+            genes=0
+            for ti in open(file):
+                genes+=int(ti.split()[2])
+            func.append([ki[1],genes, i, ki[2]])
+            function.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        except:
+            pass
     #print taxo, func
     return [taxonomy, function, taxo, func, totalGenes, textReads,data]
 
@@ -83,37 +86,41 @@ def matches(data):
         #print i
         ki=i
         i=i[0]
-        
-        if i=="abcdefghij":
-            fi=diri+"alignment."+i+".matches.taxonomy.abundance.json"
-            x=json.load(open(fi))
-            genes=0
-            for j in x['children']: genes+=j['matches']
-            taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
-            taxo.append([ki[1],genes,i, ki[2]])
-        else:            
-            file=diri+"alignment."+i+".matches.taxonomy.abundance.rpkm"
-            if not os.path.exists(file): continue
-            genes=0
-            for ti in open(file):
-                genes+=int(ti.split()[2])
-            taxo.append([ki[1],genes,i, ki[2]])
-            taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        try:
+            if i=="abcdefghij":
+                fi=diri+"alignment."+i+".matches.taxonomy.abundance.json"
+                x=json.load(open(fi))
+                genes=0
+                for j in x['children']: genes+=j['matches']
+                taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+                taxo.append([ki[1],genes,i, ki[2]])
+            else:            
+                file=diri+"alignment."+i+".matches.taxonomy.abundance.rpkm"
+                if not os.path.exists(file): continue
+                genes=0
+                for ti in open(file):
+                    genes+=int(ti.split()[2])
+                taxo.append([ki[1],genes,i, ki[2]])
+                taxonomy.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        except:
+            pass
 
     function={}
     func=[]
     for i in rid[1]:
-        ki=i
-        i=i[0]
-        file=diri+"alignment."+i+".matches.function.genes.abundance.rpkm"
-        if not os.path.exists(file): continue
-        genes=0
-        isgenes={}
-        for ti in open(file):
-            genes+=int(ti.split()[2])
-        func.append([ki[1],genes,i, ki[2]])
-        function.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
-    
+        try:
+            ki=i
+            i=i[0]
+            file=diri+"alignment."+i+".matches.function.genes.abundance.rpkm"
+            if not os.path.exists(file): continue
+            genes=0
+            isgenes={}
+            for ti in open(file):
+                genes+=int(ti.split()[2])
+            func.append([ki[1],genes,i, ki[2]])
+            function.update({i:{'name':ki[1],'Ngenes':genes,'evalue':0}})
+        except:
+            pass    
         
     
     #print taxo, func
