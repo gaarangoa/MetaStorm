@@ -50,7 +50,7 @@ $maxFileAge = 5 * 3600; // Temp file age in seconds
 
 //exec("echo " .  $targetDir . " >> /home/raid/www/plupload/examples/uploads/log.txt");
 
-exec("mkdir -p ". $targetDir);
+// exec("mkdir -p ". $targetDir);
 
 // Create target dir
 if (!file_exists($targetDir)) {

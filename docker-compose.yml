@@ -22,6 +22,7 @@ services:
       - ./plupload/:/var/www/html/
       - ./Files/:/Files/
       - ~/.ssh/:/var/www/.ssh/
+      - ~/.ssh/:/root/.ssh/      
     ports:
       - 17001:80
     restart: always
