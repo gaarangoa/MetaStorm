@@ -16,6 +16,8 @@ This will expose the ports from the different microservices:
 ## Requirements to run MetaStorm
 backend and plupload need access to the high performance computing cluster. Therefore, you need to provide a valid .ssh key, that will automatically access the cluster without the need to login with password. 
 
+The key has to be placed under ./ssh/ before doing the docker-compose or docker-up commands
+
 ## Frontend requirements
 If you are running a local copy of MetaStorm. You need to modify two lines in the login.js and prod.js files. These are the links to the endpoints, if you are in local use / if you are in a cluster, use the proxy link you setup. For instance /MetaStorm/
 
