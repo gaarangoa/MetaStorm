@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/src/
-      # - Files/:/Files/
+      - Files/:/Files/:rw
       - ~/.ssh/:/root/.ssh/
     tty: true
     ports:
@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./plupload/:/var/www/html/
-      - Files/:/Files/
+      - Files/:/Files/:rw
       - ~/.ssh/:/var/www/.ssh/
       - ~/.ssh/:/root/.ssh/      
     ports:
