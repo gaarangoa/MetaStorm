@@ -1,4 +1,4 @@
-FROM python:2.7.5
+FROM python:2.7
 RUN pip install flask
 RUN pip install pymongo
 RUN pip install flask_cors
