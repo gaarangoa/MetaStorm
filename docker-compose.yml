@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/src/
-      - Files/:/Files/:rw
+      - ./Files/:/Files/
       - ./.ssh/:/root/.ssh/
     tty: true
     ports:
@@ -21,9 +21,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./plupload/:/var/www/html/
-      - Files/:/Files/:rw
-      - ./.ssh/:/var/www/.ssh/
-      - ./.ssh/:/root/.ssh/      
+      - ./.ssh/:/var/www/.ssh/   
+    volumes_from: 
+      - backend
     ports:
       - 17001:80
     restart: always
@@ -42,4 +42,4 @@ services:
     restart: always
 
 volumes:
-  Files:
+  Files: 
