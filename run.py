@@ -319,6 +319,7 @@ def insert_project():
         # remove an item: x.exe("delete from project where project_id==1")
         if not os.path.exists(rootvar.__ROOTPRO__+"/"+id):
             os.makedirs(rootvar.__ROOTPRO__+"/"+id)
+            os.system("chmod 777 {}".format(rootvar.__ROOTPRO__+"/"+id))
         return jsonify(name=name, id=id, description=description)
     except Exception as inst:
         return "ERROR: "+str(inst)
