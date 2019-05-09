@@ -8,7 +8,9 @@ services:
     volumes:
       - ./:/src/
       - ./Files/:/Files/
-      - ./.ssh/:/root/.ssh/
+      - ./ssh/:/root/.ssh/
+      - ./plupload/:/var/www/html/
+      - ./ssh/:/var/www/.ssh/
     tty: true
     ports:
       - 15001:5000
@@ -18,10 +20,7 @@ services:
   plupload:
     build:
       context: ./plupload/
-      dockerfile: Dockerfile
-    volumes:
-      - ./plupload/:/var/www/html/
-      - ./.ssh/:/var/www/.ssh/   
+      dockerfile: Dockerfile   
     volumes_from: 
       - backend
     ports:
