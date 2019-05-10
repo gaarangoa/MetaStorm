@@ -69,7 +69,7 @@ def get_results(job='', status='', message=[]):
                 <hr>
                 Include the following logs if you need to contact MetaStorm: <br>
                 <code>{}</code>
-                '''.format("\n".join(message))
+                '''.format("\n".join(json.dumps(message)))
 
             try:
                 SArc = os.popen(
