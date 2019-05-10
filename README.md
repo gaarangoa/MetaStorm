@@ -26,3 +26,6 @@ If you are running a local copy of MetaStorm. You need to modify two lines in th
 
 ## Cluster computing requirements
 Most of the tools used by MetaStorm are under the ./bin/ directory. However, there will be multiple python modules that will need to be installed in the cluster. Test few examples and check the logs to see what modules are missing. 
+
+
+<!-- find ./ -type f -name '*.pyc' -exec git rm -f {} \; -->

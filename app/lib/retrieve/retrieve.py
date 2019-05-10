@@ -1,3 +1,5 @@
+import logging
+import re
 from app.lib.common import rootvar
 from app.lib.common.sqlite3_commands import update_jobs, update_status
 from app.lib.create_project import insert_new_project as sql
@@ -9,9 +11,7 @@ from app.lib.common.arc_connect import bench2archu, arcon
 from app.lib.email import Email as email
 import datetime
 database = sql.SQL(rootvar.__FILEDB__)
-import re
-import logging
-import datetime
+
 
 def get_results(job='', status='', message=[]):
 
@@ -64,8 +64,12 @@ def get_results(job='', status='', message=[]):
                 message = [json.loads(i) for i in message]
                 log.debug(('message data', message))
                 failed_databases = [i['reference_id'] for i in message]
-                log.debug(('failed databases', failed_databases) )
-
+                log.debug(('failed databases', failed_databases))
+                msg += ''' 
+                <hr>
+                Include the following logs if you need to contact MetaStorm: <br>
+                <code>{}</code>
+                '''.format("\n".join(message))
 
             try:
                 SArc = os.popen(
@@ -103,7 +107,7 @@ def get_results(job='', status='', message=[]):
 
             database.commit()
 
-            x = email.send_email(
+            email.send_email(
                 USER[0]['user_name'],
                 USER[0]['user_affiliation'],
                 'Processing sample: ' + SAMPLE[0]['sample_name'],
@@ -111,19 +115,20 @@ def get_results(job='', status='', message=[]):
             )
 
         update_jobs(database,
-            [uid,
-            SAMPLE[0]['project_id'],
-            sid,
-            pip,
-            job,
-            status,
-            'normal',
-            datetime.datetime.now().isoformat(),
-            str(int(time.time()) )
-            ]
-        )  # update the database
+                    [uid,
+                     SAMPLE[0]['project_id'],
+                        sid,
+                        pip,
+                        job,
+                        status,
+                        'normal',
+                        datetime.datetime.now().isoformat(),
+                        str(int(time.time()))
+                     ]
+                    )  # update the database
 
-        log.info(('updating sample: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4], status, 'normal', datetime.datetime.now().isoformat(), str(int(time.time()) ) ]))
+        log.info(('updating sample: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4],
+                                        status, 'normal', datetime.datetime.now().isoformat(), str(int(time.time()))]))
         database.commit()
 
         if status == 'failed':
@@ -152,14 +157,14 @@ def get_results(job='', status='', message=[]):
             update_jobs(
                 database,
                 [uid, SAMPLE[0]['project_id'],
-                sid,
-                pip,
-                job,
-                'error',
-                'normal',
-                datetime.datetime.now().isoformat(),
-                str(int(time.time()))
-                ]
+                 sid,
+                 pip,
+                 job,
+                 'error',
+                 'normal',
+                 datetime.datetime.now().isoformat(),
+                 str(int(time.time()))
+                 ]
             )
 
             database.commit()
