@@ -1384,7 +1384,7 @@ def retrieve_job_status():
     _status = data['status']
     message = data['message']
 
-    log.debug((job, _status))
+    log.debug((job, _status, job))
 
     log.debug('retrieving the results')
     get_results(job=job, status=_status, message=message)

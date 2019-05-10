@@ -1,15 +1,13 @@
 #!/usr/bin/python
+import time
+import base64
+import json
+from app.lib.common import rootvar
+from app.lib.main_func import mRunMetaGen
+import os
 import sys
 rootdir = '/groups/metastorm_cscee/MetaStorm/'
 sys.path.insert(0, rootdir)
-import os
-
-from app.lib.main_func import mRunMetaGen
-from app.lib.common import rootvar
-
-import json
-import base64
-import time
 
 
 def status(pid, sid, pip, ups):
@@ -55,15 +53,22 @@ try:
     # get status file and check if was succesfully annotated
 
     if pip == 'matches':
-        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log') if "ERROR" in i]
-        os.system('rm ' + rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/*.matches')
-        os.system('rm ' + rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/*.daa')
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]
+                                             ['project_id'] + '/' + pip + '/' + sid + '/arc_run.qsub.log') if "ERROR" in i]
+        os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+                  SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/*.matches')
+        os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+                  SAMPLE[0]['project_id'] + '/' + pip + '/' + sid + '/*.daa')
     else:
-        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log') if 'ERROR' in i]
-        os.system('rm ' + rootdir + '/Files/PROJECTS/' + SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/*.daa')
+        status = [i.split()[4] for i in open(rootdir + '/Files/PROJECTS/' + SAMPLE[0]
+                                             ['project_id'] + '/' + pip + '/idba_ud/' + sid + '/arc_run.qsub.log') if 'ERROR' in i]
+        os.system('rm ' + rootdir + '/Files/PROJECTS/' +
+                  SAMPLE[0]['project_id'] + '/' + pip + '/idba_ud/' + sid + '/*.daa')
 
     message = base64.b64encode(json.dumps(status))
-    os.system('ssh newriver1.arc.vt.edu python ' + rootdir + '/listener.py ' + sys.argv[1] + ' done ' + message)
+    os.system('ssh newriver1.arc.vt.edu python ' + rootdir +
+              '/listener.py ' + sys.argv[1] + ' done ' + message)
 
 except Exception as inst:
-    os.system('ssh newriver1.arc.vt.edu python ' + rootdir+'/listener.py '+sys.argv[1]+' failed ' + message)
+    os.system('ssh newriver1.arc.vt.edu python ' + rootdir +
+              '/listener.py '+sys.argv[1]+' failed ' + message)

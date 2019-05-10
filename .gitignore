@@ -1,5 +1,7 @@
+**/*.pyc
 *.pyc
-REST_admin/admin/opts.py
+*.log
+min/admin/opts.py
 REST_admin/database/
 cluster/options.py
 Files/
