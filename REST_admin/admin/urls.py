@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include, url
 
 urlpatterns = [
-    path(r"metastorm2_admin/", admin.site.urls),
+    path(r"", admin.site.urls),
 ]
