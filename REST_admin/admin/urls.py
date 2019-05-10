@@ -17,6 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 
+# urlpatterns = [
+#     path(r"", admin.site.urls),
+# ]
+
 urlpatterns = [
-    path(r"", admin.site.urls),
+    url(r'^metastorm2_admin/', include([
+        url(r'', admin.site.urls),
+    ])),
 ]
