@@ -79,7 +79,7 @@ def get_results(job='', status='', message=[]):
             except:
                 SArc = []
 
-            log.info(('files', SArc))
+            log.debug(('files', SArc))
 
             f2s = []
             for ref in refs+['nucl.fa', 'prot.fa', 'log', 'pred.genes.gff']:
@@ -101,11 +101,18 @@ def get_results(job='', status='', message=[]):
 
             for ref in refs:
                 if ref in failed_databases:
-                    update_status(database, sid, ref, pip, "Fail")
-                else:
-                    update_status(database, sid, ref, pip, "Done")
+                    try:
+                        update_status(database, sid, ref, pip, "Fail")
+                        database.commit()
+                    except Exception as e:
+                        log.erro(str(e))
 
-            database.commit()
+                else:
+                    try:
+                        update_status(database, sid, ref, pip, "Done")
+                        database.commit()
+                    except Exception as e:
+                        log.error(str(e))
 
             email.send_email(
                 USER[0]['user_name'],
@@ -114,20 +121,23 @@ def get_results(job='', status='', message=[]):
                 msg
             )
 
-        update_jobs(database,
-                    [uid,
-                     SAMPLE[0]['project_id'],
-                        sid,
-                        pip,
-                        job,
-                        status,
-                        'normal',
-                        datetime.datetime.now().isoformat(),
-                        str(int(time.time()))
-                     ]
-                    )  # update the database
+        try:
+            update_jobs(database,
+                        [uid,
+                         SAMPLE[0]['project_id'],
+                            sid,
+                            pip,
+                            job,
+                            status,
+                            'normal',
+                            datetime.datetime.now().isoformat(),
+                            str(int(time.time()))
+                         ]
+                        )  # update the database
+        except Exception as e:
+            log.error(str(e))
 
-        log.info(('updating sample: ', [uid, SAMPLE[0]['project_id'], sid, pip, job[4],
+        log.info(('updating sample: ', [uid, SAMPLE[0]['project_id'], sid, job, pip, job[4],
                                         status, 'normal', datetime.datetime.now().isoformat(), str(int(time.time()))]))
         database.commit()
 
