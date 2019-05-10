@@ -1,6 +1,6 @@
 **/*.pyc
 *.pyc
-*.log
+logs/
 min/admin/opts.py
 REST_admin/database/
 cluster/options.py
