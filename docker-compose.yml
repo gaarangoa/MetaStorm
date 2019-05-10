@@ -37,5 +37,5 @@ services:
     tty: true
     ports:
       - 16001:8000
-    command: python3 /src/REST_admin/manage.py runserver 0.0.0.0:8000
+    command: python /src/REST_admin/manage.py runserver 0.0.0.0:8000
     restart: always
