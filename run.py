@@ -729,9 +729,8 @@ def RunMetaGen():
             os.system("mkdir -p "+rootvar.__ROOTPRO__+"/"+data['pid']+"/READS")
         except:
             pass
-
         
-
+        
         x = email.send_email(S[0]['user_name'], S[0]['user_affiliation'],
                              'Processing sample: '+T[0]['sample_name'], "Dear MetaStorm User, <br><br><br> the sample <b>" +
                              T[0]['sample_name'] +
