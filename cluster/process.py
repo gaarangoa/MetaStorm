@@ -1,12 +1,11 @@
 
+import base64
+import json
+from app.lib.common import rootvar
+from app.lib.email import Email as email
+import os
 import sys
 sys.path.insert(0, "/groups/metastorm_cscee/MetaStorm/")
-
-import os
-from app.lib.email import Email as email
-from app.lib.common import rootvar
-import json
-import base64
 
 
 def qsub(ni, fi, idr):
@@ -75,7 +74,7 @@ try:
 except:
     pass
 
-os.system('cd '+do+' && /opt/torque/torque/bin/qsub arc_run.qsub ')
+os.system('cd '+do+' && /opt/torque/torque/bin/qsub arc_run.qsub > arc_run.qsub.init')
 
 
 # email.send_email('avc','gustavo1@vt.edu','abc','abc')
