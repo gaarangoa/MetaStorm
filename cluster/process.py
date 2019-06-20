@@ -74,8 +74,9 @@ try:
 except:
     pass
 
-os.system(
-    'cd '+do+' && nohup /opt/torque/torque/bin/qsub arc_run.qsub > arc.run.qsub.init')
+cmd = 'cd '+do+' && nohup /opt/torque/torque/bin/qsub arc_run.qsub > arc_run.qsub.init'
+print(cmd)
 
+os.system(cmd)
 
 # email.send_email('avc','gustavo1@vt.edu','abc','abc')
