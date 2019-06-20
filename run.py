@@ -694,9 +694,11 @@ def RunMetaGen():
         # "qsub: submit error (Maximum number of jobs already in queue for user MSG=total number of current user's jobs exceeds the queue limit: user gustavo1@nrlogin1.cluster, queue normal_q)
 "
         if 'Maximum number of jobs already in queue for user' in SArc['error']:
-            SArc.update('max_jobs_error': True, 'max_jobs_error_message': 'Error: Maximum number of jobs already in queue. Please try again later.')
+            SArc.update({'max_jobs_error': True})
+            SArc.update({'max_jobs_error_message': 'Error: Maximum number of jobs already in queue. Please try again later.'})
         else:
-            SArc.update('max_jobs_error': False, 'max_jobs_error_message': '')
+            SArc.update({'max_jobs_error': False})
+            SArc.update({'max_jobs_error_message': ''})
 
         if SArc['max_jobs_error']:
             return jsonify(SArc)
