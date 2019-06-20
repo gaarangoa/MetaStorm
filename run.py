@@ -730,7 +730,7 @@ def RunMetaGen():
         except:
             pass
         
-        
+
         x = email.send_email(S[0]['user_name'], S[0]['user_affiliation'],
                              'Processing sample: '+T[0]['sample_name'], "Dear MetaStorm User, <br><br><br> the sample <b>" +
                              T[0]['sample_name'] +
@@ -739,8 +739,6 @@ def RunMetaGen():
                              'The time for making the analysis depends on the current web traffic and availability of the web server. Once the ' +
                              'analysis is done you will receive a notification via email. <br><br><br><br>' +
                              'Thank you<br><b>MetaStorm Team</b>')
-
-
 
         return jsonify(SArc)
     except Exception as inst:
