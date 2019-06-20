@@ -691,13 +691,13 @@ def RunMetaGen():
         else:
             do = "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/"+data['pid']+"/matches/"+sid+"/arc_run.qsub.init"
 
-        try:
-            check_job = bench2archu('cat {}'.format(do))
+        check_job = bench2archu('cat {}'.format(do))
+        try:            
             job_id, _, _ = [i for i in check_job['out'].split('\n')][0].split('.')
             SArc.update({'job_id': job_id, 'check_job': check_job})
         except:
-            SArc.update({'job_id': False, 'check_job': False})
-            pass
+            SArc.update({'job_id': False, 'check_job': check_job})
+        
 
         x = sql.SQL(rootvar.__FILEDB__)
         update_jobs(x, [uid, T[0]['project_id'], sid, pip, arg,
