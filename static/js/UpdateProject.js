@@ -919,7 +919,8 @@ window.onload = function ()
                     contentType: "application/json; charset=utf-8",
                     success: function (dat)
                     {
-                        console.log('Receiving:', dat);
+                        console.log('Receiving:');
+                        console.log(dat);
 
                         if (dat['max_jobs_error'] == true) {
                             alert(dat['max_jobs_error_message']);
