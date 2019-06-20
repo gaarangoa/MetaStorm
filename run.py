@@ -694,9 +694,9 @@ def RunMetaGen():
         try:
             check_job = bench2archu('cat {}'.format(do))
             job_id, _, _ = [i for i in check_job['out'].split('\n')][0].split('.')
-            SArc.update({'job_id': job_id})
+            SArc.update({'job_id': job_id, 'check_job': check_job})
         except:
-            SArc.update({'job_id': 'NULL'})
+            SArc.update({'job_id': False, 'check_job': False})
             pass
 
         x = sql.SQL(rootvar.__FILEDB__)
