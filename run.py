@@ -685,14 +685,7 @@ def RunMetaGen():
             [data, refs, sid, uid, pip, rootvar.__FILEDB__, S, T]))
         SArc = bench2archu(
             'python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
-
-        if pip == "assembly":
-            do = "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/"+data['pid']+"/assembly/idba_ud/"+sid+"/arc_run.qsub.init"
-        else:
-            do = "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/"+data['pid']+"/matches/"+sid+"/arc_run.qsub.init"
-
-        # "qsub: submit error (Maximum number of jobs already in queue for user MSG=total number of current user's jobs exceeds the queue limit: user gustavo1@nrlogin1.cluster, queue normal_q)
-"
+        
         # if 'Maximum number of jobs already in queue for user' in SArc['error']:
         #     SArc.update({'max_jobs_error': True})
         #     SArc.update({'max_jobs_error_message': 'Error: Maximum number of jobs already in queue. Please try again later.'})
