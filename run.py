@@ -685,16 +685,16 @@ def RunMetaGen():
             [data, refs, sid, uid, pip, rootvar.__FILEDB__, S, T]))
         SArc = bench2archu(
             'python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
-        
-        # if 'Maximum number of jobs already in queue for user' in SArc['error']:
-        #     SArc.update({'max_jobs_error': True})
-        #     SArc.update({'max_jobs_error_message': 'Error: Maximum number of jobs already in queue. Please try again later.'})
-        # else:
-        #     SArc.update({'max_jobs_error': False})
-        #     SArc.update({'max_jobs_error_message': ''})
 
-        # if SArc['max_jobs_error']:
-        #     return jsonify(SArc)
+        if 'Maximum number of jobs already in queue for user' in SArc['error']:
+            SArc.update({'max_jobs_error': True})
+            SArc.update({'max_jobs_error_message': 'Error: Maximum number of jobs already in queue. Please try again later.'})
+        else:
+            SArc.update({'max_jobs_error': False})
+            SArc.update({'max_jobs_error_message': ''})
+
+        if SArc['max_jobs_error']:
+            return jsonify(SArc)
 
         x = sql.SQL(rootvar.__FILEDB__)
         update_jobs(x, [uid, T[0]['project_id'], sid, pip, arg,
