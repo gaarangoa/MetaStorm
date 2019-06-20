@@ -688,7 +688,7 @@ def RunMetaGen():
 
         if 'Maximum number of jobs already in queue for user' in SArc['error']:
             SArc.update({'max_jobs_error': True})
-            SArc.update({'max_jobs_error_message': 'Error: Sample was not run. Cluster is at its maximum capability and no more jobs can be run. Please try again later.'})
+            SArc.update({'max_jobs_error_message': 'Error: Sample was not run. Cluster is at its maximum capability and no more jobs can be run at this moment. Please try again later.'})
         else:
             SArc.update({'max_jobs_error': False})
             SArc.update({'max_jobs_error_message': ''})
