@@ -686,6 +686,19 @@ def RunMetaGen():
         SArc = bench2archu(
             'python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
 
+        if pip == "assembly":
+            do = "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/"+data['pid']+"/assembly/idba_ud/"+sid+"/arc_run.qsub.init"
+        else:
+            do = "/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/"+data['pid']+"/matches/"+sid+"/arc_run.qsub.init"
+
+        try:
+            check_job = bench2archu('cat {}'.format(do))
+            job_id, _, _ = [i for i in check_job['out'].split('\n')][0].split('.')
+            SArc.update({'job_id': job_id})
+        except:
+            SArc.update({'job_id': 'NULL'})
+            pass
+
         x = sql.SQL(rootvar.__FILEDB__)
         update_jobs(x, [uid, T[0]['project_id'], sid, pip, arg,
                         'queue', 'normal', date, SArc['out'].split(".")[0]])
@@ -716,6 +729,7 @@ def RunMetaGen():
             os.system("mkdir -p "+rootvar.__ROOTPRO__+"/"+data['pid']+"/READS")
         except:
             pass
+        
 
         x = email.send_email(S[0]['user_name'], S[0]['user_affiliation'],
                              'Processing sample: '+T[0]['sample_name'], "Dear MetaStorm User, <br><br><br> the sample <b>" +
@@ -729,7 +743,6 @@ def RunMetaGen():
         return jsonify(SArc)
     except Exception as inst:
         return "ERROR: "+str(inst)
-
 
 # ******************************************************************************
 # BEGIN: ViewSample
