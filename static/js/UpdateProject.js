@@ -1,4 +1,5 @@
-window.onload = function () {
+window.onload = function ()
+{
     // Project setup table
     // table with all the results from the assembly -  this is an overall of the assembly performance
 
@@ -26,7 +27,8 @@ window.onload = function () {
         }),
         async: true,
         contentType: "application/json; charset=utf-8",
-        success: function (dat) {
+        success: function (dat)
+        {
             ////console.log(dat)
             $("#UserName1").html(dat.uname)
             $("#userID").html(dat.uid)
@@ -42,7 +44,8 @@ window.onload = function () {
             sql: 'select * from project where project_id="' + pid + '"'
         }),
         contentType: "application/json; charset=utf-8",
-        success: function (x) {
+        success: function (x)
+        {
             ////console.log(x)
             $("#updatePdescription").html(x.data[0]['project_description'])
             $("#updatePname").html("# " + x.data[0]['project_name'])
@@ -51,7 +54,8 @@ window.onload = function () {
 
 
 
-    var logs = function (date, sid, pip, status, processed) {
+    var logs = function (date, sid, pip, status, processed)
+    {
         if (status == "done") {
             color = 'blue'
         } else if (status == "queue") {
@@ -95,9 +99,11 @@ window.onload = function () {
                 '" order by date desc) a join (select sample_name, sample_id from samples) b where b.sample_id=a.sid)  c join (select user_id, user_name from user ) d where c.uid=d.user_id'
         }),
         contentType: "application/json; charset=utf-8",
-        success: function (x) {
+        success: function (x)
+        {
             //console.log(x.data)
-            x.data.forEach(function (item, index) {
+            x.data.forEach(function (item, index)
+            {
                 $("#logs").append(logs(item.date, item.sample_name, item.pip, item.status, item.user_name))
             })
 
@@ -118,10 +124,12 @@ window.onload = function () {
             sql: 'select reference_id, reference_name, reference_description, status, user_id from reference'
         }),
         contentType: "application/json; charset=utf-8",
-        success: function (x) {
+        success: function (x)
+        {
             ////console.log(x)
 
-            x.data.forEach(function (e, ix) { //element, index
+            x.data.forEach(function (e, ix)
+            { //element, index
                 //console.log(e,ix)
                 if (e['status'] == 'done') {
 
@@ -149,7 +157,8 @@ window.onload = function () {
 
                     REFS[e['reference_id']] = e['reference_name']
 
-                    Tipped.create('#B_' + e['reference_id'], function (element) {
+                    Tipped.create('#B_' + e['reference_id'], function (element)
+                    {
 
                         return {
                             title: e['reference_name'],
@@ -196,7 +205,8 @@ window.onload = function () {
 
     /*Load current samples the main table with the samples info*/
 
-    var headerRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+    var headerRenderer = function (instance, td, row, col, prop, value, cellProperties)
+    {
         Handsontable.renderers.TextRenderer.apply(this, arguments);
         //td.style.fontWeight = 'bold';
         td.style.color = 'white'
@@ -204,12 +214,14 @@ window.onload = function () {
         td.style.backgroundColor = 'rgba(0,125,10,1)';
     };
 
-    var actionHTML = function (instance, td, row, col, prop, value, cellProperties) {
+    var actionHTML = function (instance, td, row, col, prop, value, cellProperties)
+    {
 
         $(td).html("<a href=" + machine + 'ViewSample?sid=' + value + "&pid=" + pid + "&uid=" + uid + "&pip=" + pip + " target='_blank'>" + value + "</a>"); //empty is needed because you are rendering to an existing cell
     };
 
-    var get_samples_info = function () {
+    var get_samples_info = function ()
+    {
         //cmd='select c.sample_id,c.sample_name, c.sample_set, c.environment, c.library_preparation, c.reads1, c.reads2, c.status from (select * from samples a inner join project_status b on a.project_id==b.project_id and a.sample_id==b.sample_id) c where project_id=="'+pid+'"'
         cmd = 'select c.sample_id,c.sample_name, c.sample_set, c.environment, c.library_preparation, c.reads1, c.reads2, c.lat, c.lng from (select * from samples) c where project_id=="' + pid + '"'
         $.ajax({
@@ -220,7 +232,8 @@ window.onload = function () {
                 sql: cmd
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (x) {
+            success: function (x)
+            {
                 //console.log(x)
                 //alert(x.data[0])
 
@@ -372,7 +385,8 @@ window.onload = function () {
 
     /*send action to sql*/
     // this function is useful if I want to send some sql-based code -  only works with the main database
-    var exql = function (consult) {
+    var exql = function (consult)
+    {
         $.ajax({
             url: machine + "consult",
             type: "POST",
@@ -381,14 +395,16 @@ window.onload = function () {
                 sql: consult
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (dat) {
+            success: function (dat)
+            {
                 get_samples_info()
             }
         });
     }
 
     /*remove samples*/
-    $(document).on("click", "#RemoveSample", function () {
+    $(document).on("click", "#RemoveSample", function ()
+    {
         var sid = $("#SampleNameSelectToRemove option:selected").val();
 
         $.ajax({
@@ -402,7 +418,8 @@ window.onload = function () {
                 uid: uid
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (dat) {
+            success: function (dat)
+            {
                 //console.log(dat)
 
             }
@@ -442,7 +459,8 @@ window.onload = function () {
 
 
     /*compare samples*/
-    $(document).on("click", "#RunComparativeAnalysis", function () {
+    $(document).on("click", "#RunComparativeAnalysis", function ()
+    {
         // alert()
         window.open(machine + "compare_samples?pid=" + pid + "&uid=" + uid + "&pip=" + pip)
     });
@@ -472,7 +490,8 @@ window.onload = function () {
 
 
     /*when click on insert show the insert form*/
-    $(document).on("click", "#InsertSample", function () {
+    $(document).on("click", "#InsertSample", function ()
+    {
         $("#SamplesSetupMain").show()
         $("#InsertSample").hide()
 
@@ -481,13 +500,15 @@ window.onload = function () {
 
 
     /*when click on insert show the remove sample form*/
-    $(document).on("click", "#RemoveSampleGO", function () {
+    $(document).on("click", "#RemoveSampleGO", function ()
+    {
         $("#RemoveSampleForm").show()
     });
 
 
     /*when click refresh the sample list form*/
-    $(document).on("click", "#RefreshSampleGetForm", function () {
+    $(document).on("click", "#RefreshSampleGetForm", function ()
+    {
 
         get_samples_info()
 
@@ -502,9 +523,11 @@ window.onload = function () {
                     '" order by date desc) a join (select sample_name, sample_id from samples) b where b.sample_id=a.sid)  c join (select user_id, user_name from user ) d where c.uid=d.user_id'
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (x) {
+            success: function (x)
+            {
                 //console.log(x.data)
-                x.data.forEach(function (item, index) {
+                x.data.forEach(function (item, index)
+                {
                     $("#logs").append(logs(item.date, item.sample_name, item.pip, item.status, item.user_name))
                 })
 
@@ -516,7 +539,8 @@ window.onload = function () {
 
 
     /*when click rerun show update and submit forms*/
-    $(document).on("click", "#ReRunSampleGetForm", function () {
+    $(document).on("click", "#ReRunSampleGetForm", function ()
+    {
         $("#UploadFilesMain").show()
         $("#RunMetaGenMain").show()
     });
@@ -539,18 +563,21 @@ window.onload = function () {
 
 
 
-    document.getElementById("NumberSamplesButton").onclick = function () {
+    document.getElementById("NumberSamplesButton").onclick = function ()
+    {
         setupNumberSamples();
         $("#submitMetagenome").removeAttr('disabled')
     };
-    $("#NumberSamples").on('keydown', function (e) {
+    $("#NumberSamples").on('keydown', function (e)
+    {
         if (e.keyCode == 13) {
             setupNumberSamples();
             $("#submitMetagenome").removeAttr('disabled')
         }
     });
 
-    var setupNumberSamples = function () {
+    var setupNumberSamples = function ()
+    {
 
         $('#table').html('')
         $('#table').css('min-width', '800px');
@@ -609,7 +636,8 @@ window.onload = function () {
 
 
 
-    var retrieve_hst = function (x) {
+    var retrieve_hst = function (x)
+    {
         var data = []
         var totalsamples = document.getElementById("NumberSamples").value;
 
@@ -646,7 +674,8 @@ window.onload = function () {
     }
 
     // inser samples information into the sql database
-    $(document).on("click", "#submitMetagenome", function () {
+    $(document).on("click", "#submitMetagenome", function ()
+    {
 
 
         samples = retrieve_hst($("#table").html())
@@ -671,7 +700,8 @@ window.onload = function () {
                 }),
                 async: true,
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
+                success: function (data)
+                {
                     // console.log(data, pip)
 
                     for (i = 0; i < data.samples.length; i++) {
@@ -705,7 +735,8 @@ window.onload = function () {
 
     //// share project
 
-    $(document).on("click", "#ShareProject", function () {
+    $(document).on("click", "#ShareProject", function ()
+    {
         $("#box_share").append("<div class='overlay' id='share_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
         shared_users = $("#sharedUsers").val().split(/\n/)
         //console.log(shared_users)
@@ -719,7 +750,8 @@ window.onload = function () {
                 pid: pid
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (x) {
+            success: function (x)
+            {
                 $("#share_overlay").remove()
             }
         });
@@ -729,7 +761,8 @@ window.onload = function () {
 
     //// make public
 
-    $(document).on("click", "#makePublic", function () {
+    $(document).on("click", "#makePublic", function ()
+    {
 
         $("#box_make_public").append("<div class='overlay' id='make_public_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
         cmd = 'UPDATE project SET project_short_description="unlock"  WHERE project_id="' + pid + '"'
@@ -742,7 +775,8 @@ window.onload = function () {
                 sql: cmd
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (x) {
+            success: function (x)
+            {
                 $("#make_public_overlay").remove()
             }
         });
@@ -758,7 +792,8 @@ window.onload = function () {
 
 
     /*get raw reads file names*/
-    $('#update_raw_reads').click(function () {
+    $('#update_raw_reads').click(function ()
+    {
         $.ajax({
             type: 'POST',
             url: machine + 'get_raw_reads_names',
@@ -767,7 +802,8 @@ window.onload = function () {
             }),
             contentType: "application/json; charset=utf-8",
             async: true,
-            success: function (data) {
+            success: function (data)
+            {
                 $("#Read1Select").html('')
                 $("#Read2Select").html('')
                 for (i = 0; i < data.files.length; i++) {
@@ -830,7 +866,8 @@ window.onload = function () {
 
     /*Run pipeline ---- there are two options 1 is for reads mapping and 2 for metagenome assembly*/
 
-    var submit_analysis = function (sid, read1, read2, sname) {
+    var submit_analysis = function (sid, read1, read2, sname)
+    {
         var rids = get_checkbox("selectedReferenceDatasets")
 
         if (read1 == "" || read2 == "") {
@@ -848,7 +885,8 @@ window.onload = function () {
                 $("#runstatusbar").html("")
             } else {
 
-                rid_names = "<ul>" + get_checkbox("selectedReferenceDatasets").map(function (e, i, a) {
+                rid_names = "<ul>" + get_checkbox("selectedReferenceDatasets").map(function (e, i, a)
+                {
                     return ("<li><p>" + REFS[a[i]] + "</p></li>")
                 }).join("") + "</ul>"
 
@@ -879,15 +917,21 @@ window.onload = function () {
                     async: true,
                     data: JSON.stringify(datasent),
                     contentType: "application/json; charset=utf-8",
-                    success: function (dat) {
-
+                    success: function (dat)
+                    {
                         console.log('Receiving:', dat);
-                        $("#runstatusbar").html(wait_bar(100))
-                        $("#runstatusbar").html = ""
-                        $("#RunMetaGen").disabled = false;
-                        $("#runstatusbar").html("")
-                        send_email(uid, msg, 'Processing sample: ' + sname)
-                        get_samples_info()
+
+                        if (dat['max_jobs_error'] == true) {
+                            alert(dat['max_jobs_error_message']);
+                        } else {
+                            $("#runstatusbar").html(wait_bar(100))
+                            $("#runstatusbar").html = ""
+                            $("#RunMetaGen").disabled = false;
+                            $("#runstatusbar").html("")
+                            send_email(uid, msg, 'Processing sample: ' + sname)
+                            get_samples_info()
+                        }
+
 
 
                         $("#tab_runo_box_overlay").remove()
@@ -958,7 +1002,8 @@ window.onload = function () {
 
 
 
-    $(document).on("click", "#RefreshSampleTabRuno", function () {
+    $(document).on("click", "#RefreshSampleTabRuno", function ()
+    {
 
         $.ajax({
             type: 'POST',
@@ -968,7 +1013,8 @@ window.onload = function () {
             }),
             contentType: "application/json; charset=utf-8",
             async: true,
-            success: function (data) {
+            success: function (data)
+            {
                 $("#rawreads_list").text(data.files)
                 get_run_table()
             }
@@ -989,7 +1035,8 @@ window.onload = function () {
 
 
 
-    var get_run_table = function () {
+    var get_run_table = function ()
+    {
 
 
         /// Get the raw reads
@@ -1008,12 +1055,14 @@ window.onload = function () {
                 sql: cmd
             }),
             contentType: "application/json; charset=utf-8",
-            success: function (x) {
+            success: function (x)
+            {
                 // console.log(x)
                 //alert(x.data[0])
 
 
-                save_sample = function (arg) {
+                save_sample = function (arg)
+                {
                     row = arg[0]
                     sample = table_samples_run.getCell(row, 0);
                     fq1 = table_samples_run.getCell(row, 1);
@@ -1025,7 +1074,8 @@ window.onload = function () {
                     console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
                 }
 
-                save_sample_2 = function (argv) {
+                save_sample_2 = function (argv)
+                {
                     console.log(argv)
 
                     // row = arg[0]
@@ -1039,7 +1089,8 @@ window.onload = function () {
                     console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
                 }
 
-                remove_sample = function (arg) {
+                remove_sample = function (arg)
+                {
                     $("#tab_runo_box").append("<div class='overlay' id='tab_runo_box_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
                     $.ajax({
                         url: machine + "removesample",
@@ -1052,7 +1103,8 @@ window.onload = function () {
                             uid: userID
                         }),
                         contentType: "application/json; charset=utf-8",
-                        success: function (dat) {
+                        success: function (dat)
+                        {
                             $("#tab_runo_box_overlay").remove()
                             //console.log(dat)
                         }
@@ -1063,7 +1115,8 @@ window.onload = function () {
                     //table_samples_run.render();
                 }
 
-                var runHTML = function (instance, td, row, col, prop, value, cellProperties) {
+                var runHTML = function (instance, td, row, col, prop, value, cellProperties)
+                {
                     // console.log(td, row, col, prop, value)
                     // $("#table_of_samples_to_run").append(td)
                     if (value != "") {
@@ -1090,7 +1143,8 @@ window.onload = function () {
                 };
 
 
-                var mate1HTML = function (instance, td, row, col, prop, value, cellProperties) {
+                var mate1HTML = function (instance, td, row, col, prop, value, cellProperties)
+                {
                     Handsontable.renderers.TextRenderer.apply(this, arguments);
                     td.style.fontWeight = 'bold';
                     td.style.color = 'green';
@@ -1247,7 +1301,8 @@ window.onload = function () {
         }),
         contentType: "application/json; charset=utf-8",
         async: true,
-        success: function (data) {
+        success: function (data)
+        {
             $("#rawreads_list").text(data.files)
             get_run_table()
         }
