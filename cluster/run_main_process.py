@@ -1,15 +1,26 @@
 #!/usr/bin/python
+import logging
+import time
+import base64
+import json
+from app.lib.common import rootvar
+from app.lib.main_func import mRunMetaGen
+import os
 import sys
 rootdir = '/groups/metastorm_cscee/MetaStorm/'
 sys.path.insert(0, rootdir)
-import os
 
-from app.lib.main_func import mRunMetaGen
-from app.lib.common import rootvar
 
-import json
-import base64
-import time
+def my_logger(logfile=''):
+    main_logfile = logfile
+    logging.basicConfig(
+        filename=main_logfile,
+        level=logging.DEBUG,
+        filemode="w",
+        format="%(levelname)s %(asctime)s - %(message)s"
+    )
+
+    return logging.getLogger()
 
 
 def status(pid, sid, pip, ups):
@@ -48,6 +59,10 @@ pip = inp[4]
 dbfile = rootvar.__FILEDB__  # "~/MetaStorm/SQL/projects.db"#inp[5]
 USER = inp[6]
 SAMPLE = inp[7]
+pid = SAMPLE[0]['project_id']
+
+log = my_logger(logfile=rootvar.__ROOTPRO__+"/"+pid +
+                "/matches/"+sid+"/arc_run.qsub.log")
 
 try:
     main_run(data, refs, sid, uid, pip, dbfile, USER[0], SAMPLE[0])
@@ -71,9 +86,15 @@ try:
 
     message = base64.b64encode(json.dumps(status))
 
-    os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir + '/listener.py ' + sys.argv[1] + ' done ' + message)
+    external_update = 'ssh newriver1.arc.vt.edu python ' + \
+        rootdir + '/listener.py ' + sys.argv[1] + ' done ' + message
+    log.info("sending update to server: {}".format(external_update))
+
+    os.system(external_update)
 
 except Exception as inst:
-    os.system('ssh newriver1.arc.vt.edu python ' +
-              rootdir+'/listener.py '+sys.argv[1]+' failed ' + message)
+    external_update = 'ssh newriver1.arc.vt.edu python ' + \
+        rootdir + '/listener.py ' + sys.argv[1] + ' failed ' + message
+    log.info("sending update to server: {}".format(external_update))
+
+    os.system(external_update)
