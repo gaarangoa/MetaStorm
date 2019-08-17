@@ -5,14 +5,10 @@ import re
 from app.lib.common import module
 from app.lib.common import rootvar
 import json
-import networkx as nx
-from networkx.readwrite import json_graph
-import numpy as np
-#from app.lib.run import MAIN_PROCESS as MP
-from app.lib.create_project import insert_new_project as sql
 from app.lib.preprocessing import functions as pre
-import os
 import logging
+import traceback
+import base64
 
 
 def my_logger(logfile=''):
@@ -27,7 +23,7 @@ def my_logger(logfile=''):
     return logging.getLogger()
 
 
-def run(data, main_db, DBS):
+def run(data, main_db, DBS, uinfo, sample):
     project_id = str(data['pid'])
     pipeline = str(data['pip'])
     reads1 = str(data['read1'])
@@ -35,23 +31,38 @@ def run(data, main_db, DBS):
     sample_id = str(data['sid'])
     user_id = str(data['uid'])
     refs = data["rids"]
-    try:
-        a = refs[0]
-    except:
-        return 'Error: No database has been selected'
+    refs = [i for i in refs if not i == "Gbfbquhild"]
+    refs = ["Gbfbquhild"] + refs
 
-    x = sql.SQL(main_db)
-    x.exe('UPDATE project_status SET status="queue" WHERE project_id="' +
-          project_id+'" AND sample_id="'+sample_id+'"')
-    # let know that the files have been uploaded and the files created
-    x.insert("sample_run", (sample_id, "created"))
-    x.commit()
-    # preprocessing FIXME: I need to get permisions to write
+    if pipeline == "matches":
+        logfile = rootvar.__ROOTPRO__ + "/" + project_id + \
+            "/matches/" + sample_id + "/arc_run.qsub.log"
+    else:
+        logfile = rootvar.__ROOTPRO__ + "/" + project_id + \
+            "/assembly/idba_ud/" + sample_id + "/arc_run.qsub.log"
+
+    log = my_logger(logfile=logfile)
+
+    try:
+        assert(refs[0])
+    except:
+        e = traceback.format_exc()
+        log.error(base64.b64encode(json.dumps(
+            {
+                "status": "failed",
+                "exception": str(e),
+                "sample_id": sample_id,
+                "reference_id": 'unknown'
+            }
+        )))
+        return False
+
     rdir = rootvar.__ROOTPRO__+"/"+project_id+"/READS/"
+    log.info('running trimmomatic')
     trim = pre.trimmomatic(rdir+reads1, rdir+reads2, rdir, sample_id)
-    #if not rootvar.isdir(trim.outd+sample_id+'.trim.log'): trim.run()
     trim.run()
-    # print "trimming"
+    log.info('running: {}'.format(trim.cmd))
+
     reads1 = reads1.replace(".gz", "")
     reads2 = reads2.replace(".gz", "")
     # print pipeline
@@ -69,52 +80,69 @@ def run(data, main_db, DBS):
     #_______________________________________________________________##################################
     #
     # Get the number of reads
-    tfile = trim.outd+sample_id+'trim.log'
+    log.info('running pipeline {}'.format(pipeline,))
+    tfile = trim.outd + sample_id + 'trim.log'
+    log.info('trimmomatic log file: {}'.format(tfile))
+    good_reads = 0
     for i in open(tfile):
         if "Input Read Pairs:" in i:
             i = i.split()
-            raw_reads = float(i[3])
             # the number of high quality reads after trimming and quality filter
             good_reads = float(i[6])
 
     if pipeline == "matches":
-        log = my_logger(logfile=rootvar.__ROOTPRO__+"/" +
-                        project_id+"/matches/"+sample_id+"/arc_run.qsub.log")
-        log.info('running read match pipeline')
         for ref in refs:
-            log.info('Processing %s with reference id: %s' % (sample_id, ref))
-            if not x.exe('select * from matches where sample_id="'+sample_id+'" and datasets="'+ref+'"'):
-                x.c.execute('INSERT OR IGNORE INTO matches VALUES (?,?,?,?)',
-                            (sample_id, user_id, project_id, ref))
-                x.commit()
+            log.info('Processing {} with reference id: {}'.format(sample_id, ref))
             try:
                 val = MP(project_id, sample_id,
-                         DBS[ref], "matches", reads1, reads2, good_reads)
-            except Exception as e:
-                log.error(str(e))
-                log.error('Exception\t%s\t%s' % (sample_id, ref))
+                         DBS[ref], "matches", reads1, reads2, good_reads, sample)
+            except:
+                e = traceback.format_exc()
+                # log.error(base64.b64encode(json.dumps(
+                #     {
+                #         "status": "failed",
+                #         "exception": str(e),
+                #         "sample_id": sample_id,
+                #         "reference_id": ref
+                #     }
+                # )))
+
+                log.error(
+                    {
+                        "status": "failed",
+                        "exception": str(e),
+                        "sample_id": sample_id,
+                        "reference_id": ref
+                    }
+                )
     #
     # this is for the aseembly section
     #
     if pipeline == "assembly":
-        log = my_logger(logfile=rootvar.__ROOTPRO__ + "/" + project_id +
-                        "/assembly/idba_ud/" + sample_id + "/arc_run.qsub.log")
-        log.info('running assembly pipeline')
         for ref in refs:
-            log.info('Processing %s with reference id: %s' % (sample_id, ref))
-            if not x.exe('select * from assembly where sample_id="'+sample_id+'" and datasets="'+ref+'"'):
-                x.c.execute('INSERT OR IGNORE INTO assembly VALUES (?,?,?,?)',
-                            (sample_id, user_id, project_id, ref))
-                x.commit()
             try:
                 idba(project_id, sample_id,
-                     DBS[ref], "assembly", reads1, reads2, good_reads)
-            except Exception as e:
-                log.error(str(e))
-                log.error('Exception\t%s\t%s' % (sample_id, ref))
+                     DBS[ref], "assembly", reads1, reads2, good_reads, sample)
+            except:
+                e = traceback.format_exc()
+                # log.error(base64.b64encode(json.dumps(
+                #     {
+                #         "status": "failed",
+                #         "exception": str(e),
+                #         "sample_id": sample_id,
+                #         "reference_id": ref
+                #     }
+                # )))
 
-    x.close()
-    # in the end the fastq files need to be removed in order to save storage space;
+                log.error(
+                    {
+                        "status": "failed",
+                        "exception": str(e),
+                        "sample_id": sample_id,
+                        "reference_id": ref
+                    }
+                )
+
     if not rootvar.isdir(rdir+reads1+".gz"):
         os.system('gzip '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
         os.system('rm '+rdir+reads1+' >> '+rootvar.log+" 2>&1")
