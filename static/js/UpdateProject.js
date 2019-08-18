@@ -929,7 +929,7 @@ window.onload = function ()
                             $("#runstatusbar").html = ""
                             $("#RunMetaGen").disabled = false;
                             $("#runstatusbar").html("")
-                            send_email(uid, msg, 'Processing sample: ' + sname)
+                            // send_email(uid, msg, 'Processing sample: ' + sname)
                             get_samples_info()
                         }
 
