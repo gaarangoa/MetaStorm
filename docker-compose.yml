@@ -12,9 +12,8 @@ services:
     ports:
       - 15001:5000
     command: python /src/run.py
-    environment:
-      - email="cmetangen@gmail.com"
-      - epass="1234"
+    env_file:
+      - backend.env
     restart: always
 
   plupload:

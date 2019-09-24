@@ -1,8 +1,10 @@
-window.onload = function () {
+window.onload = function ()
+{
 
-    var machine = '/metastorm2/';
+    var machine = '/';
 
-    $('#Blogin').click(function () {
+    $('#Blogin').click(function ()
+    {
         var form_data = new FormData($('#loginForm')[0]);
         //alert()
         $.ajax({
@@ -14,7 +16,8 @@ window.onload = function () {
             cache: false,
             processData: false,
             async: true,
-            success: function (data) {
+            success: function (data)
+            {
                 if (data.status == "fatal") {
                     alert("The user and/or password don't match our records!")
                     //window.open(machine+"login","_self")
@@ -27,7 +30,8 @@ window.onload = function () {
     });
 
 
-    forgot_pass = function () {
+    forgot_pass = function ()
+    {
         email = $("#loginEMAIL").val()
 
 
@@ -39,7 +43,8 @@ window.onload = function () {
             }),
             async: true,
             contentType: "application/json; charset=utf-8",
-            success: function (dat) {
+            success: function (dat)
+            {
                 alert(dat.status)
             }
         });

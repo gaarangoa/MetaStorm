@@ -37,3 +37,4 @@ watch.log
 .TemporaryItems/
 .vscode
 logs/metastorm.log
+backend.env
