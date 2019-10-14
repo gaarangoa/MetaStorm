@@ -683,8 +683,9 @@ def RunMetaGen():
         pid = T[0]['project_id']
         arg = base64.b64encode(json.dumps(
             [data, refs, sid, uid, pip, rootvar.__FILEDB__, S, T]))
+        aff=S['user_affiliation']
         SArc = bench2archu(
-            'python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
+            'python /groups/metastorm_cscee/MetaStorm/process.py ' + arg,aff)
 
         if 'Maximum number of jobs already in queue for user' in SArc['error']:
             SArc.update({'max_jobs_error': True})
