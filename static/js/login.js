@@ -1,7 +1,8 @@
 window.onload = function ()
 {
 
-    var machine = '/';
+    // var machine = '/';
+    var machine = '/metastorm2/';
 
     $('#Blogin').click(function ()
     {
