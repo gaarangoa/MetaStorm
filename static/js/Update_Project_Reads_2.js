@@ -637,7 +637,7 @@ $(document).on("click","#ReRunSampleGetForm", function(){
       
       
       
-      //console.log(samples)
+      console.log(samples)
       
       $("#metadata_table").append("<div class='overlay' id='metadata_table_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
       

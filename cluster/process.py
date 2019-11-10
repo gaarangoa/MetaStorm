@@ -86,5 +86,3 @@ except:
 
 os.system('cd '+do+' && /opt/torque/torque/bin/qsub arc_run.qsub ')
 
-
-# email.send_email('avc','gustavo1@vt.edu','abc','abc')

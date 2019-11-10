@@ -436,10 +436,13 @@ def insert_samples():
                 g.db.execute(
                     'INSERT INTO project_status  VALUES (?,?,?,?,?)', (uid, pid, id, 'created', pip))
                 g.db.commit()
+        
         samples = []
         ids = {}
         for item in sdata:
-            samples.append({'id': item[0]})
+            samples.append({
+                'id': item[0]
+            })
             ids[item[0]] = item[2]
         ##print samples
         return jsonify(samples=samples, ids=ids)

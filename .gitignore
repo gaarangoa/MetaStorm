@@ -38,3 +38,4 @@ watch.log
 .vscode
 logs/metastorm.log
 backend.env
+ssh/

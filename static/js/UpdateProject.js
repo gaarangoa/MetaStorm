@@ -226,6 +226,8 @@ window.onload = function ()
 
     var add_table_samples = function (data)
     {
+        console.log(data);
+
         var content = document.querySelector("#app_2_content")
         content.innerHTML = `
             <div class="col-md-12 no-gutters">
@@ -520,13 +522,13 @@ window.onload = function ()
                 let _data = x.data.map((e, i) =>
                 {
                     return {
-                        ID: e['sample_id'],
-                        Name: e['sample_name'],
-                        Condition: e['sample_set'],
-                        Environment: e['environment'],
-                        Library: e['library_preparation'],
-                        Mate1: e['reads1'],
-                        Mate2: e['reads2']
+                        ID: e['c.sample_id'],
+                        Name: e['c.sample_name'],
+                        Condition: e['c.sample_set'],
+                        Environment: e['c.environment'],
+                        Library: e['c.library_preparation'],
+                        Mate1: e['c.reads1'],
+                        Mate2: e['c.reads2']
                     }
                 });
 
@@ -904,7 +906,7 @@ window.onload = function ()
 
 
 
-            //console.log(samples)
+            console.log(samples)
 
             // $("#metadata_table").append("<div class='overlay' id='metadata_table_overlay'><i class='fa fa-refresh fa-spin'></i></div>")
 
@@ -919,19 +921,24 @@ window.onload = function ()
                 }),
                 async: true,
                 contentType: "application/json; charset=utf-8",
-                success: function (data)
+                success: function (response)
                 {
-                    // console.log(data, pip)
+                    console.log(response);
 
-                    for (i = 0; i < data.samples.length; i++) {
-                        $("#SampleNameSelect").append('<option value=' + data.samples[i]['c.sample_name'] + '>' + data.ids[data.samples[i].id] + '</option>')
-                    }
+                    // response.samples.map((i, e) =>
+                    // {
+                    //     $("#SampleNameSelect").append('<option value=' + response.ids[e.id] + '>' + e.id + '</option>')
+                    // })
+
+                    // for (i = 0; i < response.samples.length; i++) {
+                    //     $("#SampleNameSelect").append('<option value=' + data.samples[i]['c.sample_name'] + '>' + data.ids[data.samples[i].id] + '</option>')
+                    // }
                     setupNumberSamples();
                     alert('The metadata has been stored.');
                     // $("#metadata_table_overlay").remove()
                 }
 
-                //get_run_table()
+                // get_run_table()
 
 
             });
