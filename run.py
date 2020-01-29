@@ -1384,6 +1384,105 @@ def retrieve_job_status():
 
     return jsonify(status=["done"])
 
+# ******************************************************************************
+# APIs added for integration with AgroSeek
+# ******************************************************************************
+
+@app.route('/get_projects_for_user_id', methods=['GET','POST'])
+def get_projects_for_user_id():
+    try:
+        data = request.get_json()
+        uid = data["uid"]
+        projects = query_db('select project.* from project join user_projects ' +
+            'on project.project_id = user_projects.project_id where user_id="' + uid + '"')
+        return jsonify(projects=list(projects))
+    except Exception as inst:
+        return "ERROR: "+str(inst)
+
+@app.route('/get_samples_for_project_id', methods=['GET', 'POST'])
+def get_samples_for_project_id():
+    try:
+        data = request.get_json()
+        uid = data["uid"]
+        pid = data["pid"]
+        samples = query_db('select * from samples where project_id="' + pid + '"')
+        return jsonify(samples=list(samples))
+    except Exception as inst:
+        return "ERROR: "+str(inst)
+
+@app.route('/get_references_for_sample_id', methods=['GET', 'POST'])
+def get_references_for_sample_id():
+    try:
+        data = request.get_json()
+        uid = data["uid"]
+        sid = data["sid"]
+
+        samples = query_db('select * from samples where sample_id="'+sid+'"')
+        pid = samples[0]["project_id"]
+
+        references = {}
+        for pip in ["matches", "assembly"]:
+            references[pip] = []
+            datasets = query_db('select * from ' + pip + ' where project_id="' + pid + '" and sample_id="' + sid + '"')
+
+            for dataset in datasets:
+                rid = dataset['datasets']
+                database = query_db('select reference_name from reference where reference_id="' + rid + '"')
+                reference = {"reference_id":rid, "reference_name": database[0]['reference_name']}
+                references[pip].append(reference)
+
+        return jsonify(sample=samples[0], references=references)
+    except Exception as inst:
+        return "ERROR: "+str(inst)
+
+@app.route('/get_results_for_sample_id', methods=['GET', 'POST'])
+def get_results_for_sample_id():
+    try:
+        data = request.get_json()
+        uid = data["uid"]
+        sid = data["sid"]
+        rid = data["rid"]
+        result = {}
+        
+        samples = query_db('select * from samples where sample_id="'+sid+'"')
+        pid = samples[0]["project_id"]
+        projects = query_db('select * from project where project_id="'+pid+'"')
+        xpath = projects[0]["project_path"]
+        sample = rootvar.samples(samples[0].values(), xpath)
+         
+        for pip in ["matches", "assembly"]:
+            result[pip] = {}
+            
+            for analysis in ["function", "taxonomy"]:
+                result[pip][analysis] = []
+                try:
+                    database = query_db('select reference_name from reference where reference_id="' + rid + '"')
+                    reference = {"reference_id":rid, "reference_name": database[0]['reference_name'], "annotations": []}
+                    rf = rootvar.result_files(pid, analysis, pip, sid, rid)
+                    
+                    view = rootvar.ViewSampleResults(sample, pip, rid, analysis, rf)
+                    if analysis == "function":    
+                        function = view.func_structure(pid,pip,sid)
+                        for gene_id, cn16S in function['Cn16S'].items():
+                            for category_id in cn16S[1].split(','):
+                                category = function['D'][category_id]
+                                counts = function['A'][category]
+                                description = function['B'][category]
+
+                                counts.update({"gene_id": gene_id, "gene_counts": float(cn16S[2]), "gene_n16s": float(cn16S[3]), "gene_rpkm": float(function['CRPKM'][gene_id][3]), "function":description.get('X1'), "description": description.get('X2')})
+                                reference['annotations'].append(counts)
+                    elif analysis == "taxonomy":
+                        with open(rf.json) as data_file:
+                            data = json.load(data_file)
+                        reference['annotations'].append(data)
+                    
+                    if reference['annotations']:
+                        result[pip][analysis].append(reference)
+                except Exception as e:
+                    pass
+        return jsonify(sample=samples[0],results=result)
+    except Exception as inst:
+        return "ERROR: "+str(inst)
 
 if __name__ == '__main__':
     app.run(debug=True)
