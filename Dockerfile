@@ -1,14 +1,14 @@
 FROM python:2.7
-RUN pip install flask
-RUN pip install pymongo
-RUN pip install flask_cors
-RUN pip install requests
-RUN pip install numpy
+RUN pip install flask==1.0.2
+RUN pip install pymongo==3.7.2
+RUN pip install flask_cors==3.0.6
+RUN pip install requests==2.18.4
+RUN pip install numpy==1.15.4
 RUN pip install networkx==1.11
-RUN pip install sklearn
-RUN pip install biopython
-RUN pip install paramiko
-RUN pip install scp
-RUN pip install fastcluster
+RUN pip install sklearn==0.20.3
+RUN pip install biopython==1.73
+RUN pip install paramiko==2.4.2
+RUN pip install scp==0.13.2
+RUN pip install fastcluster==1.1.25
 
 
