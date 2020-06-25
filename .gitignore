@@ -7,7 +7,6 @@ cluster/options.py
 Files/
 SQL/backup
 tmp/
-static/buttons/
 static/Checkboxes/
 static/crossfilter/
 static/cytoscape.js-2.4.6/
@@ -16,7 +15,6 @@ static/icheck/
 static/inchlib/
 static/index/
 static/jquery/
-static/jqw/
 static/jqwidgets/
 static/jsold/
 static/metadata/
