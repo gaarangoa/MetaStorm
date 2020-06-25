@@ -11,7 +11,6 @@ static/Checkboxes/
 static/crossfilter/
 static/cytoscape.js-2.4.6/
 static/d3tooltip/
-static/icheck/
 static/inchlib/
 static/index/
 static/jquery/
@@ -24,7 +23,6 @@ static/old/
 static/php_heatmap/
 static/Statistics/
 static/tabs/
-static/tipped/
 static/upload/
 app/lib/inchlib/setup.py
 watch.log
