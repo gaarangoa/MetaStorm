@@ -5,7 +5,7 @@ min/admin/opts.py
 REST_admin/database/
 cluster/options.py
 Files/
-SQL
+SQL/backup
 tmp/
 static/buttons/
 static/Checkboxes/
