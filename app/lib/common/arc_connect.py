@@ -1,5 +1,5 @@
 import paramiko, json, base64
-from app.lib.inchlib import setup as st
+import os
 from scp import SCPClient
 
 def bench2archu(arg):
@@ -8,7 +8,7 @@ def bench2archu(arg):
     s = paramiko.SSHClient()
     s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     s.load_system_host_keys()
-    s.connect(base64.b64decode(st.htsk), 22, base64.b64decode(st.usx), base64.b64decode(st.hst), timeout=10)
+    s.connect(base64.b64decode(os.environ['htsk']), 22, base64.b64decode(os.environ['usx']), base64.b64decode(os.environ['hst']), timeout=10)
     stdin, stdout, stderr = s.exec_command(arg)
     return {"out":stdout.read(),"error":stderr.read()}
     s.close()
