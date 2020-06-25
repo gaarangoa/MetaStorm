@@ -1,6 +1,6 @@
 from app.lib.run.MAIN_PROCESS import process as MP
 from app.lib.run.Assembly import idbaud as idba
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import os, re
 from app.lib.common import module
 from app.lib.common import rootvar

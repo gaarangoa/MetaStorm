@@ -495,7 +495,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']'''
 
 
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import requests
 from multiprocessing import Process
 
