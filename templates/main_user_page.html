@@ -11,23 +11,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta content="Customized Metagenomics analysis" name="description">
-        <meta content="MetaStorm, Metagenomics, Analysis, Samples, soils, environmental, enginnering, genomics, NGS, WGS, Amplicon, sequencing, Taxonomy, functional, CARD, antibiotic resistance, genes, genomes, scaffolds, contigs, bacteria" name="subject">
+        <meta
+            content="MetaStorm, Metagenomics, Analysis, Samples, soils, environmental, enginnering, genomics, NGS, WGS, Amplicon, sequencing, Taxonomy, functional, CARD, antibiotic resistance, genes, genomes, scaffolds, contigs, bacteria"
+            name="subject">
 
         <!-- Bootstrap 3.3.4 -->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css"
+            href="{{ url_for('static', filename='template/bootstrap/css/bootstrap.min.css') }}">
         </link>
         <!-- Font Awesome Icons -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
+            type="text/css" />
         <!-- Ionicons -->
-        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet"
+            type="text/css" />
         <!-- Theme style -->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}">
+        <link rel="stylesheet" type="text/css"
+            href="{{ url_for('static', filename='template/dist/css/AdminLTE.css') }}">
         </link>
         <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}">
+        <link rel="stylesheet" type="text/css"
+            href="{{ url_for('static', filename='template/dist/css/skins/skin-blue.min.css') }}">
         </link>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -46,24 +53,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <!-- pretty tables -->
-        <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
-        <script src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js"></script>
+        <link href="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.css"
+            rel="stylesheet">
+        <script
+            src="https://docs.handsontable.com/2.0.0/bower_components/handsontable/dist/handsontable.full.min.js"></script>
 
 
         <style>
             #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
+                height: 400px;
+                width: 100%;
+            }
+
+        </style>
 
 
         <style>
             #recent_projects {
-            height: 612px;
-            width: 100%;
-        }
-    </style>
+                height: 612px;
+                width: 100%;
+            }
+
+        </style>
 
         <script>
             var $SCRIPT_ROOT = {
@@ -173,7 +184,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle" alt="User Image" />
+                            <img src="/MetaStorm/static/template/dist/img/user.png" class="img-circle"
+                                alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p id="UserName1"></p>
@@ -187,7 +199,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search..." />
                             <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                        class="fa fa-search"></i></button>
                             </span>
                         </div>
                     </form>
@@ -195,17 +208,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                     <ul id='sidemenu' class="sidebar-menu">
-                        <li class="treeview"><a target="_blank" href="https://bench.cs.vt.edu/argminer/#/forum"><i class="fa fa-comments-o"></i>
+                        <li class="treeview"><a target="_blank" href="https://bench.cs.vt.edu/argminer/#/forum"><i
+                                    class="fa fa-comments-o"></i>
                                 <span>Contact <span class="badge bg-yellow">New</span> </span></a></li>
                         <li class="treeview"><a href="#" onclick=open_home_page_form(userID)><i class="fa fa-home"></i>
                                 <span>Home Page</span></a></li>
-                        <li class="treeview"><a href="#" onclick=open_profile(userID)><i class="fa fa-edit"></i> <span>Profile</span></a></li>
+                        <li class="treeview"><a href="#" onclick=open_profile(userID)><i class="fa fa-edit"></i>
+                                <span>Profile</span></a></li>
                         <li class="treeview"><a href="#" onclick=open_comparison(userID)><i class="fa fa-pie-chart"></i>
                                 <span>Comparison tool</span></a></li>
-                        <li class="treeview"><a href="#" onclick=open_documentation(userID)><i class="fa fa-life-bouy"></i>
+                        <li class="treeview"><a href="#" onclick=open_documentation(userID)><i
+                                    class="fa fa-life-bouy"></i>
                                 <span>Documentation</span></a></li>
                         <!--<li class="treeview"><a href="https://bench.cs.vt.edu/Projects/MetaStorm/" target='_blank'><i class="fa fa-code"></i> <span>Source code</span></a></li>-->
-                        <li class="treeview"><a href="https://github.com/gaarangoa/MetaStorm-webserver" target='_blank'><i class="fa fa-github"></i> <span>Source code - GitHub</span></a></li>
+                        <li class="treeview"><a href="https://github.com/gaarangoa/MetaStorm-webserver"
+                                target='_blank'><i class="fa fa-github"></i> <span>Source code - GitHub</span></a></li>
                         <li class="treeview"><a href="#" onclick=logout(userID)><i class="fa fa-sign-out"></i> <span>Log
                                     out</span></a></li>
                         <!--<li class="active"><a><i class="fa fa-arrow-circle-up"></i> <span>Help</span></a></li>-->
@@ -336,7 +353,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="info-box-content">
                                 <br>
                                 <center><span class="info-box-text">Reference datasets</span></center>
-                                <center><span id='total_number_of_reference_datasets' class="info-box-number"></span></center>
+                                <center><span id='total_number_of_reference_datasets' class="info-box-number"></span>
+                                </center>
 
                             </div>
                             <!-- /.info-box-content -->
@@ -401,8 +419,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div> -->
 
 
+                        <div class="col-md-7" style="height: 30%; overflow: auto;">
+                            <div class="box box-solid box-primary">
+                                <div class="box-body">
+                                    <a class="twitter-timeline" style="font-size: 10px !important;" data-height="300"
+                                        data-link-color="#19CF86"
+                                        href="https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw">Updates</a>
+                                    <script async src="https://platform.twitter.com/widgets.js"
+                                        charset="utf-8"></script>
+                                </div>
 
-                        <div class="col-md-4">
+                                <div class="box-footer">
+                                    <a href="https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw"
+                                        class="twitter-follow-button" data-show-count="false">Follow us</a>
+                                    <script async src="https://platform.twitter.com/widgets.js"
+                                        charset="utf-8"></script>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-5">
 
                             <div class="box box-primary" id="MainProjectSetup">
                                 <div class="box-header with-border">
@@ -414,10 +452,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- form start -->
 
                                 <div class="box-body">
-                                    <p>Please fill the form below and click on submit once you have finished. Fill up a complete description of your project. </p>
+                                    <p>Please fill the form below and click on submit once you have finished. Fill up a
+                                        complete description of your project. </p>
                                     <div class="form-group">
                                         <label for="ProjectName">Project Name</label>
-                                        <input type="text" class="form-control" id="ProjectName" placeholder="Enter name of your project">
+                                        <input type="text" class="form-control" id="ProjectName"
+                                            placeholder="Enter name of your project">
                                     </div>
                                     <!--
                      <div class="form-group">
@@ -427,7 +467,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <label>Project description</label>
                                     <div class="form-group">
-                                        <textarea style="width:100%; height:75px" id="ProjectDescription" placeholder="Enter the full description of the project"></textarea>
+                                        <textarea style="width:100%; height:75px" id="ProjectDescription"
+                                            placeholder="Enter the full description of the project"></textarea>
                                     </div>
 
                                 </div>
@@ -448,17 +489,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
 
 
-
-
-
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <div class="box box-solid box-primary " id="NewSample">
                                 <div class="box-header">
                                     <center>
                                         <h3 class="box-title"><b>My Projects</b></h3>
                                     </center>
                                     <div class="box-tools pull-right">
-                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i></button>
 
                                     </div>
                                     <!-- /.box-tools -->
@@ -466,30 +505,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.box-header -->
 
                                 <div class="box-body" id="NewSampleBody">
-                                    <p>Explore and process your current samples. First, select the project you want to analyze and then click on the type of analysis. <code><b>Assembly</b></code> <i class="fa fa-server" style="color:rgb(200,0,30)"></i> or
-                                        <code><b>Read matching</b></code> <i class="fa fa-sliders" style="color:rgb(10,0,200)"></i> pipeline. Note: The raw data and metadata are independent of the analysis pipeline. For instance, if you create a sample under
-                                        the Assembly pipeline, the same sample name and metadata will be available for analysis under the Read matching pipeline. So, you don't need to fill up the same information twice.</p>
-                                    <center><label for="ProjectNameSelect">Select Project: </label><select id='ProjectNameSelect'></select></center>
-                                    <!--
-                   <label for="PipelineSelect">Select Pipeline: </label>
-                   <select id='PipelineSelect'>
-                     <option value="assembly">Assembly profile</option>
-                     <option value="matches">Read matchig profile</option>
-                   </select>
-					-->
+                                    <p>Explore and process your current samples. First, select the project you want to
+                                        analyze and then click on the type of analysis. <code><b>Assembly</b></code> <i
+                                            class="fa fa-server" style="color:rgb(200,0,30)"></i> or
+                                        <code><b>Read matching</b></code> <i class="fa fa-sliders"
+                                            style="color:rgb(10,0,200)"></i> pipeline. Note: The raw data and metadata
+                                        are independent of the analysis pipeline. For instance, if you create a sample
+                                        under
+                                        the Assembly pipeline, the same sample name and metadata will be available for
+                                        analysis under the Read matching pipeline. So, you don't need to fill up the
+                                        same information twice.
+                                    </p>
+                                    <br><br>
+                                    <center><label for="ProjectNameSelect">Select Project: </label><select
+                                            id='ProjectNameSelect'></select></center>
+
                                     <center>
-                                        <a href="#" id="assembly_go" class="button button-rounded button-flat-primary"> <i class="fa fa-server" style="color:rgb(255,255,255)"></i> <b>Assembly</b></a>
-                                        <a href="#" id="matches_go" class="button button-rounded button-flat-action"> <i class="fa fa-sliders" style="color:rgb(255,255,255)"></i> <b>Read Matching</b></a>
-                                        <a href="#" id="RemoveProject" class="button button-rounded button-flat-caution"><b>Remove
+                                        <br><br>
+                                        <a href="#" id="assembly_go" class="button button-rounded button-flat-primary">
+                                            <i class="fa fa-server" style="color:rgb(255,255,255)"></i>
+                                            <b>Assembly</b></a>
+                                        <a href="#" id="matches_go" class="button button-rounded button-flat-action"> <i
+                                                class="fa fa-sliders" style="color:rgb(255,255,255)"></i> <b>Read
+                                                Matching</b></a>
+                                        <a href="#" id="RemoveProject"
+                                            class="button button-rounded button-flat-caution"><b>Remove
                                                 Project</b></a>
                                     </center>
-
-                                    <!--
-                   <div class="box-footer">
-                     <center><button id="UpdateProject" class="btn btn-primary"><i class="fa fa-plus"> Select  </i></button>
-                     <button id="RemoveProject" class="btn btn-warning "><i class="fa fa-minus"> Remove  </i></button></center>
-                   </div>
-				   -->
+                                    <br><br>
                                 </div>
 
                                 <div class="overlay" id='my_projects_overlay'>
@@ -502,25 +545,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
 
 
-                        <div class="col-md-8">
+                        <div class="col-md-5">
                             <div class="box box-solid box-success" id="ProjectStatus">
                                 <div class="box-header">
                                     <center>
                                         <h3 class="box-title"><b>Customize Reference Database</b></h3>
                                     </center>
                                     <div class="box-tools pull-right">
-                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i></button>
                                     </div>
                                     <!-- /.box-tools -->
                                 </div>
                                 <!-- /.box-header -->
 
                                 <div class="box-body">
-                                    <p>Submit your own reference data set for helping to analyze your metagenomic samples. For details, click on the <code> button below or check the user manual.</code></p>
+                                    <p>Submit your own reference data set for helping to analyze your metagenomic
+                                        samples. For details, click on the
+                                        <code> button below or check the user manual.</code>
+                                    </p>
                                 </div>
 
                                 <div class="box-footer">
-                                    <button id="upload_reference" class="btn btn-success">Submit a new reference database</button>
+                                    <button id="upload_reference" class="btn btn-success">Submit a new reference
+                                        database</button>
 
 
                                 </div>
@@ -534,21 +582,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.box -->
                         </div>
 
-                        <div class="col-md-4" style="height: 20%; overflow: auto;"> 
-                                <div class="box box-solid box-primary">
-                                    <div class="box-body">
-                                            <a class="twitter-timeline" data-height="300" data-link-color="#19CF86" href="https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw">Tweets by MetagenomicsVT</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                                    </div>
-    
-                                    <div class="box-footer">
-                                        <a href="https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow us</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                                    </div>
-    
-                                </div>
-                                
-                            </div>
 
-                        <div class="col-md-8">
+
+                        <div class="col-md-12">
                             <div class="box box-solid box-primary">
                                 <div class="box-body">
                                     <h3>
@@ -556,31 +592,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </h3>
                                     <h4>We are here to help!</h4>
                                     <p>
-                                        We are happy to announce the released of a new tool called <a target="_blank" href="https://bench.cs.vt.edu/argminer/#/home">ARGminer
-                                            Blogs</a> where users can post issues, questions, requests regarding any topic related to metagenomics analysis. Including our tools <a target="_blank" href="https://bench.cs.vt.edu/MetaStorm/">MetaStorm</a>,
-                                        <a target="_blank" href="https://bench.cs.vt.edu/deeparg">deepARG</a> <a target="_blank" href="https://bench.cs.vt.edu/nanoarg/">nanoARG</a>,
-                                        <a target="_blank" href="https://bench.cs.vt.edu/argminer/">ARGminer</a> or any topic in general.
+                                        We are happy to announce the released of a new tool called <a target="_blank"
+                                            href="https://bench.cs.vt.edu/argminer/#/home">ARGminer
+                                            Blogs</a> where users can post issues, questions, requests regarding any
+                                        topic related to metagenomics analysis. Including our tools <a target="_blank"
+                                            href="https://bench.cs.vt.edu/MetaStorm/">MetaStorm</a>,
+                                        <a target="_blank" href="https://bench.cs.vt.edu/deeparg">deepARG</a> <a
+                                            target="_blank" href="https://bench.cs.vt.edu/nanoarg/">nanoARG</a>,
+                                        <a target="_blank" href="https://bench.cs.vt.edu/argminer/">ARGminer</a> or any
+                                        topic in general.
                                     </p>
                                     <p>
                                         We will be also posting tutorials for metagenomic analysis such as:
-                                        <ul>
-                                            <li>
-                                                <a target="_blank" href="https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=1541203083443">How
-                                                    to upload a new protein database to MetaStorm</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=1542057997524">How
-                                                    to build a co-occurrence network from MetaStorm assembly
-                                                    pipeline</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://bench.cs.vt.edu/argminer/#/forum">and more
-                                                    ...</a>
-                                            </li>
-                                        </ul>
+                                    <ul>
+                                        <li>
+                                            <a target="_blank"
+                                                href="https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=1541203083443">How
+                                                to upload a new protein database to MetaStorm</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank"
+                                                href="https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=1542057997524">How
+                                                to build a co-occurrence network from MetaStorm assembly
+                                                pipeline</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://bench.cs.vt.edu/argminer/#/forum">and more
+                                                ...</a>
+                                        </li>
+                                    </ul>
                                     </p>
                                     <p>
-                                        This is the fasttest way to get in touch with our team to assist you in any issue you have when using MetaStorm. We would love to have your feedback to improve our service and add more features than may be important for metagenomic analisis that metastorm
+                                        This is the fasttest way to get in touch with our team to assist you in any
+                                        issue you have when using MetaStorm. We would love to have your feedback to
+                                        improve our service and add more features than may be important for metagenomic
+                                        analisis that metastorm
                                         is lacking at the moment.
                                     </p>
 
@@ -622,7 +668,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <h2 class="box-title"><b>Project's Location</b></h2>
                                     </center>
                                     <div class="box-tools pull-right">
-                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i></button>
                                     </div>
                                     <!-- /.box-tools -->
                                 </div>
@@ -632,7 +679,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div id="map"></div>
                                 </div>
 
-                                <div class="overlay" id='project_location_overlay'><i class="fa fa-refresh fa-spin"></i></div>
+                                <div class="overlay" id='project_location_overlay'><i class="fa fa-refresh fa-spin"></i>
+                                </div>
 
                             </div>
                             <!-- /.box -->
@@ -712,7 +760,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer">
-                                        <button type="button" class="btn btn-primary" onclick=update_profile(userID)>Update
+                                        <button type="button" class="btn btn-primary"
+                                            onclick=update_profile(userID)>Update
                                             Profile</button>
                                     </div>
                                 </form>
@@ -749,7 +798,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <div class="form-group" hidden>
                                             <label for="pass_user_id">User ID</label>
-                                            <input type="password" class="form-control" id="pass_user_id" name="pass_user_id">
+                                            <input type="password" class="form-control" id="pass_user_id"
+                                                name="pass_user_id">
                                         </div>
 
                                     </div>
@@ -780,13 +830,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <a href="https://bench.cs.vt.edu/Projects/MetaStormUserManual.pdf" target='_blank'>Pdf
+                                    <a href="https://bench.cs.vt.edu/Projects/MetaStormUserManual.pdf"
+                                        target='_blank'>Pdf
                                         User Manual</a>
                                     <div>
                                         <h3>User Account:</h3>
                                         <p>
-                                            First, either log in as a guest or login to your user account. If you login as a guest, you can visualize public MetaStorm projects, but can not run any analysis. To login to your account, just type your email (user ID) and password. If you have not already
-                                            registered for MetaStorm, you can create an account by filling in your name, email, and orginization as well as agreeing to the terms on the Request new account page. Once you have done this, wait for an email confirming
+                                            First, either log in as a guest or login to your user account. If you login
+                                            as a guest, you can visualize public MetaStorm projects, but can not run any
+                                            analysis. To login to your account, just type your email (user ID) and
+                                            password. If you have not already
+                                            registered for MetaStorm, you can create an account by filling in your name,
+                                            email, and orginization as well as agreeing to the terms on the Request new
+                                            account page. Once you have done this, wait for an email confirming
                                             you new account.
                                         </p>
                                         <img src="/MetaStorm/static/img/image08.png" width="200" height="204"></img>
@@ -795,14 +851,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div>
                                         <h3>Home Page:</h3>
                                         <p>
-                                            On the Home Page you can create new projects, upload new reference databases, browse other projects that have been submitted to MetaStorm, and see projects you have already created.
+                                            On the Home Page you can create new projects, upload new reference
+                                            databases, browse other projects that have been submitted to MetaStorm, and
+                                            see projects you have already created.
                                         </p>
                                     </div>
                                     <div>
                                         <div class="col-md-5">
                                             <h4>Creating a new project:</h4>
                                             <p>
-                                                This lets you create new projects after entering a project name and description.
+                                                This lets you create new projects after entering a project name and
+                                                description.
                                             </p>
                                         </div>
                                         <img src="/MetaStorm/static/img/image04.png" width="419" height="198"></img>
@@ -811,56 +870,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-md-12">
                                             <h4>Reference Customization:</h4>
                                             <p>
-                                                This interface will allow you to submit your own reference database. You will be able to use it during your metagenomics analysis.
+                                                This interface will allow you to submit your own reference database. You
+                                                will be able to use it during your metagenomics analysis.
                                             </p>
                                             <p>
-                                                First you need to prepare the database in the required format. MetaStorm requires two files for setting up the database. Depending on the type of database (taxonomy or annotation), you need to provide a file that contains the taxonomy or the functions
+                                                First you need to prepare the database in the required format. MetaStorm
+                                                requires two files for setting up the database. Depending on the type of
+                                                database (taxonomy or annotation), you need to provide a file that
+                                                contains the taxonomy or the functions
                                                 for each gene as follows:
-                                                <div class="container">
-                                                    1. Gene database <b>(Mandatory)</b>. A fasta file where the header corresponds to the gene id e.g.,
-                                                    <div class="container" style="color:#3c8dbc;">
-                                                        &gtgene_0001<br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                                        <br /> &gtgene_0002
-                                                        <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                                        <br /> &gtgene_0003
-                                                        <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
-                                                    </div>
+                                            <div class="container">
+                                                1. Gene database <b>(Mandatory)</b>. A fasta file where the header
+                                                corresponds to the gene id e.g.,
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    &gtgene_0001<br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    <br /> &gtgene_0002
+                                                    <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
+                                                    <br /> &gtgene_0003
+                                                    <br /> ACCTGAGGTCATACAGACATAGCACACAGATACAGATACAGATAGAC
                                                 </div>
-                                                <div class="container">
-                                                    2. Taxonomy link file: A tab delimited file containing the gene id and the full taxonomy (as in SILVA database) separated by “;”. For instance:
-                                                    <div class="container" style="color:#3c8dbc;">
-                                                        gene_001 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
-                                                        <br /> gene_002 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
-                                                        <br /> gene_003 Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
-                                                    </div>
+                                            </div>
+                                            <div class="container">
+                                                2. Taxonomy link file: A tab delimited file containing the gene id and
+                                                the full taxonomy (as in SILVA database) separated by “;”. For instance:
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    gene_001
+                                                    Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                                    <br /> gene_002
+                                                    Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
+                                                    <br /> gene_003
+                                                    Bacteria;Proteobacteria;Betaproteobateria;Neisseriales;Neisseriaceae;Neiseria;Neiseria-Meningitidis
                                                 </div>
-                                                <div class="container">
-                                                    3. Functional link file: A tab delimited file similar to the taxonomy file, containing the function class or category. If a gene contains multiple functional associations, put all of them in different lines, for instance:
-                                                    <div class="container" style="color:#3c8dbc;">
-                                                        gene_001 Transcription<br /> gene_002 Transcription<br /> gene_002 RNA-Binding
-                                                        <br /> gene_003 DNA-Repair
-                                                    </div>
+                                            </div>
+                                            <div class="container">
+                                                3. Functional link file: A tab delimited file similar to the taxonomy
+                                                file, containing the function class or category. If a gene contains
+                                                multiple functional associations, put all of them in different lines,
+                                                for instance:
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    gene_001 Transcription<br /> gene_002 Transcription<br /> gene_002
+                                                    RNA-Binding
+                                                    <br /> gene_003 DNA-Repair
                                                 </div>
-                                                <div class="container">
-                                                    4. Description File: Upload a tab delimited file named "dataset.description" containing the description of the functional categories as follows:
-                                                    <div class="container" style="color:#3c8dbc;">
-                                                        Transcription GO:0003700 transcription factor activity, sequence-specific DNA binding<br /> Membrane GO:0005737 Cellular component
-                                                        <br /> DNARepair GO:0006281 The process of restoring DNA after damage.
-                                                        <br />
-                                                    </div>
-                                                    * descriptions are shown for illustration, the 2nd and 3rd fields can be filled with a more comprehensive description.
+                                            </div>
+                                            <div class="container">
+                                                4. Description File: Upload a tab delimited file named
+                                                "dataset.description" containing the description of the functional
+                                                categories as follows:
+                                                <div class="container" style="color:#3c8dbc;">
+                                                    Transcription GO:0003700 transcription factor activity,
+                                                    sequence-specific DNA binding<br /> Membrane GO:0005737 Cellular
+                                                    component
+                                                    <br /> DNARepair GO:0006281 The process of restoring DNA after
+                                                    damage.
+                                                    <br />
                                                 </div>
-                                                <br /> In order to setup your <u>new dataset</u> you need to follow the next steps:
+                                                * descriptions are shown for illustration, the 2nd and 3rd fields can be
+                                                filled with a more comprehensive description.
+                                            </div>
+                                            <br /> In order to setup your <u>new dataset</u> you need to follow the next
+                                            steps:
+                                            <div class="container">
+                                                1. Click on <u>Submit a reference dataset</u> under the <u>Customize
+                                                    Reference Database</u> box<br /> 2. Fill out the form with the
+                                                required information:
                                                 <div class="container">
-                                                    1. Click on <u>Submit a reference dataset</u> under the <u>Customize
-                                                        Reference Database</u> box<br /> 2. Fill out the form with the required information:
-                                                    <div class="container">
-                                                        a. <b>Dataset name:</b> Type the name of your reference dataset<br /> b. <b>Sequence type:</b> Type if it is a gene or protein database.<br /> c. <b>Description:</b> IMPORTANT Insert the full description
-                                                        of the dataset
-                                                    </div>
-                                                    3. Click on <u>register reference</u><br /> 4. Upload the files<br /> 5. Choose the corresponding file for each type (Sequences, Taxnomy, Function)
-                                                    <br /> 6. Click on process.
+                                                    a. <b>Dataset name:</b> Type the name of your reference
+                                                    dataset<br /> b. <b>Sequence type:</b> Type if it is a gene or
+                                                    protein database.<br /> c. <b>Description:</b> IMPORTANT Insert the
+                                                    full description
+                                                    of the dataset
                                                 </div>
+                                                3. Click on <u>register reference</u><br /> 4. Upload the files<br /> 5.
+                                                Choose the corresponding file for each type (Sequences, Taxnomy,
+                                                Function)
+                                                <br /> 6. Click on process.
+                                            </div>
                                             </p>
                                         </div>
                                     </div>
@@ -868,7 +953,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-md-3">
                                             <h4>Browse Projects:</h4>
                                             <p>
-                                                This is a list of projects that have been analysed by MetaStorm. On projects that you have access to (your projects or ones that are public), there are links to the results of whichever pipelines have been run.
+                                                This is a list of projects that have been analysed by MetaStorm. On
+                                                projects that you have access to (your projects or ones that are
+                                                public), there are links to the results of whichever pipelines have been
+                                                run.
                                             </p>
                                         </div>
                                         <div class="col-md-9">
@@ -880,7 +968,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-md-4">
                                             <h4>My Projects:</h4>
                                             <p>
-                                                This interface lets you select one of your past projects to either remove or run through a pipeline. Clicking on one of the pipelines will take you to the Update Project page for the selected project.
+                                                This interface lets you select one of your past projects to either
+                                                remove or run through a pipeline. Clicking on one of the pipelines will
+                                                take you to the Update Project page for the selected project.
                                             </p>
                                         </div>
                                         <div class="col-md-8">
@@ -895,7 +985,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-md-12">
                                             <h4>Samples Page:</h4>
                                             <p>
-                                                The first thing you will see here is the Samples page which lets you see and edit metadata about the samples that you have uploaded for this project.
+                                                The first thing you will see here is the Samples page which lets you see
+                                                and edit metadata about the samples that you have uploaded for this
+                                                project.
                                             </p>
                                             <img src="/MetaStorm/static/img/image02.png" width="845" height="375"></img>
                                         </div>
@@ -905,7 +997,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </br>
                                             <h4>Project Page:</h4>
                                             <p>
-                                                The Project page displays the name and description of your project, lets you share this project with other email address, or make it public.
+                                                The Project page displays the name and description of your project, lets
+                                                you share this project with other email address, or make it public.
                                             </p>
                                             <img src="/MetaStorm/static/img/image01.png" width="833" height="291"></img>
                                         </div>
@@ -915,7 +1008,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </br>
                                             <h4>Upload Raw Files Page:</h4>
                                             <p>
-                                                The Upload Raw Files page lets you upload new samples as gzipped fastq files (e.g. Sample1_R1.fastq.gz).
+                                                The Upload Raw Files page lets you upload new samples as gzipped fastq
+                                                files (e.g. Sample1_R1.fastq.gz).
                                             </p>
                                             <img src="/MetaStorm/static/img/image03.png" width="840" height="415"></img>
                                         </div>
@@ -925,7 +1019,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </br>
                                             <h4>Setup Metadata Page:</h4>
                                             <p>
-                                                The Setup Metadata page lets you add the samples and associated metadata to your project. There are instructions for this at the bottom of the page.
+                                                The Setup Metadata page lets you add the samples and associated metadata
+                                                to your project. There are instructions for this at the bottom of the
+                                                page.
                                             </p>
                                             <img src="/MetaStorm/static/img/image11.png" width="836" height="376"></img>
                                         </div>
@@ -935,11 +1031,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </br>
                                             <h4>Run Analysys Page:</h4>
                                             <p>
-                                                The Run Analysis page lets you start the analysis of your samples using the selected pipeline after selecting which reference databases you want to use. This is where you the files that you have uploaded and the metadata that you entered.
+                                                The Run Analysis page lets you start the analysis of your samples using
+                                                the selected pipeline after selecting which reference databases you want
+                                                to use. This is where you the files that you have uploaded and the
+                                                metadata that you entered.
                                             </p>
                                             <img src="/MetaStorm/static/img/image09.png" width="843" height="385"></img>
                                             <p>
-                                                You will get an email notifying you of the pipeline's completion. The project will then be listed under the Browse Projects section of the main page. Clicking on the pipeline name under the Analysis column will take you to the Explore Project page.
+                                                You will get an email notifying you of the pipeline's completion. The
+                                                project will then be listed under the Browse Projects section of the
+                                                main page. Clicking on the pipeline name under the Analysis column will
+                                                take you to the Explore Project page.
                                             </p>
                                         </div>
                                     </div>
@@ -953,7 +1055,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </p>
                                             <img src="/MetaStorm/static/img/image12.png" width="795" height="172"></img>
                                             <p>
-                                                It displays the project and sample metadata. Clicking on the Unique Identifier for a sample will take you to the View Sample page.
+                                                It displays the project and sample metadata. Clicking on the Unique
+                                                Identifier for a sample will take you to the View Sample page.
                                             </p>
                                         </div>
                                     </div>
@@ -963,7 +1066,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div>
                                         <div class="col-md-12">
                                             <p>
-                                                This page shows the metadata for the selected sample, as well as results from the selected pipeline. It also lets you download the original sample files and Scaffolds and Genes found by the Assembly Pipeline.
+                                                This page shows the metadata for the selected sample, as well as results
+                                                from the selected pipeline. It also lets you download the original
+                                                sample files and Scaffolds and Genes found by the Assembly Pipeline.
                                             </p>
                                             <img src="/MetaStorm/static/img/image14.png" width="804" height="230"></img>
                                             <p></p>
@@ -983,7 +1088,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </p>
                                             <img src="/MetaStorm/static/img/image07.png" width="877" height="154"></img>
                                             <p>
-                                                It visualizes the breakup of taxonomical data (domain, phylum, class, order, family, genus, species) of each sample side by side.
+                                                It visualizes the breakup of taxonomical data (domain, phylum, class,
+                                                order, family, genus, species) of each sample side by side.
                                             </p>
                                             <img src="/MetaStorm/static/img/image00.png" width="798" height="448"></img>
                                         </div>
@@ -1025,9 +1131,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <h3>Selected Projects:</h3>
                             <select id="projects_compare_list" size=10 style="width: 100%"></select>
                             <center>
-                                <button onclick=remove_selection( "#projects_compare_list" ) id='selected_projects'> Clear
+                                <button onclick=remove_selection( "#projects_compare_list" ) id='selected_projects'>
+                                    Clear
                                 </button>
-                                <button onclick=button_selected_projects( "#projects_compare_list" ) id='selected_projects'>
+                                <button onclick=button_selected_projects( "#projects_compare_list" )
+                                    id='selected_projects'>
                                     Compare </button>
                             </center>
                             <div id='list_selected_projects'></div>
@@ -1040,7 +1148,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=ehXV&d=k1Wc56Z5EEs9EEgLlKLZKoNTJhBtXdBLv5cO3SOwkAU"></script>
+                <script type="text/javascript" id="clustrmaps"
+                    src="//cdn.clustrmaps.com/map_v2.js?u=ehXV&d=k1Wc56Z5EEs9EEgLlKLZKoNTJhBtXdBLv5cO3SOwkAU"></script>
 
 
 
@@ -1052,13 +1161,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <aside class="control-sidebar control-sidebar-dark control-sidebar-close">
                     <!-- Create the tabs -->
                     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                        <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                        <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i
+                                    class="fa fa-home"></i></a></li>
+                        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a>
+                        </li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <!-- Home tab content -->
-                        <div class="tab-pane active" id="control-sidebar-home-tab" </div> <!-- /.tab-pane -->
+                        <div class="tab-pane active" id="control-sidebar-home-tab" </div>
+                            <!-- /.tab-pane -->
                             <!-- Stats tab content -->
                             <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
                             <!-- /.tab-pane -->
@@ -1139,11 +1251,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- REQUIRED JS SCRIPTS -->
 
             <!-- jQuery 2.1.4 -->
-            <script type="text/javascript" src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+            <script type="text/javascript"
+                src="{{ url_for('static', filename='template/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
             <!-- Bootstrap 3.3.2 JS -->
-            <script type="text/javascript" src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript"
+                src="{{ url_for('static', filename='template/bootstrap/js/bootstrap.min.js') }}"></script>
             <!-- AdminLTE App -->
-            <script type="text/javascript" src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
+            <script type="text/javascript"
+                src="{{ url_for('static', filename='template/dist/js/app.min.js') }}"></script>
 
             <!--main js file-->
             <script type="text/javascript" src="{{ url_for('static', filename='js/common.js') }}"></script>
@@ -1185,7 +1300,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQ__-dkSKo4rGct8JR-zFGNHKdbdqGSc&callback=initMap"></script>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQ__-dkSKo4rGct8JR-zFGNHKdbdqGSc&callback=initMap"></script>
 
             <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the

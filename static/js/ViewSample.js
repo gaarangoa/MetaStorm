@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     // Project setup table
 
     // table with all the results from the assembly -  this is an overall of the assembly performance
@@ -8,7 +8,7 @@ window.onload = function() {
     sid = urlParam('sid');
     pip = urlParam('pip');
 
-    document.getElementById('download_tree').onclick = function() {
+    document.getElementById('download_tree').onclick = function () {
         var svgElement = $('#tree svg')[0];
         var simg = new Simg(svgElement);
         // Replace the current SVG with an image version of it.
@@ -30,7 +30,7 @@ window.onload = function() {
         data: JSON.stringify({ uid: uid }),
         async: true,
         contentType: 'application/json; charset=utf-8',
-        success: function(dat) {
+        success: function (dat) {
             $('#UserName1').html(dat.uname);
             $('#userID').html(dat.uid);
             $('#UserContact').html(dat.email);
@@ -46,7 +46,7 @@ window.onload = function() {
         async: true,
         data: JSON.stringify({ sql: 'select * from project where project_id="' + pid + '"' }),
         contentType: 'application/json; charset=utf-8',
-        success: function(x) {
+        success: function (x) {
             $('#updatePdescription').html(x.data[0]['project_description'] + '<br>');
             $('#updatePname').html(x.data[0]['project_name'] + '<br>');
             $('#updateProjectID').html('<b>Unique ID: </b>' + pid + '<br>');
@@ -60,7 +60,7 @@ window.onload = function() {
         async: true,
         data: JSON.stringify({ sql: 'select * from samples where sample_id="' + sid + '"' }),
         contentType: 'application/json; charset=utf-8',
-        success: function(x) {
+        success: function (x) {
             ////console.log(x.data)
             $('#updateSampleName').html('Sample: ' + x.data[0]['sample_name'] + '<br>');
             $('#sampleHead').html(x.data[0]['sample_set']);
@@ -99,7 +99,7 @@ window.onload = function() {
 
     // get the databases for taxonomy that you have used to run
 
-    download_f = function(x) {
+    download_f = function (x) {
         var rid = $('#selectFuncDataset option:selected').val();
         arc_pro = '/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/';
 
@@ -149,7 +149,7 @@ window.onload = function() {
             async: true,
             data: JSON.stringify({ file: file, uid: uid, sid: sid, pid: pid, name: x[2] }),
             contentType: 'application/json; charset=utf-8',
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
 
                 //e.preventDefault();  //stop the browser from following
@@ -162,7 +162,7 @@ window.onload = function() {
         });
     };
 
-    var breakdown = function(dataset) {
+    var breakdown = function (dataset) {
         sent = { uid: uid, pid: pid, sid: sid, rid: dataset, pip: pip };
         ////console.log(sent)
         ////console.log('THIS:',sent)
@@ -172,7 +172,7 @@ window.onload = function() {
             async: true,
             data: JSON.stringify(sent),
             contentType: 'application/json; charset=utf-8',
-            success: function(x) {
+            success: function (x) {
                 try {
                     console.log('breakdown', x);
                     total_hits = x.matrix[4];
@@ -182,7 +182,7 @@ window.onload = function() {
 
                     $('#blue_text_box').prepend(['<strong>Metagenome Summary</strong><p>' + x.matrix[5] + '</p>']);
 
-                    x.matrix[2].forEach(function(item, index) {
+                    x.matrix[2].forEach(function (item, index) {
                         $('#databases_run').append(
                             html_progress_bar(
                                 item[0],
@@ -196,7 +196,7 @@ window.onload = function() {
 
                         Tipped.create(
                             '#tp_' + item[2],
-                            function(element) {
+                            function (element) {
                                 return {
                                     title: item[0],
                                     content: '<div style="width:300px; min-height:50px; max-height:200px; overflow: auto">' +
@@ -204,19 +204,19 @@ window.onload = function() {
                                         '</div>'
                                 };
                             }, {
-                                skin: 'red'
-                            }
+                            skin: 'red'
+                        }
                         );
                     });
 
-                    x.matrix[3].forEach(function(item, index) {
+                    x.matrix[3].forEach(function (item, index) {
                         $('#databases_run_func').append(
                             html_progress_bar(item[0], item[1], total_hits, 100 * item[1] / total_hits, 'blue', item[2])
                         );
 
                         Tipped.create(
                             '#tp_' + item[2],
-                            function(element) {
+                            function (element) {
                                 return {
                                     title: item[0],
                                     content: '<div style="width:300px; min-height:50px; max-height:200px; overflow: auto">' +
@@ -224,8 +224,8 @@ window.onload = function() {
                                         '</div>'
                                 };
                             }, {
-                                skin: 'red'
-                            }
+                            skin: 'red'
+                        }
                         );
                     });
                 } catch (e) {
@@ -255,7 +255,7 @@ window.onload = function() {
                 '" order by c.reference_name'
         }),
         contentType: 'application/json; charset=utf-8',
-        success: function(x) {
+        success: function (x) {
             //console.log(x)
 
             btaxo = [];
@@ -296,7 +296,7 @@ window.onload = function() {
     /// TAXONOMY TAB
     // when click on visualize compute with the selected database
 
-    $(document).on('click', '#VisualizeDBR', function() {
+    $(document).on('click', '#VisualizeDBR', function () {
         $('#tree').html('');
         var rid = $('#selectDataset option:selected').val();
         ////console.log(rid)
@@ -306,7 +306,7 @@ window.onload = function() {
             async: true,
             data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip, value: 'rpkm', rid: rid }),
             contentType: 'application/json; charset=utf-8',
-            success: function(x) {
+            success: function (x) {
                 console.log(x);
 
                 //treeData, domain,tag,clpd,names, Pcolor='rpkm', width=3000, height=525, rsize=10, condition="one"
@@ -336,7 +336,7 @@ window.onload = function() {
         });
     });
 
-    $(document).on('click', '#loadFunction', function() {
+    $(document).on('click', '#loadFunction', function () {
         var rid = $('#selectFuncDataset option:selected').val();
         //alert([d.level,uid,pid,sid])
         sent = { uid: uid, pid: pid, sid: sid, pip: pip, rid: rid };
@@ -347,10 +347,14 @@ window.onload = function() {
             async: true,
             data: JSON.stringify(sent),
             contentType: 'application/json; charset=utf-8',
-            success: function(x) {
+            success: function (x) {
                 console.log(x);
                 individual_samples(x.m2);
-                //draw_pie_chart("#PieChartFunction",x.matrix, 'Function','pie',true)
+
+                $("#download_sample_function_id").html(
+                    '<a class="btn btn-default btn-xs" href="https://bench.cs.vt.edu/ftp/MetaStorm/' + pid + '/pipeline-' + pip + '_sid-' + sid + '_rid-' + rid + '-data.tsv"> <i class="fa fa-download"></i> Download Table</a>'
+                )
+
             }
         });
     });
@@ -359,7 +363,7 @@ window.onload = function() {
     // plot pie
     //******************************************************************************
 
-    var set_taxonomy_small_pie_chart = function(lid, div) {
+    var set_taxonomy_small_pie_chart = function (lid, div) {
         var rid = $('#selectDataset option:selected').val();
         //console.log(pip)
         $.ajax({
@@ -368,7 +372,7 @@ window.onload = function() {
             async: true,
             data: JSON.stringify({ uid: uid, pid: pid, sid: sid, tid: 'none', lid: lid, pip: pip, rid: rid }),
             contentType: 'application/json; charset=utf-8',
-            success: function(x) {
+            success: function (x) {
                 ////console.log(x)
                 draw_pie_chart(div, x.matrix, lid, 'pie', true);
             }
@@ -378,7 +382,7 @@ window.onload = function() {
     //******************************************************************************
     // Update plot pie
     //******************************************************************************
-    $(document).on('click', '#loadTaxoLevel', function() {
+    $(document).on('click', '#loadTaxoLevel', function () {
         var level = $('#LevelTaxoSelect option:selected').val();
         set_taxonomy_small_pie_chart(level);
     });
@@ -406,7 +410,7 @@ window.onload = function() {
             '</p>'
         ]);
 
-        $('#btn05').click(function(e) {
+        $('#btn05').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
@@ -425,7 +429,7 @@ window.onload = function() {
                 );
         });
 
-        $('#btn06').click(function(e) {
+        $('#btn06').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
@@ -444,13 +448,13 @@ window.onload = function() {
                 );
         });
 
-        $('#download_function_alignment').click(function(e) {
+        $('#download_function_alignment').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             download_f([4, pid, sid + '.' + rid + '.alignment.txt', sid, uid, 2]);
         });
 
-        $('#fbtn05').click(function(e) {
+        $('#fbtn05').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
@@ -469,7 +473,7 @@ window.onload = function() {
                 );
         });
 
-        $('#fbtn06').click(function(e) {
+        $('#fbtn06').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
@@ -488,7 +492,7 @@ window.onload = function() {
                 );
         });
 
-        $('#fbtn01').click(function(e) {
+        $('#fbtn01').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDatasetf option:selected').val();
             window.location.href =
@@ -503,7 +507,7 @@ window.onload = function() {
             async: true,
             data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
             contentType: 'application/json; charset=utf-8',
-            success: function(x) {
+            success: function (x) {
                 $('#blue_text_box').html([
                     $('#blue_text_box').html() +
                     '<br><br> Reads are assembled using <a target="_blank" href="http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/"><b>IDBA-UD</b></a> software. <br> In total ' +
@@ -537,7 +541,7 @@ window.onload = function() {
             async: true,
             data: JSON.stringify({ uid: uid, pid: pid, sid: sid, pip: pip }),
             contentType: 'application/json; charset=utf-8',
-            success: function(x) {
+            success: function (x) {
                 console.log('this matrix', x);
 
                 ////console.log(x)
@@ -563,7 +567,7 @@ window.onload = function() {
            window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+'/'+sid+"/"+"alignment."+rid+".matches");
         });*/
 
-        $('#fbtn02').click(function(e) {
+        $('#fbtn02').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
@@ -582,7 +586,7 @@ window.onload = function() {
                 );
         });
 
-        $('#fbtn03').click(function(e) {
+        $('#fbtn03').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
@@ -601,7 +605,7 @@ window.onload = function() {
                 );
         });
 
-        $('#fbtn04').click(function(e) {
+        $('#fbtn04').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
@@ -619,7 +623,7 @@ window.onload = function() {
                 );
         });
 
-        $('#fbtn05').click(function(e) {
+        $('#fbtn05').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             window.location.href =
@@ -637,7 +641,7 @@ window.onload = function() {
                 );
         });
 
-        $('#download_function_alignment').click(function(e) {
+        $('#download_function_alignment').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectFuncDataset option:selected').val();
             download_f([5, pid, sid + '.' + rid + '.alignment.txt', sid, uid, 2]);
@@ -657,7 +661,7 @@ window.onload = function() {
       window.location.href = machine_http+'download/'+Base64.encode("Files/PROJECTS/"+pid+"/matches/"+'/'+sid+"/"+"alignment."+rid+".matches");
   });*/
 
-        $('#btn02').click(function(e) {
+        $('#btn02').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =
@@ -676,7 +680,7 @@ window.onload = function() {
                 );
         });
 
-        $('#btn03').click(function(e) {
+        $('#btn03').click(function (e) {
             e.preventDefault(); //stop the browser from following
             var rid = $('#selectDataset option:selected').val();
             window.location.href =

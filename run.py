@@ -638,14 +638,14 @@ def process_up_ref_dataset():
 
         # make the directory at arc
         arcdir = '/groups/metastorm_cscee/MetaStorm/Files/REFERENCE/'
-        os.system('ssh gustavo1@newriver1.arc.vt.edu "mkdir -p ' +
+        os.system('ssh gustavo1@dragonstooth1.arc.vt.edu "mkdir -p ' +
                   arcdir+data['rid'] + '"')
         # scp=arcon()
 
         # move the files to arc
         # for fi in listdir(refdb['reference_path']):
         os.system('scp '+refdb['reference_path'] +
-                  '/* gustavo1@newriver1.arc.vt.edu:'+arcdir+"/"+data['rid']+"/")
+                  '/* gustavo1@dragonstooth1.arc.vt.edu:'+arcdir+"/"+data['rid']+"/")
         os.system('rm -r'+refdb['reference_path']+"/*")
 
         return 'ok'
@@ -660,8 +660,6 @@ def process_up_ref_dataset():
 # ******************************************************************************
 # ******************************************************************************
 # ******************************************************************************
-# ******************************************************************************
-from app.lib.common.arc_connect import bench2archu
 from app.lib.common.sqlite3_commands import update_jobs, update_status
 
 
@@ -681,11 +679,11 @@ def RunMetaGen():
         T = query_db('select * from samples where sample_id="'+sid+'"')
         date = time.strftime("%m/%d/%Y")
         pid = T[0]['project_id']
-        arg = base64.b64encode(json.dumps(
-            [data, refs, sid, uid, pip, rootvar.__FILEDB__, S, T]))
-        SArc = bench2archu(
-            'python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
+        arg = base64.b64encode(json.dumps([data, refs, sid, uid, pip, rootvar.__FILEDB__, S, T]))
+        SArc = bench2archu('python /groups/metastorm_cscee/MetaStorm/process.py ' + arg)
 
+        # os.system('ssh {}@{}.arc.vt.edu python /groups/metastorm_cscee/MetaStorm/process.py {}'.format('gustavo1', 'dragonstooth1', arg))
+        
         if 'Maximum number of jobs already in queue for user' in SArc['error']:
             SArc.update({'max_jobs_error': True})
             SArc.update({'max_jobs_error_message': 'Error: Sample was not run. Cluster is at its maximum capability and no more jobs can be run at this moment. Please try again later.'})
@@ -697,8 +695,7 @@ def RunMetaGen():
             return jsonify(SArc)
 
         x = sql.SQL(rootvar.__FILEDB__)
-        update_jobs(x, [uid, T[0]['project_id'], sid, pip, arg,
-                        'queue', 'normal', date, SArc['out'].split(".")[0]])
+        update_jobs(x, [uid, T[0]['project_id'], sid, pip, arg, 'queue', 'normal', date, SArc['out'].split('.')[0] ])
 
         val = x.exe('update samples set reads1="' +
                     data['read1']+'" where project_id="'+data['pid']+'" and sample_id="'+sid+'"')
@@ -1058,6 +1055,8 @@ def getFile(file_name):
 # ******************************************************************************
 # BEGIN: Get the one sample function data
 # ******************************************************************************
+import json
+import os
 @app.route('/get_functional_counts', methods=['GET', 'POST'])
 def get_functional_counts():
     try:
@@ -1073,13 +1072,53 @@ def get_functional_counts():
         # file=rootvar.__ROOTPRO__+"/"+pid+"/assembly/idba_ud/"+sid+"/pred.genes."+rid+".matches.function.abundance.results.sqlite3.db"
         x = sql.SQL(main_db)
         rf = rootvar.result_files(pid, "function", pip, sid, rid)
-        samples = x.exe('select * from samples where project_id="' +
-                        pid+'" and sample_id="'+sid+'"')
+        samples = x.exe('select * from samples where project_id="' + pid+'" and sample_id="'+sid+'"')
         xpath = x.project(pid)[0][4]
         sample = rootvar.samples(samples[0], xpath)
         x.close()
+
+        
+
         view = rootvar.ViewSampleResults(sample, pip, rid, analysis, rf)
-        return jsonify(matrix=view.func_one_sample(), m2=view.func_structure(pid, pip, sid))
+
+        matrix_ = view.func_one_sample()
+        data = view.func_structure(pid, pip, sid)
+        
+        try:
+            os.system( 'mkdir -p /home/raid/www/MetaStorm/main/tmp/{}/'.format(pid) )
+
+            out = open('/home/raid/www/MetaStorm/main/tmp/{}/pipeline-{}_sid-{}_rid-{}-data.tsv'.format(pid, pip, sid, rid), 'w')
+            out.write('sample_id\tgene_id\tgene_counts\tgene_16S_normalization\tgene_RPKM_normalization\tgene_functional_category_id\n')
+
+            for key in data['Cn16S']:
+                arr = data['Cn16S'][key][1].split(',')
+                for gidx in arr:
+                    category_id = data['D'][gidx]
+
+                    if data['A'][category_id]['counts'] > 0:
+                        out.write('{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n'.format(
+                            data['A'][category_id]['sample'],
+                            key, 
+                            data['Cn16S'][key][2],
+                            data['Cn16S'][key][3],
+                            data['CRPKM'][key][3],
+                            category_id,
+                            data['B'][category_id]['X1'],
+                            data['B'][category_id]['X2'],
+                            )
+                        )
+            
+            out.close()
+
+            # json.dump(
+            #     [matrix_, data], 
+            #     open('/home/raid/www/MetaStorm/main/tmp/{}/sid-{}_rid-{}-data.json'.format(pid, sid, rid), 'w')
+            # )
+
+        except:
+            pass
+
+        return jsonify(matrix=matrix_, m2=data)
     except Exception as inst:
         return "ERROR: "+str(inst)
 
@@ -1275,9 +1314,6 @@ def network():
 
 
 ################ DOWNLOAD FILES #################
-from app.lib.common.arc_connect import bench2archu, arcon
-
-
 @app.route('/download_files', methods=['GET', 'POST'])
 def download_files():
     try:

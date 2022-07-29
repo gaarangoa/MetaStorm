@@ -1,33 +1,42 @@
-
-import base64
-import json
-from app.lib.common import rootvar
-from app.lib.email import Email as email
-import os
 import sys
 sys.path.insert(0, "/groups/metastorm_cscee/MetaStorm/")
 
+import os
+from app.lib.email import Email as email
+from app.lib.common import rootvar
+import json
+import base64
 
-def qsub(ni, fi, idr):
+CLUSTER='dragonstooth'
+
+def qsub(ni, fi, idr, pip):
+
+    pmem = ''
+    q='normal_q'
+    time='12:00:00'
+
+    if pip=='assembly':
+        pmem = ',pmem=100gb'
+        q = 'normal_q'
+        time='144:00:00'
+
+
     cmd = [
         '#!/bin/bash',
-        '#PBS -l nodes=1:ppn='+rootvar.p,
-        '#PBS -l walltime=100:00:00',
-        '#PBS -q normal_q',
+        '#PBS -l nodes=1:ppn=20'+pmem,
+        '#PBS -l walltime={}'.format(time),
+        '#PBS -q {}'.format(q),
         '#PBS -A computeomics',
-        '#PBS -W group_list=newriver',
-        '# Uncomment and add your email address to get an email when your job starts, completes, or aborts',
-        '##PBS -M cmetagen@gmail.com',
-        '##PBS -m bea',
+        '#PBS -W group_list={}'.format(CLUSTER),
         '# Change to the directory from which the job was submitted',
-        '#cd ' + idr,
-        # 'source /groups/metastorm_cscee/deeparg/environments/deeparg/bin/activate',
-        'module load jdk/1.8.0 gcc/4.7.2 atlas',
-        'python /groups/metastorm_cscee/MetaStorm/run_main_process.py ' + ni,
+        '#cd {}'.format(idr),
+        'module load jdk/1.8.0 gcc/4.7.2', # atlas
+        'python /groups/metastorm_cscee/MetaStorm/run_main_process.py {}'.format(ni),
         'echo "the job is done"',
         # 'python /groups/metastorm_cscee/MetaStorm/scheduler.py ' + ni,
         'exit;'
     ]
+
     fi.write("\n".join(cmd))
     fi.close()
 
@@ -63,7 +72,7 @@ if pip == "assembly":
 else:
     do = rootvar.__ROOTPRO__+"/"+data['pid']+"/matches/"+sid+"/"
 
-qsub(sys.argv[1], open(do+"arc_run.qsub", 'w'), do)
+qsub(sys.argv[1], open(do+"arc_run.qsub", 'w'), do, pip)
 
 statusf = open(do+"arc_run.qsub.status", 'w')
 statusf.write("queue")
@@ -74,9 +83,4 @@ try:
 except:
     pass
 
-cmd = 'cd '+do+' && nohup /opt/torque/torque/bin/qsub arc_run.qsub > arc_run.qsub.init'
-print(cmd)
-
-os.system(cmd)
-
-# email.send_email('avc','gustavo1@vt.edu','abc','abc')
+os.system('cd '+do+' && qsub arc_run.qsub ')

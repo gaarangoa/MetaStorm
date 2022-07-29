@@ -648,11 +648,11 @@ window.onload = function ()
         for (i = 0; i < totalsamples; i++) {
             e = $(x[i]).contents()
             xsm = $(e[2]).text();
-            xsm = xsm.slice(0, xsm.length - 1)
+            xsm = xsm.slice(1)
             xbi = $(e[3]).text();
-            xbi = xbi.slice(0, xbi.length - 1)
+            xbi = xbi.slice(1)
             xex = $(e[4]).text();
-            xex = xex.slice(0, xex.length - 1)
+            xex = xex.slice(1)
 
 
 
@@ -1071,8 +1071,8 @@ window.onload = function ()
 
                     //if($(fq1).text().slice(0,-1)==""){console.log('Error: No fastq.gz file provided')}
 
-                    submit_analysis(arg[1], $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1), $(sample).text())
-                    console.log(arg, $(sample).text(), $(fq1).text().slice(0, -1), $(fq2).text().slice(0, -1))
+                    submit_analysis(arg[1], $(fq1).text().slice(1), $(fq2).text().slice(1), $(sample).text())
+                    console.log(arg, $(sample).text(), $(fq1).text().slice(1), $(fq2).text().slice(1))
                 }
 
                 save_sample_2 = function (argv)

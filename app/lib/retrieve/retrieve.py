@@ -5,13 +5,14 @@ import time
 import os
 import base64
 import json
-from app.lib.common.arc_connect import bench2archu, arcon
+from app.lib.common.arc_connect import bench2archu, get
 from app.lib.email import Email as email
 import datetime
 database = sql.SQL(rootvar.__FILEDB__)
 import re
 import logging
 import datetime
+import subprocess
 
 def get_results(job='', status='', message=[]):
 
@@ -41,7 +42,7 @@ def get_results(job='', status='', message=[]):
 
         # 1. Check if the job is done:
 
-        log.info({
+        log.info(json.dumps({
             "Pipeline": pip,
             "sampleID": sid,
             "ProjectID":
@@ -51,28 +52,40 @@ def get_results(job='', status='', message=[]):
             "from": fromf,
             "tof": tof,
             "sample": SAMPLE
-        })
+        }, indent=10))
 
         if status == 'done':
             # scp=arcon()
             # 2. get list of files in remote server
             if message:
+                # [ json.loads(str(i).replace("'", '"'))  for i in json.loads(base64.b64decode(message)) ]
                 message = json.loads(base64.b64decode(message))
                 log.debug(('Message:', message))
-                message = [base64.b64decode(i) for i in message]
+                message = [ json.loads(str(i).replace("'", '"') ) for i in message]
                 log.debug(('decoded message', message))
-                message = [json.loads(i) for i in message]
-                log.debug(('message data', message))
+                # message = [json.loads(i) for i in message]
+                # log.debug(('message data', message))
                 failed_databases = [i['reference_id'] for i in message]
                 log.debug(('failed databases', failed_databases) )
-
-
+            
             try:
-                SArc = os.popen(
-                    'ssh gustavo1@newriver1.arc.vt.edu " ls '+fromf+'"').read().split("\n")
+                
+                SArc = bench2archu('ls {}'.format(fromf))
+            
+                # p = subprocess.Popen(['ssh', 'gustavo1@cascades2.arc.vt.edu', 'ls', fromf], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+                # log.debug(p.stdout.read())
+                # log.debut(p.stdin.read())
+
+                # SArc = os.popen('ssh gustavo1@cascades2.arc.vt.edu " ls '+fromf+'"').read().split("\n")
+                SArc = SArc['out'].split('\n')
                 reg = "matches$|daa$|txt$|scaffold.fa$|nucl.fa$|contig.fa$|prot.fa$|.qsub|^begin$|^end$|sam$"
                 SArc = [i for i in SArc if not re.search(reg, i)]
-            except:
+                
+                log.debug(('from', fromf))
+                log.debug(('Files to download', SArc) )
+
+            except Exception as inst:
+                log.error(('error', str(inst)))
                 SArc = []
 
             log.info(('files', SArc))
@@ -83,8 +96,10 @@ def get_results(job='', status='', message=[]):
 
             for refi in f2s:
                 for fi in refi:
-                    os.system('scp gustavo1@newriver1.arc.vt.edu:/' +
-                              fromf+fi+" "+tof+fi)
+                    # SArc = bench2archu('scp {}/{} gustavo1@bench.cs.vt.edu:{}/{}'.format(fromf, fi, tof, fi))
+                    get('{}/{}'.format(fromf, fi), '{}/{}'.format(tof, fi) )
+                    log.debug((fromf, fi, tof, fi))
+                    # os.system('scp gustavo1@dragonstooth1.arc.vt.edu:/' + fromf+fi+" "+tof+fi)
 
             qci = '/groups/metastorm_cscee/MetaStorm/Files/PROJECTS/' + \
                 data['pid']+"/READS/"+sid+"trim.log"
@@ -93,7 +108,9 @@ def get_results(job='', status='', message=[]):
 
             log.info(('QC:', qci, qct))
 
-            os.system('scp gustavo1@newriver1.arc.vt.edu:/'+qci+" "+qct)
+            get(qci, qct)
+            # SArc = bench2archu('scp {} gustavo1@bench.cs.vt.edu:{}'.format(qci, qct))
+            # os.system('scp gustavo1@dragonstooth1.arc.vt.edu:/'+qci+" "+qct)
 
             for ref in refs:
                 if ref in failed_databases:
