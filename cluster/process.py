@@ -29,7 +29,7 @@ def qsub(ni, fi, idr, pip):
         '#PBS -A computeomics',
         '#PBS -W group_list={}'.format(CLUSTER),
         '# Change to the directory from which the job was submitted',
-        '#cd {}'.format(idr),
+        'cd {}'.format(idr),
         'module load jdk/1.8.0 gcc/4.7.2', # atlas
         'python /groups/metastorm_cscee/MetaStorm/run_main_process.py {}'.format(ni),
         'echo "the job is done"',
@@ -38,6 +38,23 @@ def qsub(ni, fi, idr, pip):
     ]
 
     fi.write("\n".join(cmd))
+    fi.close()
+
+
+def sbatch(ni, fi, idr, pip):
+    cmd = '''#!/bin/bash
+#SBATCH --account=computeomics
+#SBATCH --partition=normal_q
+#SBATCH --nodes=1 --ntasks-per-node=20
+#SBATCH --time=0-12:10:00 
+
+cd {}
+module load jdk/1.8.0 gcc/4.7.2
+python /groups/metastorm_cscee/MetaStorm/run_main_process.py {}
+echo "the job is done"
+exit; '''.format(idr, ni)
+
+    fi.write(cmd)
     fi.close()
 
 
@@ -73,6 +90,7 @@ else:
     do = rootvar.__ROOTPRO__+"/"+data['pid']+"/matches/"+sid+"/"
 
 qsub(sys.argv[1], open(do+"arc_run.qsub", 'w'), do, pip)
+sbatch(sys.argv[1], open(do+"arc_run.sbatch", 'w'), do, pip)
 
 statusf = open(do+"arc_run.qsub.status", 'w')
 statusf.write("queue")
@@ -83,4 +101,5 @@ try:
 except:
     pass
 
-os.system('cd '+do+' && qsub arc_run.qsub ')
+# os.system('cd '+do+' && qsub arc_run.qsub ')
+os.system('cd '+do+' && sbatch arc_run.sbatch ')

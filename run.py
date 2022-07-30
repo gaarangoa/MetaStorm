@@ -1118,9 +1118,9 @@ def get_functional_counts():
         except:
             pass
 
-        return jsonify(matrix=matrix_, m2=data)
+        return jsonify(status='Download link has been created')
     except Exception as inst:
-        return "ERROR: "+str(inst)
+        return "ERROR: {}. Please contact MS with the following information SID: {}, PID: {}, RID: {}".format(inst, sid, pid, rid)  
 
 
 # ******************************************************************************

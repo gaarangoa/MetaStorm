@@ -552,20 +552,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </legend>
                                 <div class="callout callout-info lead ">
                                     <p>These are the results of the functional analysis using the
-                                        <b id="which_pipeline2"></b>. The pie charts will show you the distributions of
-                                        functional categories. Each slide represents percentage of genes that were
-                                        predicted to a specific functional category.
+                                        <b id="which_pipeline2"></b>. You can download a <code>csv</code> file with all
+                                        the results.
                                     </p>
                                 </div>
 
-                                <label for='selectFuncPipeline'>Select dataset: </label>
-                                <select id='selectFuncDataset'></select>
-                                <button id="loadFunction" type="button" class="btn btn-primary btn-xs">SEE
-                                    RESULTS</button>
 
-                                <br>
-                                <br>
-                                <dic class="col-sm-12">
+                                <p>
+                                    Not Available fields will be added to the databases
+                                    if there are mismatches between the function annotations and the gene / protein
+                                    names.
+                                </p>
+
+
+
+                                <p>
+                                    We strongly recommend to double check your database if you have NotAvailable
+                                    values in your results. If you encounter this error in a MetaStorm's default
+                                    database, please send us an email.
+                                </p>
+
+
+
+                                <label for='selectFuncPipeline'>Select Database: </label>
+                                <select id='selectFuncDataset'></select>
+                                <button id="loadFunction" type="button" class="btn btn-primary">Generate Download
+                                    Link</button>
+
+                                <div id="download_sample_function_id">
+
+                                </div>
+
+
+
+
+                                <!-- <div class="col-sm-12">
                                     <div class="col-md-10 col-md-offset-1">
                                         <div id="chart-ring-year">
                                             <center>
@@ -596,10 +617,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </center>
                                             <br>
                                         </div>
-                                        <!--<div style="height: 0px; width: 0px" id='PieChartFunction' class="box-body"></div>-->
+                                        
                                     </div>
-                                    <!--<button id="clearMetadata" type="button"  class="btn btn-primary">clear</button>-->
-
+                                    
                                     <div class="col-md-10 col-md-offset-1">
                                         <center>
                                             <h2>Description</h2>
@@ -610,40 +630,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div style="min-height: 200px; overflow: auto" id="categories_metadata"></div>
                                     </div>
 
-
-                                    <div class="col-md-12" id="download_sample_function_id">
-                                        <a class="btn btn-default btn-xs">
-                                            <i class="fa fa-download"></i> Download Table</a>
-                                    </div>
-
-                                    <!-- <a id="download_one_sample_table_func" class="btn btn-default btn-xs">
-                                        <i class="fa fa-download"></i> Get Table of Funcional Annotation</a> -->
-
-
-                                    <!-- <a id="download_function_alignment" class="btn btn-default btn-xs">
-                                        <i class="fa fa-download"></i> Get Alignments File</a> -->
+                                </div> -->
 
                             </div>
 
-                            <!--<legend><h1> Download Table</h1></legend>-->
-
-
                         </div>
-
                     </div>
                 </div>
+
+
+
+                <!--</div>-->
+
+
+
+
+
             </div>
-
-
-
-            <!--</div>-->
-
-
-
-
-
-        </div>
-        <!-- /.content-wrapper -->
+            <!-- /.content-wrapper -->
 
 
 
@@ -685,10 +689,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        <!-- Main Footer -->
+            <!-- Main Footer -->
 
 
-        <!-- Add the sidebar's background. This div must be placed
+            <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
         </div>
         <!-- ./wrapper -->

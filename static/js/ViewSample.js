@@ -261,6 +261,8 @@ window.onload = function () {
             btaxo = [];
             bfunc = [];
 
+            download_links_function = [];
+
             for (i = 0; i < x.data.length; i++) {
                 if (x.data[i]['c.taxofile'] != 'none') {
                     $('#selectDataset').append(
@@ -285,6 +287,12 @@ window.onload = function () {
                         x.data[i]['c.reference_description'],
                         x.data[i]['c.reference_id']
                     ]);
+
+                    // $("#download_sample_function_id").append(
+                    //     '<a class="btn btn-default" href="https://bench.cs.vt.edu/ftp/MetaStorm/' + pid + '/pipeline-' + pip + '_sid-' + sid + '_rid-' + x.data[i]['c.datasets'] + '-data.tsv"> <i class="fa fa-download"></i> Download Results for ' + x.data[i]['c.reference_name'] + '</a> <br> <br>'
+
+                    // )
+
                 }
             }
 
@@ -338,7 +346,12 @@ window.onload = function () {
 
     $(document).on('click', '#loadFunction', function () {
         var rid = $('#selectFuncDataset option:selected').val();
-        //alert([d.level,uid,pid,sid])
+
+        // Add Download link
+        $("#download_sample_function_id").html(
+            '<br><p>Creating web link ....</p><div class="loader"></div>'
+        )
+
         sent = { uid: uid, pid: pid, sid: sid, pip: pip, rid: rid };
         //console.log(sent)
         $.ajax({
@@ -348,12 +361,13 @@ window.onload = function () {
             data: JSON.stringify(sent),
             contentType: 'application/json; charset=utf-8',
             success: function (x) {
-                console.log(x);
-                individual_samples(x.m2);
 
                 $("#download_sample_function_id").html(
-                    '<a class="btn btn-default btn-xs" href="https://bench.cs.vt.edu/ftp/MetaStorm/' + pid + '/pipeline-' + pip + '_sid-' + sid + '_rid-' + rid + '-data.tsv"> <i class="fa fa-download"></i> Download Table</a>'
+                    '<br><a class="btn btn-default btn-large" href="https://bench.cs.vt.edu/ftp/MetaStorm/' + pid + '/pipeline-' + pip + '_sid-' + sid + '_rid-' + rid + '-data.tsv"> <i class="fa fa-download"></i> Download Results (Database ID: ' + rid + ')</a>'
                 )
+
+                console.log(x);
+                // individual_samples(x.m2);
 
             }
         });
